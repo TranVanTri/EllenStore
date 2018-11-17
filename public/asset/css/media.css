@@ -1,0 +1,72 @@
+@media (max-width: 860px){
+	/******************THONG TIN TOP****************************/
+	.thong-tin-top{
+		display: none;
+	}
+	/******************END THONG TIN TOP****************************/
+}
+
+@media (max-width: 992px),(hover:none), 
+(hover:on-demand){
+	/******************MENU TOP****************************/
+
+
+
+	/******************END MENU TOP****************************/
+
+	#wowslider-container1{
+		display: none;
+	}
+
+	
+	/******************KHOI SAN PHAM****************************/
+	section.content {
+		margin-top: 65px;
+	}
+	/******************END KHOI SAN PHAM****************************/
+
+	/******************ANH KHUYEN MAI****************************/
+
+	.img-khuyenmai {
+	    display: none;
+	}
+	/******************END ANH KHUYEN MAI****************************/
+	/******************CHI TIET SAN PHAM****************************/
+
+	.form-select .btn{
+		margin-bottom: 5px;
+	}
+	/******************END CHI TIET SAN PHAM****************************/
+	
+}
+@media (max-width: 1200px){
+	.motkhoi a.btn.btn-danger{
+		margin-bottom: 4px;
+	}
+
+	.motkhoi a.btn {
+		display: block;
+		margin:0px 5px
+	}
+}
+
+@media (min-width: 768px){
+	.other-image-product{
+		/*float: left;*/
+	}
+
+}
+
+@media (max-width: 575px){
+	.lien-ket-nhanh {
+	    margin-bottom: 10px;
+	}
+	.thong-tin-footer{
+		margin-bottom: 30px;
+	}
+	.ho-tro{
+		display:none;
+	}
+
+}
+

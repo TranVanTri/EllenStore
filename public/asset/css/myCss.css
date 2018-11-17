@@ -1,0 +1,1216 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+
+html,body{
+    font-family: "Open Sans",sans-serif;
+    color: #000000d6;
+    font-weight: 300;
+    background: url(../images/background_body.jpg);
+    position: relative;
+}
+
+
+
+/******************MENU LEFT***************************/
+.left-box{    
+    margin-top: 20px;
+}
+
+.left-box a, .left-box span {
+    font-size: 14px;
+    color: #5b5252;
+    cursor: pointer;
+}
+
+.left-box a:hover, .left-box label:hover span {
+    color:#f37db8;
+}
+
+.title-2{
+    padding: 14px 15px;
+    background: #ff99cc;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+h4.title-2.my-dropdow.active {
+    margin-bottom: 0;
+}
+
+.box input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #5b5252;
+    -webkit-appearance: none;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.box input[type="radio"]:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    line-height: 15px;
+    text-align: center;
+    display: block;
+    outline: none;
+    color: #ff99cc;
+    outline: 1px solid #fff;
+}
+
+h4.title-2 i.fa {
+    position: absolute;
+    right: 5%;
+    transition: 0.5s;
+    transform-origin: 50% 50%;
+}
+
+h4.title-2 i.fa.active{
+    transform: rotate(-180deg);
+}
+
+.box> ul {
+    padding: 10px 15px 0 15px;
+    background: #ffffff;
+}
+
+.box ul li {
+    list-style: none;
+}
+
+.box ul li ul {
+    padding-left: 10px;
+}
+
+.box ul li ul li a {
+    color: #292929d6;
+    font-weight: unset;
+    font-size: 14px;
+}
+
+.box ul li a {
+    color: #292929d6;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.all-pro .mot-danhmuc{
+    
+margin-top: 10px;
+}
+
+.all-pro .mot-danhmuc .tieu-de-danhmuc {
+    margin-bottom: 20px;
+}
+
+.title-3 {
+    font-size: 30px;
+}
+
+/******************END MENU LEFT***************************/
+
+
+/******************LIEN HE***************************/
+.lien-he, .gio-hang{
+    
+margin-top: 20px;
+}
+
+.lien-he .lien-he-content {
+    margin-top: 10px;
+}
+
+.lien-he-content .address-info {
+    padding-top: 10px;
+}
+
+.address-info .address-title, .order-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    color: #292929a8;
+}
+
+.address-info .address-content {
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+.address-info .map {
+    width: 100%;
+}
+
+.lien-he .lien-he-title, .gio-hang .gio-hang-title {
+    text-transform: uppercase;
+    color: #29292996;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2929291f;
+    font-size: 24px;
+}
+.contact-form input[type="text"], .contact-form input[type="email"]{    
+    box-shadow: 0 0 0 0;
+    border-radius: unset;   
+    height: 35px;
+    font-size: 14px;
+    color: #29292994;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder{
+    font-size: 14px;
+    color: #29292994;
+}
+
+.contact-form textarea{
+    height: 150px;
+}
+
+.contact-form .btn{
+    background: #f37db8;
+    color: #fff;
+    border: 1px solid #da3f8c;
+}
+.contact-form .btn:hover{
+    background: #f3409a;
+}
+/******************END LIEN HE***************************/
+
+/******************GIO HANG***************************/
+.empty .empty-content{
+    font-size: 15px;
+    padding: 15px 10px;
+    color: #292929;
+}
+
+.empty .empty-content a {
+    color: #f37db8;
+}
+
+.empty .empty-content a:hover {
+    color: #e81b81;
+}
+.order-title{
+    margin-bottom: 10px;
+}
+
+.hinh-thuc-thanh-toan{
+    font-size: 14px;
+}
+
+.hinh-thuc-thanh-toan label span{
+    color: red;
+    margin-right: 5px; 
+}
+
+.hinh-thuc-thanh-toan span{    
+    color: #e61010;
+}
+/******************END GIO HANG***************************/
+
+
+
+/******************CHI TIET SAN PHAM***************************/
+
+.image-title .card img {
+    height: 300px;
+}
+
+.image-title .card .card-body {
+    padding: 4px 4px 0 4px;
+}
+
+.image-title .card .card-body .breadcrumb {
+    padding: 5px 20px;
+    background-color: #e9ecef26;
+    margin-bottom: 5px;
+}
+
+.image-title .card .card-body .breadcrumb a {
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.image-title .card .card-body .breadcrumb li a:hover {
+    color: #f37db8;
+}
+
+.san-pham {
+    margin: 20px 0 0 0;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #29292917;
+}
+
+.san-pham .anh-sp .image-product {
+    height: 400px;
+}
+
+.san-pham .anh-sp .image-product img {
+    height: 400px;
+    width: 100%;
+}
+
+.san-pham .other-image-product img {
+    height: 90px;
+    margin-bottom: 5px;
+}
+
+.san-pham .other-image-product ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.san-pham .other-image-product ul.owl-carousel .owl-nav {
+    display: block;
+}
+
+.san-pham .other-image-product ul.owl-carousel .owl-nav .owl-prev {
+    width: 12px;
+    height: 33px;
+    position: absolute;
+    top: 34%;
+    left: 0px;
+    font-size: 23px;
+    color: #fff;
+    background: #29292982;
+    line-height: 33px;
+    text-align: center;
+}
+
+.san-pham .other-image-product ul.owl-carousel .owl-nav .owl-next {
+    width: 12px;
+    height: 33px;
+    position: absolute;
+    top: 34%;
+    right: 0px;
+    font-size: 23px;
+    color: #fff;
+    background: #29292982;
+    line-height: 33px;
+    text-align: right;
+}
+
+.san-pham .other-image-product ul.owl-carousel .owl-nav i.fa {
+    margin-right: unset;
+}
+
+
+.san-pham .other-image-product ul li {
+    list-style: none;
+}
+
+.san-pham .other-image-product ul li a {
+    margin-right: 5px;
+}
+
+.san-pham .pro-content {
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.pro-content .pro-name {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid #2929291f;
+}
+
+.pro-content .pro-price {
+    padding: 10px 0;
+    border-bottom: 1px solid #2929291f;
+}
+
+.pro-content .pro-price .giam-gia {
+    font-size: 18px;
+    line-height: 42px;
+}
+
+.pro-content .pro-price .gia {
+    font-size: 26px;
+}
+
+.form-select .pro-properties-text {
+    font-size: 14px;
+}
+
+.form-select .pro-properties {
+    position: relative;
+}
+
+.pro-properties .color-name, .pro-properties .size-name {
+    float: left;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #29292982;
+    position: relative;
+    line-height: 35px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.pro-properties .color-name {
+    width: 50px;
+}
+
+.pro-properties .color-name.active, .pro-properties .size-name.active {
+    border: 1px solid #ff2db7d9;
+}
+
+.pro-properties .img-check {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: none;
+}
+
+.form-select .btn {
+    border-radius: 40px;
+    color: #fff;
+    border: unset;
+    height: 45px;
+    transition: background 0.5s;
+}
+
+.form-select .btn.add-gio-hang {
+    background: #fb6cb4f2;
+}
+
+.form-select .btn.add-gio-hang:hover {
+    background: #ff0080fa;
+}
+
+.form-select .btn.mua-ngay {
+    background: #fe8385;
+}
+
+.form-select .btn.mua-ngay:hover {
+    background: #fd6c6e;
+}
+
+.pro-properties .img-check.active {
+    display: block;
+}
+
+.pro-properties .input-check {
+    display: none;
+}
+
+.pro-properties-number .input-number {
+    width: 20%;
+    border: 1px  solid #29292940;
+    box-shadow: 0 0 0 0;
+    height: 35px;
+    text-align: center;
+    border-radius: unset;
+    border-right: unset;
+    border-left: unset;
+}
+
+.group-input-number {
+    position: relative;
+    display: inline-flex;
+}
+
+.group-input-number span {width: 35px;height: 35px;border: 1px  solid #29292940;text-align: center;line-height: 35px;color: #29292991;font-size: 15px;cursor: pointer;}
+
+.group-input-number span i.fa {margin-right: unset;}
+
+.group-input-number span:hover i.fa {
+    color: #f37db8;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.mo-ta{
+    margin: 20px 0 0 0;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #29292917;
+}
+
+.mo-ta .btn-list {
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+
+.mo-ta .btn-list .btn {
+    border: unset;
+    background: #F6ECEC;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: #5b5252;
+    border-radius: 40px;
+    padding: 8px 20px;
+}
+.btn-list .btn-mo-ta.active, .btn-list .btn-comment-fb.active{
+    color: #ff99cc;
+}
+
+.btn-list .btn-mo-ta {
+    margin-right: 10px;
+}
+
+.mo-ta .mo-ta-content {
+    font-size: 14px;
+    display: none;
+    padding-bottom: 10px;
+}
+
+.mo-ta .binh-luan-fb {
+    display: none;
+    padding-bottom: 10px;
+}
+
+.mo-ta .mo-ta-content.active, .mo-ta .binh-luan-fb.active{
+    display: block;
+}
+
+.mo-ta .btn-list .btn:hover {
+    color: #ff99cc;
+}
+
+.sp-lien-quan .owl-nav button.owl-prev{
+    width: 30px;
+    height: 60px;
+    position: absolute;
+    top: 34%;
+    left: 5px;
+    font-size: 24px;
+    color: #fff;
+    background: #292929a3;
+    line-height: 33px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.sp-lien-quan .owl-nav button.owl-next {
+    width: 30px;
+    height: 60px;
+    position: absolute;
+    top: 34%;
+    right: 5px;
+    font-size: 24px;
+    color: #fff;
+    background: #292929a3;
+    line-height: 33px;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/******************END CHI TIET SAN PHAM***************************/
+
+.back-to-top{
+    position: fixed;
+    z-index: 150;
+    bottom: 50px;
+    right: 30px;
+    height: 50px;
+    width: 50px;
+    background: #f37db8;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 28px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.5s;
+    border: 1px solid #ff51a8;
+    opacity: 0;
+    visibility: hidden;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px 0px #29292940;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #ef3b95;
+}
+
+.back-to-top i.fa {
+    margin-right: 0px;
+}
+
+/******************FOOTER***************************/
+
+.dk-nhan-tin .input-group.mb-3 {
+    margin-top: 10px;
+}
+
+.dk-nhan-tin .input-group-text {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: #ff99cc;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.dk-nhan-tin .input-group-text:hover {
+    background: #f157a4;
+}
+
+.dk-nhan-tin input {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    background: #5b5252;
+    font-size: 14px;
+    color: #fff;
+}
+
+.dk-nhan-tin input:focus {
+    background: #5b525242;
+    border: 1px solid #ffffff;
+    color: #fff;
+}
+
+.dk-nhan-tin input::placeholder {
+    color:#ffffff8a;
+    font-size: 14px;
+}
+
+.dk-nhan-tin-text {
+    line-height: 26px;
+    text-align: justify;
+}
+
+.title-footer {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 300;
+}
+
+.social {
+    margin-top: 10px;
+}
+
+.social ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.social ul li a {
+    display: block;
+    position: relative;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    margin: 0px 5px;
+    transition: 0.5s;
+}
+
+.social ul li a i.fa {
+    margin-right: 0px;
+}
+
+.social ul li a span {
+    position: absolute;
+    transition: transform 0.5s;
+}
+
+.social ul li a span:nth-child(1),.social ul li a span:nth-child(3) {
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+}
+
+.social ul li a span:nth-child(1) {
+    top: 0;
+    left: 0;
+    transform-origin: right;
+}
+
+.social ul li a:hover span:nth-child(1) {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.social ul li a span:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    transform-origin: left;
+}
+
+.social ul li a:hover span:nth-child(3) {
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.social ul li a span:nth-child(2),.social ul li a span:nth-child(4) {
+    width: 1px;
+    height: 100%;
+    background: #ffffff;
+}
+
+.social ul li a span:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform:scaleY(0);
+    transform-origin: bottom;
+}
+
+.social ul li a:hover span:nth-child(2) {
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+
+.social ul li a span:nth-child(4) {
+    top: 0;
+    right: 0;
+    transform:scaleY(0);
+    transform-origin: top;
+}
+
+.social ul li a:hover span:nth-child(4) {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;
+}
+
+
+
+.thong-tin-footer ul {
+    margin: 0;
+    padding: 0;
+}
+
+.thong-tin-footer > ul li i.fa {
+    font-size: 18px;
+}
+
+.thong-tin-footer ul li {
+    list-style: none;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.thong-tin-footer > ul li:nth-child(2) {
+    padding-left: 2px;
+}
+
+.footer a:hover {
+    color: #ff99cc;
+}
+
+.thong-tin-footer .logo-footer img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+footer.footer {
+    background: #5b5252;
+    margin-top: 50px;
+    position: relative;
+    color: #ffffff;
+    font-size: 14px;
+    border-top: 1px solid #f00;
+}
+
+.copy-right {
+    border-top: 1px solid #ffffff;
+    padding: 10px 0px;
+    height: 50px;
+}
+
+.ho-tro ul {
+    display: flex;
+    margin: 0;
+    padding: 0px;
+    position: absolute;
+    right: 0;
+}
+
+.ho-tro ul li a {
+    padding: 0 10px;
+}
+
+.footer .content-footer {padding: 50px 0 20px 0;}
+
+/******************END FOOTER****************************/
+
+.img-khuyenmai a {
+    height: 300px;
+}
+
+
+.btn {
+    border: 1px solid #29292975;
+    box-sizing: border-box;
+}
+/******************ANH KHUYEN MAI****************************/
+
+.img-khuyenmai {
+    margin-top: 40px;
+}
+/******************END ANH KHUYEN MAI****************************/
+
+
+/******************KHOI SAN PHAM****************************/
+.motkhoi a.btn.btn-primary {
+    background: #1769c1f2;
+}
+
+.motkhoi a.btn.btn-danger {
+    background: #e461afc7;
+}
+
+.motkhoi a.btn:hover {
+    background: #f5f5f5;
+    color: #292929;
+}
+
+span.gia {
+    font-size: 20px;
+    color: #66a182;
+    font-weight: bold;
+}
+
+.don-vi-tien {
+    text-decoration: underline;
+}
+
+strike.giam-gia {
+    font-size: 14px;
+    color: #29292987;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.motkhoi .card-title {
+    font-family: "Open Sans",sans-serif;
+    color: #000000ba;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0;
+}
+
+.motkhoi .card-body {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.zoom-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.motkhoi .zoom-img img {
+    height: auto;
+    width: 100%;
+    transition: 0.5s;
+}
+
+.motkhoi:hover .zoom-img img {
+    transform: scale(1.2);
+}
+
+.motkhoi .card {
+    background: #29292903;
+    border: 2px solid #29292938;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    transition: 0.3s cubic-bezier(0.25, 0.1, 0.04, 1.04);
+    margin-bottom: 50px;
+}
+
+.owl-item .motkhoi {
+    display:table-cell;
+}
+.owl-item.active .motkhoi .card:hover {
+    transform: translateY(0px);
+    box-shadow: 0px 0px 0px 0px;
+}
+
+.motkhoi .card:hover {
+    transform: translateY(-20px);
+    box-shadow: 1px 7px 20px 0px;
+}
+
+.title-1:after, .title-1:before {
+    content: '';
+    display: block;
+    height: 3px;
+}
+.title-1:before {
+    margin: auto;
+    width: 100%;
+    background: #c5c5c5;
+    bottom: 3px;
+    position: absolute;
+    z-index: 1;
+}
+.title-1:after {
+    margin: 12px auto auto;
+    width: 33%;
+    transition: width .5s ease, background-color .5s ease;
+    position: relative;
+    z-index: 2;
+    background: #00b7f3;
+}
+
+.title-1 {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+    font-size: .9em;
+    margin-bottom: 20px;
+}
+
+.title-1:hover:after{
+    width: 100%;
+}
+.title-1:hover {
+    color: #333;
+}
+
+.tieu-de-danhmuc a {
+    text-decoration: none;
+    color: #333;
+}
+
+.mot-danhmuc{
+    margin-top: 40px;
+}
+section.content {
+    margin-top: 5px;
+}
+/******************END KHOI SAN PHAM****************************/
+
+i.fa {
+    margin-right: 8px;
+}
+/******************THONG TIN TOP****************************/
+
+.thong-tin-top .row {
+    padding: 16px;
+}
+
+.thong-tin-top .sdt {
+    font-size: 14px;
+}
+
+.thong-tin-top .sdt span{
+    margin: 0 5px;
+}
+
+/******************END THONG TIN TOP****************************/
+
+/*********************************************MODAL************************************************/
+.login-modal .content-box{
+    position: fixed;
+    z-index: 200;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: auto;
+    transform: translate(-50%,-100%) scale(0);
+    box-sizing: border-box;
+    background: #ffffff;
+    padding: 50px 20px;
+    border: 1px solid #2929296b;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s cubic-bezier(0.57, 0.15, 0, 0.97);
+}
+
+.login-modal .content-box.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+
+.login-modal .content-box .login, .login-modal .content-box .register,
+ .login-modal .content-box .forget-p, .login-modal .content-box .change-pw{
+   display: none;
+}
+
+.login-modal .content-box .login.active, .login-modal .content-box .register.active, 
+.login-modal .content-box .forget-p.active, .login-modal .content-box .change-pw.active{
+   display: block;
+}
+
+.content-box a {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.content-box a:hover {
+    color: #f37db8;
+}
+
+/*.content-box .form-group{
+    margin-bottom: 0;
+}*/
+
+.content-box input {
+    height: 32px;
+    border: 1px solid #292929b8;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.content-box .btn {
+    background: #f37db8;
+    color: #ffffff;
+}
+
+.content-box input::placeholder {
+    font-size: 14px;
+}
+
+.content-box input:focus {
+    box-shadow: unset;
+    border-bottom: 2px solid #f37db8;
+}
+
+.content-box label {
+    font-size: 14px;
+    color: #292929e0;
+    font-weight: bold;
+}
+
+.content-box ul {
+    display: flex;
+    width: 70%;
+    margin: auto;
+}
+
+.content-box ul li {
+    list-style: none;
+}
+
+.content-box ul li span {
+    padding: 5px 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content-box ul li span:after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #f37db8;
+    display: block;
+}
+
+.content-box ul li span.active:after{
+    width: 100%;
+}
+
+.forget-p .forget-p-title span:after, .content-box ul li span.change-pw-title:after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #f37db8;
+    display: block;
+}
+
+
+.login-modal .content-box .user {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(-80px/2);
+    left: calc(50% - 40px);
+    box-shadow: 0px 2px 4px 0;
+    border: 1px solid #29292952;
+}
+
+.login-modal .blurs{    
+    position: absolute;    
+    background: #292929b3;    
+    width: 100%;    
+    height: 100%;    
+    z-index: 199;    
+    top: 0;    
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.login-modal .blurs.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.forget-p .forget-p-title{    
+    width: 45%;    
+    margin: auto;
+}
+
+.forget-p .forget-p-title span{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.forget-p .thongbao{
+    color: red;
+}
+/*********************************************MODAL************************************************/
+
+
+
+/******************HEADER****************************/
+.header {
+    height: 150px;
+    background: url(../images/finalLogo.jpg) no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+
+/******************END HEADER****************************/
+
+/*****************SEARCH BOX****************************/
+.search{
+    position: fixed;
+    right: 0;
+    top: 30%;
+    z-index: 150;
+    width: 320px;
+    height: 70px;
+    background: #ffffff;
+    border: 1px solid #cc9eb5;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-right: unset;
+    transition: 0.4s cubic-bezier(0.01, 0.81, 0.05, 1.35);
+    transform: translateX(320px);
+}
+.search.active{
+    transform: translateX(0px);
+}
+
+.search .icon-search-toggle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #00b7f3;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    border-radius: 50%;
+    overflow: hidden;
+    top: calc(50% - 20px);
+    left: calc(-40px/2);
+    border: 1px solid #29292963;
+    transition: 0.4s ;
+    transform: translateX(-55px);
+    transform-origin: -90%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.icon-search-animate{
+    animation: searchanimate 1s infinite;
+}
+
+@-webkit-keyframes searchanimate{
+    0%{
+        transform: scale(1) translateX(-55px); 
+    }
+    100%{
+        transform: scale(1.4) translateX(-55px);  
+    } 
+    
+}
+
+.icon-search-toggle.active{
+    transform: translateX(0px);
+}
+
+.icon-search-toggle.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+.search .icon-search {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #f37db8;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    overflow: hidden;
+    top: calc(50% - 20px);
+    right: 15px;
+    border: 1px solid #29292963;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.search .search-box input {
+    height: 40px;
+    width: 280px;
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 20px);
+    border-radius: 6px;
+    border: 1px solid #29292954;
+    padding-left: 5px;
+    color: #292929b5;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.search .search-box input::placeholder{
+    color: #292929b5;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.search i.fa {
+    margin-right: 0;
+}
+/*****************END SEARCH BOX****************************/
