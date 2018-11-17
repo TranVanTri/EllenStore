@@ -25,6 +25,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesUsers;
+    
     protected function guard()
     {
       return Auth::guard('admin');
