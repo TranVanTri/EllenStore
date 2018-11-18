@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminAuth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
 use Auth;
 
-class AdminController extends Controller
+class AdminAuthController extends Controller
 {
     
     public function __construct() {
-    	$this->middleware('adminLogin',['except' => 'getLogout']);
+    	$this->middleware('adminCheckLogin',['except' => 'getLogout']);
     }
     public function getIndex()
     {
@@ -19,6 +20,6 @@ class AdminController extends Controller
     }
     public function getLogout() {
     	Auth::guard('admin')->logout();
-    	return redirect('admin/login');
+    	return redirect('authadmin/login');
     }
  }

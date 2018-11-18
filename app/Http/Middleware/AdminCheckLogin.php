@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthenticate
+class AdminCheckLogin
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class AdminAuthenticate
      */
     public function handle($request, Closure $next, $guard = 'admin')
     {
-        if (!Auth::guard($guard)->check()) {
-            return redirect('admin/login');
+        if (Auth::guard($guard)->check()) {
+            return redirect('admin/product/list');
         }
 
         return $next($request);

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminManager;
 
 use App\Http\Requests\BillRequest;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Bill;
 use App\BillDetail;
 use App\User;

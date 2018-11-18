@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\SlideRequest;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Slide;
 use Illuminate\Database\QueryException;
 class SlideController extends Controller

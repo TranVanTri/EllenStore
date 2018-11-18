@@ -1,10 +1,11 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Product;
 use App\CategoryProduct;
 use Illuminate\Database\QueryException;
+use App\Http\Controllers\Controller;
 class ProductController extends Controller
 {
     public function getList()

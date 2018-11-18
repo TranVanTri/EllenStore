@@ -1,9 +1,10 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\CategoryProductRequest;
 use Illuminate\Http\Request;
 use App\CategoryGroup;
 use App\CategoryProduct;
+use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 class CategoryProductController extends Controller
 {

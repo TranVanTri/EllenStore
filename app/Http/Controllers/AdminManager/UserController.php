@@ -1,11 +1,12 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserLoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 class UserController extends Controller
 {

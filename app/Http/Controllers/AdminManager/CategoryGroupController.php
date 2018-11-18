@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\CategoryGroupRequest;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\CategoryGroup;
 use App\CategoryProduct;
 use Illuminate\Database\QueryException;
