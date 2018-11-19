@@ -1,16 +1,5 @@
 $(document).ready(function() {
 	
-	new WOW().init();
-	// *************************************XU LY MENU****************************************
-	// $('.menu-toggle').click(function(event) {
-	// 	$(".menu-toggle > .fa-bars, .menu-toggle > .fa-times").toggleClass("fa-bars fa-times")
-	// 	$('.menu-top nav').toggleClass('active');
-	// });
-	// $('.icon-search').click(function(event) {
-	// 	$('input.input-search').toggleClass('show-input-search');
-	// 	$(this).toggleClass('zoomIn animated');
-
-	// });
 
 	// *************************************XU LY NUT SEARCH****************************************
 	$('.icon-search-toggle').click(function(event) {
@@ -20,16 +9,11 @@ $(document).ready(function() {
 	});;
 	// *************************************END XU LY NUT SEARCH****************************************
 
-	$("#respMenu").aceResponsiveMenu({
-	  // Set the same in Media query  
-	  resizeWidth: '768',      
-	  // slow, medium, fast
-	  animationSpeed: 'fast', 
-	  // Expands all the accordion menu on click
-	  accoridonExpAll: false 
-	});
+	// *************************************XU LY MENU****************************************
 
-	var vt_menu_top= $('.menu-top').offset().top;
+	if($('.menu-top').length){
+		var vt_menu_top= $('.menu-top').offset().top;
+	}
 
 
 	$(window).scroll(function(event) {
@@ -56,11 +40,27 @@ $(document).ready(function() {
 		$('html,body').animate({scrollTop: 0}, 1000,"easeOutExpo");
 	});
 
-	$('ul li.sub-menu').click(function(event) {
-		event.preventDefault();
-		$(this).siblings().removeClass('active');
-		$(this).toggleClass('active ');
+	$('.user-icon').click(function(event) {
+		$('.toggle-login').toggleClass('active');
+		$('.nen-xam').addClass('active');
 	});
+
+	$('.nen-xam').click(function(event) {
+		$(this).removeClass('active');
+		$('.toggle-login').removeClass('active');
+		$('.cart').removeClass('active');
+	});;
+
+	$('.cart-icon').click(function(event) {
+		$('.cart').addClass('active');
+		$('.nen-xam').addClass('active');
+	});
+	$('.cart-close').click(function(event) {
+		$('.cart').removeClass('active');
+		$('.nen-xam').removeClass('active');
+	});
+
+
 
 
 	// *************************************END XU LY MENU****************************************
@@ -171,33 +171,7 @@ $(document).ready(function() {
 	// *************************************END XU LY Tat CA SAN PHAM****************************************
 	// *************************************XU LY LOGIN****************************************
 
-	$('.register-title').click(function(event) {
-		$('.register').addClass('active')
-		$('.login').removeClass('active');
-		$('.forget-p').removeClass('active');
-		$(this).addClass('active');
-		$('.login-title').removeClass('active');
-	});
-
-	$('.login-title').click(function(event) {
-		$('.login').addClass('active')
-		$('.register').removeClass('active');
-		$('.forget-p').removeClass('active');
-		$(this).addClass('active');
-		$('.register-title').removeClass('active');
-	});
-
-	$('.content-box a').click(function(event) {
-		$('.forget-p').addClass('active');
-		$('.register').removeClass('active');
-		$('.login').removeClass('active');
-		$('.login-title').removeClass('active');
-	});
-
-	$('.icon-user, .login-modal .blurs').click(function(event) {
-		$('.login-modal .blurs').toggleClass('active');
-		$('.login-modal .content-box').toggleClass('active');
-	});
+	
 
 	// *************************************END XU LY LOGIN****************************************
 });

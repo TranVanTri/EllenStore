@@ -69,27 +69,32 @@ class UserController extends Controller
         return redirect('admin/user/list')->with('thongbao','Xóa thành công!');
     }
 
-    // public function getLoginAdmin()
-    // {
-    //     return view('admin.login');
-    // }
+    public function getDangNhap()
+    {
+        return view('user/userlogin');
+    }
 
-    // public function postLoginAdmin(UserLoginRequest $req)
-    // {
-    //     if(Auth::attempt(['email'=>$req->email,'password'=>$req->Password])){
-    //         if(Auth::user()->adminCheck == 1){                
-    //             return redirect('admin/product/list');
-    //         }else {
-    //             return redirect('admin/login')->with('thongbao','Đăng nhập không thành công. Kiểm tra lại thông tin.');
-    //         }
-    //     }else {
-    //         return redirect('admin/login')->with('thongbao','Đăng nhập không thành công. Kiểm tra lại thông tin.');
-    //     }
-    // }
+    public function postDangNhap(UserLoginRequest $req)
+    {
+        if(Auth::attempt(['email'=>$req->email,'password'=>$req->password])){
+            //kiểm tra ngdung có bị khóa hay không
+            if(Auth::user()->enable == 1) 
+            {                
+                return redirect('/');
+            }
+            // người dùng bị khóa
+            else
+            {
+                return redirect('/login')->with('thongbao','Đăng nhập không thành công. Kiểm tra lại thông tin.');
+            }
+        }else {
+            return redirect('/login')->with('thongbao','Đăng nhập không thành công. Kiểm tra lại thông tin.');
+        }
+    }
 
-    // public function getLogoutAdmin()
-    // {
-    //     Auth::logout();
-    //     return redirect('admin/login');
-    // }
+    public function getLogoutAdmin()
+    {
+        Auth::logout();
+        return redirect('admin/login');
+    }
 }

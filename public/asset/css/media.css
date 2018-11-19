@@ -14,16 +14,6 @@
 
 	/******************END MENU TOP****************************/
 
-	#wowslider-container1{
-		display: none;
-	}
-
-	
-	/******************KHOI SAN PHAM****************************/
-	section.content {
-		margin-top: 65px;
-	}
-	/******************END KHOI SAN PHAM****************************/
 
 	/******************ANH KHUYEN MAI****************************/
 
@@ -39,6 +29,7 @@
 	/******************END CHI TIET SAN PHAM****************************/
 	
 }
+
 @media (max-width: 1200px){
 	.motkhoi a.btn.btn-danger{
 		margin-bottom: 4px;
@@ -48,11 +39,117 @@
 		display: block;
 		margin:0px 5px
 	}
+	
+
 }
 
-@media (min-width: 768px){
-	.other-image-product{
-		/*float: left;*/
+@media (max-width: 1024px){
+	.title-2{
+		font-size: 1rem;
+	}
+	.navbar-top .menu-group-category{
+		display: none;
+	}
+
+	.navbar-top-mobile{
+		display: block;
+	}
+	.navbar-top-mobile{
+		overflow-y: hidden;
+	    overflow-x: scroll;
+	    -webkit-overflow-scrolling: touch;
+	}
+
+	::-webkit-scrollbar {
+	    width: 0;
+	    height: 0;
+	    background: transparent; /* make scrollbar transparent */
+	}
+
+	.navbar-top-mobile ul{
+		width: 100%;
+		white-space: nowrap;
+	    overflow-x: scroll;
+	    -webkit-overflow-scrolling: touch;
+	    display: table;
+	}
+}
+
+
+@media (max-width: 992px){
+
+	.motkhoi .card-title{
+		font-size: .875rem;
+	}
+	strike.giam-gia{
+		font-size: 1rem;
+	}
+
+	span.gia{
+		font-size: 1rem;
+	}
+}
+@media (max-width: 768px){
+	.title-2{
+		font-size: .65rem;
+	}
+
+	.title-3{
+		font-size: 24px;
+	}
+
+	.box ul li a{
+		font-size: 14px;
+	}
+
+	.box ul li ul li a{
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 766px){
+	.menu-top .login {
+	    display: none;
+	}
+
+	.menu-top .user-icon{
+		display: block;
+		padding-right: 0;
+	}
+
+	.menu-top .cart-icon{		
+		position: absolute;		
+		top: 5px;		
+		right: 8px;
+	}
+
+	.menu-top .logo {	   
+		display: block;	   
+		text-align: center;	   
+		float: none;
+		margin-right: 24px;
+	}
+	.motkhoi .card-title{
+		font-size: .75rem;
+    	font-weight: 400;
+	}
+
+	.my-col-6-product{
+	    flex: 0 0 50%;
+	    max-width: 50%;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	}
+
+	strike.giam-gia{
+		font-size: .8125rem;
+    	margin-right: 4px;
+	}
+	span.gia{
+		font-size: .875rem;
+	}
+	.image-title{
+		display: none;
 	}
 
 }
@@ -67,6 +164,48 @@
 	.ho-tro{
 		display:none;
 	}
+	.cart{
+		width: 100%;
+	}
+
+	.content .top-shadow, .content .section-title-wrap{
+		display: none;
+	}
+	.banner{
+		display: none;
+	}
 
 }
 
+
+@media (max-width: 500px){
+	.navbar-top-mobile{
+		overflow-y: hidden;
+	    overflow-x: scroll;
+	    -webkit-overflow-scrolling: touch;
+	}
+
+	::-webkit-scrollbar {
+	    width: 0;
+	    height: 0;
+	    background: transparent; /* make scrollbar transparent */
+	}
+
+	.navbar-top-mobile ul{
+		width: 100%;
+		white-space: nowrap;
+	    overflow-x: scroll;
+	    -webkit-overflow-scrolling: touch;
+	    display: table;
+	}
+}
+
+
+@media (min-width: 768px){
+	.signin-content {
+	    padding: 32px;
+	    border: 1px solid rgba(78,89,93,.15);
+	    border-radius: 0;
+	}
+
+}
