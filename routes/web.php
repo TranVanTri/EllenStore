@@ -32,7 +32,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
 
 
 Route::group(['namespace' => 'AdminManager'], function() {
-    //, 'middleware'=>'adminLogin'
+
     Route::group(['prefix' => 'admin', 'middleware'=>'adminCheckLogout'], function() {
 
         Route::group(['prefix' => 'ckfinder'], function() {

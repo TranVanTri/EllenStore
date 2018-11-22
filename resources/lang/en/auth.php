@@ -15,5 +15,8 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'email' => 'Email không tồn tại.',
+    'password' => 'Mật khẩu không đúng.',
+    'notactivated' => 'Tài khoản của bạn đã bị khóa.',
 
 ];

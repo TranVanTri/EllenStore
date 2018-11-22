@@ -51,6 +51,21 @@ class AuthController extends Controller
     public function getLogin () {
     	return view('admin.login');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ],
+        [
+            'email.required'=>'Bạn chưa nhập email',
+            'email.email'=>'Email không hợp lệ',
+            'password.required'=>'Bạn chưa nhập mật khẩu',
+        ]
+        );
+    }
+
     public function postLogin(Request $request)
     {
        $this->validateLogin($request);
@@ -60,12 +75,11 @@ class AuthController extends Controller
         // the IP address of the client making these requests into this application.
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
-
             return $this->sendLockoutResponse($request);
         }
 
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
+        if ($this->attemptLogin($request)) {            
+            return $this->sendLoginResponse($request);                 
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -74,6 +88,51 @@ class AuthController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            $this->credentials($request)
+        );
+    }
+
+    protected function credentials(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        // Customization: validate if admin enable is active (1)
+        $credentials['enable'] = 1;
+        return $credentials;
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $admin = Admin::where('email', $request->email)->first();
+
+        if ( ! $admin ){
+            return redirect()->back()
+            ->withInput($request->only('email'))
+            ->withErrors(['email' => trans('auth.email')]);
+        }
+        if (! \Hash::check($request->password, $admin->password) ){
+             return redirect()->back()
+            ->withInput($request->only('email'))
+            ->withErrors(['password' => trans('auth.password')]);
+        }
+        if ( ! $admin->enable == 1){
+            return redirect()->back()
+            ->withInput($request->only('email'))
+            ->withErrors(['email' => trans('auth.notactivated')]);
+        }
+
+        $errors = [$this->username() => trans('auth.failed')];
+        if ($request->expectsJson()) {
+            return response()->json($errors, 422);
+        }
+
+        return redirect()->back()
+            ->withInput($request->only('email'))
+            ->withErrors($errors);
     }
 
     	// public function getRegister() {
