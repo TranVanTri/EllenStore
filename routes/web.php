@@ -108,4 +108,11 @@ Route::group(['namespace' => 'AdminManager'], function() {
 
 });
 
-
+/*Giỏ hàng*/
+Route::get('/cart2',function(){
+    return view('user/giohang');
+});
+Route::get('/chitietsanpham',function(){
+    return view('user/chitietsanpham');
+});
+Route::resource('/cart','CartController');
