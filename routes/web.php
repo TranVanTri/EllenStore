@@ -71,7 +71,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'CategoryGroupController@getEdit');
             Route::post('edit/{id}', 'CategoryGroupController@postEdit');
             Route::get('delete/{id}', 'CategoryGroupController@getDelete');
-            //Route::get('view-bill-detail/{id}', 'CategoryGroupController@getBillDetail');
+            Route::get('view-history-cate-group/{id}', 'CategoryGroupController@getHistory');
         });
 
         /* Category Product*/
@@ -82,6 +82,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'CategoryProductController@getEdit');
             Route::post('edit/{id}', 'CategoryProductController@postEdit');
             Route::get('delete/{id}', 'CategoryProductController@getDelete');
+            Route::get('view-history-cate-product/{id}', 'CategoryProductController@getHistory');
         });
 
         /* Slide*/

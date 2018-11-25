@@ -41,6 +41,23 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="enable" value="1"
+                            @if($catePro->enable == 1)
+                             checked
+                             @endif
+                             type="radio">Hoạt động
+                        </label>
+                        <label class="radio-inline">
+                            <input name="enable" value="0" 
+                            @if($catePro->enable == 0)
+                             checked
+                             @endif
+                            type="radio">Khóa
+                        </label>
+                    </div>   
                     <br>
                     <button type="submit" id="submit" disabled class="btn btn-warning">Sửa</button>
                     <button type="reset" class="btn btn-default">Reset</button>                

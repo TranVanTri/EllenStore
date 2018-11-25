@@ -70,9 +70,13 @@
          
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
-                    responsive: true
-            });               
+                responsive: true
+            });  
+            // $('#dataTables-history').DataTable({
+            //     responsive: true,               
+            // });               
         });
+        
     </script>
     
 </body>

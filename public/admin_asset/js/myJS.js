@@ -99,10 +99,33 @@ $(document).ready(function() {
     $(document).on('click', "button.viewDetail", function() {
 	    var idBill = $(this).attr('data');
         $.get('admin/bill/view-bill-detail/'+ idBill, function(data) {
-            $('#billDetail').html(data);
+            $('#billDetail').html(data);            
         });
 	});
+    //ajax lấy history category group
+	$(document).on('click', "button.view-history-cate-group", function() {
+	    var idCateG = $(this).attr('data');
+        $.get('admin/categorygroup/view-history-cate-group/'+ idCateG, function(data) {
+        	$('#dataTables-history').DataTable().destroy();
+            $('#cateGroupHistory').html(data);            
 
+            $('#dataTables-history').DataTable({
+                responsive: true,             
+            });  
+        });
+	});
+	//ajax lấy history category product
+	$(document).on('click', "button.view-history-cate-product", function() {
+	    var idCate = $(this).attr('data');
+        $.get('admin/categoryproduct/view-history-cate-product/'+ idCate, function(data) {
+        	$('#dataTables-history').DataTable().destroy();
+            $('#cateProductHistory').html(data);            
+
+            $('#dataTables-history').DataTable({
+                responsive: true,              
+            });  
+        });
+	});
 
     //VALIDATION
 
@@ -318,14 +341,14 @@ $(document).ready(function() {
 				characterAndNumberAndDash:true,
 				required:true,
 				maxlength:100,
-				minlength:3				
+				minlength:2			
 			},					
 		},
 		messages: {
 			Ten: {				
 				required: 'Vui lòng nhập tên nhóm danh mục.',
-				maxlength: 'Tên nhóm danh mục có độ dài 3-100 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 3-100 kí tự.'				
+				maxlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.',
+				minlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.'				
 			},
 			
 		},		
