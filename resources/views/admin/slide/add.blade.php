@@ -31,8 +31,17 @@
                         <input class="form-control" type="text" name="tieude" placeholder="Nhập tiêu đề" minlength="6" required maxlength="100" value="{{ old('tieude') }}" />
                     </div>
                     <div class="form-group">
-                        <label>Mô tả</label>
-                        <input class="form-control" type="text" required maxlength="100" minlength="6" name="des" placeholder="Nhập mô tả." value="{{ old('des') }}" />
+                        <label>Liên kết</label>
+                        <input class="form-control" type="text" required maxlength="100" minlength="6" name="link" placeholder="Nhập liên kết" value="{{ old('link') }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="enable" value="1" checked type="radio">Hoạt động
+                        </label>
+                        <label class="radio-inline">
+                            <input name="enable" value="0" type="radio">Khóa
+                        </label>
                     </div>   
                     <div class="form-group">
                         <label>Chọn ảnh</label>

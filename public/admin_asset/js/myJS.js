@@ -105,26 +105,111 @@ $(document).ready(function() {
     //ajax lấy history category group
 	$(document).on('click', "button.view-history-cate-group", function() {
 	    var idCateG = $(this).attr('data');
-        $.get('admin/categorygroup/view-history-cate-group/'+ idCateG, function(data) {
-        	$('#dataTables-history').DataTable().destroy();
-            $('#cateGroupHistory').html(data);            
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/categorygroup/view-history-cate-group/'+ idCateG, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#cateGroupHistory').html(data);      
 
-            $('#dataTables-history').DataTable({
-                responsive: true,             
-            });  
-        });
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
 	});
+	
 	//ajax lấy history category product
 	$(document).on('click', "button.view-history-cate-product", function() {
 	    var idCate = $(this).attr('data');
-        $.get('admin/categoryproduct/view-history-cate-product/'+ idCate, function(data) {
-        	$('#dataTables-history').DataTable().destroy();
-            $('#cateProductHistory').html(data);            
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/categoryproduct/view-history-cate-product/'+ idCate, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#cateProductHistory').html(data);      
 
-            $('#dataTables-history').DataTable({
-                responsive: true,              
-            });  
-        });
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+	//ajax lấy history slide
+	$(document).on('click', "button.view-history-slide", function() {
+	    var idSlide = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/slide/view-history-slide/'+ idSlide, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#slideHistory').html(data);        
+
+	            setTimeout(function() {
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
 	});
 
     //VALIDATION
@@ -363,7 +448,7 @@ $(document).ready(function() {
 				maxlength:100,
 				minlength:6				
 			},	
-			des: {
+			link: {
 				characterAndNumberAndDash:true,
 				required:true,
 				maxlength:100,
@@ -383,7 +468,7 @@ $(document).ready(function() {
 				maxlength: 'Tiêu đề có độ dài 6-100 kí tự.',
 				minlength: 'Tiêu đề có độ dài 6-100 kí tự.'				
 			},
-			des: {				
+			link: {				
 				required: 'Vui lòng nhập mô tả.',
 				maxlength: 'Mô tả có độ dài 6-100 kí tự.',
 				minlength: 'Mô tả có độ dài 6-100 kí tự.'				

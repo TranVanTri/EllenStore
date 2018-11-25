@@ -33,7 +33,7 @@
                         <td>{{$child->id}}</td>
                         <td>{{$child->name}}</td>
                         @if($child->enable == 1)
-                            <td style="color: blue">Đang hoạt động</td>
+                            <td style="color: blue">Đang hoạt động...</td>
                         @else
                             <td style="color: red">Ngừng hoạt động</td>
                         @endif
@@ -58,6 +58,8 @@
           <h4 class="modal-title">Lịch sử cập nhật</h4>
         </div>
         <div class="modal-body">
+            <h3 id="loadding" class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loadding...</h3>
+            <h3 id="error" class="text-center"><i style="color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Có sự cố xảy ra. </h3>
             <table class="table table-striped table-bordered table-hover table-list" id="dataTables-history">
                 <thead>
                     <tr align="center">

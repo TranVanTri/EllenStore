@@ -122,7 +122,7 @@ class CategoryGroupController extends Controller
                 $temp = "<td style='color: green'>Chỉnh sửa</td>";
             }      
             if($value['data']['status'] == 1){
-                $temp2 = "<td style='color: blue'>Đang hoạt động</td>";
+                $temp2 = "<td style='color: blue'>Đang hoạt động...</td>";
             } else{
                 $temp2 = "<td style='color: red'>Ngưng hoạt động</td>";
             }   

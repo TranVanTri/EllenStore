@@ -93,6 +93,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'SlideController@getEdit');
             Route::post('edit/{id}', 'SlideController@postEdit');
             Route::get('delete/{id}', 'SlideController@getDelete');
+            Route::get('view-history-slide/{id}', 'SlideController@getHistory');
         });
 
         /*User*/
