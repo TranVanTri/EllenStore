@@ -6,7 +6,8 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'AdminAuth'], function() {
 
-    Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function() {
+    Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function()
+    {
         Route::get('login','AuthController@getLogin');
         Route::post('login','AuthController@postLogin');
     });
@@ -112,7 +113,13 @@ Route::group(['namespace' => 'AdminManager'], function() {
 Route::get('/cart2',function(){
     return view('user/giohang');
 });
-Route::get('/chitietsanpham',function(){
-    return view('user/chitietsanpham');
-});
+
 Route::resource('/cart','CartController');
+
+
+Route::group(['namespace' => 'UserController'], function() {
+    Route::get('/tatcasanpham/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
+    Route::get('/chitietsanpham/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');;
+
+
+});
