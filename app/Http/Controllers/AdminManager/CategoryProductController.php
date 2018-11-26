@@ -34,7 +34,12 @@ class CategoryProductController extends Controller
         $data = array(            
             'name' => $cate->name,
             'categroupname' => $cate->category_group->name,
-            'status' => $cate->enable,            
+            'status' => $cate->enable,
+            'sale' => $cate->sale, 
+            'start_date_sale' => $cate->start_date_sale, 
+            'end_date_sale' => $cate->end_date_sale,
+            'sale_img' => $cate->sale_img, 
+
         );
         $temp = array(
             'actor' => $actor, 
@@ -51,6 +56,12 @@ class CategoryProductController extends Controller
         $catePro = new CategoryProduct;
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;
+
+        $catePro->sale = $req->sale;
+        $catePro->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
+        $catePro->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
+        $catePro->sale_img = $req->sale_img;
+
         $catePro->enable = $req->enable;
 
         $arrayData = $this->createArrayData($catePro);    
@@ -83,7 +94,11 @@ class CategoryProductController extends Controller
         $data = array(            
             'name' => $cate->name,
             'categroupname' => $cate->category_group->name,
-            'status' => $cate->enable,            
+            'status' => $cate->enable,
+            'sale' => $cate->sale, 
+            'start_date_sale' => $cate->start_date_sale, 
+            'end_date_sale' => $cate->end_date_sale,
+            'sale_img' => $cate->sale_img,            
         );
         $temp = array(
             'actor' => $actor, 
@@ -98,6 +113,10 @@ class CategoryProductController extends Controller
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;
         $catePro->enable = $req->enable;
+        $catePro->sale = $req->sale;
+        $catePro->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
+        $catePro->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
+        $catePro->sale_img = $req->sale_img;
 
         $oldData = json_decode($catePro->history, true);
         
@@ -148,6 +167,14 @@ class CategoryProductController extends Controller
                         ".$temp."           
                         <td>".$value['data']['name']."</td>
                         <td>".$value['data']['categroupname']."</td>
+                        <td>".$value['data']['sale']."</td>
+                        <td>".date ("d-m-Y H:i:s", strtotime($value['data']['start_date_sale']))."</td>
+                        <td>".date ("d-m-Y H:i:s", strtotime($value['data']['end_date_sale']))."</td>
+                        <td>
+                            <a target='_blank' href='".$value['data']['sale_img']."'>
+                              <img class='img-avatar' src='".$value['data']['sale_img']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
+                            </a>                            
+                        </td>
                         ".$temp2."   
                         <td>".$value['actor']['date']."</td>               
                     </tr>";

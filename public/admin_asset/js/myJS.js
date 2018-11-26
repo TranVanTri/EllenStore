@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+	if($('#datetimepicker1').length){
+	 	$('#datetimepicker1').datetimepicker({
+	 		format:"DD-MM-YYYY HH:mm:ss",
+	 	});
+	}
+
+	if($('#datetimepicker2').length){
+	 	$('#datetimepicker2').datetimepicker({
+	 		format:"DD-MM-YYYY HH:mm:ss",
+	 	});
+	}
+
+
 	if($('#detail').length){
 	 	CKEDITOR.replace('detail');
 	}
@@ -65,6 +78,20 @@ $(document).ready(function() {
 	        selectFileWithCKFinder( 'ckfinder-input-slide' );
 	    };
 	}
+
+	if($('#ckfinder-popup-cate-pro').length){
+	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );    
+	 	if($('#img-cate-pro').attr('src') != ''){
+	 		$('#img-cate-pro').show();
+	 	}else{
+	 		$('#img-cate-pro').hide();
+	 	}
+	    button1.onclick = function() {
+	        selectFileWithCKFinder( 'ckfinder-input-cate-pro', 'img-cate-pro' );        
+	        
+	    };
+
+	}
     
 
     $(document).on('click', "button.ckfinder-popup", function() {
@@ -74,7 +101,7 @@ $(document).ready(function() {
 	});
 	
 
-    function selectFileWithCKFinder( elementId ) {
+    function selectFileWithCKFinder( inputId, imgId ) {
         CKFinder.modal( {
             chooseFiles: true,
             width: 800,
@@ -82,16 +109,24 @@ $(document).ready(function() {
             onInit: function( finder ) {
                 finder.on( 'files:choose', function( evt ) {
                     var file = evt.data.files.first();
-                    var output = document.getElementById( elementId );
+                    var output = document.getElementById( inputId );
+                    var imgoutput = document.getElementById( imgId );
                     output.value = file.getUrl();
+                    imgoutput.src = output.value;
+                    
+                    
                 } );
 
                 finder.on( 'file:choose:resizedImage', function( evt ) {
-                    var output = document.getElementById( elementId );
+                    var output = document.getElementById( inputId );
+                    var imgoutput = document.getElementById( imgId );
                     output.value = evt.data.resizedUrl;
+                    imgoutput.src = output.value;
+                    
                 } );
             }
         } );
+        $('#'+imgId).show();
     }
 
 

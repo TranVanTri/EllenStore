@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label>Giảm giá (VNĐ)</label>
-                        <input class="form-control" type="number" maxlength="10" name="sale" value="{{ old('price', 0) }}"/>
+                        <input class="form-control" type="number" maxlength="10" name="sale" value="{{ old('sale', 0) }}"/>
                     </div>
                     <div class="form-group">
                         <label>Kích thước</label>

@@ -18,6 +18,30 @@ class ProductController extends Controller
         $danhmuc = CategoryProduct::all();
         return view('admin.product.add',compact('danhmuc'));
     }
+
+    // public function createArrayData(Product $pro)
+    // {
+    //     $actor = array(
+    //         'id' => Auth('admin')->user()->id,
+    //         'name' => Auth('admin')->user()->name,
+    //         'phone' => Auth('admin')->user()->phone,
+    //         'date' => date("d-m-Y H:i:s"),
+    //     );
+
+    //     $data = array(            
+    //         'name' => $pro->name,
+    //         'status' => $pro->enable,            
+    //     );
+    //     $temp = array(
+    //         'actor' => $actor, 
+    //         'data' => $data,
+    //     );
+    //     $result = array();
+    //     array_push($result, $temp);
+            
+    //     return $result;
+    // }
+
     public function postAdd(ProductRequest $req)
     {
         $product = new Product;

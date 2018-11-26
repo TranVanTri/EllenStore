@@ -64,7 +64,7 @@
                         <td>{{$pro->color}}</td>
                         <td>
                         	<a target="_blank" href="{{$pro->avatar}}">
-							  <img class="img-avatar" src="{{$pro->avatar}}" alt="Forest">
+							  <img class="img-avatar" src="{{$pro->avatar}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
 							</a>                        	
                         </td>                        
                         @if($pro->enable == 1)
