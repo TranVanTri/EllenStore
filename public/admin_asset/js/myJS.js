@@ -73,9 +73,13 @@ $(document).ready(function() {
 	if($('#ckfinder-popup-slide').length){
 	 	var button1 = document.getElementById( 'ckfinder-popup-slide' );
 	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
-
+	    if($('#img-slide').attr('src') != ''){
+	 		$('#img-slide').show();
+	 	}else{
+	 		$('#img-slide').hide();
+	 	}
 	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-slide' );
+	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
 	    };
 	}
 

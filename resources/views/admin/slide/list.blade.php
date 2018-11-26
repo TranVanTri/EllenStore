@@ -41,7 +41,7 @@
                         @endif                        
                         <td>
                             <a target="_blank" href="{{$child->image}}">
-                              <img class="img-avatar" src="{{$child->image}}" alt="Forest">
+                              <img class="img-avatar" src="{{$child->image}}"> <i class="fa fa-external-link" aria-hidden="true"></i>
                             </a>  
                         </td>                       
                         @if($child->enable == 1)

@@ -148,7 +148,7 @@ class SlideController extends Controller
                         <td>".$value['data']['link']."</td>
                         <td>
                             <a target='_blank' href='".$value['data']['image']."'>
-                                <img class='img-avatar' src='".$value['data']['image']."' alt='".$value['data']['title']."'>
+                                <img class='img-avatar' src='".$value['data']['image']."' alt='".$value['data']['title']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
                             </a>  
                         </td>
                         ".$temp2."   

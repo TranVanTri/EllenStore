@@ -52,14 +52,14 @@
                         </label>
                     </div>  
                     <div class="form-group">
-                        <label>Chọn ảnh</label>
-                        <div class="input-group">
-                            <input id="ckfinder-input-slide" type="text" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $slide->image }}">
-                            <div class="input-group-btn">
-                              <button id="ckfinder-popup-slide" class="btn btn-warning" type="button">Browse Server</button>
-                            </div>
-                        </div>
-                    </div>       
+                        <label>Chọn ảnh</label>                        
+                        <input id="ckfinder-input-slide" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $slide->image }}">
+                        <div><img id="img-slide" src="{{ $slide->image }}"  alt="" class="img-edit img-fluid"></div>
+                        <div class="input-group-btn">
+                          <button id="ckfinder-popup-slide" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>                        
+                    </div>
+                          
 
                     <button type="submit" id="submit" disabled class="btn btn-warning">Sửa</button>
                     <button type="reset" class="btn btn-default">Reset</button>
