@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\CategoryProductRequest;
 use Illuminate\Http\Request;
-use App\CategoryGroup;
+use App\CategoryGroup; 
 use App\CategoryProduct;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
@@ -33,6 +33,7 @@ class CategoryProductController extends Controller
 
         $data = array(            
             'name' => $cate->name,
+            'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
             'status' => $cate->enable,
             'sale' => $cate->sale, 
@@ -93,6 +94,7 @@ class CategoryProductController extends Controller
 
         $data = array(            
             'name' => $cate->name,
+            'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
             'status' => $cate->enable,
             'sale' => $cate->sale, 

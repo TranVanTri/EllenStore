@@ -48,6 +48,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'ProductController@getEdit');
             Route::post('edit/{id}', 'ProductController@postEdit');
             Route::get('delete/{id}', 'ProductController@getDelete');
+            Route::get('view-history-pro/{id}', 'ProductController@getHistory');
         });
 
         /* Bill*/

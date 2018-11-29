@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>Chọn ảnh</label>                        
                         <input id="ckfinder-input-slide" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $slide->image }}">
-                        <div><img id="img-slide" src="{{ $slide->image }}"  alt="" class="img-edit img-fluid"></div>
+                        <div><img id="img-slide" src="{{ $catePro->sale_img }}" alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
                           <button id="ckfinder-popup-slide" class="btn btn-info" type="button">Chọn ảnh</button>
                         </div>                        

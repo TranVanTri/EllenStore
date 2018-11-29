@@ -33,10 +33,9 @@ $(document).ready(function() {
 		 	$('#group-img').append(
 		 		'<div class="form-group">'+
 		 		'<div class="input-group">'+
-		 		'<input id="ckfinder-input-'+dem+'" type="text" class="form-control" required placeholder="Chọn hình ảnh" maxlength="90" name="otherimg[]">'+
-		 		'<div class="input-group-btn">'+
-		 		' <button class="btn btn-primary ckfinder-popup" type="button">Browse Server</button>'+
-		 		'</div>'+		 		
+		 		'<input id="ckfinder-input-'+dem+'" type="hidden" class="form-control" required placeholder="Chọn hình ảnh" maxlength="90" name="otherimg[]">'+
+		 		'<div><img id="img-pro-'+dem+'" src="upload\\images\\image-icon.png"  alt="" class="img-edit img-fluid"></div>'+
+		 		' <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>'+		 				 		
 		 		'</div>'+
 		 		'</div>'
 		 	);
@@ -61,23 +60,28 @@ $(document).ready(function() {
 	 	}
 	 });
 
-	if($('#ckfinder-popup-avatar').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-avatar' );
+	if($('#ckfinder-popup-avatar-pro').length){
+	 	var button1 = document.getElementById( 'ckfinder-popup-avatar-pro' );
 	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
+	  //   if($('#img-avatar-pro').attr('src') != ''){
+	 	// 	$('#img-avatar-pro').show();
+	 	// }else{
+	 	// 	$('#img-avatar-pro').hide();
+	 	// }
 
 	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-avatar' );
+	        selectFileWithCKFinder( 'ckfinder-input-avatar-pro', 'img-avatar-pro' );
 	    };
 	}
 
 	if($('#ckfinder-popup-slide').length){
 	 	var button1 = document.getElementById( 'ckfinder-popup-slide' );
 	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
-	    if($('#img-slide').attr('src') != ''){
-	 		$('#img-slide').show();
-	 	}else{
-	 		$('#img-slide').hide();
-	 	}
+	  //   if($('#img-slide').attr('src') != ''){
+	 	// 	$('#img-slide').show();
+	 	// }else{
+	 	// 	$('#img-slide').hide();
+	 	// }
 	    button1.onclick = function() {
 	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
 	    };
@@ -85,11 +89,11 @@ $(document).ready(function() {
 
 	if($('#ckfinder-popup-cate-pro').length){
 	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );    
-	 	if($('#img-cate-pro').attr('src') != ''){
-	 		$('#img-cate-pro').show();
-	 	}else{
-	 		$('#img-cate-pro').hide();
-	 	}
+	 	// if($('#img-cate-pro').attr('src') != ''){
+	 	// 	$('#img-cate-pro').show();
+	 	// }else{
+	 	// 	$('#img-cate-pro').hide();
+	 	// }
 	    button1.onclick = function() {
 	        selectFileWithCKFinder( 'ckfinder-input-cate-pro', 'img-cate-pro' );        
 	        
@@ -99,9 +103,10 @@ $(document).ready(function() {
     
 
     $(document).on('click', "button.ckfinder-popup", function() {
-	    var inputName = $(this).parent().siblings('input.form-control').attr('id');
-    	//console.log(inputName);
-    	selectFileWithCKFinder( inputName );      
+	    var inputName = $(this).siblings('input.form-control').attr('id');
+	    var imgName = $(this).prev().children('img.img-edit').attr('id');
+    	//console.log(imgName);
+    	selectFileWithCKFinder( inputName,imgName );      
 	});
 	
 
@@ -204,6 +209,45 @@ $(document).ready(function() {
 				    loadding.hide();
 				}, 800);	            
 	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+
+	//ajax lấy history product
+	$(document).on('click', "button.view-history-pro", function() {
+	    var idPro = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/product/view-history-pro/'+ idPro, 
+	    	success: function(data){
+            	table.DataTable().destroy();            	
+	            $('#proHistory').html(data);      
+	            
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	   
+				      
         	},
         	error: function() {
         		setTimeout(function() {

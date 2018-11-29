@@ -21,7 +21,7 @@
                 @endif
 
                 <!-- thông báo thêm thành công -->
-                @if(session('thongbao'))
+                @if(session('thongbao')) 
                 <div class="alert alert-success">{{session('thongbao')}}</div>
                 @endif
                 <!-- kết thúc thông báo thêm thành cong -->
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label>Ảnh giảm giá</label>                        
                         <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="sale_img">
-                        <div><img id="img-cate-pro" src=""  alt="" class="img-edit img-fluid"></div>
+                        <div><img id="img-cate-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
                           <button id="ckfinder-popup-cate-pro" class="btn btn-info" type="button">Chọn ảnh</button>
                         </div>                        

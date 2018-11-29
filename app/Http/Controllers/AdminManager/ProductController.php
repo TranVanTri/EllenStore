@@ -3,7 +3,7 @@ namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Product;
-use App\CategoryProduct;
+use App\CategoryProduct; 
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
 class ProductController extends Controller
@@ -19,36 +19,53 @@ class ProductController extends Controller
         return view('admin.product.add',compact('danhmuc'));
     }
 
-    // public function createArrayData(Product $pro)
-    // {
-    //     $actor = array(
-    //         'id' => Auth('admin')->user()->id,
-    //         'name' => Auth('admin')->user()->name,
-    //         'phone' => Auth('admin')->user()->phone,
-    //         'date' => date("d-m-Y H:i:s"),
-    //     );
+    public function createArrayData(Product $pro)
+    {
+        $actor = array(
+            'id' => Auth('admin')->user()->id,
+            'name' => Auth('admin')->user()->name,
+            'phone' => Auth('admin')->user()->phone,
+            'date' => date("d-m-Y H:i:s"),
+        );
 
-    //     $data = array(            
-    //         'name' => $pro->name,
-    //         'status' => $pro->enable,            
-    //     );
-    //     $temp = array(
-    //         'actor' => $actor, 
-    //         'data' => $data,
-    //     );
-    //     $result = array();
-    //     array_push($result, $temp);
+        $data = array(            
+            'name' => $pro->name,
+            'status' => $pro->enable,  
+            'price' => $pro->price,
+            'sale' => $pro->sale,
+            'start_date_sale' => $pro->start_date_sale,          
+            'end_date_sale' => $pro->end_date_sale,
+            'color' => $pro->color,
+            'quantity' => $pro->quantity,
+            'avatar' => $pro->avatar,
+            'describe' => $pro->describe,
+            'detail' => $pro->detail,
+            'highLight' => $pro->highLight,
+            'idcategoryproduct' => $pro->idCategoryProduct,
+            'namecategoryproduct' => $pro->category_product->name,
+            'size' => $pro->size,
+            'otherImg' => $pro->otherImg,            
+        );
+        $temp = array(
+            'actor' => $actor, 
+            'data' => $data,
+        );
+        $result = array();
+        array_push($result, $temp);
             
-    //     return $result;
-    // }
+        return $result;
+    }
 
     public function postAdd(ProductRequest $req)
     {
         $product = new Product;
         $product->name = $req->name;
         $product->price=$req->price;
-        $product->sale=$req->sale;      
+        $product->sale=$req->sale;  
+        $product->start_date_sale= date ("Y-m-d H:i:s", strtotime($req->start_date_sale)); 
+        $product->end_date_sale= date ("Y-m-d H:i:s", strtotime($req->end_date_sale));    
         $product->color=$req->color;
+        $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
         $product->detail=$req->detail;
@@ -77,6 +94,13 @@ class ProductController extends Controller
        // var_dump( $dulieujson);
         $dulieuOtherimg = json_encode($dulieuOtherimg);
         $product->otherImg = $dulieuOtherimg;
+
+        $arrayData = $this->createArrayData($product);    
+        
+        $arrayData = json_encode($arrayData);
+        
+        $product->history = $arrayData;
+        
         $product->save();
        
         return redirect('admin/product/add')->with('thongbao','Thêm thành công!');
@@ -89,13 +113,51 @@ class ProductController extends Controller
        
         return view('admin.product.edit',compact('danhmuc','product','otherimg'));
     }
+
+    public function editArrayData(Product $pro)
+    {
+        $actor = array(
+            'id' => Auth('admin')->user()->id,
+            'name' => Auth('admin')->user()->name,
+            'phone' => Auth('admin')->user()->phone,
+            'date' => date("d-m-Y H:i:s"),
+        );
+
+        $data = array(            
+            'name' => $pro->name,
+            'status' => $pro->enable,  
+            'price' => $pro->price,
+            'sale' => $pro->sale,
+            'start_date_sale' => $pro->start_date_sale,          
+            'end_date_sale' => $pro->end_date_sale,
+            'color' => $pro->color,
+            'quantity' => $pro->quantity,
+            'avatar' => $pro->avatar,
+            'describe' => $pro->describe,
+            'detail' => $pro->detail,
+            'highLight' => $pro->highLight,
+            'idcategoryproduct' => $pro->idCategoryProduct,
+            'namecategoryproduct' => $pro->category_product->name,
+            'size' => $pro->size,
+            'otherImg' => $pro->otherImg,        
+        );
+        $temp = array(
+            'actor' => $actor, 
+            'data' => $data,
+        );                   
+        return $temp;
+    }
+
     public function postEdit(ProductRequest $req,$id)
     {
         $product = Product::find($id);
         $product->name = $req->name;
         $product->price=$req->price;
         $product->sale=$req->sale;
+        $product->start_date_sale= date ("Y-m-d H:i:s", strtotime($req->start_date_sale)); 
+        $product->end_date_sale= date ("Y-m-d H:i:s", strtotime($req->end_date_sale)); 
         $product->color=$req->color;
+        $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
         $product->detail=$req->detail;
@@ -123,6 +185,14 @@ class ProductController extends Controller
        // var_dump( $dulieujson);
         $dulieujson = json_encode($dulieujson);
         $product->otherImg = $dulieujson;
+
+        $oldData = json_decode($product->history, true);
+        
+        $newData = $this->editArrayData($product);
+        array_push($oldData, $newData);
+        $oldData = json_encode($oldData);
+
+        $product->history = $oldData;
         $product->save();
        
         return redirect('admin/product/edit/'.$id)->with('thongbao','Sửa thành công!');
@@ -139,5 +209,70 @@ class ProductController extends Controller
         }
         
         return redirect('admin/product/list')->with('thongbao','Xóa thành công!');
+    }
+
+    public function getHistory($id)
+    {
+        $pro= Product::find($id);
+        $data =  json_decode($pro->history, true);
+        $flag = true;
+        foreach ($data as $key => $value) { 
+            if($flag == true){
+                $thaotac = "<td style='color: blue'>Tạo mới</td>";
+            } else{
+                $thaotac = "<td style='color: green'>Chỉnh sửa</td>";
+            }      
+            if($value['data']['status'] == 1){
+                $status = "<td style='color: blue'>Đang bán</td>";
+            } else{
+                $status = "<td style='color: red'>Ngưng bán</td>";
+            }  
+            if($value['data']['highLight'] == 1){
+                $highLight = "<td style='color: blue'>Nổi bật</td>";
+            } else{
+                $highLight = "<td style='color: red'>Không</td>";
+            } 
+
+            //Xử lý size chuyên json ->array
+            $size = $value['data']['size'];
+            $dl='';
+            if($size === "Chưa nhập"){
+                $dl = $size;
+            }else{
+                $size = json_decode($size);
+                $dl='';
+                foreach ($size as $val) {
+                    if($val === end($size)){//kiểm tra là phần tử cuối cùng chưa
+                        $dl .=$val;
+                    }else{
+                        $dl .=$val.', ';
+                    }                                        
+                } 
+            }      
+
+            echo "<tr class='odd gradeX' align='center'>
+                        <td>".$value['actor']['id']."</td>
+                        <td style='font-weight: bold;'>".$value['actor']['name']."</td>          
+                        <td>".$value['actor']['phone']."</td>
+                        ".$thaotac."           
+                        <td>".$value['data']['name']."</td>
+                        <td>".$value['data']['price']."</td>
+                        <td>".$value['data']['sale']."</td>
+                        <td>".$dl."</td>
+                        <td>".$value['data']['color']."</td>
+                        <td>".$value['data']['quantity']."</td>
+                        <td>
+                            <a target='_blank' href='".$value['data']['avatar']."'>
+                              <img class='img-avatar' src='".$value['data']['avatar']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
+                            </a>                            
+                        </td>
+                        ".$status."
+                        ".$highLight."
+                        <td>".date ("d-m-Y H:i", strtotime($value['data']['start_date_sale']))." - ".date ("d-m-Y H:i", strtotime($value['data']['end_date_sale']))."</td>
+                        <td>".$value['data']['namecategoryproduct']."</td>
+                        <td>".$value['actor']['date']."</td>               
+                    </tr>";
+            $flag = false; 
+        }      
     }
 }

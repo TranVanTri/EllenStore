@@ -38,6 +38,15 @@
                         <input class="form-control" type="number" name="sale" value="{{$product->sale}}"/>
                     </div>
                     <div class="form-group">
+                        <label>Ngày bắt đầu khuyến mãi</label>
+                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->start_date_sale)) }}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày kết thúc khuyến mãi</label>
+                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->end_date_sale)) }}" />
+                    </div>
+                    <div class="form-group">
                         <label>Kích thước</label>
                         <?php 
                             $size = $product->size;
@@ -82,6 +91,11 @@
                     <div class="form-group">
                         <label>Màu</label>
                         <input class="form-control" type="text" name="color" placeholder="Trắng, Xanh..." required maxlength="5" value="{{$product->color}}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Số lượng</label>
+                        <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{$product->quantity}}"/>
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
@@ -146,10 +160,11 @@
                     <div class="form-group">
                         <label>Ảnh sản phẩm</label>
                         <div class="input-group">
-                            <input id="ckfinder-input-avatar" type="text" class="form-control" placeholder="Chọn hình ảnh" required maxlength="90" name="avatar" value="{{$product->avatar}}">
-                            <div class="input-group-btn">
-                              <button id="ckfinder-popup-avatar" class="btn btn-warning" type="button">Browse Server</button>
-                            </div>
+                            
+                            <input id="ckfinder-input-avatar-pro" type="hidden" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="avatar" value="{{$product->avatar}}">
+                            <div><img id="img-avatar-pro" src="{{$product->avatar}}"  alt="" class="img-edit img-fluid"></div>
+                            
+                            <button id="ckfinder-popup-avatar-pro" class="btn btn-info" type="button">Chọn ảnh</button>
                         </div>
                     </div>
                     <div id="group-img">
@@ -161,11 +176,11 @@
                             <label>Các ảnh khác</label>  
                             @endif                          
                             <div class="input-group">
-                                <input id="ckfinder-input-{{$dem}}" type="text" class="form-control" placeholder="Chọn hình ảnh"  maxlength="180" required name="otherimg[]" 
+                                <input id="ckfinder-input-{{$dem}}" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="180" required name="otherimg[]" 
                                 value="{{$img}}">
-                                <div class="input-group-btn">
-                                  <button class="btn btn-primary ckfinder-popup" type="button">Browse Server</button>
-                                </div>
+                                <div><img id="img-pro-{{$dem}}" src="{{$img}}"  alt="" class="img-edit img-fluid"></div>
+                                
+                                <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>
                             </div>                            
                         </div>
                         <?php $dem++;?>

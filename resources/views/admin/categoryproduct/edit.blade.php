@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label>Ảnh giảm giá</label>                        
                         <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="sale_img" value="{{ $catePro->sale_img }}">
-                        <div><img id="img-cate-pro" src="{{ $catePro->sale_img }}"  alt="" class="img-edit img-fluid"></div>
+                        <div><img id="img-cate-pro" src="{{ $catePro->sale_img }}" alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
                           <button id="ckfinder-popup-cate-pro" class="btn btn-info" type="button">Chọn ảnh</button>
                         </div>                        
