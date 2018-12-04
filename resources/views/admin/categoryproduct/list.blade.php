@@ -21,11 +21,7 @@
                     <tr align="center" style="font-size: 13px">
                         <th>Mã ID</th>
                         <th>Tên Nhóm sản phẩm</th>
-                        <th>Tên Nhóm danh mục</th>
-                        <th>Khuyến mãi (%)</th>
-                        <th>Bắt đầu</th>
-                        <th>Kết thúc</th>
-                        <th>Ảnh KM</th>
+                        <th>Tên Nhóm danh mục</th>                        
                         <th>Trạng thái</th>
                         <th>Lịch sử cập nhật</th>
                         <th>Delete</th>
@@ -45,14 +41,7 @@
                             @endif
 
                         </td>
-                        <td>{{$child->sale}}</td> 
-                        <td>{{date ("d-m-Y H:i:s", strtotime($child->start_date_sale))}}</td> 
-                        <td>{{date ("d-m-Y H:i:s", strtotime($child->end_date_sale))}}</td> 
-                        <td>
-                            <a target="_blank" href="{{$child->sale_img}}">
-                              <img class="img-avatar" src="{{$child->sale_img}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
-                            </a>                            
-                        </td>                       
+                                               
                         @if($child->enable == 1)
                             <td style="color: blue">Đang hoạt động...</td>
                         @else
@@ -89,11 +78,7 @@
                         <th>Điện thoại</th>
                         <th>Thao tác</th>
                         <th>Tên danh mục SP</th>
-                        <th>Tên nhóm DM</th>
-                        <th>Khuyến mãi (%)</th>
-                        <th>Bắt đầu</th>
-                        <th>Kết thúc</th>
-                        <th>Ảnh KM</th>
+                        <th>Tên nhóm DM</th>                     
                         <th>Trạng thái</th>
                         <th>Ngày thao tác</th>
                     </tr>

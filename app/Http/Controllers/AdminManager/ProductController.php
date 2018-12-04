@@ -32,10 +32,7 @@ class ProductController extends Controller
             'name' => $pro->name,
             'status' => $pro->enable,  
             'price' => $pro->price,
-            'sale' => $pro->sale,
-            'start_date_sale' => $pro->start_date_sale,          
-            'end_date_sale' => $pro->end_date_sale,
-            'color' => $pro->color,
+            'sale' => $pro->sale,          
             'quantity' => $pro->quantity,
             'avatar' => $pro->avatar,
             'describe' => $pro->describe,
@@ -62,9 +59,7 @@ class ProductController extends Controller
         $product->name = $req->name;
         $product->price=$req->price;
         $product->sale=$req->sale;  
-        $product->start_date_sale= date ("Y-m-d H:i:s", strtotime($req->start_date_sale)); 
-        $product->end_date_sale= date ("Y-m-d H:i:s", strtotime($req->end_date_sale));    
-        $product->color=$req->color;
+        
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
@@ -127,10 +122,7 @@ class ProductController extends Controller
             'name' => $pro->name,
             'status' => $pro->enable,  
             'price' => $pro->price,
-            'sale' => $pro->sale,
-            'start_date_sale' => $pro->start_date_sale,          
-            'end_date_sale' => $pro->end_date_sale,
-            'color' => $pro->color,
+            'sale' => $pro->sale,            
             'quantity' => $pro->quantity,
             'avatar' => $pro->avatar,
             'describe' => $pro->describe,
@@ -153,10 +145,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->name = $req->name;
         $product->price=$req->price;
-        $product->sale=$req->sale;
-        $product->start_date_sale= date ("Y-m-d H:i:s", strtotime($req->start_date_sale)); 
-        $product->end_date_sale= date ("Y-m-d H:i:s", strtotime($req->end_date_sale)); 
-        $product->color=$req->color;
+        $product->sale=$req->sale;        
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;

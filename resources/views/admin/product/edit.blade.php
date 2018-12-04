@@ -33,19 +33,8 @@
                         <label>Giá sản phẩm (VNĐ)</label>
                         <input class="form-control" type="number" name="price" value="{{$product->price}}"/>
                     </div>
-                    <div class="form-group">
-                        <label>Giảm giá (VNĐ)</label>
-                        <input class="form-control" type="number" name="sale" value="{{$product->sale}}"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Ngày bắt đầu khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->start_date_sale)) }}"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ngày kết thúc khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->end_date_sale)) }}" />
-                    </div>
+                    
+                    
                     <div class="form-group">
                         <label>Kích thước</label>
                         <?php 
@@ -88,10 +77,7 @@
                              type="checkbox">XXL
                         </label>
                     </div>
-                    <div class="form-group">
-                        <label>Màu</label>
-                        <input class="form-control" type="text" name="color" placeholder="Trắng, Xanh..." required maxlength="5" value="{{$product->color}}" />
-                    </div>
+                    
 
                     <div class="form-group">
                         <label>Số lượng</label>

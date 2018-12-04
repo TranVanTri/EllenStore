@@ -40,30 +40,7 @@
                                 value="{{$child->id}}">{{$child->name}}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Phần trăm giảm giá cho danh mục(%)</label>
-                        <input class="form-control" type="number" maxlength="2" minlength="0" name="sale" value="{{$catePro->sale}}"/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Ngày bắt đầu khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($catePro->start_date_sale)) }}"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ngày kết thúc khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($catePro->end_date_sale)) }}" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ảnh giảm giá</label>                        
-                        <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="sale_img" value="{{ $catePro->sale_img }}">
-                        <div><img id="img-cate-pro" src="{{ $catePro->sale_img }}" alt="" class="img-edit img-fluid"></div>
-                        <div class="input-group-btn">
-                          <button id="ckfinder-popup-cate-pro" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>                        
-                    </div>
+                    </div>                   
                     <div class="form-group">
                         <label>Trạng thái</label>
                         <label class="radio-inline">

@@ -15,8 +15,8 @@ class AdminAuthController extends Controller
     	$this->middleware('adminCheckLogin',['except' => 'getLogout']);
     }
     public function getIndex()
-    {
-    	return redirect('admin/product/list');
+    {   echo "string";
+    	//return redirect('admin/categoryproduct/list');
     }
     public function getLogout() {
     	Auth::guard('admin')->logout();

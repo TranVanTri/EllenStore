@@ -86,20 +86,6 @@ $(document).ready(function() {
 	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
 	    };
 	}
-
-	if($('#ckfinder-popup-cate-pro').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );    
-	 	// if($('#img-cate-pro').attr('src') != ''){
-	 	// 	$('#img-cate-pro').show();
-	 	// }else{
-	 	// 	$('#img-cate-pro').hide();
-	 	// }
-	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-cate-pro', 'img-cate-pro' );        
-	        
-	    };
-
-	}
     
 
     $(document).on('click', "button.ckfinder-popup", function() {
@@ -388,19 +374,19 @@ $(document).ready(function() {
 				maxlength: 10,
 				minlength:4
 			},
-			sale: {
-				digits:true,
-				required:true,
-				maxlength: 10
-			},
+			// sale: {
+			// 	digits:true,
+			// 	required:true,
+			// 	maxlength: 10
+			// },
 			// size: {
 			// 	required:true,				
 			// 	characterOnly:true
 			// },
-			color: {
-				required:true,				
-				characterOnly:true
-			},
+			// color: {
+			// 	required:true,				
+			// 	characterOnly:true
+			// },
 			describe: {
 				required:true,
 				maxlength: 100,
@@ -431,20 +417,20 @@ $(document).ready(function() {
 				maxlength:"Giá sản phẩm từ 4-10 kí số.",
 				minlength:"Giá sản phẩm từ 4-10 kí số."	
 			},
-			sale: {
-				digits: "Giá sản phẩm không âm.",	
-				required: "Vui lòng nhập giá sản phẩm.",
-				number:"Vui lòng chỉ nhập số",
-				maxlength:"Giá sản phẩm quá 10 kí số"		
-			},
+			// sale: {
+			// 	digits: "Giá sản phẩm không âm.",	
+			// 	required: "Vui lòng nhập giá sản phẩm.",
+			// 	number:"Vui lòng chỉ nhập số",
+			// 	maxlength:"Giá sản phẩm quá 10 kí số"		
+			// },
 			// size: {
 			// 	required: "Vui lòng nhập size sản phẩm.",				
 			// 	maxlength: "Tên sản phẩm có độ dài 1-2 kí tự.",				
 			// },
-			color: {
-				required: "Vui lòng nhập màu cho sản phẩm.",				
-				maxlength: "Màu sản phẩm có độ dài 1-5 kí tự.",				
-			},
+			// color: {
+			// 	required: "Vui lòng nhập màu cho sản phẩm.",				
+			// 	maxlength: "Màu sản phẩm có độ dài 1-5 kí tự.",				
+			// },
 			describe: {
 				required: "Vui lòng nhập mô tả sản phẩm.",
 				minlength: "Mô tả sản phẩm có độ dài 80-100 kí tự.",

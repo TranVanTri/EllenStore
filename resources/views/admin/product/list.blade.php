@@ -22,14 +22,14 @@
                         <th>MãSP</th>
                         <th>TênSP</th>
                         <th>Giá (VNĐ)</th>
-                        <th>Giảm giá (VNĐ)</th>
-                        <th>Size</th>
-                        <th>Màu</th>
+                       
+                        
+                       
                         <th>SL</th>
                         <th>Ảnh mẫu</th>
                         <th>Trạng thái</th>
                         <th>Nổi bật</th>
-                        <th>Ngày KM</th>
+                        
                         <th>Danh mục</th>                        
                         <th>Lịch sử</th>
                         <th>Delete</th>
@@ -42,8 +42,8 @@
                         <td>{{$pro->id}}</td>
                         <td>{{$pro->name}}</td>
                         <td>{{$pro->price}} </td>
-                        <td>{{$pro->sale}} </td>
-                        <td>
+                        {{-- <td>{{$pro->sale}} </td> --}}
+                        {{-- <td>
                             <?php 
                                 $size = $pro->size;
                                 $dl='';
@@ -61,8 +61,8 @@
                                     echo $dl; 
                                 }                                
                             ?>
-                        </td>
-                        <td>{{$pro->color}}</td>
+                        </td> --}}
+                        {{-- <td>{{$pro->color}}</td> --}}
                         <td>{{$pro->quantity}}</td>
                         <td>
                         	<a target="_blank" href="{{$pro->avatar}}">
@@ -81,7 +81,7 @@
                                 Không
                             @endif
                         </td>
-                        <td>{{date ("d/m/Y H:i", strtotime($pro->start_date_sale))}} - {{date ("d/m/Y H:i", strtotime($pro->end_date_sale))}}</td>
+                        
                         <td>{{$pro->category_product->name}}</td>
                         
                         <td><button class="view-history-pro btn btn-info" data="{{$pro->id}}" data-toggle="modal" data-target="#myModal">Xem</button></td>                      
