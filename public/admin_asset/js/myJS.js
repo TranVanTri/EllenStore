@@ -12,14 +12,20 @@ $(document).ready(function() {
 	 	});
 	}
 
-
 	if($('#detail').length){
 	 	CKEDITOR.replace('detail');
 	}
+	//multiselect
+	if($('.demo').length){
+	 	$('.demo').fSelect();
+	}
+
 	if($('.ckfinder-popup').length){
 	 	var dem = $('.ckfinder-popup').length;
 	}
 	 
+
+	//xu xu chon anh
 	if(dem == 1){
 	 	$('#xoa-anh').attr('disabled', 'disabled');
 	}
@@ -148,6 +154,43 @@ $(document).ready(function() {
 	    	success: function(data){
             	table.DataTable().destroy();
 	            $('#cateGroupHistory').html(data);      
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+	//ajax lấy history size
+	$(document).on('click', "button.view-history-size", function() {
+	    var idsize = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/size/view-history-size/'+ idsize, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#sizeHistory').html(data);      
 
 	            setTimeout(function() {
 
@@ -333,6 +376,14 @@ $(document).ready(function() {
 	            $('#submit').prop('disabled', 'disabled');
 	        }
     	}
+
+    	if($("#formSize").length){
+    		if ($("#formSize").valid()) {
+            	$('#submit').prop('disabled', false);  
+	        } else {
+	            $('#submit').prop('disabled', 'disabled');
+	        }
+    	}
         
     });
 
@@ -489,20 +540,20 @@ $(document).ready(function() {
 	}); 
 
 	//formBill
-	$('#formCategoryGroup, #formCategoryProduct').validate({
+	$('#formCategoryGroup, #formCategoryProduct , #formSize').validate({
 		rules: {
 			Ten: {
 				characterAndNumberAndDash:true,
 				required:true,
-				maxlength:100,
-				minlength:2			
+				maxlength:3,
+				minlength:1			
 			},					
 		},
 		messages: {
 			Ten: {				
 				required: 'Vui lòng nhập tên nhóm danh mục.',
-				maxlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.'				
+				maxlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.',
+				minlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.'				
 			},
 			
 		},		

@@ -2,7 +2,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+}); 
 
 Route::group(['namespace' => 'AdminAuth'], function() {
 
@@ -95,6 +95,17 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('edit/{id}', 'SlideController@postEdit');
             Route::get('delete/{id}', 'SlideController@getDelete');
             Route::get('view-history-slide/{id}', 'SlideController@getHistory');
+        });
+
+        /* Size*/
+        Route::group(['prefix' => 'size'], function() {
+            Route::get('list', 'SizeController@getList');
+            Route::get('add', 'SizeController@getAdd');
+            Route::post('add', 'SizeController@postAdd');
+            Route::get('edit/{id}', 'SizeController@getEdit');
+            Route::post('edit/{id}', 'SizeController@postEdit');
+            Route::get('delete/{id}', 'SizeController@getDelete');
+            Route::get('view-history-size/{id}', 'SizeController@getHistory');
         });
 
         /*User*/

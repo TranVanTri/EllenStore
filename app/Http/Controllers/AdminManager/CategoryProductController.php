@@ -17,9 +17,8 @@ class CategoryProductController extends Controller
     /*-------------- Add new ------------------------------*/
     public function getAdd()
     {
-        $catePro = CategoryProduct::all();
         $cateGroup = CategoryGroup::all();  
-        return view('admin.categoryproduct.add',compact('catePro','cateGroup'));
+        return view('admin.categoryproduct.add',compact('cateGroup'));
     }
 
     public function createArrayData(CategoryProduct $cate)

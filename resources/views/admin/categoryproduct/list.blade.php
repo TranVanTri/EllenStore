@@ -6,6 +6,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Danh mục sản phẩm
                     <small>Danh sách</small>
+                    <small><a href="admin/categoryproduct/add" class="btn btn-success btn-them"><i class="fa fa-plus"></i> Thêm danh mục</a></small>
                 </h1>
                 @if(session('thongbao'))
                 <div class="alert alert-success">{{session('thongbao')}}</div>

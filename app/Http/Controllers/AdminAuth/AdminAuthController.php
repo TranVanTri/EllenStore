@@ -12,11 +12,11 @@ class AdminAuthController extends Controller
 {
     
     public function __construct() {
-    	$this->middleware('adminCheckLogin',['except' => 'getLogout']);
+    	$this->middleware('adminCheckLogout',['except' => 'getLogout']);
     }
     public function getIndex()
-    {   echo "string";
-    	//return redirect('admin/categoryproduct/list');
+    {   
+    	return redirect('admin/product/list');
     }
     public function getLogout() {
     	Auth::guard('admin')->logout();

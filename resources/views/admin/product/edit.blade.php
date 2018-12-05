@@ -37,45 +37,24 @@
                     
                     <div class="form-group">
                         <label>Kích thước</label>
-                        <?php 
-                            $size = $product->size;
-                            $size = json_decode($size);
-                        ?>
-                        <label class="checkbox-inline" style="margin-left: 5px">
-                            <input name="size[]" value="S"
-                            @if(is_array($size) && in_array('S', $size))
-                                checked
-                            @endif 
-                             type="checkbox">S
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="M"
-                            @if(is_array($size) && in_array('M', $size))
-                                checked
-                            @endif 
-                             type="checkbox">M
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="L"
-                            @if(is_array($size) && in_array('L', $size))
-                                checked
-                            @endif 
-                             type="checkbox">L
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="XL"
-                            @if(is_array($size) && in_array('XL', $size))
-                                checked
-                            @endif 
-                             type="checkbox">XL
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="XXL"
-                            @if(is_array($size) && in_array('XXL', $size))
-                                checked
-                            @endif 
-                             type="checkbox">XXL
-                        </label>
+                        <select class="demo" multiple="multiple" name="size[]"> 
+                        <?php $flag = false;?>                           
+                            @foreach($sizes as $size)
+                                <?php $flag = false;?> 
+                                @foreach($product->sizes as $value)                                     
+                                    @if($size->id == $value->id)   
+                                        <?php $flag = true;?> 
+                                        @break                                    
+                                    @endif
+                                @endforeach
+                                <option 
+                                @if($flag == true)
+                                selected 
+                                @endif
+                                value="{{$size->id}}">{{$size->name}}</option>
+                            @endforeach 
+                       
+                        </select>                        
                     </div>
                     
 
