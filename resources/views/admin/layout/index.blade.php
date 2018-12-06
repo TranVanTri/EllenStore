@@ -52,6 +52,7 @@
     <!-- jQuery -->
     <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
 
+
     <script src="admin_asset/bower_components/moment/min/moment.min.js"></script>
     
     <!-- Bootstrap Core JavaScript -->

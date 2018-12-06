@@ -22,6 +22,7 @@
                     <tr align="center" style="font-size: 12px">
                         <th>MãSP</th>
                         <th>TênSP</th>
+
                         <th>Giá (VNĐ)</th>  
                         <th>Size</th>                   
                         <th>SL</th>
@@ -40,13 +41,17 @@
                         <td>{{$pro->id}}</td>
                         <td>{{$pro->name}}</td>
                         <td>{{$pro->price}} </td>
+
+
                         <td>
                             @foreach($pro->sizes as $value)
                                 {{$value->name}}
                             @endforeach
                         </td>
+
                         
                         
+
                         <td>{{$pro->quantity}}</td>
                         <td>
                         	<a target="_blank" href="{{$pro->avatar}}">
@@ -64,8 +69,7 @@
                             @else
                                 Không
                             @endif
-                        </td>
-                        
+                        </td>                      
                         <td>{{$pro->category_product->name}}</td>
                         
                         <td><button class="view-history-pro btn btn-info" data="{{$pro->id}}" data-toggle="modal" data-target="#myModal">Xem</button></td>                      

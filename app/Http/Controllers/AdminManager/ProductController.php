@@ -37,8 +37,9 @@ class ProductController extends Controller
         $data = array(            
             'name' => $pro->name,
             'status' => $pro->enable,  
-            'price' => $pro->price,
+
             // 'sale' => $pro->sale,          
+
             'quantity' => $pro->quantity,
             'avatar' => $pro->avatar,
             'describe' => $pro->describe,
@@ -46,7 +47,9 @@ class ProductController extends Controller
             'highLight' => $pro->highLight,
             'idcategoryproduct' => $pro->idCategoryProduct,
             'namecategoryproduct' => $pro->category_product->name,
+
             'size' => $sizename,
+
             'otherImg' => $pro->otherImg,            
         );
         $temp = array(
@@ -64,6 +67,7 @@ class ProductController extends Controller
         $product = new Product;
         $product->name = $req->name;
         $product->price=$req->price;
+
         //$product->sale=$req->sale;  
         
         $product->quantity=$req->quantity;
@@ -80,10 +84,12 @@ class ProductController extends Controller
         }
        // var_dump( $dulieujson);
         $dulieuOtherimg = json_encode($dulieuOtherimg);
+
         $product->otherImg = $dulieuOtherimg;       
         
         $product->save();
         $product->sizes()->attach($req->size);
+
         $arrayData = $this->createArrayData($product);    
         
         $arrayData = json_encode($arrayData);
@@ -137,12 +143,16 @@ class ProductController extends Controller
         return $temp;
     }
 
+
+
     public function postEdit(ProductRequest $req,$id)
     {
         $product = Product::find($id);
         $product->name = $req->name;
         $product->price=$req->price;
+
         // $product->sale=$req->sale;        
+
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
@@ -160,8 +170,10 @@ class ProductController extends Controller
        // var_dump( $dulieujson);
         $dulieujson = json_encode($dulieujson);
         $product->otherImg = $dulieujson;
+
         $product->sizes()->detach();
         $product->sizes()->attach($req->size);
+
 
         $oldData = json_decode($product->history, true);
         
@@ -224,7 +236,7 @@ class ProductController extends Controller
                     $dl .=$val.', ';
                 }                                        
             } 
-              
+
 
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>

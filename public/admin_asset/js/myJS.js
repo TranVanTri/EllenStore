@@ -12,6 +12,7 @@ $(document).ready(function() {
 	 	});
 	}
 
+
 	if($('#detail').length){
 	 	CKEDITOR.replace('detail');
 	}
@@ -88,9 +89,12 @@ $(document).ready(function() {
 	 	// }else{
 	 	// 	$('#img-slide').hide();
 	 	// }
+
 	    button1.onclick = function() {
 	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
+
 	    };
+
 	}
     
 
@@ -175,6 +179,8 @@ $(document).ready(function() {
     	});        
 	});
 
+
+
 	//ajax lấy history size
 	$(document).on('click', "button.view-history-size", function() {
 	    var idsize = $(this).attr('data');
@@ -249,6 +255,80 @@ $(document).ready(function() {
     	});        
 	});
 
+
+	//ajax lấy history product
+	$(document).on('click', "button.view-history-pro", function() {
+	    var idPro = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/product/view-history-pro/'+ idPro, 
+	    	success: function(data){
+            	table.DataTable().destroy();            	
+	            $('#proHistory').html(data);      
+	            
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	   
+				      
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+	//ajax lấy history slide
+	$(document).on('click', "button.view-history-slide", function() {
+	    var idSlide = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/slide/view-history-slide/'+ idSlide, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#slideHistory').html(data);        
+
+	            setTimeout(function() {
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
 
 	//ajax lấy history product
 	$(document).on('click', "button.view-history-pro", function() {
@@ -552,8 +632,10 @@ $(document).ready(function() {
 		messages: {
 			Ten: {				
 				required: 'Vui lòng nhập tên nhóm danh mục.',
+
 				maxlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.',
 				minlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.'				
+
 			},
 			
 		},		

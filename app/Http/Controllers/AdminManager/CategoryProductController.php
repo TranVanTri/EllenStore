@@ -47,11 +47,14 @@ class CategoryProductController extends Controller
         return $result;
     }
 
+
+
     public function postAdd(CategoryProductRequest $req)
     {
         $catePro = new CategoryProduct;
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;        
+
 
         $catePro->enable = $req->enable;
 
@@ -87,7 +90,9 @@ class CategoryProductController extends Controller
             'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
             'status' => $cate->enable,
+
                        
+
         );
         $temp = array(
             'actor' => $actor, 
@@ -101,7 +106,9 @@ class CategoryProductController extends Controller
         $catePro = CategoryProduct::find($id);
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;
+
         $catePro->enable = $req->enable;        
+
 
         $oldData = json_decode($catePro->history, true);
         
@@ -144,6 +151,7 @@ class CategoryProductController extends Controller
                 $trangthai = "<td style='color: blue'>Đang hoạt động...</td>";
             } else{
                 $trangthai = "<td style='color: red'>Ngưng hoạt động</td>";
+
             }   
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>

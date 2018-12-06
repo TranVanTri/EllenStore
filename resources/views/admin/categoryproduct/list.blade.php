@@ -22,7 +22,9 @@
                     <tr align="center" style="font-size: 13px">
                         <th>Mã ID</th>
                         <th>Tên Nhóm sản phẩm</th>
+
                         <th>Tên Nhóm danh mục</th>                        
+
                         <th>Trạng thái</th>
                         <th>Lịch sử cập nhật</th>
                         <th>Delete</th>
@@ -42,7 +44,9 @@
                             @endif
 
                         </td>
+
                                                
+
                         @if($child->enable == 1)
                             <td style="color: blue">Đang hoạt động...</td>
                         @else

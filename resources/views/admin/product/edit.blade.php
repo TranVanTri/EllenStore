@@ -36,6 +36,15 @@
                     
                     
                     <div class="form-group">
+                        <label>Ngày bắt đầu khuyến mãi</label>
+                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->start_date_sale)) }}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày kết thúc khuyến mãi</label>
+                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->end_date_sale)) }}" />
+                    </div>
+                    <div class="form-group">
                         <label>Kích thước</label>
                         <select class="demo" multiple="multiple" name="size[]"> 
                         <?php $flag = false;?>                           
@@ -57,6 +66,11 @@
                         </select>                        
                     </div>
                     
+
+                    <div class="form-group">
+                        <label>Số lượng</label>
+                        <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{$product->quantity}}"/>
+                    </div>
 
                     <div class="form-group">
                         <label>Số lượng</label>

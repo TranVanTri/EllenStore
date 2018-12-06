@@ -32,6 +32,7 @@
                     <div class="form-group">
                         <label>Giá sản phẩm (VNĐ)</label>
                         <input class="form-control" type="number" maxlength="10" minlength="4" name="price" value="{{ old('price', 0) }}"/>
+
                     </div>                   
                     
                     <div class="form-group">
@@ -44,6 +45,10 @@
                         </select>                        
                     </div>
                     
+                    <div class="form-group">
+                        <label>Số lượng</label>
+                        <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{ old('quantity', 0) }}"/>
+                    </div>
                     <div class="form-group">
                         <label>Số lượng</label>
                         <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{ old('quantity', 0) }}"/>
