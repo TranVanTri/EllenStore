@@ -1,5 +1,8 @@
 
 /* *******************************************PRODUCT********************************************** */
+a.btn-them{
+    float: right;
+}
 img.img-avatar {
     border: 1px solid #ddd;
     border-radius: 4px;

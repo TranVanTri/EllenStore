@@ -4,10 +4,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Danh mục sản phẩm
+                <h1 class="page-header">Nhóm danh mục
                     <small>Danh sách</small>
-                    <small><a href="admin/categoryproduct/add" class="btn btn-success btn-them"><i class="fa fa-plus"></i> Thêm danh mục</a></small>
-                </h1>
+                    <small><a href="admin/size/add" class="btn btn-success btn-them"><i class="fa fa-plus"></i> Thêm Size</a></small>
+                </h1> 
                 @if(session('thongbao'))
                 <div class="alert alert-success">{{session('thongbao')}}</div>
                 @endif
@@ -19,43 +19,22 @@
             
             <table class="table table-striped table-bordered table-hover table-list" id="dataTables-example">
                 <thead>
-                    <tr align="center" style="font-size: 13px">
-                        <th>Mã ID</th>
-                        <th>Tên Nhóm sản phẩm</th>
-
-                        <th>Tên Nhóm danh mục</th>                        
-
-                        <th>Trạng thái</th>
+                    <tr align="center">
+                        <th>Mã size</th>
+                        <th>Tên size</th>
                         <th>Lịch sử cập nhật</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                	@foreach($catePro as $child)
+                	@foreach($sizes as $child)
                     <tr class="odd gradeX" align="center">
                         <td>{{$child->id}}</td>
                         <td>{{$child->name}}</td>
-                        <td>
-                            @if($child->category_group)
-                                {{$child->category_group->name}}
-                            @else
-                                {{"Chưa có hoặc danh mục này đã bị xóa."}}
-                            @endif
-
-                        </td>
-
-                                               
-
-                        @if($child->enable == 1)
-                            <td style="color: blue">Đang hoạt động...</td>
-                        @else
-                            <td style="color: red">Ngừng hoạt động</td>
-                        @endif
-                        <td><button class="view-history-cate-product btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModal">Xem</button></td>
-
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/categoryproduct/delete/{{$child->id}}"> Delete</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/categoryproduct/edit/{{$child->id}}">Edit</a></td>
+                        <td><button class="view-history-size btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModal">Xem</button></td>
+                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/size/delete/{{$child->id}}"> Delete</a></td>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/size/edit/{{$child->id}}">Edit</a></td>
                     </tr> 
                     @endforeach                  
                 </tbody>
@@ -65,6 +44,7 @@
     </div>
     <!-- /.container-fluid -->
 </div>
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog my-modal-lg">
       <div class="modal-content">
@@ -82,14 +62,11 @@
                         <th>Tên QT viên</th>
                         <th>Điện thoại</th>
                         <th>Thao tác</th>
-                        <th>Tên danh mục SP</th>
-                        <th>Tên nhóm DM</th>                     
-                        <th>Trạng thái</th>
-                        <th>Ngày thao tác</th>
+                        <th>Tên size</th>
+                        <th>Ngày</th>
                     </tr>
                 </thead>
-                <tbody id="cateProductHistory">    
-                    
+                <tbody id="sizeHistory">                       
 
                 </tbody>
             </table>

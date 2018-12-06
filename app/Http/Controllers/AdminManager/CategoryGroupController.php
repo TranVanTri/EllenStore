@@ -16,8 +16,30 @@ class CategoryGroupController extends Controller
     }
     public function getAdd()
     {
-        $cateGroup = CategoryGroup::all();
-        return view('admin.categorygroup.add',compact('cateGroup'));
+        return view('admin.categorygroup.add');
+    }
+
+    public function createArrayData(CategoryGroup $cate)
+    {
+        $actor = array(
+            'id' => Auth('admin')->user()->id,
+            'name' => Auth('admin')->user()->name,
+            'phone' => Auth('admin')->user()->phone,
+            'date' => date("d-m-Y H:i:s"),
+        );
+
+        $data = array(            
+            'name' => $cate->name,
+            'status' => $cate->enable,            
+        );
+        $temp = array(
+            'actor' => $actor, 
+            'data' => $data,
+        );
+        $result = array();
+        array_push($result, $temp);
+            
+        return $result;
     }
 
     public function createArrayData(CategoryGroup $cate)

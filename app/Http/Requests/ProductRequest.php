@@ -28,9 +28,9 @@ class ProductRequest extends FormRequest
         return [
             'name'=>'required|max:100|min:3|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
             'price'=>'required|regex:/^\d{4,10}$/i',
-            'sale'=>'required|regex:/^\d{1,10}$/i',
+            // 'sale'=>'required|regex:/^\d{1,10}$/i',
             // 'size'=>'max:2|required|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i',
-            'color'=>'max:5|required|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i',
+            // 'color'=>'max:5|required|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i',
             'describe'=>'required|max:100|min:80|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i', 
             'detail' =>'required',
             'avatar'=>'max:190|required|regex: /^[a-zA-Z_\.\:\/\-\d]+$/i',
@@ -49,12 +49,12 @@ class ProductRequest extends FormRequest
             'price.regex'=>'Giá sản phẩm không âm và có 4-10 kí số ',
             'price.required'=>'Vui lòng nhập giá sản phẩm.',
 
-            'sale.regex'=>'Giá giảm giá của sản phẩm không âm và có 1-10 kí số trở lên',
-            'sale.required'=>'Vui lòng nhập giá sản phẩm.',
+            // 'sale.regex'=>'Giá giảm giá của sản phẩm không âm và có 1-10 kí số trở lên',
+            // 'sale.required'=>'Vui lòng nhập giá sản phẩm.',
 
-            'color.required'=>'Vui lòng nhập màu cho sản phẩm.',
-            'color.regex'=>'Chỉ nhập chữ thường và chữ hoa.',
-            'color.max'=>'Màu sản phẩm có độ dài 1-5 kí tự.',
+            // 'color.required'=>'Vui lòng nhập màu cho sản phẩm.',
+            // 'color.regex'=>'Chỉ nhập chữ thường và chữ hoa.',
+            // 'color.max'=>'Màu sản phẩm có độ dài 1-5 kí tự.',
 
             // 'size.required'=>'Vui lòng nhập màu cho sản phẩm.',
             // 'size.regex'=>'Chỉ nhập chữ thường và chữ hoa.',

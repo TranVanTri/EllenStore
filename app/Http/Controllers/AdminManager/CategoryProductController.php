@@ -17,9 +17,8 @@ class CategoryProductController extends Controller
     /*-------------- Add new ------------------------------*/
     public function getAdd()
     {
-        $catePro = CategoryProduct::all();
         $cateGroup = CategoryGroup::all();  
-        return view('admin.categoryproduct.add',compact('catePro','cateGroup'));
+        return view('admin.categoryproduct.add',compact('cateGroup'));
     }
 
     public function createArrayData(CategoryProduct $cate)
@@ -35,11 +34,7 @@ class CategoryProductController extends Controller
             'name' => $cate->name,
             'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
-            'status' => $cate->enable,
-            'sale' => $cate->sale, 
-            'start_date_sale' => $cate->start_date_sale, 
-            'end_date_sale' => $cate->end_date_sale,
-            'sale_img' => $cate->sale_img, 
+            'status' => $cate->enable,           
 
         );
         $temp = array(
@@ -52,16 +47,14 @@ class CategoryProductController extends Controller
         return $result;
     }
 
+
+
     public function postAdd(CategoryProductRequest $req)
     {
         $catePro = new CategoryProduct;
         $catePro->name = $req->Ten;
-        $catePro->idCategoryGroup = $req->NhomDanhMuc;
+        $catePro->idCategoryGroup = $req->NhomDanhMuc;        
 
-        $catePro->sale = $req->sale;
-        $catePro->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
-        $catePro->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
-        $catePro->sale_img = $req->sale_img;
 
         $catePro->enable = $req->enable;
 
@@ -97,10 +90,9 @@ class CategoryProductController extends Controller
             'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
             'status' => $cate->enable,
-            'sale' => $cate->sale, 
-            'start_date_sale' => $cate->start_date_sale, 
-            'end_date_sale' => $cate->end_date_sale,
-            'sale_img' => $cate->sale_img,            
+
+                       
+
         );
         $temp = array(
             'actor' => $actor, 
@@ -114,11 +106,9 @@ class CategoryProductController extends Controller
         $catePro = CategoryProduct::find($id);
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;
-        $catePro->enable = $req->enable;
-        $catePro->sale = $req->sale;
-        $catePro->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
-        $catePro->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
-        $catePro->sale_img = $req->sale_img;
+
+        $catePro->enable = $req->enable;        
+
 
         $oldData = json_decode($catePro->history, true);
         
@@ -153,31 +143,24 @@ class CategoryProductController extends Controller
         $flag = true;
         foreach ($data as $key => $value) { 
             if($flag == true){
-                $temp = "<td style='color: blue'>Tạo mới</td>";
+                $thaotac = "<td style='color: blue'>Tạo mới</td>";
             } else{
-                $temp = "<td style='color: green'>Chỉnh sửa</td>";
+                $thaotac = "<td style='color: green'>Chỉnh sửa</td>";
             }      
             if($value['data']['status'] == 1){
-                $temp2 = "<td style='color: blue'>Đang hoạt động...</td>";
+                $trangthai = "<td style='color: blue'>Đang hoạt động...</td>";
             } else{
-                $temp2 = "<td style='color: red'>Ngưng hoạt động</td>";
+                $trangthai = "<td style='color: red'>Ngưng hoạt động</td>";
+
             }   
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>
                         <td style='font-weight: bold;'>".$value['actor']['name']."</td>          
                         <td>".$value['actor']['phone']."</td>
-                        ".$temp."           
+                        ".$thaotac."           
                         <td>".$value['data']['name']."</td>
-                        <td>".$value['data']['categroupname']."</td>
-                        <td>".$value['data']['sale']."</td>
-                        <td>".date ("d-m-Y H:i:s", strtotime($value['data']['start_date_sale']))."</td>
-                        <td>".date ("d-m-Y H:i:s", strtotime($value['data']['end_date_sale']))."</td>
-                        <td>
-                            <a target='_blank' href='".$value['data']['sale_img']."'>
-                              <img class='img-avatar' src='".$value['data']['sale_img']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
-                            </a>                            
-                        </td>
-                        ".$temp2."   
+                        <td>".$value['data']['categroupname']."</td>                        
+                        ".$trangthai."   
                         <td>".$value['actor']['date']."</td>               
                     </tr>";
             $flag = false; 

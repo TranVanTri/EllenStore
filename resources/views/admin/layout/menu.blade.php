@@ -21,9 +21,7 @@
                     <li>
                         <a href="admin/categorygroup/list"><i class="fa fa-list"></i> Danh sách</a>
                     </li>
-                    <li>
-                        <a href="admin/categorygroup/add"><i class="fa fa-plus"></i> Thêm nhóm</a>
-                    </li>
+                   
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
@@ -35,9 +33,7 @@
                     <li>
                         <a href="admin/categoryproduct/list"><i class="fa fa-list"></i> Danh sách</a>
                     </li>
-                    <li>
-                        <a href="admin/categoryproduct/add"><i class="fa fa-plus"></i> Thêm danh mục</a>
-                    </li>
+                    
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
@@ -49,8 +45,9 @@
                         <a href="admin/product/list"><i class="fa fa-list"></i> Danh sách sản phẩm</a>
                     </li>
                     <li>
-                        <a href="admin/product/add"><i class="fa fa-plus"></i> Thêm sản phẩm</a>
+                        <a href="admin/size/list"><i class="fa fa-list"></i> Size sản phẩm</a>
                     </li>
+                    
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
@@ -72,9 +69,7 @@
                     <li>
                         <a href="admin/slide/list"><i class="fa fa-list"></i> Danh sách slide</a>
                     </li>
-                    <li>
-                        <a href="admin/slide/add"><i class="fa fa-plus"></i> Thêm slide</a>
-                    </li>
+                    
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
@@ -84,9 +79,7 @@
                     <li>
                         <a href="admin/user/list"><i class="fa fa-list"></i> Danh sách User</a>
                     </li>
-                    <li>
-                        <a href="admin/user/add"><i class="fa fa-plus"></i> Thêm User</a>
-                    </li>
+                   
                 </ul>
                 <!-- /.nav-second-level -->
             </li>

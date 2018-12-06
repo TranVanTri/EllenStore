@@ -16,10 +16,17 @@ $(document).ready(function() {
 	if($('#detail').length){
 	 	CKEDITOR.replace('detail');
 	}
+	//multiselect
+	if($('.demo').length){
+	 	$('.demo').fSelect();
+	}
+
 	if($('.ckfinder-popup').length){
 	 	var dem = $('.ckfinder-popup').length;
 	}
 	 
+
+	//xu xu chon anh
 	if(dem == 1){
 	 	$('#xoa-anh').attr('disabled', 'disabled');
 	}
@@ -82,21 +89,10 @@ $(document).ready(function() {
 	 	// }else{
 	 	// 	$('#img-slide').hide();
 	 	// }
+
 	    button1.onclick = function() {
 	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
-	    };
-	}
 
-	if($('#ckfinder-popup-cate-pro').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );    
-	 	// if($('#img-cate-pro').attr('src') != ''){
-	 	// 	$('#img-cate-pro').show();
-	 	// }else{
-	 	// 	$('#img-cate-pro').hide();
-	 	// }
-	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-cate-pro', 'img-cate-pro' );        
-	        
 	    };
 
 	}
@@ -162,6 +158,45 @@ $(document).ready(function() {
 	    	success: function(data){
             	table.DataTable().destroy();
 	            $('#cateGroupHistory').html(data);      
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+
+
+	//ajax lấy history size
+	$(document).on('click', "button.view-history-size", function() {
+	    var idsize = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/size/view-history-size/'+ idsize, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#sizeHistory').html(data);      
 
 	            setTimeout(function() {
 
@@ -295,6 +330,80 @@ $(document).ready(function() {
     	});        
 	});
 
+	//ajax lấy history product
+	$(document).on('click', "button.view-history-pro", function() {
+	    var idPro = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/product/view-history-pro/'+ idPro, 
+	    	success: function(data){
+            	table.DataTable().destroy();            	
+	            $('#proHistory').html(data);      
+	            
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	   
+				      
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+	//ajax lấy history slide
+	$(document).on('click', "button.view-history-slide", function() {
+	    var idSlide = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/slide/view-history-slide/'+ idSlide, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#slideHistory').html(data);        
+
+	            setTimeout(function() {
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
     //VALIDATION
 
     
@@ -347,6 +456,14 @@ $(document).ready(function() {
 	            $('#submit').prop('disabled', 'disabled');
 	        }
     	}
+
+    	if($("#formSize").length){
+    		if ($("#formSize").valid()) {
+            	$('#submit').prop('disabled', false);  
+	        } else {
+	            $('#submit').prop('disabled', 'disabled');
+	        }
+    	}
         
     });
 
@@ -388,19 +505,19 @@ $(document).ready(function() {
 				maxlength: 10,
 				minlength:4
 			},
-			sale: {
-				digits:true,
-				required:true,
-				maxlength: 10
-			},
+			// sale: {
+			// 	digits:true,
+			// 	required:true,
+			// 	maxlength: 10
+			// },
 			// size: {
 			// 	required:true,				
 			// 	characterOnly:true
 			// },
-			color: {
-				required:true,				
-				characterOnly:true
-			},
+			// color: {
+			// 	required:true,				
+			// 	characterOnly:true
+			// },
 			describe: {
 				required:true,
 				maxlength: 100,
@@ -431,20 +548,20 @@ $(document).ready(function() {
 				maxlength:"Giá sản phẩm từ 4-10 kí số.",
 				minlength:"Giá sản phẩm từ 4-10 kí số."	
 			},
-			sale: {
-				digits: "Giá sản phẩm không âm.",	
-				required: "Vui lòng nhập giá sản phẩm.",
-				number:"Vui lòng chỉ nhập số",
-				maxlength:"Giá sản phẩm quá 10 kí số"		
-			},
+			// sale: {
+			// 	digits: "Giá sản phẩm không âm.",	
+			// 	required: "Vui lòng nhập giá sản phẩm.",
+			// 	number:"Vui lòng chỉ nhập số",
+			// 	maxlength:"Giá sản phẩm quá 10 kí số"		
+			// },
 			// size: {
 			// 	required: "Vui lòng nhập size sản phẩm.",				
 			// 	maxlength: "Tên sản phẩm có độ dài 1-2 kí tự.",				
 			// },
-			color: {
-				required: "Vui lòng nhập màu cho sản phẩm.",				
-				maxlength: "Màu sản phẩm có độ dài 1-5 kí tự.",				
-			},
+			// color: {
+			// 	required: "Vui lòng nhập màu cho sản phẩm.",				
+			// 	maxlength: "Màu sản phẩm có độ dài 1-5 kí tự.",				
+			// },
 			describe: {
 				required: "Vui lòng nhập mô tả sản phẩm.",
 				minlength: "Mô tả sản phẩm có độ dài 80-100 kí tự.",
@@ -503,20 +620,22 @@ $(document).ready(function() {
 	}); 
 
 	//formBill
-	$('#formCategoryGroup, #formCategoryProduct').validate({
+	$('#formCategoryGroup, #formCategoryProduct , #formSize').validate({
 		rules: {
 			Ten: {
 				characterAndNumberAndDash:true,
 				required:true,
-				maxlength:100,
-				minlength:2			
+				maxlength:3,
+				minlength:1			
 			},					
 		},
 		messages: {
 			Ten: {				
 				required: 'Vui lòng nhập tên nhóm danh mục.',
-				maxlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.'				
+
+				maxlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.',
+				minlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.'				
+
 			},
 			
 		},		

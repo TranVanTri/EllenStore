@@ -6,11 +6,12 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Sản phẩm
                     <small>Danh sách</small>
+                    <small><a href="admin/product/add" class="btn btn-success btn-them"><i class="fa fa-plus"></i> Thêm sản phẩm</a></small>
                 </h1>
                 @if(session('thongbao'))
                 <div class="alert alert-success">{{session('thongbao')}}</div>
                 @endif
-                @if(session('loi'))
+                @if(session('loi')) 
                 <div class="alert alert-danger">{{session('loi')}}</div>
                 @endif
             </div>
@@ -21,15 +22,13 @@
                     <tr align="center" style="font-size: 12px">
                         <th>MãSP</th>
                         <th>TênSP</th>
-                        <th>Giá (VNĐ)</th>
-                        <th>Giảm giá (VNĐ)</th>
-                        <th>Size</th>
-                        <th>Màu</th>
+
+                        <th>Giá (VNĐ)</th>  
+                        <th>Size</th>                   
                         <th>SL</th>
                         <th>Ảnh mẫu</th>
                         <th>Trạng thái</th>
-                        <th>Nổi bật</th>
-                        <th>Ngày KM</th>
+                        <th>Nổi bật</th>                        
                         <th>Danh mục</th>                        
                         <th>Lịch sử</th>
                         <th>Delete</th>
@@ -42,27 +41,17 @@
                         <td>{{$pro->id}}</td>
                         <td>{{$pro->name}}</td>
                         <td>{{$pro->price}} </td>
-                        <td>{{$pro->sale}} </td>
+
+
                         <td>
-                            <?php 
-                                $size = $pro->size;
-                                $dl='';
-                                if($size === "Chưa nhập"){
-                                    echo $size;
-                                }else{
-                                    $size = json_decode($size);
-                                    foreach ($size as $value) {
-                                        if($value === end($size)){
-                                            $dl .=$value;
-                                        }else{
-                                            $dl .=$value.', ';
-                                        }                                        
-                                    }
-                                    echo $dl; 
-                                }                                
-                            ?>
+                            @foreach($pro->sizes as $value)
+                                {{$value->name}}
+                            @endforeach
                         </td>
-                        <td>{{$pro->color}}</td>
+
+                        
+                        
+
                         <td>{{$pro->quantity}}</td>
                         <td>
                         	<a target="_blank" href="{{$pro->avatar}}">
@@ -80,8 +69,7 @@
                             @else
                                 Không
                             @endif
-                        </td>
-                        <td>{{date ("d/m/Y H:i", strtotime($pro->start_date_sale))}} - {{date ("d/m/Y H:i", strtotime($pro->end_date_sale))}}</td>
+                        </td>                      
                         <td>{{$pro->category_product->name}}</td>
                         
                         <td><button class="view-history-pro btn btn-info" data="{{$pro->id}}" data-toggle="modal" data-target="#myModal">Xem</button></td>                      
@@ -115,15 +103,12 @@
                         <th>Điện thoại</th>
                         <th>Thao tác</th>
                         <th>TênSP</th>
-                        <th>Giá (VNĐ)</th>
-                        <th>Giảm giá (VNĐ)</th>
-                        <th>Size</th>
-                        <th>Màu</th>
+                        <th>Giá (VNĐ)</th>                   
+                        <th>Size</th>                     
                         <th>SL</th>
                         <th>Ảnh mẫu</th>
                         <th>Trạng thái</th>
-                        <th>Nổi bật</th>
-                        <th>Ngày KM</th>
+                        <th>Nổi bật</th>                
                         <th>Danh mục</th>
                         <th>Ngày</th>
                     </tr>

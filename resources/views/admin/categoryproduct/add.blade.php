@@ -44,6 +44,15 @@
                             @endforeach
 
                         </select>
+                    </div>              
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="enable" value="1" checked type="radio">Hoạt động
+                        </label>
+                        <label class="radio-inline">
+                            <input name="enable" value="0" type="radio">Khóa
+                        </label>
                     </div>
                     <div class="form-group">
                         <label>Phần trăm giảm giá cho danh mục(%)</label>
