@@ -27,7 +27,24 @@
                     <div class="form-group">
                         <label>Tên nhóm danh mục</label>
                         <input class="form-control" type="text" name="Ten" placeholder="Nhập tên nhóm danh mục mới" required maxlength="100" minlength="3" value="{{$cateGroup->name}}" />
-                    </div>                  
+                    </div>  
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="enable" value="1"
+                            @if($cateGroup->enable == 1)
+                             checked
+                             @endif
+                             type="radio">Hoạt động
+                        </label>
+                        <label class="radio-inline">
+                            <input name="enable" value="0" 
+                            @if($cateGroup->enable == 0)
+                             checked
+                             @endif
+                            type="radio">Khóa
+                        </label>
+                    </div>                
                     <button type="submit" disabled id="submit" class="btn btn-warning">Sửa</button>
                     <button type="reset" class="btn btn-default">Reset</button>                
                 </div>

@@ -31,18 +31,35 @@
                         <input class="form-control" type="text" name="tieude" placeholder="Nhập tiêu đề" minlength="6" required maxlength="100" value="{{ $slide->title }}" />
                     </div>
                     <div class="form-group">
-                        <label>Mô tả</label>
-                        <input class="form-control" type="text" required maxlength="100" minlength="6" name="des" placeholder="Nhập mô tả." value="{{ $slide->des }}" />
-                    </div>   
+                        <label>Liên kết</label>
+                        <input class="form-control" type="text" required maxlength="100" minlength="6" name="link" placeholder="Nhập liên kết" value="{{ $slide->link }}" />
+                    </div>  
                     <div class="form-group">
-                        <label>Chọn ảnh</label>
-                        <div class="input-group">
-                            <input id="ckfinder-input-slide" type="text" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $slide->image }}">
-                            <div class="input-group-btn">
-                              <button id="ckfinder-popup-slide" class="btn btn-warning" type="button">Browse Server</button>
-                            </div>
-                        </div>
-                    </div>       
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="enable" value="1"
+                            @if($slide->enable == 1)
+                             checked
+                             @endif
+                             type="radio">Hoạt động
+                        </label>
+                        <label class="radio-inline">
+                            <input name="enable" value="0" 
+                            @if($slide->enable == 0)
+                             checked
+                             @endif
+                            type="radio">Khóa
+                        </label>
+                    </div>  
+                    <div class="form-group">
+                        <label>Chọn ảnh</label>                        
+                        <input id="ckfinder-input-slide" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $slide->image }}">
+                        <div><img id="img-slide" src="{{ $catePro->sale_img }}" alt="" class="img-edit img-fluid"></div>
+                        <div class="input-group-btn">
+                          <button id="ckfinder-popup-slide" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>                        
+                    </div>
+                          
 
                     <button type="submit" id="submit" disabled class="btn btn-warning">Sửa</button>
                     <button type="reset" class="btn btn-default">Reset</button>

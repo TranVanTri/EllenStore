@@ -51,6 +51,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'ProductController@getEdit');
             Route::post('edit/{id}', 'ProductController@postEdit');
             Route::get('delete/{id}', 'ProductController@getDelete');
+            Route::get('view-history-pro/{id}', 'ProductController@getHistory');
         });
 
         /* Bill*/
@@ -74,7 +75,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'CategoryGroupController@getEdit');
             Route::post('edit/{id}', 'CategoryGroupController@postEdit');
             Route::get('delete/{id}', 'CategoryGroupController@getDelete');
-            //Route::get('view-bill-detail/{id}', 'CategoryGroupController@getBillDetail');
+            Route::get('view-history-cate-group/{id}', 'CategoryGroupController@getHistory');
         });
 
         /* Category Product*/
@@ -85,6 +86,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'CategoryProductController@getEdit');
             Route::post('edit/{id}', 'CategoryProductController@postEdit');
             Route::get('delete/{id}', 'CategoryProductController@getDelete');
+            Route::get('view-history-cate-product/{id}', 'CategoryProductController@getHistory');
         });
 
         /* Slide*/
@@ -95,6 +97,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'SlideController@getEdit');
             Route::post('edit/{id}', 'SlideController@postEdit');
             Route::get('delete/{id}', 'SlideController@getDelete');
+            Route::get('view-history-slide/{id}', 'SlideController@getHistory');
         });
 
         /*User*/

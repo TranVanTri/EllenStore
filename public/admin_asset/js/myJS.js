@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+	if($('#datetimepicker1').length){
+	 	$('#datetimepicker1').datetimepicker({
+	 		format:"DD-MM-YYYY HH:mm:ss",
+	 	});
+	}
+
+	if($('#datetimepicker2').length){
+	 	$('#datetimepicker2').datetimepicker({
+	 		format:"DD-MM-YYYY HH:mm:ss",
+	 	});
+	}
+
+
 	if($('#detail').length){
 	 	CKEDITOR.replace('detail');
 	}
@@ -20,10 +33,9 @@ $(document).ready(function() {
 		 	$('#group-img').append(
 		 		'<div class="form-group">'+
 		 		'<div class="input-group">'+
-		 		'<input id="ckfinder-input-'+dem+'" type="text" class="form-control" required placeholder="Chọn hình ảnh" maxlength="90" name="otherimg[]">'+
-		 		'<div class="input-group-btn">'+
-		 		' <button class="btn btn-primary ckfinder-popup" type="button">Browse Server</button>'+
-		 		'</div>'+		 		
+		 		'<input id="ckfinder-input-'+dem+'" type="hidden" class="form-control" required placeholder="Chọn hình ảnh" maxlength="90" name="otherimg[]">'+
+		 		'<div><img id="img-pro-'+dem+'" src="upload\\images\\image-icon.png"  alt="" class="img-edit img-fluid"></div>'+
+		 		' <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>'+		 				 		
 		 		'</div>'+
 		 		'</div>'
 		 	);
@@ -48,33 +60,57 @@ $(document).ready(function() {
 	 	}
 	 });
 
-	if($('#ckfinder-popup-avatar').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-avatar' );
+	if($('#ckfinder-popup-avatar-pro').length){
+	 	var button1 = document.getElementById( 'ckfinder-popup-avatar-pro' );
 	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
+	  //   if($('#img-avatar-pro').attr('src') != ''){
+	 	// 	$('#img-avatar-pro').show();
+	 	// }else{
+	 	// 	$('#img-avatar-pro').hide();
+	 	// }
 
 	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-avatar' );
+	        selectFileWithCKFinder( 'ckfinder-input-avatar-pro', 'img-avatar-pro' );
 	    };
 	}
 
 	if($('#ckfinder-popup-slide').length){
 	 	var button1 = document.getElementById( 'ckfinder-popup-slide' );
 	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
-
+	  //   if($('#img-slide').attr('src') != ''){
+	 	// 	$('#img-slide').show();
+	 	// }else{
+	 	// 	$('#img-slide').hide();
+	 	// }
 	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-slide' );
+	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
 	    };
+	}
+
+	if($('#ckfinder-popup-cate-pro').length){
+	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );    
+	 	// if($('#img-cate-pro').attr('src') != ''){
+	 	// 	$('#img-cate-pro').show();
+	 	// }else{
+	 	// 	$('#img-cate-pro').hide();
+	 	// }
+	    button1.onclick = function() {
+	        selectFileWithCKFinder( 'ckfinder-input-cate-pro', 'img-cate-pro' );        
+	        
+	    };
+
 	}
     
 
     $(document).on('click', "button.ckfinder-popup", function() {
-	    var inputName = $(this).parent().siblings('input.form-control').attr('id');
-    	//console.log(inputName);
-    	selectFileWithCKFinder( inputName );      
+	    var inputName = $(this).siblings('input.form-control').attr('id');
+	    var imgName = $(this).prev().children('img.img-edit').attr('id');
+    	//console.log(imgName);
+    	selectFileWithCKFinder( inputName,imgName );      
 	});
 	
 
-    function selectFileWithCKFinder( elementId ) {
+    function selectFileWithCKFinder( inputId, imgId ) {
         CKFinder.modal( {
             chooseFiles: true,
             width: 800,
@@ -82,16 +118,24 @@ $(document).ready(function() {
             onInit: function( finder ) {
                 finder.on( 'files:choose', function( evt ) {
                     var file = evt.data.files.first();
-                    var output = document.getElementById( elementId );
+                    var output = document.getElementById( inputId );
+                    var imgoutput = document.getElementById( imgId );
                     output.value = file.getUrl();
+                    imgoutput.src = output.value;
+                    
+                    
                 } );
 
                 finder.on( 'file:choose:resizedImage', function( evt ) {
-                    var output = document.getElementById( elementId );
+                    var output = document.getElementById( inputId );
+                    var imgoutput = document.getElementById( imgId );
                     output.value = evt.data.resizedUrl;
+                    imgoutput.src = output.value;
+                    
                 } );
             }
         } );
+        $('#'+imgId).show();
     }
 
 
@@ -99,10 +143,157 @@ $(document).ready(function() {
     $(document).on('click', "button.viewDetail", function() {
 	    var idBill = $(this).attr('data');
         $.get('admin/bill/view-bill-detail/'+ idBill, function(data) {
-            $('#billDetail').html(data);
+            $('#billDetail').html(data);            
         });
 	});
+    //ajax lấy history category group
+	$(document).on('click', "button.view-history-cate-group", function() {
+	    var idCateG = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/categorygroup/view-history-cate-group/'+ idCateG, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#cateGroupHistory').html(data);      
 
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+	
+	//ajax lấy history category product
+	$(document).on('click', "button.view-history-cate-product", function() {
+	    var idCate = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/categoryproduct/view-history-cate-product/'+ idCate, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#cateProductHistory').html(data);      
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+
+	//ajax lấy history product
+	$(document).on('click', "button.view-history-pro", function() {
+	    var idPro = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/product/view-history-pro/'+ idPro, 
+	    	success: function(data){
+            	table.DataTable().destroy();            	
+	            $('#proHistory').html(data);      
+	            
+
+	            setTimeout(function() {
+
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	   
+				      
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+	//ajax lấy history slide
+	$(document).on('click', "button.view-history-slide", function() {
+	    var idSlide = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/slide/view-history-slide/'+ idSlide, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#slideHistory').html(data);        
+
+	            setTimeout(function() {
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
 
     //VALIDATION
 
@@ -318,14 +509,14 @@ $(document).ready(function() {
 				characterAndNumberAndDash:true,
 				required:true,
 				maxlength:100,
-				minlength:3				
+				minlength:2			
 			},					
 		},
 		messages: {
 			Ten: {				
 				required: 'Vui lòng nhập tên nhóm danh mục.',
-				maxlength: 'Tên nhóm danh mục có độ dài 3-100 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 3-100 kí tự.'				
+				maxlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.',
+				minlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.'				
 			},
 			
 		},		
@@ -340,7 +531,7 @@ $(document).ready(function() {
 				maxlength:100,
 				minlength:6				
 			},	
-			des: {
+			link: {
 				characterAndNumberAndDash:true,
 				required:true,
 				maxlength:100,
@@ -360,7 +551,7 @@ $(document).ready(function() {
 				maxlength: 'Tiêu đề có độ dài 6-100 kí tự.',
 				minlength: 'Tiêu đề có độ dài 6-100 kí tự.'				
 			},
-			des: {				
+			link: {				
 				required: 'Vui lòng nhập mô tả.',
 				maxlength: 'Mô tả có độ dài 6-100 kí tự.',
 				minlength: 'Mô tả có độ dài 6-100 kí tự.'				
