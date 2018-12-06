@@ -26,7 +26,7 @@ class CategoryGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'Ten'=>'required|max:100|min:3|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
+            'Ten'=>'required|max:100|min:2|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
             
         ];
     }
@@ -35,8 +35,8 @@ class CategoryGroupRequest extends FormRequest
     {
         return [
             'Ten.required'=>'Vui lòng nhập tên nhóm danh mục.',                
-            'Ten.min'=>'Tên nhóm danh mục có độ dài 3-100 kí tự.',                
-            'Ten.max'=>'Tên nhóm danh mục có độ dài 3-100 kí tự.',                
+            'Ten.min'=>'Tên nhóm danh mục có độ dài 2-100 kí tự.',                
+            'Ten.max'=>'Tên nhóm danh mục có độ dài 2-100 kí tự.',                
             'Ten.regex'=>'Tên nhóm danh mục chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',           
 
         ];

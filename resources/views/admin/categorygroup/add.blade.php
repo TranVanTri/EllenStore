@@ -35,6 +35,15 @@
                         <label>Tên nhóm danh mục</label>
                         <input class="form-control" type="text" name="Ten" placeholder="Nhập tên nhóm danh mục bạn muốn thêm"  value="{{ old('Ten') }}" />
                     </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <label class="radio-inline">
+                            <input name="enable" value="1" checked type="radio">Hoạt động
+                        </label>
+                        <label class="radio-inline">
+                            <input name="enable" value="0" type="radio">Khóa
+                        </label>
+                    </div>
                     <button type="submit" class="btn btn-warning" disabled id="submit">Thêm</button>
                     <button type="reset" class="btn btn-default">Hủy</button>                
                 </div>

@@ -16,7 +16,7 @@ class AdminCheckLogout
      */
     public function handle($request, Closure $next, $guard = 'admin')
     {
-        if (!Auth::guard($guard)->check()) {
+        if (!Auth::guard($guard)->check() || Auth::guard($guard)->user()->enable != 1){
             return redirect('authadmin/login');
         }
 

@@ -35,7 +35,16 @@
                     </div>
                     <div class="form-group">
                         <label>Giảm giá (VNĐ)</label>
-                        <input class="form-control" type="number" maxlength="10" name="sale" value="{{ old('price', 0) }}"/>
+                        <input class="form-control" type="number" maxlength="10" name="sale" value="{{ old('sale', 0) }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày bắt đầu khuyến mãi</label>
+                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ngày kết thúc khuyến mãi</label>
+                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" />
                     </div>
                     <div class="form-group">
                         <label>Kích thước</label>
@@ -58,6 +67,10 @@
                     <div class="form-group">
                         <label>Màu</label>
                         <input class="form-control" type="text" name="color" placeholder="Trắng, Xanh..." required maxlength="5" value="{{ old('color') }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Số lượng</label>
+                        <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{ old('quantity', 0) }}"/>
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
@@ -101,20 +114,22 @@
                     <div class="form-group">
                         <label>Ảnh sản phẩm</label>
                         <div class="input-group">
-                            <input id="ckfinder-input-avatar" type="text" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="avatar">
-                            <div class="input-group-btn">
-                              <button id="ckfinder-popup-avatar" class="btn btn-warning" type="button">Browse Server</button>
-                            </div>
+                            <input id="ckfinder-input-avatar-pro" type="hidden" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="avatar">
+                            <div><img id="img-avatar-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
+                            
+                            <button id="ckfinder-popup-avatar-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                            
                         </div>
                     </div>
                     <div id="group-img">
                         <div class="form-group">
                             <label>Các ảnh khác</label>
                             <div class="input-group">
-                                <input id="ckfinder-input-1" type="text" class="form-control" placeholder="Chọn hình ảnh"  maxlength="190"  name="otherimg[]">
-                                <div class="input-group-btn">
-                                  <button class="btn btn-primary ckfinder-popup" type="button">Browse Server</button>
-                                </div>
+                                <input id="ckfinder-input-1" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="190"  name="otherimg[]">
+                                <div><img id="img-pro-1" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
+                                
+                                <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>
+                                
                             </div>
                         </div>
                     </div>
