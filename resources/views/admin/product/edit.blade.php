@@ -33,65 +33,30 @@
                         <label>Giá sản phẩm (VNĐ)</label>
                         <input class="form-control" type="number" name="price" value="{{$product->price}}"/>
                     </div>
-                    <div class="form-group">
-                        <label>Giảm giá (VNĐ)</label>
-                        <input class="form-control" type="number" name="sale" value="{{$product->sale}}"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Ngày bắt đầu khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->start_date_sale)) }}"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ngày kết thúc khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{ date ("d-m-Y H:i:s", strtotime($product->end_date_sale)) }}" />
-                    </div>
+                    
+                    
                     <div class="form-group">
                         <label>Kích thước</label>
-                        <?php 
-                            $size = $product->size;
-                            $size = json_decode($size);
-                        ?>
-                        <label class="checkbox-inline" style="margin-left: 5px">
-                            <input name="size[]" value="S"
-                            @if(is_array($size) && in_array('S', $size))
-                                checked
-                            @endif 
-                             type="checkbox">S
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="M"
-                            @if(is_array($size) && in_array('M', $size))
-                                checked
-                            @endif 
-                             type="checkbox">M
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="L"
-                            @if(is_array($size) && in_array('L', $size))
-                                checked
-                            @endif 
-                             type="checkbox">L
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="XL"
-                            @if(is_array($size) && in_array('XL', $size))
-                                checked
-                            @endif 
-                             type="checkbox">XL
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="XXL"
-                            @if(is_array($size) && in_array('XXL', $size))
-                                checked
-                            @endif 
-                             type="checkbox">XXL
-                        </label>
+                        <select class="demo" multiple="multiple" name="size[]"> 
+                        <?php $flag = false;?>                           
+                            @foreach($sizes as $size)
+                                <?php $flag = false;?> 
+                                @foreach($product->sizes as $value)                                     
+                                    @if($size->id == $value->id)   
+                                        <?php $flag = true;?> 
+                                        @break                                    
+                                    @endif
+                                @endforeach
+                                <option 
+                                @if($flag == true)
+                                selected 
+                                @endif
+                                value="{{$size->id}}">{{$size->name}}</option>
+                            @endforeach 
+                       
+                        </select>                        
                     </div>
-                    <div class="form-group">
-                        <label>Màu</label>
-                        <input class="form-control" type="text" name="color" placeholder="Trắng, Xanh..." required maxlength="5" value="{{$product->color}}" />
-                    </div>
+                    
 
                     <div class="form-group">
                         <label>Số lượng</label>

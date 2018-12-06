@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Nhóm danh mục
+                <h1 class="page-header">Size
                     <small>Thêm</small>
                 </h1>
             </div>
@@ -27,23 +27,15 @@
                 <!-- kết thúc thông báo thêm thành cong -->
 
             </div>
-            <form action="admin/categorygroup/add" method="POST" id="formCategoryGroup">
+            <form action="admin/size/add" method="POST" id="formSize">
                 {{ csrf_field() }}
                 <div class="col-lg-7" style="padding-bottom:120px">   
 
                     <div class="form-group">
-                        <label>Tên nhóm danh mục</label>
-                        <input class="form-control" type="text" name="Ten" placeholder="Nhập tên nhóm danh mục"  value="{{ old('Ten') }}" />
+                        <label>Tên size</label>
+                        <input class="form-control" type="text" name="Ten" placeholder="Nhập tên size"  value="{{ old('Ten') }}" />
                     </div>
-                    <div class="form-group">
-                        <label>Trạng thái</label>
-                        <label class="radio-inline">
-                            <input name="enable" value="1" checked type="radio">Hoạt động
-                        </label>
-                        <label class="radio-inline">
-                            <input name="enable" value="0" type="radio">Khóa
-                        </label>
-                    </div>
+                    
                     <button type="submit" class="btn btn-warning" disabled id="submit">Thêm</button>
                     <button type="reset" class="btn btn-default">Hủy</button>                
                 </div>

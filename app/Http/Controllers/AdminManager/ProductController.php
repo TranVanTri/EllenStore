@@ -3,6 +3,7 @@ namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Size;
 use App\CategoryProduct; 
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ class ProductController extends Controller
     public function getAdd()
     {
         $danhmuc = CategoryProduct::all();
-        return view('admin.product.add',compact('danhmuc'));
+        $sizes = Size::all();
+        return view('admin.product.add',compact('danhmuc','sizes'));
     }
 
     public function createArrayData(Product $pro)
@@ -28,14 +30,15 @@ class ProductController extends Controller
             'date' => date("d-m-Y H:i:s"),
         );
 
+        $sizename = array();
+        foreach ($pro->sizes as $value) {
+            array_push($sizename, $value->name);
+        }
         $data = array(            
             'name' => $pro->name,
             'status' => $pro->enable,  
             'price' => $pro->price,
-            'sale' => $pro->sale,
-            'start_date_sale' => $pro->start_date_sale,          
-            'end_date_sale' => $pro->end_date_sale,
-            'color' => $pro->color,
+            // 'sale' => $pro->sale,          
             'quantity' => $pro->quantity,
             'avatar' => $pro->avatar,
             'describe' => $pro->describe,
@@ -43,7 +46,7 @@ class ProductController extends Controller
             'highLight' => $pro->highLight,
             'idcategoryproduct' => $pro->idCategoryProduct,
             'namecategoryproduct' => $pro->category_product->name,
-            'size' => $pro->size,
+            'size' => $sizename,
             'otherImg' => $pro->otherImg,            
         );
         $temp = array(
@@ -61,31 +64,15 @@ class ProductController extends Controller
         $product = new Product;
         $product->name = $req->name;
         $product->price=$req->price;
-        $product->sale=$req->sale;  
-        $product->start_date_sale= date ("Y-m-d H:i:s", strtotime($req->start_date_sale)); 
-        $product->end_date_sale= date ("Y-m-d H:i:s", strtotime($req->end_date_sale));    
-        $product->color=$req->color;
+        //$product->sale=$req->sale;  
+        
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
         $product->detail=$req->detail;
         $product->highLight=$req->highLight;
         $product->idCategoryProduct=$req->idCategoryProduct;  
-        $product->enable=$req->enable;      
-        if ($req->has('size')) {
-            $size = $req->size;  
-            $dulieuSize= array();          
-            foreach ($size as $value) {
-                 array_push($dulieuSize, $value);
-            }
-            $dulieuSize = json_encode($dulieuSize);
-            //var_dump( $dulieuSize);
-            $product->size = $dulieuSize;
-        }else {
-            $product->size = "Chưa nhập";
-        }
-
-        
+        $product->enable=$req->enable;                   
         $otherimg = $req->otherimg;
         $dulieuOtherimg= array();
         foreach ($otherimg as $value) {
@@ -93,16 +80,16 @@ class ProductController extends Controller
         }
        // var_dump( $dulieujson);
         $dulieuOtherimg = json_encode($dulieuOtherimg);
-        $product->otherImg = $dulieuOtherimg;
-
+        $product->otherImg = $dulieuOtherimg;       
+        
+        $product->save();
+        $product->sizes()->attach($req->size);
         $arrayData = $this->createArrayData($product);    
         
         $arrayData = json_encode($arrayData);
         
         $product->history = $arrayData;
-        
         $product->save();
-       
         return redirect('admin/product/add')->with('thongbao','Thêm thành công!');
     }
     public function getEdit($id)
@@ -110,8 +97,8 @@ class ProductController extends Controller
         $danhmuc = CategoryProduct::all();
         $product = Product::find($id);
         $otherimg = json_decode($product->otherImg);
-       
-        return view('admin.product.edit',compact('danhmuc','product','otherimg'));
+        $sizes = Size::all();
+        return view('admin.product.edit',compact('danhmuc','product','otherimg', 'sizes'));
     }
 
     public function editArrayData(Product $pro)
@@ -123,14 +110,16 @@ class ProductController extends Controller
             'date' => date("d-m-Y H:i:s"),
         );
 
+        $sizename = array();
+        foreach ($pro->sizes as $value) {
+            array_push($sizename, $value->name);
+        }
+
         $data = array(            
             'name' => $pro->name,
             'status' => $pro->enable,  
             'price' => $pro->price,
-            'sale' => $pro->sale,
-            'start_date_sale' => $pro->start_date_sale,          
-            'end_date_sale' => $pro->end_date_sale,
-            'color' => $pro->color,
+            // 'sale' => $pro->sale,            
             'quantity' => $pro->quantity,
             'avatar' => $pro->avatar,
             'describe' => $pro->describe,
@@ -138,7 +127,7 @@ class ProductController extends Controller
             'highLight' => $pro->highLight,
             'idcategoryproduct' => $pro->idCategoryProduct,
             'namecategoryproduct' => $pro->category_product->name,
-            'size' => $pro->size,
+            'size' => $sizename,
             'otherImg' => $pro->otherImg,        
         );
         $temp = array(
@@ -153,10 +142,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->name = $req->name;
         $product->price=$req->price;
-        $product->sale=$req->sale;
-        $product->start_date_sale= date ("Y-m-d H:i:s", strtotime($req->start_date_sale)); 
-        $product->end_date_sale= date ("Y-m-d H:i:s", strtotime($req->end_date_sale)); 
-        $product->color=$req->color;
+        // $product->sale=$req->sale;        
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
@@ -165,18 +151,7 @@ class ProductController extends Controller
         $product->idCategoryProduct=$req->idCategoryProduct;    
         $product->enable=$req->enable;    
         $otherimg = $req->otherimg;
-        if ($req->has('size')) {
-            $size = $req->size;  
-            $dulieuSize= array();          
-            foreach ($size as $value) {
-                 array_push($dulieuSize, $value);
-            }
-            $dulieuSize = json_encode($dulieuSize);
-            //var_dump( $dulieuSize);
-            $product->size = $dulieuSize;
-        }else {
-            $product->size = "Chưa nhập";
-        }
+    
 
         $dulieujson= array();
         foreach ($otherimg as $value) {
@@ -185,6 +160,8 @@ class ProductController extends Controller
        // var_dump( $dulieujson);
         $dulieujson = json_encode($dulieujson);
         $product->otherImg = $dulieujson;
+        $product->sizes()->detach();
+        $product->sizes()->attach($req->size);
 
         $oldData = json_decode($product->history, true);
         
@@ -193,7 +170,9 @@ class ProductController extends Controller
         $oldData = json_encode($oldData);
 
         $product->history = $oldData;
+
         $product->save();
+        
        
         return redirect('admin/product/edit/'.$id)->with('thongbao','Sửa thành công!');
     }
@@ -235,20 +214,17 @@ class ProductController extends Controller
 
             //Xử lý size chuyên json ->array
             $size = $value['data']['size'];
+            
             $dl='';
-            if($size === "Chưa nhập"){
-                $dl = $size;
-            }else{
-                $size = json_decode($size);
-                $dl='';
-                foreach ($size as $val) {
-                    if($val === end($size)){//kiểm tra là phần tử cuối cùng chưa
-                        $dl .=$val;
-                    }else{
-                        $dl .=$val.', ';
-                    }                                        
-                } 
-            }      
+            
+            foreach ($size as $val) {
+                if($val === end($size)){//kiểm tra là phần tử cuối cùng chưa
+                    $dl .=$val;
+                }else{
+                    $dl .=$val.', ';
+                }                                        
+            } 
+              
 
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>
@@ -256,10 +232,8 @@ class ProductController extends Controller
                         <td>".$value['actor']['phone']."</td>
                         ".$thaotac."           
                         <td>".$value['data']['name']."</td>
-                        <td>".$value['data']['price']."</td>
-                        <td>".$value['data']['sale']."</td>
-                        <td>".$dl."</td>
-                        <td>".$value['data']['color']."</td>
+                        <td>".$value['data']['price']."</td>                        
+                        <td>".$dl."</td>                        
                         <td>".$value['data']['quantity']."</td>
                         <td>
                             <a target='_blank' href='".$value['data']['avatar']."'>
@@ -267,8 +241,7 @@ class ProductController extends Controller
                             </a>                            
                         </td>
                         ".$status."
-                        ".$highLight."
-                        <td>".date ("d-m-Y H:i", strtotime($value['data']['start_date_sale']))." - ".date ("d-m-Y H:i", strtotime($value['data']['end_date_sale']))."</td>
+                        ".$highLight."                        
                         <td>".$value['data']['namecategoryproduct']."</td>
                         <td>".$value['actor']['date']."</td>               
                     </tr>";

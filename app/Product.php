@@ -18,5 +18,10 @@ class Product extends Model
     {
     	return $this->hasMany("App\BillDetail","idProduct",'id');
     }
+
+    public function sizes()
+    {
+        return $this->belongsToMany('App\Size', 'product_size','product_id','size_id');
+    }
     
 }

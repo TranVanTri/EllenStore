@@ -1,25 +1,24 @@
 <?php
 namespace App\Http\Controllers\AdminManager;
-use App\Http\Requests\CategoryGroupRequest;
+use App\Http\Requests\SizeRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\CategoryGroup;
-
+use App\Size;
 use Illuminate\Database\QueryException;
 use Auth;
-class CategoryGroupController extends Controller
+class SizeController extends Controller
 {
     public function getList()
     {
-        $cateGroup = CategoryGroup::all();
-        return view('admin.categorygroup.list',compact('cateGroup'));
+        $sizes = Size::all();
+        return view('admin.size.list',compact('sizes'));
     }
     public function getAdd()
     {
-        return view('admin.categorygroup.add');
+        return view('admin.size.add');
     }
 
-    public function createArrayData(CategoryGroup $cate)
+    public function createArrayData(Size $size)
     {
         $actor = array(
             'id' => Auth('admin')->user()->id,
@@ -29,8 +28,7 @@ class CategoryGroupController extends Controller
         );
 
         $data = array(            
-            'name' => $cate->name,
-            'status' => $cate->enable,            
+            'name' => $size->name,          
         );
         $temp = array(
             'actor' => $actor, 
@@ -41,27 +39,26 @@ class CategoryGroupController extends Controller
             
         return $result;
     }
-    public function postAdd(CategoryGroupRequest $req)
+    public function postAdd(SizeRequest $req)
     {
-        $cateGroup = new CategoryGroup;
-        $cateGroup->name = $req->Ten;
-        $cateGroup->enable = $req->enable;
+        $size = new Size;
+        $size->name = $req->Ten;
 
-        $arrayData = $this->createArrayData($cateGroup);
+        $arrayData = $this->createArrayData($size);
         $arrayData = json_encode($arrayData);
 
-        $cateGroup->history = $arrayData;
-        $cateGroup->save();              
-        return redirect('admin/categorygroup/add')->with('thongbao','Thêm thành công!');
+        $size->history = $arrayData;
+        $size->save();              
+        return redirect('admin/size/add')->with('thongbao','Thêm thành công!');
     }
     public function getEdit($id)
     {
-        $cateGroup = CategoryGroup::find($id);
+        $size = Size::find($id);
 
-        return view('admin.categorygroup.edit',compact('cateGroup'));
+        return view('admin.size.edit',compact('size'));
     }
 
-    public function editArrayData(CategoryGroup $cate)
+    public function editArrayData(Size $size)
     {
         $actor = array(
             'id' => Auth('admin')->user()->id,
@@ -71,8 +68,7 @@ class CategoryGroupController extends Controller
         );
 
         $data = array(            
-            'name' => $cate->name,
-            'status' => $cate->enable,            
+            'name' => $size->name,          
         );
         $temp = array(
             'actor' => $actor, 
@@ -80,39 +76,38 @@ class CategoryGroupController extends Controller
         );                   
         return $temp;
     }
-    public function postEdit(CategoryGroupRequest $req,$id)
+    public function postEdit(SizeRequest $req,$id)
     {
-        $cate = CategoryGroup::find($id);
-        $cate->name = $req->Ten;
-        $cate->enable = $req->enable;
-        $oldData = json_decode($cate->history, true);
+        $size = Size::find($id);
+        $size->name = $req->Ten;
+        $oldData = json_decode($size->history, true);
         
-        $newData = $this->editArrayData($cate);
+        $newData = $this->editArrayData($size);
         array_push($oldData, $newData);
         $oldData = json_encode($oldData);
 
-        $cate->history = $oldData;
-        $cate->save();       
-        return redirect('admin/categorygroup/edit/'.$id)->with('thongbao','Sửa thành công!');
+        $size->history = $oldData;
+        $size->save();       
+        return redirect('admin/size/edit/'.$id)->with('thongbao','Sửa thành công!');
     }
     public function getDelete($id)
     {
-        $cate= CategoryGroup::find($id);
+        $size= Size::find($id);
         try {
-            $check = $cate->delete();
+            $check = $size->delete();
             if(!$check)
                 throw new QueryException;
         } catch (QueryException $e) {
-            return redirect('admin/categorygroup/list')->with('loi','Không thể xóa!');
+            return redirect('admin/size/list')->with('loi','Không thể xóa!');
         }
         
-        return redirect('admin/categorygroup/list')->with('thongbao','Xóa thành công!');
+        return redirect('admin/size/list')->with('thongbao','Xóa thành công!');
     }
 
     public function getHistory($id)
     {
-        $cate= CategoryGroup::find($id);
-        $data =  json_decode($cate->history, true);
+        $size= Size::find($id);
+        $data =  json_decode($size->history, true);
         $flag = true;
         foreach ($data as $key => $value) { 
             if($flag == true){
@@ -120,18 +115,13 @@ class CategoryGroupController extends Controller
             } else{
                 $temp = "<td style='color: green'>Chỉnh sửa</td>";
             }      
-            if($value['data']['status'] == 1){
-                $temp2 = "<td style='color: blue'>Đang hoạt động...</td>";
-            } else{
-                $temp2 = "<td style='color: red'>Ngưng hoạt động</td>";
-            }   
+            
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>
                         <td style='font-weight: bold;'>".$value['actor']['name']."</td>          
                         <td>".$value['actor']['phone']."</td>
                         ".$temp."           
-                        <td>".$value['data']['name']."</td>
-                        ".$temp2."   
+                        <td>".$value['data']['name']."</td>                           
                         <td>".$value['actor']['date']."</td>               
                     </tr>";
             $flag = false; 

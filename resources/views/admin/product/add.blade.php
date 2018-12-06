@@ -32,42 +32,18 @@
                     <div class="form-group">
                         <label>Giá sản phẩm (VNĐ)</label>
                         <input class="form-control" type="number" maxlength="10" minlength="4" name="price" value="{{ old('price', 0) }}"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Giảm giá (VNĐ)</label>
-                        <input class="form-control" type="number" maxlength="10" name="sale" value="{{ old('sale', 0) }}"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Ngày bắt đầu khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ngày kết thúc khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" />
-                    </div>
+                    </div>                   
+                    
                     <div class="form-group">
                         <label>Kích thước</label>
-                        <label class="checkbox-inline" style="margin-left: 5px">
-                            <input name="size[]" value="S" checked type="checkbox">S
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="M" type="checkbox">M
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="L" type="checkbox">L
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="XL" type="checkbox">XL
-                        </label>
-                        <label class="checkbox-inline">
-                            <input name="size[]" value="XXL" type="checkbox">XXL
-                        </label>
+                        <select class="demo" multiple="multiple" name="size[]">
+                            @foreach($sizes as $size)        
+                                <option value="{{$size->id}}">{{$size->name}}</option>
+                            @endforeach 
+                       
+                        </select>                        
                     </div>
-                    <div class="form-group">
-                        <label>Màu</label>
-                        <input class="form-control" type="text" name="color" placeholder="Trắng, Xanh..." required maxlength="5" value="{{ old('color') }}"/>
-                    </div>
+                    
                     <div class="form-group">
                         <label>Số lượng</label>
                         <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{ old('quantity', 0) }}"/>
