@@ -29,6 +29,8 @@ Route::group(['namespace' => 'AdminManager'], function() {
     Route::get('login','UserController@getDangNhap');
     Route::post('login','UserController@postDangNhap');
 
+    Route::get('logout','UserController@getUserLogout');
+
 });
 
 
@@ -110,9 +112,6 @@ Route::group(['namespace' => 'AdminManager'], function() {
 });
 
 /*Giỏ hàng*/
-Route::get('/cart2',function(){
-    return view('user/giohang');
-});
 
 Route::resource('/cart','CartController');
 
@@ -123,3 +122,9 @@ Route::group(['namespace' => 'UserController'], function() {
 
 
 });
+
+
+// Login fb
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 
+    'Auth\LoginController@handleProviderCallback');

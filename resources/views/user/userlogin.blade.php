@@ -239,7 +239,7 @@
 				<div class="container">
 					<div class="signin-content">
 						<div>
-							<a href="" class="btn-fb-signin"><i class="fa fa-facebook" aria-hidden="true"></i> Đăng nhập bằng facebook</a>
+							<a href="{{ url('auth/google') }}" class="btn-fb-signin"><i class="fa fa-facebook" aria-hidden="true"></i> Đăng nhập bằng Google</a>
 						</div>
 						<div class="phan-cach">
 							<hr>

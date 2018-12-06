@@ -3,31 +3,16 @@
 return [
 
     'name' => env('APP_NAME', 'Laravel'),
-
-
     'env' => env('APP_ENV', 'production'),
-
-
     'debug' => env('APP_DEBUG', false),
-
     'url' => env('APP_URL', 'http://localhost'),
-
     'timezone' => 'UTC',
-
-
     'locale' => 'en',
-
     'fallback_locale' => 'en',
-
-
     'key' => env('APP_KEY'),
-
     'cipher' => 'AES-256-CBC',
-
     'log' => env('APP_LOG', 'single'),
-
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
-
     'providers' => [
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -66,6 +51,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*For Socialite Login*/
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
 
     ],
 
@@ -107,7 +96,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Form' => 'Collective\Html\FormFacade',
-      'Html' => 'Collective\Html\HtmlFacade',
+              'Html' => 'Collective\Html\HtmlFacade',
+              'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
