@@ -6,7 +6,8 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'AdminAuth'], function() {
 
-    Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function() {
+    Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function()
+    {
         Route::get('login','AuthController@getLogin');
         Route::post('login','AuthController@postLogin');
     });
@@ -27,6 +28,8 @@ Route::group(['namespace' => 'AdminAuth'], function() {
 Route::group(['namespace' => 'AdminManager'], function() {
     Route::get('login','UserController@getDangNhap');
     Route::post('login','UserController@postDangNhap');
+
+    Route::get('logout','UserController@getUserLogout');
 
 });
 
@@ -108,4 +111,20 @@ Route::group(['namespace' => 'AdminManager'], function() {
 
 });
 
+/*Giỏ hàng*/
 
+Route::resource('/cart','CartController');
+
+
+Route::group(['namespace' => 'UserController'], function() {
+    Route::get('/tatcasanpham/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
+    Route::get('/chitietsanpham/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');;
+
+
+});
+
+
+// Login fb
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 
+    'Auth\LoginController@handleProviderCallback');

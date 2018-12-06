@@ -97,4 +97,10 @@ class UserController extends Controller
         Auth::logout();
         return redirect('admin/login');
     }
+    
+    public function getUserLogout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 }
