@@ -23,5 +23,10 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Size', 'product_size','product_id','size_id');
     }
+
+    public function promotion()
+    {
+        return $this->belongsTo("App\Promotion","idPromotion",'id');
+    }
     
 }
