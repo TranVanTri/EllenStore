@@ -112,6 +112,17 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('view-history-size/{id}', 'SizeController@getHistory');
         });
 
+        /* Promotion*/
+        Route::group(['prefix' => 'promotion'], function() {
+            Route::get('list', 'PromotionController@getList');
+            Route::get('add', 'PromotionController@getAdd');
+            Route::post('add', 'PromotionController@postAdd');
+            Route::get('edit/{id}', 'PromotionController@getEdit');
+            Route::post('edit/{id}', 'PromotionController@postEdit');
+            Route::get('delete/{id}', 'PromotionController@getDelete');
+            Route::get('view-history-size/{id}', 'PromotionController@getHistory');
+        });
+
         /*User*/
         Route::group(['prefix' => 'user'], function() {
             Route::get('list', 'UserController@getList');
