@@ -34,7 +34,8 @@ class CategoryProductController extends Controller
             'name' => $cate->name,
             'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
-            'status' => $cate->enable,           
+            'status' => $cate->enable,  
+            'image' => $cate->image,         
 
         );
         $temp = array(
@@ -55,7 +56,7 @@ class CategoryProductController extends Controller
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;        
 
-
+        $catePro->image = $req->image;
         $catePro->enable = $req->enable;
 
         $arrayData = $this->createArrayData($catePro);    
@@ -90,7 +91,7 @@ class CategoryProductController extends Controller
             'categroupid' => $cate->idCategoryGroup,
             'categroupname' => $cate->category_group->name,
             'status' => $cate->enable,
-
+            'image' => $cate->image,
                        
 
         );
@@ -159,7 +160,12 @@ class CategoryProductController extends Controller
                         <td>".$value['actor']['phone']."</td>
                         ".$thaotac."           
                         <td>".$value['data']['name']."</td>
-                        <td>".$value['data']['categroupname']."</td>                        
+                        <td>".$value['data']['categroupname']."</td>   
+                        <td>
+                            <a target='_blank' href='".$value['data']['image']."'>
+                              <img class='img-avatar' src='".$value['data']['image']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
+                            </a>                            
+                        </td>                     
                         ".$trangthai."   
                         <td>".$value['actor']['date']."</td>               
                     </tr>";

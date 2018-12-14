@@ -22,9 +22,8 @@
                     <tr align="center" style="font-size: 13px">
                         <th>Mã ID</th>
                         <th>Tên Nhóm sản phẩm</th>
-
                         <th>Tên Nhóm danh mục</th>                        
-
+                        <th>Ảnh</th>
                         <th>Trạng thái</th>
                         <th>Lịch sử cập nhật</th>
                         <th>Delete</th>
@@ -44,9 +43,13 @@
                             @endif
 
                         </td>
-
+                        <td>
+                            <a target="_blank" href="{{$child->image}}">
+                              <img class="img-avatar" src="{{$child->image}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
+                            </a>                            
+                        </td>
                                                
-
+                        
                         @if($child->enable == 1)
                             <td style="color: blue">Đang hoạt động...</td>
                         @else
@@ -83,7 +86,8 @@
                         <th>Điện thoại</th>
                         <th>Thao tác</th>
                         <th>Tên danh mục SP</th>
-                        <th>Tên nhóm DM</th>                     
+                        <th>Tên nhóm DM</th>    
+                        <th>Ảnh</th>                 
                         <th>Trạng thái</th>
                         <th>Ngày thao tác</th>
                     </tr>

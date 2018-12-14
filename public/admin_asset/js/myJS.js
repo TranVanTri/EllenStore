@@ -96,6 +96,16 @@ $(document).ready(function() {
 	    };
 
 	}
+
+	if($('#ckfinder-popup-cate-pro').length){
+	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );
+	  
+	    button1.onclick = function() {
+	        selectFileWithCKFinder( 'ckfinder-input-cate-pro' ,'img-cate-pro' );
+
+	    };
+
+	}
     
 
     $(document).on('click', "button.ckfinder-popup", function() {
@@ -619,8 +629,28 @@ $(document).ready(function() {
 		
 	}); 
 
-	//formBill
-	$('#formCategoryGroup, #formCategoryProduct , #formSize').validate({
+	//#formCategoryGroup, #formCategoryProduct
+	$('#formCategoryGroup, #formCategoryProduct').validate({
+		rules: {
+			Ten: {
+				characterAndNumberAndDash:true,
+				required:true,
+				maxlength:100,
+				minlength:2			
+			},					
+		},
+		messages: {
+			Ten: {				
+				required: 'Vui lòng nhập tên nhóm danh mục.',
+				maxlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.',
+				minlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.'				
+			},
+			
+		},		
+	});
+
+	//formSize
+	$('#formSize').validate({
 		rules: {
 			Ten: {
 				characterAndNumberAndDash:true,

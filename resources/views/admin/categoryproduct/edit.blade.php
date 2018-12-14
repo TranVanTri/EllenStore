@@ -58,7 +58,16 @@
                             type="radio">Khóa
                         </label>
                     </div>   
-                    <br>
+                    
+                    <div class="form-group">
+                        <label>Ảnh</label>                        
+                        <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image">
+                        <div><img id="img-cate-pro" src="{{$catePro->image}}"  alt="" class="img-edit img-fluid"></div>
+                        <div class="input-group-btn">
+                          <button id="ckfinder-popup-cate-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>                        
+                    </div>
+
                     <button type="submit" id="submit" disabled class="btn btn-warning">Sửa</button>
                     <button type="reset" class="btn btn-default">Reset</button>                
                 </div>
