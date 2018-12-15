@@ -26,8 +26,8 @@ class SlideRequest extends FormRequest
     public function rules()
     {
         return [
-            'tieude'=>'required|max:100|min:6|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
-            // 'link'=>'required|max:100|min:6|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
+            'tieude'=>'required|max:100|min:2|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
+            // 'link'=>'required|max:100|min:6|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
             'link'=>'required|max:100|min:6',
             'img'=>'required|max:190|min:6|regex: /^[a-zA-Z_\.\:\/\-\d]+$/i',            
         ];
@@ -37,8 +37,8 @@ class SlideRequest extends FormRequest
     {
         return [
             'tieude.required'=>'Vui lòng nhập tiêu đề cho ảnh.',                
-            'tieude.min'=>'Tiêu đề có độ dài 3-100 kí tự.',                
-            'tieude.max'=>'Tiêu đề có độ dài 3-100 kí tự.',                
+            'tieude.min'=>'Tiêu đề có độ dài 2-100 kí tự.',                
+            'tieude.max'=>'Tiêu đề có độ dài 2-100 kí tự.',                
             'tieude.regex'=>'Tiêu đề chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',   
             'link.required'=>'Vui lòng nhập mô tả cho ảnh.',                
             'link.min'=>'Mô tả có độ dài 3-100 kí tự.',                

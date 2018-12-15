@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\AdminManager;
-use App\Http\Requests\CategoryProductRequest;
+use App\Http\Requests\PromotionRequest;
 use Illuminate\Http\Request;
 use App\Promotion; 
-use App\CategoryProduct;
+use App\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 class PromotionController extends Controller
@@ -17,11 +17,12 @@ class PromotionController extends Controller
     /*-------------- Add new ------------------------------*/
     public function getAdd()
     {
-        //$prom = Promotion::all(); 
-        return view('admin.promotion.add');
+        $product = Product::where('enable', 1)->where('isPromotion',0)->get(); 
+        
+        return view('admin.promotion.add', compact('product'));
     }
 
-    public function createArrayData(CategoryProduct $cate)
+    public function createArrayData(Promotion $prom)
     {
         $actor = array(
             'id' => Auth('admin')->user()->id,
@@ -31,14 +32,12 @@ class PromotionController extends Controller
         );
 
         $data = array(            
-            'name' => $cate->name,
-            'categroupid' => $cate->idCategoryGroup,
-            'categroupname' => $cate->category_group->name,
-            'status' => $cate->enable,
-            'sale' => $cate->sale, 
-            'start_date_sale' => $cate->start_date_sale, 
-            'end_date_sale' => $cate->end_date_sale,
-            'sale_img' => $cate->sale_img, 
+            'name' => $prom->name,
+            'status' => $prom->enable,
+            'per_decr' => $prom->per_decr, 
+            'start_date_sale' =>  date ("d-m-Y H:i:s", strtotime($prom->start_date_sale)), 
+            'end_date_sale' => date ("d-m-Y H:i:s", strtotime($prom->start_date_sale)),
+            'image' => $prom->image, 
 
         );
         $temp = array(
@@ -53,36 +52,45 @@ class PromotionController extends Controller
 
     public function postAdd(PromotionRequest $req)
     {
-        $catePro = new CategoryProduct;
-        $catePro->name = $req->Ten;
-        $catePro->idCategoryGroup = $req->NhomDanhMuc;
+        $prom = new Promotion;
+        $prom->name = $req->Ten;
+        $prom->per_decr = $req->per_decr;
+        $prom->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
+        $prom->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
+        $prom->image = $req->image;
+        // $prom->idPromotion = 1;
+        $prom->enable = $req->enable;
 
-        $catePro->sale = $req->sale;
-        $catePro->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
-        $catePro->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
-        $catePro->sale_img = $req->sale_img;
-
-        $catePro->enable = $req->enable;
-
-        $arrayData = $this->createArrayData($catePro);    
+        $arrayData = $this->createArrayData($prom);    
         $arrayData = json_encode($arrayData);
         
-        $catePro->history = $arrayData;
-        $catePro->save();
-       
-        return redirect('admin/categoryproduct/add')->with('thongbao','Thêm thành công!');
+        $prom->history = $arrayData;
+        $prom->save();
+        $sp = $req->sp;
+        $pro = Product::whereIn('id',$sp);
+        $pro->update(['idPromotion'=>$prom->id, 'isPromotion'=>1]);
+        return redirect('admin/promotion/add')->with('thongbao','Thêm thành công!');
     }
 
     /*---------------Edit Item ----------------------------------*/
     public function getEdit($id)
     {
-        $catePro = CategoryProduct::find($id);
-        $cateGroup = CategoryGroup::all();
+        $prom = Promotion::find($id);
+        $product = Product::where([
+            ['enable',1],
+            ['isPromotion',0]
+        ])->orwhere([
+            ['idPromotion',$id],
+            ['isPromotion', 1]
+        ])->orwhere([
+            ['idPromotion',$id],
+            ['isPromotion', 0]
+        ])->get();      
 
-        return view('admin.categoryproduct.edit',compact('catePro','cateGroup'));
+        return view('admin.promotion.edit',compact('prom'));
     }
 
-    public function editArrayData(CategoryProduct $cate)
+    public function editArrayData(Promotion $prom)
     {
         $actor = array(
             'id' => Auth('admin')->user()->id,
@@ -92,14 +100,12 @@ class PromotionController extends Controller
         );
 
         $data = array(            
-            'name' => $cate->name,
-            'categroupid' => $cate->idCategoryGroup,
-            'categroupname' => $cate->category_group->name,
-            'status' => $cate->enable,
-            'sale' => $cate->sale, 
-            'start_date_sale' => $cate->start_date_sale, 
-            'end_date_sale' => $cate->end_date_sale,
-            'sale_img' => $cate->sale_img,            
+            'name' => $prom->name,
+            'status' => $prom->enable,
+            'per_decr' => $prom->per_decr, 
+            'start_date_sale' =>  date ("d-m-Y H:i:s", strtotime($prom->start_date_sale)), 
+            'end_date_sale' => date ("d-m-Y H:i:s", strtotime($prom->start_date_sale)),
+            'image' => $prom->image,            
         );
         $temp = array(
             'actor' => $actor, 
@@ -110,73 +116,71 @@ class PromotionController extends Controller
 
     public function postEdit(PromotionRequest $req,$id)
     {
-        $catePro = CategoryProduct::find($id);
-        $catePro->name = $req->Ten;
-        $catePro->idCategoryGroup = $req->NhomDanhMuc;
-        $catePro->enable = $req->enable;
-        $catePro->sale = $req->sale;
-        $catePro->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
-        $catePro->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
-        $catePro->sale_img = $req->sale_img;
+        $prom = promotion::find($id);
+        $prom->name = $req->Ten;
+        $prom->enable = $req->enable;
+        $prom->per_decr = $req->per_decr;
+        $prom->start_date_sale = date ("Y-m-d H:i:s", strtotime($req->start_date_sale));
+        $prom->end_date_sale = date ("Y-m-d H:i:s", strtotime($req->end_date_sale));
+        $prom->image = $req->image;
 
-        $oldData = json_decode($catePro->history, true);
+        $oldData = json_decode($prom->history, true);
         
-        $newData = $this->editArrayData($catePro);
+        $newData = $this->editArrayData($prom);
         array_push($oldData, $newData);
         $oldData = json_encode($oldData);
 
-        $catePro->history = $oldData;
-        $catePro->save();
+        $prom->history = $oldData;
+        $prom->save();
        
-        return redirect('admin/categoryproduct/edit/'.$id)->with('thongbao','Sửa thành công!');
+        return redirect('admin/promotion/edit/'.$id)->with('thongbao','Sửa thành công!');
     }
     public function getDelete($id)
     {
-        $catePro= CategoryProduct::find($id);
+        $catePro= promotion::find($id);
         try {
             $check = $catePro->delete();
             if(!$check)
                 throw new QueryException;
         } catch (QueryException $e) {
-            return redirect('admin/categoryproduct/list')->with('loi','Không thể xóa!');
+            return redirect('admin/promotion/list')->with('loi','Không thể xóa!');
         }
         
-        return redirect('admin/categoryproduct/list')->with('thongbao','Xóa thành công!');
+        return redirect('admin/promotion/list')->with('thongbao','Xóa thành công!');
     }
 
 
     public function getHistory($id)
     {
-        $cate= CategoryProduct::find($id);
+        $cate= Promotion::find($id);
         $data =  json_decode($cate->history, true);
         $flag = true;
         foreach ($data as $key => $value) { 
             if($flag == true){
-                $temp = "<td style='color: blue'>Tạo mới</td>";
+                $thaotac = "<td style='color: blue'>Tạo mới</td>";
             } else{
-                $temp = "<td style='color: green'>Chỉnh sửa</td>";
+                $thaotac = "<td style='color: green'>Chỉnh sửa</td>";
             }      
             if($value['data']['status'] == 1){
-                $temp2 = "<td style='color: blue'>Đang hoạt động...</td>";
+                $trangthai = "<td style='color: blue'>Đang hoạt động...</td>";
             } else{
-                $temp2 = "<td style='color: red'>Ngưng hoạt động</td>";
+                $trangthai = "<td style='color: red'>Ngưng hoạt động</td>";
             }   
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>
                         <td style='font-weight: bold;'>".$value['actor']['name']."</td>          
                         <td>".$value['actor']['phone']."</td>
-                        ".$temp."           
+                        ".$thaotac."           
                         <td>".$value['data']['name']."</td>
-                        <td>".$value['data']['categroupname']."</td>
-                        <td>".$value['data']['sale']."</td>
-                        <td>".date ("d-m-Y H:i:s", strtotime($value['data']['start_date_sale']))."</td>
-                        <td>".date ("d-m-Y H:i:s", strtotime($value['data']['end_date_sale']))."</td>
+                        <td>".$value['data']['per_decr']."</td>
+                        <td>".$value['data']['start_date_sale']."</td>
+                        <td>".$value['data']['end_date_sale']."</td>
                         <td>
-                            <a target='_blank' href='".$value['data']['sale_img']."'>
-                              <img class='img-avatar' src='".$value['data']['sale_img']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
+                            <a target='_blank' href='".$value['data']['image']."'>
+                              <img class='img-avatar' src='".$value['data']['image']."'> <i class='fa fa-external-link' aria-hidden='true'></i>
                             </a>                            
                         </td>
-                        ".$temp2."   
+                        ".$trangthai."   
                         <td>".$value['actor']['date']."</td>               
                     </tr>";
             $flag = false; 

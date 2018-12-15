@@ -49,10 +49,7 @@
                         <label>Số lượng</label>
                         <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{ old('quantity', 0) }}"/>
                     </div>
-                    <div class="form-group">
-                        <label>Số lượng</label>
-                        <input class="form-control" type="number" minlength="1" maxlength="3" name="quantity" value="{{ old('quantity', 0) }}"/>
-                    </div>
+                    
                     <div class="form-group">
                         <label>Mô tả</label>
                         <input class="form-control" type="text" name="describe" placeholder="Nhập mô tả cho sản phẩm" required maxlength="100" minlength="80" value="{{ old('describe') }}"/>

@@ -120,7 +120,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::get('edit/{id}', 'PromotionController@getEdit');
             Route::post('edit/{id}', 'PromotionController@postEdit');
             Route::get('delete/{id}', 'PromotionController@getDelete');
-            Route::get('view-history-size/{id}', 'PromotionController@getHistory');
+            Route::get('view-history-promotion/{id}', 'PromotionController@getHistory');
         });
 
         /*User*/

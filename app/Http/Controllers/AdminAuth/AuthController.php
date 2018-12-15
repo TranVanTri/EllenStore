@@ -112,20 +112,20 @@ class AuthController extends Controller
         if ( ! $admin ){
             return redirect()->back()
             ->withInput($request->only('email'))
-            ->withErrors(['email' => trans('auth.email')]);
+            ->withErrors(['email' => trans('auth.email')]);//resources\lang\en\auth.php
         }
         if (! \Hash::check($request->password, $admin->password) ){
              return redirect()->back()
             ->withInput($request->only('email'))
-            ->withErrors(['password' => trans('auth.password')]);
+            ->withErrors(['password' => trans('auth.password')]);//resources\lang\en\auth.php
         }
         if ( ! $admin->enable == 1){
             return redirect()->back()
             ->withInput($request->only('email'))
-            ->withErrors(['email' => trans('auth.notactivated')]);
+            ->withErrors(['email' => trans('auth.notactivated')]);//resources\lang\en\auth.php
         }
 
-        $errors = [$this->username() => trans('auth.failed')];
+        $errors = [$this->username() => trans('auth.failed')];//resources\lang\en\auth.php
         if ($request->expectsJson()) {
             return response()->json($errors, 422);
         }

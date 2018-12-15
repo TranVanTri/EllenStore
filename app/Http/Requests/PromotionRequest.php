@@ -26,7 +26,7 @@ class PromotionRequest extends FormRequest
     public function rules()
     {
         return [
-            'Ten'=>'required|max:3|min:1|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
+            'Ten'=>'required|max:100|min:2|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i',
             
         ];
     }
@@ -34,10 +34,10 @@ class PromotionRequest extends FormRequest
     public function messages()
     {
         return [
-            'Ten.required'=>'Vui lòng nhập tên nhóm danh mục.',                
-            'Ten.min'=>'Tên nhóm danh mục có độ dài 1-3 kí tự.',                
-            'Ten.max'=>'Tên nhóm danh mục có độ dài 1-3 kí tự.',                
-            'Ten.regex'=>'Tên nhóm danh mục chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',           
+            'Ten.required'=>'Vui lòng nhập tên khuyến mãi.',                
+            'Ten.min'=>'Tên khuyến mãi có độ dài 2-100 kí tự.',                
+            'Ten.max'=>'Tên khuyến mãi có độ dài 2-100 kí tự.',                
+            'Ten.regex'=>'Tên khuyến mãi chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',           
 
         ];
     }

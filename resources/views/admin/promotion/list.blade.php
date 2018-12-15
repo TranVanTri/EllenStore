@@ -21,13 +21,13 @@
                 <thead>
                     <tr align="center" style="font-size: 13px">
                         <th>Mã ID</th>
-                        <th>Tên khuyến mãi</th>
+                        <th>Tên KM</th>
                         <th>Khuyến mãi (%)</th>
                         <th>Bắt đầu</th>
                         <th>Kết thúc</th>
                         <th>Ảnh KM</th>
                         <th>Trạng thái</th>
-                        <th>Lịch sử cập nhật</th>
+                        <th>Lịch sử</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
@@ -37,14 +37,15 @@
                     <tr class="odd gradeX" align="center">
                         <td>{{$child->id}}</td>
                         <td>{{$child->name}}</td>
-                        
-                        <td>{{$child->sale}}</td> 
+                        <td>{{$child->per_decr}}</td> 
                         <td>{{date ("d-m-Y H:i:s", strtotime($child->start_date_sale))}}</td> 
                         <td>{{date ("d-m-Y H:i:s", strtotime($child->end_date_sale))}}</td> 
                         <td>
-                            <a target="_blank" href="{{$child->sale_img}}">
-                              <img class="img-avatar" src="{{$child->sale_img}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
-                            </a>                            
+                            @if(! is_null($child->image))
+                            <a target="_blank" href="{{$child->image}}">
+                              <img class="img-avatar" src="{{$child->image}}" alt="Forest"> <i class="fa fa-external-link" aria-hidden="true"></i>
+                            </a>  
+                            @endif                          
                         </td>                       
                         @if($child->enable == 1)
                             <td style="color: blue">Đang hoạt động...</td>
@@ -53,7 +54,11 @@
                         @endif
                         <td><button class="view-history-promotion btn btn-info" data="{{$child->id}}" data-toggle="modal" data-target="#myModal">Xem</button></td>
 
-                        <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/promotion/delete/{{$child->id}}"> Delete</a></td>
+                        <td class="center">
+                            {{-- @if($child->id !=1) --}}
+                            <i class="fa fa-trash-o  fa-fw"></i><a href="admin/promotion/delete/{{$child->id}}"> Delete</a>
+                           {{--  @endif --}}
+                        </td>
                         <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/promotion/edit/{{$child->id}}">Edit</a></td>
                     </tr> 
                     @endforeach                  
@@ -81,8 +86,7 @@
                         <th>Tên QT viên</th>
                         <th>Điện thoại</th>
                         <th>Thao tác</th>
-                        <th>Tên danh mục SP</th>
-                        <th>Tên nhóm DM</th>
+                        <th>Tên KM</th>
                         <th>Khuyến mãi (%)</th>
                         <th>Bắt đầu</th>
                         <th>Kết thúc</th>
@@ -91,7 +95,7 @@
                         <th>Ngày thao tác</th>
                     </tr>
                 </thead>
-                <tbody id="cateProductHistory">    
+                <tbody id="promotionHistory">    
                     
 
                 </tbody>

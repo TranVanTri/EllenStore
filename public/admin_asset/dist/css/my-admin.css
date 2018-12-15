@@ -1,3 +1,52 @@
+.checkbox label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-right: .5em;
+}
+
+
+
+.checkbox .cr .cr-icon{
+    position: absolute;
+    font-size: 18px;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+    color: green;
+}
+
+
+
+.checkbox label input[type="checkbox"]{
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon{
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr{
+    opacity: .5;
+}
+
 
 /* *******************************************PRODUCT********************************************** */
 a.btn-them{
@@ -24,11 +73,11 @@ img.img-avatar:hover {
 }
 
 .table-list{
-	font-size: 14px;
+    font-size: 14px;
 }
 
 label.error{
-	font-size: 13px;
+    font-size: 13px;
     color: #ff5151;
     margin-left: 2px;
 }

@@ -22,8 +22,8 @@
                     <tr align="center" style="font-size: 12px">
                         <th>MãSP</th>
                         <th>TênSP</th>
-
                         <th>Giá (VNĐ)</th>  
+                        <th>KM (%)</th>  
                         <th>Size</th>                   
                         <th>SL</th>
                         <th>Ảnh mẫu</th>
@@ -41,15 +41,18 @@
                         <td>{{$pro->id}}</td>
                         <td>{{$pro->name}}</td>
                         <td>{{$pro->price}} </td>
-
-
+                        <td style="color: red;">
+                            @if($pro->promotion->enable == 1)
+                                {{$pro->promotion->per_decr}} 
+                            @else
+                                0
+                            @endif
+                        </td>
                         <td>
                             @foreach($pro->sizes as $value)
                                 {{$value->name}}
                             @endforeach
-                        </td>
-
-                        
+                        </td>                    
                         
 
                         <td>{{$pro->quantity}}</td>

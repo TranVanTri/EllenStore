@@ -106,6 +106,16 @@ $(document).ready(function() {
 	    };
 
 	}
+
+	if($('#ckfinder-popup-promotion').length){
+	 	var button1 = document.getElementById( 'ckfinder-popup-promotion' );
+	  
+	    button1.onclick = function() {
+	        selectFileWithCKFinder( 'ckfinder-input-promotion' ,'img-promotion' );
+
+	    };
+
+	}
     
 
     $(document).on('click', "button.ckfinder-popup", function() {
@@ -266,43 +276,7 @@ $(document).ready(function() {
 	});
 
 
-	//ajax lấy history product
-	$(document).on('click', "button.view-history-pro", function() {
-	    var idPro = $(this).attr('data');
-	    var table = $('#dataTables-history');
-	    var loadding = $('#loadding');
-	    var error = $('#error');
-	    table.hide();
-	    loadding.show();
-	    error.hide();
-	    
-	    $.ajax({
-	    	type: "get",
-	    	url: 'admin/product/view-history-pro/'+ idPro, 
-	    	success: function(data){
-            	table.DataTable().destroy();            	
-	            $('#proHistory').html(data);      
-	            
-
-	            setTimeout(function() {
-
-	            	table.DataTable({
-		                responsive: true,              
-		            });
-				    table.show();
-				    loadding.hide();
-				}, 800);	   
-				      
-        	},
-        	error: function() {
-        		setTimeout(function() {
-	            	loadding.hide();
-		        	error.show();
-				}, 800);
-        		
-		    },
-    	});        
-	});
+	
 
 	//ajax lấy history slide
 	$(document).on('click', "button.view-history-slide", function() {
@@ -394,6 +368,42 @@ $(document).ready(function() {
 	    	success: function(data){
             	table.DataTable().destroy();
 	            $('#slideHistory').html(data);        
+
+	            setTimeout(function() {
+	            	table.DataTable({
+		                responsive: true,              
+		            });
+				    table.show();
+				    loadding.hide();
+				}, 800);	            
+	            
+        	},
+        	error: function() {
+        		setTimeout(function() {
+	            	loadding.hide();
+		        	error.show();
+				}, 800);
+        		
+		    },
+    	});        
+	});
+
+	//ajax lấy history promotion
+	$(document).on('click', "button.view-history-promotion", function() {
+	    var idPromotion = $(this).attr('data');
+	    var table = $('#dataTables-history');
+	    var loadding = $('#loadding');
+	    var error = $('#error');
+	    table.hide();
+	    loadding.show();
+	    error.hide();
+	    
+	    $.ajax({
+	    	type: "get",
+	    	url: 'admin/promotion/view-history-promotion/'+ idPromotion, 
+	    	success: function(data){
+            	table.DataTable().destroy();
+	            $('#promotionHistory').html(data);        
 
 	            setTimeout(function() {
 	            	table.DataTable({
@@ -474,11 +484,19 @@ $(document).ready(function() {
 	            $('#submit').prop('disabled', 'disabled');
 	        }
     	}
+
+    	if($("#formPromosition").length){
+    		if ($("#formPromosition").valid()) {
+            	$('#submit').prop('disabled', false);  
+	        } else {
+	            $('#submit').prop('disabled', 'disabled');
+	        }
+    	}
         
     });
 
     jQuery.validator.addMethod("characterAndNumberAndDash", function(value, element) {
-	  return this.optional(element) || /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i.test(value);
+	  return this.optional(element) || /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i.test(value);
 	}, "Chỉ nhập kí tự bao gồm chữ thường, chữ hoa, số và dấu gạch ngang."); 
 
 	jQuery.validator.addMethod("password", function(value, element) {
@@ -491,7 +509,7 @@ $(document).ready(function() {
 
 	jQuery.validator.addMethod("characterOnly", function(value, element) {
 	  return this.optional(element) || 
-	  /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i.test(value);
+	  /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i.test(value);
 	}, "Chỉ nhập chữ thường và chữ hoa");  
 
 	jQuery.validator.addMethod("customUrl", function(value, element) {
@@ -641,9 +659,28 @@ $(document).ready(function() {
 		},
 		messages: {
 			Ten: {				
-				required: 'Vui lòng nhập tên nhóm danh mục.',
-				maxlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 2-100 kí tự.'				
+				required: 'Vui lòng nhập tên danh mục.',
+				maxlength: 'Tên danh mục có độ dài 2-100 kí tự.',
+				minlength: 'Tên danh mục có độ dài 2-100 kí tự.'				
+			},
+			
+		},		
+	});
+
+	$('#formPromosition').validate({
+		rules: {
+			Ten: {
+				characterAndNumberAndDash:true,
+				required:true,
+				maxlength:100,
+				minlength:2			
+			},					
+		},
+		messages: {
+			Ten: {				
+				required: 'Vui lòng nhập tên khuyến mãi.',
+				maxlength: 'Tên khuyến mãi có độ dài 2-100 kí tự.',
+				minlength: 'Tên khuyến mãi có độ dài 2-100 kí tự.'				
 			},
 			
 		},		
@@ -661,10 +698,10 @@ $(document).ready(function() {
 		},
 		messages: {
 			Ten: {				
-				required: 'Vui lòng nhập tên nhóm danh mục.',
+				required: 'Vui lòng nhập tên size.',
 
-				maxlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 1-3 kí tự.'				
+				maxlength: 'Tên size có độ dài 1-3 kí tự.',
+				minlength: 'Tên size có độ dài 1-3 kí tự.'				
 
 			},
 			
@@ -752,9 +789,9 @@ $(document).ready(function() {
 		},
 		messages: {
 			Ten: {				
-				required: 'Vui lòng nhập tên nhóm danh mục.',
-				maxlength: 'Tên nhóm danh mục có độ dài 3-100 kí tự.',
-				minlength: 'Tên nhóm danh mục có độ dài 3-100 kí tự.'				
+				required: 'Vui lòng nhập tên.',
+				maxlength: 'Tên có độ dài 3-100 kí tự.',
+				minlength: 'Tên có độ dài 3-100 kí tự.'				
 			},
 			Email:{
 				required: 'Bạn chưa nhập email.',
@@ -804,4 +841,29 @@ $(document).ready(function() {
 		}
 	});
 
+	//Xử lý chọn sản phẩm trang khuyren mãi
+
+	$('.checkbox-sp').change(function(event) {
+		var id = $(this).attr('attrId');		
+		if($(this).is(":checked")){		
+			var name = $(this).attr('attrName');
+			$('#tag').append(
+				'<div class="sp-'+id+'" style="margin-right: 5px;margin-bottom: 5px; float:left;">'+
+				'<input type="hidden" name="sp[]"'+
+				'value="'+id +'"><span class="btn btn-primary">'+name+' <i class="fa fa-times" ></i></span></input>'+
+				'</div>'
+			);
+		}else{		
+			$('.sp-'+id).remove();			
+		}
+
+	});
+	$(document).on('click', '#tag i.fa', function(event) {
+		var id = $(this).parent().prev().val();
+		$('.check-sp-'+id).prop('checked', false);
+		$('.sp-'+id).remove();	
+	});
+
 });
+
+//

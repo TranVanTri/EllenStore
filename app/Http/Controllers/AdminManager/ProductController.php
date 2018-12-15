@@ -37,7 +37,7 @@ class ProductController extends Controller
         $data = array(            
             'name' => $pro->name,
             'status' => $pro->enable,  
-
+            'price' => $pro->price,
             // 'sale' => $pro->sale,          
 
             'quantity' => $pro->quantity,
@@ -236,8 +236,6 @@ class ProductController extends Controller
                     $dl .=$val.', ';
                 }                                        
             } 
-
-
             echo "<tr class='odd gradeX' align='center'>
                         <td>".$value['actor']['id']."</td>
                         <td style='font-weight: bold;'>".$value['actor']['name']."</td>          
