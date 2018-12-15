@@ -75,17 +75,7 @@ class PromotionController extends Controller
     /*---------------Edit Item ----------------------------------*/
     public function getEdit($id)
     {
-        $prom = Promotion::find($id);
-        $product = Product::where([
-            ['enable',1],
-            ['isPromotion',0]
-        ])->orwhere([
-            ['idPromotion',$id],
-            ['isPromotion', 1]
-        ])->orwhere([
-            ['idPromotion',$id],
-            ['isPromotion', 0]
-        ])->get();      
+        $prom = Promotion::find($id); 
 
         return view('admin.promotion.edit',compact('prom'));
     }

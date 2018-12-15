@@ -64,6 +64,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Mục khuyến mãi</label>
+                        <select class="form-control" name="idPromotion">
+                        @foreach($promotions as $prom)    
+                            <option value="{{$prom->id}}">{{$prom->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Trạng thái</label>
                         <label class="radio-inline">
                             <input name="enable" value="1" checked type="radio">Còn hàng

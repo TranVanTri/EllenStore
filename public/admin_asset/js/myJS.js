@@ -841,28 +841,28 @@ $(document).ready(function() {
 		}
 	});
 
-	//Xử lý chọn sản phẩm trang khuyren mãi
+	// //Xử lý chọn sản phẩm trang khuyren mãi
 
-	$('.checkbox-sp').change(function(event) {
-		var id = $(this).attr('attrId');		
-		if($(this).is(":checked")){		
-			var name = $(this).attr('attrName');
-			$('#tag').append(
-				'<div class="sp-'+id+'" style="margin-right: 5px;margin-bottom: 5px; float:left;">'+
-				'<input type="hidden" name="sp[]"'+
-				'value="'+id +'"><span class="btn btn-primary">'+name+' <i class="fa fa-times" ></i></span></input>'+
-				'</div>'
-			);
-		}else{		
-			$('.sp-'+id).remove();			
-		}
+	// $('.checkbox-sp').change(function(event) {
+	// 	var id = $(this).attr('attrId');		
+	// 	if($(this).is(":checked")){		
+	// 		var name = $(this).attr('attrName');
+	// 		$('#tag').append(
+	// 			'<div class="sp-'+id+'" style="margin-right: 5px;margin-bottom: 5px; float:left;">'+
+	// 			'<input type="hidden" name="sp[]"'+
+	// 			'value="'+id +'"><span class="btn btn-primary">'+name+' <i class="fa fa-times" ></i></span></input>'+
+	// 			'</div>'
+	// 		);
+	// 	}else{		
+	// 		$('.sp-'+id).remove();			
+	// 	}
 
-	});
-	$(document).on('click', '#tag i.fa', function(event) {
-		var id = $(this).parent().prev().val();
-		$('.check-sp-'+id).prop('checked', false);
-		$('.sp-'+id).remove();	
-	});
+	// });
+	// $(document).on('click', '#tag i.fa', function(event) {
+	// 	var id = $(this).parent().prev().val();
+	// 	$('.check-sp-'+id).prop('checked', false);
+	// 	$('.sp-'+id).remove();	
+	// });
 
 });
 

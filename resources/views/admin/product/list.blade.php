@@ -23,6 +23,7 @@
                         <th>MãSP</th>
                         <th>TênSP</th>
                         <th>Giá (VNĐ)</th>  
+                        <th>Tên KM</th>  
                         <th>KM (%)</th>  
                         <th>Size</th>                   
                         <th>SL</th>
@@ -41,6 +42,7 @@
                         <td>{{$pro->id}}</td>
                         <td>{{$pro->name}}</td>
                         <td>{{$pro->price}} </td>
+                        <td>{{$pro->promotion->name}} </td>
                         <td style="color: red;">
                             @if($pro->promotion->enable == 1)
                                 {{$pro->promotion->per_decr}} 
@@ -106,7 +108,9 @@
                         <th>Điện thoại</th>
                         <th>Thao tác</th>
                         <th>TênSP</th>
-                        <th>Giá (VNĐ)</th>                   
+                        <th>Giá (VNĐ)</th>
+                        <th>Tên KM</th>  
+                        <th>KM (%)</th>                     
                         <th>Size</th>                     
                         <th>SL</th>
                         <th>Ảnh mẫu</th>

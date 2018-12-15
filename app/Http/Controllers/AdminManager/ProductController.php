@@ -3,6 +3,7 @@ namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Promotion;
 use App\Size;
 use App\CategoryProduct; 
 use Illuminate\Database\QueryException;
@@ -16,9 +17,10 @@ class ProductController extends Controller
     }
     public function getAdd()
     {
-        $danhmuc = CategoryProduct::all();
+        $danhmuc = CategoryProduct::where('enable',1)->get();
         $sizes = Size::all();
-        return view('admin.product.add',compact('danhmuc','sizes'));
+        $promotions = Promotion::all();
+        return view('admin.product.add',compact('danhmuc','sizes','promotions'));
     }
 
     public function createArrayData(Product $pro)
@@ -47,7 +49,9 @@ class ProductController extends Controller
             'highLight' => $pro->highLight,
             'idcategoryproduct' => $pro->idCategoryProduct,
             'namecategoryproduct' => $pro->category_product->name,
-
+            'idPromotion' => $pro->idPromotion,
+            'namePromotion' => $pro->promotion->name,
+            'per_decr' => $pro->promotion->per_decr, 
             'size' => $sizename,
 
             'otherImg' => $pro->otherImg,            
@@ -69,7 +73,7 @@ class ProductController extends Controller
         $product->price=$req->price;
 
         //$product->sale=$req->sale;  
-        
+        $product->idPromotion = $req->idPromotion;
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
@@ -104,7 +108,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         $otherimg = json_decode($product->otherImg);
         $sizes = Size::all();
-        return view('admin.product.edit',compact('danhmuc','product','otherimg', 'sizes'));
+        $promotions = Promotion::all();
+        return view('admin.product.edit',compact('danhmuc','product','otherimg', 'sizes','promotions'));
     }
 
     public function editArrayData(Product $pro)
@@ -133,6 +138,9 @@ class ProductController extends Controller
             'highLight' => $pro->highLight,
             'idcategoryproduct' => $pro->idCategoryProduct,
             'namecategoryproduct' => $pro->category_product->name,
+            'idPromotion' => $pro->idPromotion,
+            'namePromotion' => $pro->promotion->name,
+            'per_decr' => $pro->promotion->per_decr,
             'size' => $sizename,
             'otherImg' => $pro->otherImg,        
         );
@@ -152,7 +160,7 @@ class ProductController extends Controller
         $product->price=$req->price;
 
         // $product->sale=$req->sale;        
-
+        $product->idPromotion = $req->idPromotion;
         $product->quantity=$req->quantity;
         $product->avatar=$req->avatar;
         $product->describe=$req->describe;
@@ -243,6 +251,8 @@ class ProductController extends Controller
                         ".$thaotac."           
                         <td>".$value['data']['name']."</td>
                         <td>".$value['data']['price']."</td>                        
+                        <td>".$value['data']['namePromotion']."</td>                        
+                        <td>".$value['data']['per_decr']."</td>                        
                         <td>".$dl."</td>                        
                         <td>".$value['data']['quantity']."</td>
                         <td>

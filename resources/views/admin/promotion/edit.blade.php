@@ -63,7 +63,7 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Chọn sản phẩm khuyến mãi</label>
                         <input type="hidden" >
                         <div id="tag" style="margin-bottom: 5px;">
@@ -78,7 +78,7 @@
                         <div>
                             <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal">Chọn</button>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label>Ảnh</label>                        

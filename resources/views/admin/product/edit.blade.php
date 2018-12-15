@@ -90,6 +90,19 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label>Mục khuyến mãi</label>
+                        <select class="form-control" name="idPromotion">
+                        @foreach($promotions as $prom)    
+                            <option value="{{$prom->id}}"
+                            @if($prom->id == $product->idPromotion)
+                                selected 
+                            @endif
+                            >{{$prom->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
                         <label class="radio-inline">

@@ -60,7 +60,7 @@
                             <input name="enable" value="0" type="radio">Khóa
                         </label>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Chọn sản phẩm khuyến mãi</label>
                         <input type="hidden" >
                         <div id="tag" style="margin-bottom: 5px;">
@@ -71,7 +71,7 @@
                             <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal">Chọn</button>
                         </div>
                     </div>
-
+ --}}
 
                     <div class="form-group">
                         <label>Ảnh</label>                        
@@ -93,7 +93,7 @@
     </div>
     <!-- /.container-fluid -->
 </div>
-<div class="modal fade" id="myModal" role="dialog">
+{{-- <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog my-modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -150,5 +150,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection
