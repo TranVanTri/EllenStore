@@ -38,6 +38,10 @@ Route::group(['namespace' => 'AdminManager'], function() {
 
     Route::group(['prefix' => 'admin', 'middleware'=>'adminCheckLogout'], function() {
 
+        // Edit admin info
+        Route::get('edit/{id}', 'AdminController@getEdit');
+        Route::post('edit/{id}', 'AdminController@postEdit');
+
         Route::group(['prefix' => 'ckfinder'], function() {
             Route::get('view', 'CkfinderController@getCkfinder');
             Route::any('connector', 'CkfinderController@getConnector');

@@ -17,10 +17,10 @@
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             {{Auth('admin')->user()->name}}</a>
             <ul class="dropdown-menu dropdown-user">                
-                <li><a href="admin/user/edit/{{ Auth('admin')->user()->id }}"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                <li><a href="admin/edit/{{ Auth('admin')->user()->id }}"><i class="fa fa-refresh fa-fw"></i> Thông tin</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="admin/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="admin/logout"><i class="fa fa-sign-out fa-fw"></i> Thoát</a>
                 </li>
                 
             </ul>

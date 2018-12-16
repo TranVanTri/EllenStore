@@ -475,6 +475,12 @@ $(document).ready(function() {
 	        } else {
 	            $('#submit').prop('disabled', 'disabled');
 	        }
+    	}if($("#formAdmin").length){
+    		if ($("#formAdmin").valid()) {
+            	$('#submit').prop('disabled', false);  
+	        } else {
+	            $('#submit').prop('disabled', 'disabled');
+	        }
     	}
 
     	if($("#formSize").length){
@@ -496,7 +502,7 @@ $(document).ready(function() {
     });
 
     jQuery.validator.addMethod("characterAndNumberAndDash", function(value, element) {
-	  return this.optional(element) || /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s]+$/i.test(value);
+	  return this.optional(element) || /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i.test(value);
 	}, "Chỉ nhập kí tự bao gồm chữ thường, chữ hoa, số và dấu gạch ngang."); 
 
 	jQuery.validator.addMethod("password", function(value, element) {
@@ -752,7 +758,7 @@ $(document).ready(function() {
 	});
 
 	//formUser
-	$('#formUser').validate({
+	$('#formUser, #formAdmin').validate({
 		rules: {
 			Ten: {
 				characterOnly:true,
