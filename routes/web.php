@@ -132,14 +132,27 @@ Route::resource('/cart','CartController');
 
 
 Route::group(['namespace' => 'UserController'], function() {
+    // dò tất cả sản phẩm theo category_product
     Route::get('/tatcasanpham/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
-    Route::get('/chitietsanpham/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');;
+
+    // dò sản phẩm theo id của sản phẩm
+    Route::get('/chitietsanpham/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');
+
+    // hiển thị tất cả sản phẩm trong gio hàng
+    Route::get('gio-hang',['as'=>'giohang','uses'=>'BeforeCartController@giohang']);
+
+    // xóa sản phẩm trong giỏ hàng với id tương ứng
+    Route::get('xoa-san-pham/{id}',['as'=>'xoasanpham','uses'=>'InCartController@xoasanpham']);
+
 
 
 });
 
+
+
+
 ///
-// Login fb
+// Login Google
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 
     'Auth\LoginController@handleProviderCallback');
