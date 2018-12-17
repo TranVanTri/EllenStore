@@ -617,7 +617,7 @@ h4.cart-title span {
     padding: 14px 15px;
     background: #ff99cc;
     color: #fff;
-    font-weight: bold;
+    font-weight: 400;
     font-size: 18px;
     text-transform: uppercase;
     cursor: pointer;
@@ -687,9 +687,8 @@ h4.title-2 i.fa.active{
     text-decoration: none;
 }
 
-.all-pro .mot-danhmuc{
-    
-margin-top: 10px;
+.all-pro .mot-danhmuc{    
+    margin-top: 10px;
 }
 
 .all-pro .mot-danhmuc .tieu-de-danhmuc {
@@ -700,13 +699,16 @@ margin-top: 10px;
     font-size: 30px;
 }
 
+.dropdown-cate-pro{
+    cursor: pointer;
+}
+
 /******************END MENU LEFT***************************/
 
 
 /******************LIEN HE***************************/
-.lien-he, .gio-hang{
-    
-margin-top: 20px;
+.lien-he, .gio-hang{    
+    margin-top: 20px;
 }
 
 .lien-he .lien-he-content {

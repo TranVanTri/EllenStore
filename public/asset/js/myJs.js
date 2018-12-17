@@ -172,8 +172,9 @@ $(document).ready(function() {
 	$('.dropdown-cate-pro').click(function(event) {
 		event.preventDefault();
 		$(this).next().slideToggle(400);
-		$(this).prev('.fa-minus-square-o, .fa-plus-square-o').toggleClass('fa-minus-square-o fa-plus-square-o');
+		$(this).children('.fa-minus-square-o, .fa-plus-square-o').toggleClass('fa-minus-square-o fa-plus-square-o');
 	});
+
 	// *************************************END XU LY Tat CA SAN PHAM****************************************
 	// *************************************XU LY LOGIN****************************************
 
