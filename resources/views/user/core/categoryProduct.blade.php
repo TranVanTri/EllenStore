@@ -1,6 +1,8 @@
 <ul>
 	@foreach($cateGroup as $groupChild)
-	<li><a href="#">{{$groupChild->name}}</a>
+	<li>
+		<i class="fa fa-minus-square-o" aria-hidden="true">
+		<a class="dropdown-cate-pro" href="#"></i>{{$groupChild->name}}</a>
 		<ul>
 			@foreach($cateProduct as $cateProductChild)
 				@if($groupChild->id == $cateProductChild->idCategoryGroup)

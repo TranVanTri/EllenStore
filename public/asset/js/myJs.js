@@ -168,6 +168,12 @@ $(document).ready(function() {
 		$(this).toggleClass('active');
 		$(this).children('i.fa').toggleClass('active');
 	});
+
+	$('.dropdown-cate-pro').click(function(event) {
+		event.preventDefault();
+		$(this).next().slideToggle(400);
+		$(this).prev('.fa-minus-square-o, .fa-plus-square-o').toggleClass('fa-minus-square-o fa-plus-square-o');
+	});
 	// *************************************END XU LY Tat CA SAN PHAM****************************************
 	// *************************************XU LY LOGIN****************************************
 
