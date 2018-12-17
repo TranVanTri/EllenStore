@@ -37,7 +37,9 @@ Route::group(['namespace' => 'AdminManager'], function() {
 Route::group(['namespace' => 'AdminManager'], function() {
 
     Route::group(['prefix' => 'admin', 'middleware'=>'adminCheckLogout'], function() {
-
+        // Route::get('test', function() {
+        //     App\Promotion::where('end_date_sale','>',date("Y-m-d H:i:s"))->update(['enable'=>0]);
+        // });
         // Edit admin info
         Route::get('edit/{id}', 'AdminController@getEdit');
         Route::post('edit/{id}', 'AdminController@postEdit');
