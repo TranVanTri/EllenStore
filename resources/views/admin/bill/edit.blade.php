@@ -65,7 +65,7 @@
                         </label>
                     </div>
                     <button type="submit" id="submit" disabled="disabled" class="btn btn-warning">Sửa hóa đơn</button>
-                    <button type="reset" class="btn btn-default">Reset</button>                
+                                   
                 </div>
                 <div class="col-lg-5" style="padding-bottom:120px">
                     <?php $dem = 1;?>

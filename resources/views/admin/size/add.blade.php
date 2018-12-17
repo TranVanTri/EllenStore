@@ -37,7 +37,7 @@
                     </div>
                     
                     <button type="submit" class="btn btn-warning" disabled id="submit">Thêm</button>
-                    <button type="reset" class="btn btn-default">Hủy</button>                
+                                   
                 </div>
                 
             <form>

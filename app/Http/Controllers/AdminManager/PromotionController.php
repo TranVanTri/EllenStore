@@ -3,7 +3,6 @@ namespace App\Http\Controllers\AdminManager;
 use App\Http\Requests\PromotionRequest;
 use Illuminate\Http\Request;
 use App\Promotion; 
-use App\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 class PromotionController extends Controller
@@ -16,10 +15,8 @@ class PromotionController extends Controller
 
     /*-------------- Add new ------------------------------*/
     public function getAdd()
-    {
-        $product = Product::where('enable', 1)->where('isPromotion',0)->get(); 
-        
-        return view('admin.promotion.add', compact('product'));
+    {        
+        return view('admin.promotion.add');
     }
 
     public function createArrayData(Promotion $prom)

@@ -352,41 +352,7 @@ $(document).ready(function() {
     	});        
 	});
 
-	//ajax lấy history slide
-	$(document).on('click', "button.view-history-slide", function() {
-	    var idSlide = $(this).attr('data');
-	    var table = $('#dataTables-history');
-	    var loadding = $('#loadding');
-	    var error = $('#error');
-	    table.hide();
-	    loadding.show();
-	    error.hide();
-	    
-	    $.ajax({
-	    	type: "get",
-	    	url: 'admin/slide/view-history-slide/'+ idSlide, 
-	    	success: function(data){
-            	table.DataTable().destroy();
-	            $('#slideHistory').html(data);        
-
-	            setTimeout(function() {
-	            	table.DataTable({
-		                responsive: true,              
-		            });
-				    table.show();
-				    loadding.hide();
-				}, 800);	            
-	            
-        	},
-        	error: function() {
-        		setTimeout(function() {
-	            	loadding.hide();
-		        	error.show();
-				}, 800);
-        		
-		    },
-    	});        
-	});
+	
 
 	//ajax lấy history promotion
 	$(document).on('click', "button.view-history-promotion", function() {

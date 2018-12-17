@@ -54,7 +54,7 @@
                           
 
                     <button type="submit" id="submit" disabled class="btn btn-warning">Thêm</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
+                    
                 </div>
             </form>
         </div>

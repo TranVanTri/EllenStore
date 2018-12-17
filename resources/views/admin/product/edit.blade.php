@@ -143,7 +143,7 @@
                          name="detail" id="detail">{{$product->detail}}</textarea>
                     </div>
                     <button type="submit" id="submit" disabled="disabled" class="btn btn-warning">Sửa sản phẩm</button>
-                    <button type="reset" class="btn btn-default">Reset</button>                
+                                  
                 </div>
                 <div class="col-lg-5" style="padding-bottom:120px">
                     <div class="form-group">
