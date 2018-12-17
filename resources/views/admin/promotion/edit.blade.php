@@ -37,12 +37,12 @@
                     
                     <div class="form-group">
                         <label>Ngày bắt đầu khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{$prom->start_date_sale}}" />
+                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" value="{{date ("d-m-Y H:i:s", strtotime($prom->start_date_sale))}}" />                        
                     </div>
 
                     <div class="form-group">
                         <label>Ngày kết thúc khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{$prom->end_date_sale}}" />
+                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" value="{{date ("d-m-Y H:i:s", strtotime($prom->end_date_sale))}}" />
                     </div>
 
                     <div class="form-group">
