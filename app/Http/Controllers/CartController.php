@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 use Gloudemans\Shoppingcart\Facades\Cart;   
 use Illuminate\Http\Request;
 use App\Product;
+use App\Quotation;
+use Auth;
+use DB;
+use Illuminate\Support\Facades\Redirect;
+
+use App\User; 
+
 class CartController extends Controller
 {
     public function index()
     {
-        $cartItems = Cart::content();
-        return view('cart.index',compact('cartItems'));
+        $id     =   Auth::id();
+        $user = Auth::user();
+        $email = $user->email;
+        Cart::instance($email)->store();
+
     }
 
     public function create($productId)
@@ -19,21 +29,21 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        //
+        
+        
     }
 
     public function show($id)
     {
-        //
+       
+       
     }
     public function edit($id)
     {
-        // pass value 27, sản phẩm có id=27
-        $product = Product::find($id);
+        
+        $product = DB::table('product')->where('id',$id)->first();
         Cart::add($id,$product->name,1,$product->price,['size'=>'M','avatar'=>$product->avatar]);
-        $cartItems = Cart::content();
-        return view('cart.index',compact('cartItems'));
-        //return back(); quay trở lại cho khách hàng lựa chọn
+        return Redirect::action('UserController\BeforeCartController@giohang');
     }
 
 

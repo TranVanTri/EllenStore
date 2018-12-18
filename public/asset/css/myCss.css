@@ -1723,3 +1723,9 @@ i.fa {
     margin-right: 0;
 }
 /*****************END SEARCH BOX****************************/
+
+
+/*chỉnh Css hình ảnh sản phẩm ở trang giỏ hàng*/
+.hinhAnhSanPham{
+    width: 50px;
+}

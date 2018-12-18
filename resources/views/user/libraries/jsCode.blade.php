@@ -6,6 +6,9 @@
 <script type="text/javascript" src="asset/fancybox-2.1.7/lib/jquery.mousewheel.pack.js"></script>
 <script type="text/javascript" src="asset/fancybox-2.1.7/source/jquery.fancybox.pack.js"></script>
 <script type="text/javascript" src="asset/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+<script type="text/javascript" src="asset/js/myScript.js"></script>
+
+
 <!-- FB -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -16,10 +19,3 @@
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
-<!-- FB login -->
-
-<script>
-
-
-</script>
