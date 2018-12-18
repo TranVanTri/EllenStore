@@ -177,8 +177,8 @@
 			</div> -->	
 			<div class="gio-hang-content">
 				<div class="row">
-					<!-- <div class="col-lg-6 col-md-6 col-sm-6"> -->
-					<div class="col-lg-12 col-md-12 col-sm-6">	
+					<div class="col-lg-6 col-md-6 col-sm-6">
+					<!-- <div class="col-lg-12 col-md-12 col-sm-6"> -->	
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<!-- bắt đầu phần giỏ hàng -->
@@ -198,34 +198,41 @@
 												</tr>
 											</thead>
 											<tbody>
-												<form  method="POST" action="">
-													<input name="_token" type="hidden" 
-													name="{!! csrf_token() !!}" />
-												@if(isset($content))
-													@foreach($content as $child)
-													<tr>
-														<th scope="row">{{$child->name}}</th>
-														<td><img class="hinhAnhSanPham" src="{{$child->options->has('avatar')? $child->options->avatar : ''}}" alt="" ></td>
-														<td>{{$child->price}}</td>
-														<td >
-															<input type="number" style="width:30%; text-align: right;" name=""  value="{{$child->qty}}" class="form-control qty">
-															<button class="updateNumber" id="{!! $child->rowId !!}">Update</button>
-														</td>
-														<td>{{$child->options->has('size')? $child->options->size : ''}}</td>
-														<th>{{$child->price * $child->qty}}</th>
-														<th>
-															<a href="{!! url('xoa-san-pham',['id'=>$child->rowId]) !!}">Xóa</a>
-														</th>
-													</tr>
-													@endforeach
-												@endif
-											</form>
+												
+											
+													<!-- <input name="_token" type="hidden" 
+													value="{!! csrf_token() !!}" > -->
+													@if(isset($content))
+														@foreach($content as $child)
+														<tr>
+															<th scope="row">{{$child->name}}</th>
+															<td><img class="hinhAnhSanPham" src="{{$child->options->has('avatar')? 
+																$child->options->avatar : ''}}" alt="" ></td>
+															<td>{{$child->price}}</td>
+															<td >
+																<input type="number" style=" text-align: right;" name="qty"  value="{{$child->qty}}" class="form-control qty">
+																
+															</td>
+
+
+															<td>{{$child->options->has('size')? $child->options->size : ''}}</td>
+															<th>{{$child->price * $child->qty}}</th>
+															<th>
+																<a href="{!! url('xoa-san-pham',['id'=>$child->rowId]) !!}">Xóa</a>
+															</th>
+														</tr>
+														@endforeach
+													@endif
+												
 												<tr>
 													<td>Tổng số lượng:</td>
 													<td>{{Cart::count()}}</td>
 													<td>Tổng tiền:</td>
 													<td>{!! Cart::total() !!}VND</td>	
 												</tr>
+
+												
+												
 											</tbody>
 										</table>
 									</div>
@@ -233,11 +240,11 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="col-lg-6 col-md-6 col-sm-6"> -->
-					<div class="col-lg-12 col-md-12 col-sm-6">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+					<!-- <div class="col-lg-12 col-md-12 col-sm-6"> -->
 						<h3 class="order-title">Thông tin người mua/nhận hàng</h3>
 						<div class="contact-form">
-							<form>
+							<!-- <form> -->
 								<div class="form-group">
 									<input type="text" class="form-control" placeholder="Tên người nhận">		
 								</div>
@@ -255,8 +262,9 @@
 									<span>Thanh toán sau khi nhận hàng.</span>
 								</div>
 
-								<button type="submit" class="btn btn-block">Mua ngay</button>
-							</form>
+								<a href="{{route('cart.store',$child->id)}}" ><button type="button" class="btn btn-block">Mua ngay</button></a>
+
+							<!-- </form> -->
 						</div>
 					</div> <!-- end div thông tin liên hệ -->
 				</div>

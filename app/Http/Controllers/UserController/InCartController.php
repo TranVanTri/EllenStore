@@ -15,5 +15,17 @@ class InCartController extends Controller
         Cart::remove($id);
         return redirect()->route('giohang');
     }
+
+    public function capNhatGioHang(){
+        // if(Request::ajax()){
+        //     $id= Request::get('id');
+        //     $qty = Request::get('qty');
+        //     Cart::update($id,$qty);
+        //     echo "oke";
+        // }
+        // else{
+        //     echo "No";
+        // }
+    }
     
 }

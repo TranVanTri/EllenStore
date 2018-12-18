@@ -5,16 +5,15 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Quotation;
+use Auth;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 class CartController extends Controller
 {
     public function index()
     {
-        // $cartItems = Cart::content();
-        // return view('cart.index',compact('cartItems'));
-        $content = Cart::content();
-        print_r($content);
+        $id     =   Auth::id();
+        Cart::instance('list1')->store($id );
     }
 
     public function create($productId)
@@ -24,12 +23,18 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $user   =   Auth::user();
+        $id     =   Auth::id();
+        print_r($id);
+        //Cart::instance('list1')->store("username");
+        
     }
 
     public function show($id)
     {
         //
+         $id     =   Auth::id();
+        Cart::restore('username');
     }
     public function edit($id)
     {
