@@ -262,7 +262,7 @@
 									<span>Thanh toán sau khi nhận hàng.</span>
 								</div>
 
-								<a href="{{route('cart.store',$child->id)}}" ><button type="button" class="btn btn-block">Mua ngay</button></a>
+								<a href="{{ route('cart.store') }}" ><button type="button" class="btn btn-block">Mua ngay</button></a>
 
 							<!-- </form> -->
 						</div>

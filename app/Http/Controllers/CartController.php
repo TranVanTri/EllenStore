@@ -8,12 +8,18 @@ use App\Quotation;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Redirect;
+
+use App\User; 
+
 class CartController extends Controller
 {
     public function index()
     {
         $id     =   Auth::id();
-        Cart::instance('list1')->store($id );
+        $user = Auth::user();
+        $email = $user->email;
+        Cart::instance($email)->store();
+
     }
 
     public function create($productId)
@@ -23,18 +29,14 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        $user   =   Auth::user();
-        $id     =   Auth::id();
-        print_r($id);
-        //Cart::instance('list1')->store("username");
+        
         
     }
 
     public function show($id)
     {
-        //
-         $id     =   Auth::id();
-        Cart::restore('username');
+       
+       
     }
     public function edit($id)
     {

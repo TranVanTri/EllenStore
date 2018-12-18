@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart; 
 use App\User;
 use DB;
+use Auth;
 use App\CategoryGroup;
 use App\CategoryProduct;
 use App\Product;
@@ -26,6 +27,12 @@ class InCartController extends Controller
         // else{
         //     echo "No";
         // }
+    }
+
+    public function xemgiohang(){
+        $user   =   Auth::user();
+        $c = Cart::restore($id);
+       print_r($user);
     }
     
 }

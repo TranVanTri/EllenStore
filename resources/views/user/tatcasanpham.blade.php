@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ellen</title>
-<!-- chứa các thư viện css của trang -->
-@include('user.libraries.cssCode')
-</head>
-<body>
-	
-<!-- Menutop -->
-@include('user.core.menutop')
-
-<div class="nen-xam"></div>
-
-<!-- 2 nút sign in và sign up -->
-@include('user.core.loginUser')
-
-<!-- model hiển thị danh sách các sản phẩm trong giỏ hàng -->
-@include('user.core.modelCart')
-
-<!-- endMenutop -->
-<div class="clearfix"></div>
-
-
+@extends('user.layout.index')
+@section('content')
 
 <section class="content">
 	<div class="container">
@@ -107,21 +83,5 @@
 		</div>
 
 	</section><!-- END CONTENT -->
-	<div class="clearfix"></div>
-	@include('user.core.footer')
-	<div class="back-to-top">
-		<i class="fa fa-angle-double-up" aria-hidden="true"></i>
-	</div>
 
-	<div class="search">
-		<div class="icon-search-toggle icon-search-animate"><i class="fa fa-search" aria-hidden="true"></i></div>	
-		<div class="search-box">
-			<input type="text" placeholder="Nhập tên sản phẩm">
-		</div>
-		<div class="icon-search"><i class="fa fa-search" aria-hidden="true"></i></div>
-	</div>
-
-	@include('user/libraries/jsCode')
-
-</body>
-</html>
+@endsection

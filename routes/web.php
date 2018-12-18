@@ -144,7 +144,7 @@ Route::group(['namespace' => 'UserController'], function() {
     // xóa sản phẩm trong giỏ hàng với id tương ứng
     Route::get('xoa-san-pham/{id}',['as'=>'xoasanpham','uses'=>'InCartController@xoasanpham']);
 
-    
+    Route::get('xem-gio-hang',['as'=>'xemgiohang','uses'=>'InCartController@xemgiohang']);
 
 });
 
