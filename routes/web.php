@@ -146,6 +146,7 @@ Route::group(['namespace' => 'UserController'], function() {
 
     Route::get('xem-gio-hang',['as'=>'xemgiohang','uses'=>'InCartController@xemgiohang']);
 
+    Route::get('hoa-don',['as'=>'hoadon','uses'=>'InCartController@xemTatCaGioHang']);
 });
 
 

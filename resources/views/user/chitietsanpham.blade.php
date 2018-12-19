@@ -126,12 +126,12 @@
 					<div class="mo-ta-content active col-lg-12 col-md-12 col-sm-12">
 						<strong>
 							@if(isset($child->describe))
-								{{$child->describe}}
+								{{ $child->describe }}
 							@endif
 						</strong>
 						<br>
 							@if(isset($child->detail))
-								{{$child->detail}}
+								{!! $child->detail !!}
 							@endif
 					</div>
 					<div class="binh-luan-fb col-lg-12 col-md-12 col-sm-12">
