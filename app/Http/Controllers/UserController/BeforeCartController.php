@@ -15,9 +15,11 @@ class BeforeCartController extends Controller
     public function __construct(){
         $cateGroup = CategoryGroup::where('enable',1)->get();
         view()->share('cateGroup', $cateGroup);
+        $cateProduct = CategoryProduct::where('enable',1)->get();
+        view()->share('cateProduct', $cateProduct);
     }
 
-    public function getViewProduct($id)
+    public function getViewProduct($name, $id)
     {	
     	// need to change the id of the idCategoryProduct
     	
@@ -29,7 +31,7 @@ class BeforeCartController extends Controller
     	return view('user/tatcasanpham',compact('products', 'dirName'));
     }
 
-    public function viewDetailProduct($id){
+    public function viewDetailProduct($name, $id){
     	$product = Product::where('id',$id)->get();
     	return view('user/chitietsanpham',compact('product'));
     }

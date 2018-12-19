@@ -53,7 +53,8 @@
 												<div class="motkhoi my-col-6-product col-lg-4 col-md-6 col-sm-6">
 													<div class="card">
 														<div class="zoom-img">
-															<a href="{{route('chitietsanpham', ['id' => $child->id])}}"><img class="card-img-top" src="{{$child->avatar}}" alt="Card image cap"></a>
+															<a 
+															href="{{route('chitietsanpham',['name' => str_slug($child->name) ,'id' => $child->id])}}"><img class="card-img-top" src="{{$child->avatar}}" alt="Card image cap"></a>
 														</div>
 														<div class="card-body">
 															<h5 class="card-title">{{$child->name}}</h5>	

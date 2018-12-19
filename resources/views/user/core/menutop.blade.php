@@ -5,28 +5,22 @@
 				<a href="" class="logo"><img src="asset/images/logo.png" alt=""></a>
 				<div class="content-navbar">
 					<ul class="menu-group-category">
-						<li>
-							<a href="">Áo</a>
-							<ul class="sub-menu">
-								<li><a href="">Áo thun</a></li>
-								<li><a href="">Áo khoác</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Quần</a>
-							<ul class="sub-menu">
-								<li><a href="">Quần short</a></li>
-								<li><a href="">Quần què</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Váy</a>
-							<ul class="sub-menu">
-								<li><a href="">Váy Xòe</a></li>
-								<li><a href="">Váy suông</a></li>
-							</ul>
-						</li>
-						<li><a href="">Phụ kiện</a></li>
+						@foreach($cateGroup as $groupChild)
+							@if(count($groupChild->category_product) && count($groupChild->product))
+								<li>
+									<a href="">{{$groupChild->name}}</a>
+									<ul class="sub-menu">
+										@foreach($groupChild->category_product as $cateProductChild)
+											@if(count($cateProductChild->product))	
+											<li><a href="{{route('tatcasanpham', ['id' => $cateProductChild->id, 'name' => str_slug($cateProductChild->name)])}}">{{$cateProductChild->name}}</a></li>
+											@endif
+										@endforeach
+										
+									</ul>
+								</li>
+							@endif
+						@endforeach
+
 					</ul>
 					<button class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
 					<ul class="login">
@@ -40,18 +34,11 @@
 			<div class="container">				
 				<div class="content-navbar">
 					<ul class="menu-group-category text-center">
-						<li><a href="">Áo thun</a></li>
-						<li><a href="">Áo khoác</a></li>
-						<li><a href="">Áo sơ mi</a></li>
-						<li><a href="">Quần short</a></li>
-						<li><a href="">Quần què</a></li>
-						<li><a href="">Quần jean</a></li>
-						<li><a href="">Váy Xòe</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Phụ kiện</a></li>
+						@foreach($cateProduct as $child)
+						@if(count($child->product))
+						<li><a href="{{route('tatcasanpham',['name' => str_slug($child->name) ,'id' => $child->id])}}">{{$child->name}}</a></li>
+						@endif
+						@endforeach
 					</ul>	 					
 				</div>	
 			</div>				
