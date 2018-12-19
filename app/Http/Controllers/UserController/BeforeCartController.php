@@ -11,22 +11,26 @@ use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
 class BeforeCartController extends Controller
 {
+
+    public function __construct(){
+        $cateGroup = CategoryGroup::where('enable',1)->get();
+        view()->share('cateGroup', $cateGroup);
+    }
+
     public function getViewProduct($id)
     {	
     	// need to change the id of the idCategoryProduct
-    	$cateGroup = DB::table('category_group')->where('enable',1)->get();
-    	$cateProduct = DB::table('category_product')->where('enable',1)->get();
-    	$products = DB::table('product')->where([['idCategoryProduct','=',$id],['enable','=', 1]])->get();
+    	
+    	$products = Product::where([['idCategoryProduct','=',$id],['enable','=', 1]])->get();
 
         // get the Name of the Category_Product
-    	$dirName = DB::table('category_product')->where('id',$id)->get();
+    	$dirName = CategoryProduct::where('id',$id)->get();
 
-    	return view('user/tatcasanpham',compact('products','cateGroup',
-    		'cateProduct','dirName'));
+    	return view('user/tatcasanpham',compact('products', 'dirName'));
     }
 
     public function viewDetailProduct($id){
-    	$product = DB::table('product')->where('id',$id)->get();
+    	$product = Product::where('id',$id)->get();
     	return view('user/chitietsanpham',compact('product'));
     }
 
