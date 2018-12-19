@@ -10,7 +10,7 @@
 				<ul>
 					@foreach($groupChild->category_product as $cateProductChild)
 						@if(count($cateProductChild->product))		
-							<li><a href="{{route('tatcasanpham', ['id' => $cateProductChild->id])}}"><span>-&nbsp;</span>{{$cateProductChild->name}}</a></li>
+							<li><a href="{{route('tatcasanpham', ['id' => $cateProductChild->id, 'name' => str_slug($cateProductChild->name)])}}"><span>-&nbsp;</span>{{$cateProductChild->name}}</a></li>
 						@endif
 					@endforeach
 				</ul>

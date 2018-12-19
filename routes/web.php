@@ -150,10 +150,10 @@ Route::resource('/cart','CartController');
 
 Route::group(['namespace' => 'UserController'], function() {
     // dò tất cả sản phẩm theo category_product
-    Route::get('/tatcasanpham/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
+    Route::get('/tat-ca-san-pham/{name}/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
 
     // dò sản phẩm theo id của sản phẩm
-    Route::get('/chitietsanpham/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');
+    Route::get('/chi-tiet-san-pham/{name}/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');
 
     // hiển thị tất cả sản phẩm trong gio hàng
     Route::get('gio-hang',['as'=>'giohang','uses'=>'BeforeCartController@giohang']);
