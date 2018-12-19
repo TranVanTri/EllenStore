@@ -35,6 +35,8 @@ class CartController extends Controller
             instance(Auth::user()->email)
             *** lấy email của user đã login, sau đó lưu vào shoppingcart với giá trị email đó
         */
+        return Redirect::action('UserController\InCartController@xemgiohang');
+         
 
     }
 

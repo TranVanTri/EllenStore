@@ -245,25 +245,28 @@
 						<h3 class="order-title">Thông tin người mua/nhận hàng</h3>
 						<div class="contact-form">
 							<!-- <form> -->
-								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Tên người nhận">		
-								</div>
-								<div class="form-group">		
-									<input type="text" class="form-control" placeholder="Số điện thoại">							
-								</div>
-								<div class="form-group">		
-									<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng">
-								</div>
-								<div class="form-group">		
-									<textarea class="form-control" placeholder="Ghi chú"></textarea>
-								</div>
-								<div class="hinh-thuc-thanh-toan">		
-									<label><span>(*)</span>Hình thức thanh toán:&nbsp;</label>
-									<span>Thanh toán sau khi nhận hàng.</span>
-								</div>
+								
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Tên người nhận"
+										value="{{ ($user->name ?? '') }}" />		
+									</div>
+									<div class="form-group">		
+										<input type="text" class="form-control" placeholder="Số điện thoại" 
+										value="{{ ($user->phone ?? '') }}" />							
+									</div>
+									<div class="form-group">		
+										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" value="{{ ($user->address ?? '') }}">
+									</div>
+									<div class="form-group">		
+										<textarea class="form-control" placeholder="Ghi chú"></textarea>
+									</div>
+									<div class="hinh-thuc-thanh-toan">		
+										<label><span>(*)</span>Hình thức thanh toán:&nbsp;</label>
+										<span>Thanh toán sau khi nhận hàng.</span>
+									</div>
 
-								<a href="{{ route('cart.store') }}" ><button type="button" class="btn btn-block">Mua ngay</button></a>
-
+									<a href="{{ route('cart.store') }}" ><button type="button" class="btn btn-block">Mua ngay</button></a>
+								
 							<!-- </form> -->
 						</div>
 					</div> <!-- end div thông tin liên hệ -->

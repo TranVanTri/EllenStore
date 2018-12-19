@@ -9,6 +9,7 @@ use App\CategoryProduct;
 use App\Product;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
+use Auth;
 class BeforeCartController extends Controller
 {
 
@@ -38,9 +39,23 @@ class BeforeCartController extends Controller
 
 
     public function giohang(){
-        $content = Cart::content();
-        $total = Cart::total();
-        return view('cart.home',compact('content','total'));
+        // khi khách hàng đăng nhập rồi
+        if(Auth::id()){
+            $id = Auth::id();
+            $user = User::find($id);
+            $content = Cart::content();
+            $total = Cart::total();
+
+            return view('cart.home',compact('content','total','user'));
+        }
+        // khi khách hàng chưa đăng nhập
+        else{
+            $content = Cart::content();
+            $total = Cart::total();
+
+            return view('cart.home',compact('content','total'));
+        }
+        
     }
     
 }
