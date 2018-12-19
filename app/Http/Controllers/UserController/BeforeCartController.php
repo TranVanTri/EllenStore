@@ -13,13 +13,6 @@ use Auth;
 class BeforeCartController extends Controller
 {
 
-    public function __construct(){
-        $cateGroup = CategoryGroup::where('enable',1)->get();
-        view()->share('cateGroup', $cateGroup);
-        $cateProduct = CategoryProduct::where('enable',1)->get();
-        view()->share('cateProduct', $cateProduct);
-    }
-
     public function getViewProduct($name, $id)
     {	
     	// need to change the id of the idCategoryProduct

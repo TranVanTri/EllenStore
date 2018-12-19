@@ -35,23 +35,21 @@
 					</div>
 				</div>
 				@endforeach
-
-				@else
-					Giỏ hàng của bạn trống!
+					
 				@endif
 			</div>
 			<hr>
 			<div>
+				@if(isset($cartItems))
 				<div class="row cart-sub-total">
 					<div class="my-col-6">Thành tiền:</div>
 					<div class="my-col-6 text-right">
-					@if(isset($cartItems))
+					
 						{{Cart::total()}}
-					@else
-						0.0
-					@endif
+					
 					</div>
 				</div>
+				@endif
 				<div class="row">
 					@if(isset($cartItems))
 						<div class="my-col-6">Bạn đã được giảm:</div>
@@ -64,7 +62,18 @@
 			@if(isset($cartItems))
 			<button class="cart-btn">Tiến hành đặt hàng</button>
 			@endif
-
+			@if(!isset($cartItems))
+			<div class="cart-empty">
+				<div class="cart-empty-icon">
+					<img src="asset/images/empty-bag.jpg" alt="">
+				</div>
+				<div>Giỏ hàng của bạn trống</div>
+				<div>
+					<button class="cart-shopping">Tiếp tục mua sắm</button>
+				</div>
+			</div>
+			@endif
+			
 			
 		</div>		
 	</div>
