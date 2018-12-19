@@ -1539,7 +1539,7 @@ i.fa {
     padding-left: 5px;
     padding-right: 5px;
     color: #fff;
-    background-color: #3d5b96;
+    background-color: #bb4237;
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 500!important;
@@ -1557,21 +1557,21 @@ i.fa {
 }
 
 .btn-fb-signin:hover{
-    background-color: #4466a8!important;
-    border: 1px solid #4466a8!important;
+    background-color: #e24334!important;
+    border: 1px solid #e24334!important;
     color: #fff;
     text-decoration: none;
 }
 
 .signin-form-btn{
     color: #fff;
-    background-color: #16accf;
-    border-color: #16accf;
+    background-color: #05486d;
+    border-color: #05486d;
 }
 
 .signin-form-btn:hover{
-    background-color: #0ec0e8;
-    border-color: #0ec0e8;
+    background-color: #125f8a;
+    border-color: #125f8a;
 }
 
 .phan-cach {

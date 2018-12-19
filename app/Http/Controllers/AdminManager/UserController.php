@@ -85,10 +85,10 @@ class UserController extends Controller
             // người dùng bị khóa
             else
             {
-                return redirect('/login')->with('thongbao','Đăng nhập không thành công. Kiểm tra lại thông tin.');
+                return redirect('/login')->with('loi','Đăng nhập không thành công. Kiểm tra lại thông tin.');
             }
         }else {
-            return redirect('/login')->with('thongbao','Đăng nhập không thành công. Kiểm tra lại thông tin.');
+            return redirect('/login')->with('loi','Đăng nhập không thành công. Kiểm tra lại thông tin.');
         }
     }
 
