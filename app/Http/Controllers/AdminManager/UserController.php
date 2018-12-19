@@ -80,7 +80,7 @@ class UserController extends Controller
             //kiểm tra ngdung có bị khóa hay không
             if(Auth::user()->enable == 1) 
             {                
-                return redirect('/');
+                return redirect('/tatcasanpham/9');
             }
             // người dùng bị khóa
             else

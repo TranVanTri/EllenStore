@@ -9,7 +9,7 @@ Route::group(['namespace' => 'AdminAuth'], function() {
     Route::group(['prefix' => 'authadmin','middleware'=>'adminCheckLogin'], function()
     {
         Route::get('login','AuthController@getLogin');
-        Route::post('login','AuthController@postLogin');
+        Route::post('login',['as'=>'loginAdmin','uses'=>'AuthController@postLogin']);
     });
     
     // Route::get('admin/register','AuthController@getRegister');
@@ -26,7 +26,7 @@ Route::group(['namespace' => 'AdminAuth'], function() {
 });
 
 Route::group(['namespace' => 'AdminManager'], function() {
-    Route::get('login','UserController@getDangNhap');
+    Route::get('login',['as'=>'loginUser','uses'=>'UserController@getDangNhap']);
     Route::post('login','UserController@postDangNhap');
 
     Route::get('logout','UserController@getUserLogout');
@@ -163,7 +163,6 @@ Route::group(['namespace' => 'UserController'], function() {
 
     Route::get('xem-gio-hang',['as'=>'xemgiohang','uses'=>'InCartController@xemgiohang']);
 
-    Route::get('hoa-don',['as'=>'hoadon','uses'=>'InCartController@xemTatCaGioHang']);
 });
 
 

@@ -23,26 +23,27 @@ class InCartController extends Controller
 
     public function xemgiohang()
     {      
-       $id = Auth::id();
-       $email = Auth::user()->email;
-       echo $email; 
-       echo "<br>";
+      if(Auth::id())
+      {
+         $id = Auth::id();
+         $email = Auth::user()->email;
+         echo $email; 
+         echo "<br>";
 
-       foreach(Cart::content() as $row) 
-       {
-        echo 'You have ' . $row->qty . ' items of ' . $row->name . ' with description: "' . $row->price . '" in your cart.<br>';
-        }
-
+         foreach(Cart::content() as $row) 
+         {
+          echo 'You have ' . $row->qty . ' items of ' . $row->name . ' with description: "' . $row->price . '" in your cart.<br>';
+          }
+      }
+      else{
+        return redirect()->route('loginUser');
+      }
 
     }
 
     public function xemTatCaGioHang()
     {
-        $row_register = array('2018-12-12','201800-1212-12','12-12-12-111');
-        foreach ($row_register as $item ) {
-            # code...
-            echo $item;
-        }
+        
     }
 
 
