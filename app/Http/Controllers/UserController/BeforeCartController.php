@@ -8,6 +8,7 @@ use App\CategoryGroup;
 use App\CategoryProduct;
 use App\Product;
 use App\Promotion;
+use App\Slide;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -15,9 +16,12 @@ class BeforeCartController extends Controller
 {
 
     public function getTrangChu(){
-
+        $prohighLight = Product::where([['enable',1], ['highLight',1]])->get();
         $promotion = Promotion::where('enable',1)->get();
-        return view('user.trangchu',compact('promotion'));
+        $slide = Slide::where('enable',1)->get();
+
+        
+        return view('user.trangchu',compact('promotion','prohighLight','slide'));
     }
 
     public function getViewProduct($name, $id)

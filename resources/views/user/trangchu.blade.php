@@ -2,9 +2,9 @@
 @section('content')
 
 	<div class="banner owl-carousel">
-		<a href=""><img class="img-fluid" src="asset/images/thoi-trang-chic-land-khuyen-mai-giam-gia-30-tbsp.jpg" alt=""></a>
-		<a href=""><img class="img-fluid" src="asset/images/thoi-trang-chic-land-khuyen-mai-giam-gia-30-tbsp.jpg" alt=""></a>
-		
+		@foreach($slide as $child)
+		<a href=""><img class="img-fluid" src="{{$child->image}}" alt=""></a>
+		@endforeach
 	</div>
 
 	<div class="clearfix"></div>
@@ -100,170 +100,58 @@
 					</div>
 				</div>		
 			</div>	
+			@if(count($prohighLight))
 			<div class="section-title-wrap display">
-				<h2 class="section-title">nổi bật trong tuần</h2>
+				<h2 class="section-title">Sản phẩm nổi bật</h2>
 			</div>
 
-			<div class="sp-lien-quan row owl-carousel">					
+			<div class="sp-lien-quan row owl-carousel">	
+				@foreach($prohighLight as $pro)				
 				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
 					<div class="card">
 						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
+							<a href="{{route('chitietsanpham',['name' => str_slug($pro->name) ,'id' => $pro->id])}}"><img class="card-img-top" src="{{$pro->avatar}}" alt="Card image cap"></a>
 						</div>
 						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
+							<h5 class="card-title">{{$pro->name}}</h5>	
+							@if($pro->promotion->per_decr != 0)
+							<strike class="giam-gia card-link">
+								{{number_format($pro->price, 0)}}								
+								<span class="don-vi-tien">đ</span></strike>							
+							<span href="#" class="gia card-link">{{number_format($pro->price - ceil(($pro->price*$pro->promotion->per_decr)/100), 0)}}<span class="don-vi-tien">đ</span></span>
+							@else
+								<span href="#" class="gia card-link">{{number_format($pro->price , 0)}}<span class="don-vi-tien">đ</span></span>
+							@endif
 						</div>													
 					</div>
 				</div>	
-				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-					<div class="card">
-						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-						</div>													
-					</div>
-				</div>
-				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-					<div class="card">
-						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-						</div>													
-					</div>
-				</div>
-				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-					<div class="card">
-						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-						</div>													
-					</div>
-				</div>		
+				@endforeach		
+				
 			</div>	
+			@endif
 			
+			@if(count($cateProduct))
 			<div class="section-title-wrap display">
-				<h2 class="section-title">Vẫn đang diễn ra</h2>
+				<h2 class="section-title">Các danh mục sản phẩm</h2>
 			</div>
 			
 			<div class="row">
+				@foreach($cateProduct as $child)
+				@if(count($child->product))
 				<a href="" class="col-lg-6 col-md-6 col-sm-6">
 					<div class="sale-cart-currentSale">
 						<div class="sale-cart-img-wrap">
-							<img src="asset/images/5bd2c3e6dc46179e78dccdf3.jpg" alt="" class="sale-cart-img">
+							<img src="{{$child->image}}" alt="" class="sale-cart-img">
 						</div>
 						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">Giảm Đến 64% - Mande Thời Trang Nữ</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<span class="end-time-timer">7 ngày</span>
-								</span>
-							</div>
+							<div class="sale-cart-currentSaleTitle">{{$child->name}}</div>							
 						</div>
 					</div>
 				</a>
-
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
-					<div class="sale-cart-currentSale">
-						<div class="sale-cart-img-wrap">
-							<img src="asset/images/5bcff930b510720001868042.jpg" alt="" class="sale-cart-img">
-						</div>
-						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">Giảm Đến 64% - Mande Thời Trang Nữ</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<span class="end-time-timer">7 ngày</span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
-					<div class="sale-cart-currentSale">
-						<div class="sale-cart-img-wrap">
-							<img src="asset/images/5bcea2de7176290001132489.png" alt="" class="sale-cart-img">
-						</div>
-						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">Giảm Đến 56% - Aigle Áo Khoác Nữ</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<span class="end-time-timer">7 ngày</span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
-					<div class="sale-cart-currentSale">
-						<div class="sale-cart-img-wrap">
-							<img src="asset/images/5bcdc0839eaacb000149929d.jpg" alt="" class="img-fluid sale-cart-img">
-						</div>
-						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">Giảm Đến 64% - Mande Thời Trang Nữ</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<span class="end-time-timer">7 ngày</span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
-					<div class="sale-cart-currentSale">
-						<div class="sale-cart-img-wrap">
-							<img src="asset/images/5bc7082fcf27440001f70b5e.jpg" alt="" class="img-fluid sale-cart-img">
-						</div>
-						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">Giảm Đến 60% - Hity Thời Trang Nữ</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<span class="end-time-timer">7 ngày</span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
-					<div class="sale-cart-currentSale">
-						<div class="sale-cart-img-wrap">
-							<img src="asset/images/5bc94d41dc04600001c4c0f6.jpg" alt="" class="img-fluid sale-cart-img">
-						</div>
-						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">Candie's, La Chapelle, Ulife Style</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<span class="end-time-timer">7 ngày</span>
-								</span>
-							</div>
-						</div>
-					</div>
-				</a>
+				@endif
+				@endforeach
 			</div>
+			@endif
 		</div>
 	</section><!-- END CONTENT -->
 
