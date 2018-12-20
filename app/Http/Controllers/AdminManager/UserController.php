@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Redirect;
+use Gloudemans\Shoppingcart\Facades\Cart; 
+
 class UserController extends Controller
 {
     public function getList()
@@ -80,7 +83,7 @@ class UserController extends Controller
             //kiểm tra ngdung có bị khóa hay không
             if(Auth::user()->enable == 1) 
             {                
-                return redirect('/tatcasanpham/9');
+                return Redirect::action('UserController\BeforeCartController@giohang');
             }
             // người dùng bị khóa
             else
