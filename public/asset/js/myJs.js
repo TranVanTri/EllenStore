@@ -82,7 +82,7 @@ $(document).ready(function() {
 		loop:true,
 		autoplayHoverPause:true,
 		autoplay:true,
-		autoplayTimeout:3000,
+		autoplayTimeout:4000,
 		animateOut:'slideOutRight',
 	});
 
