@@ -63,9 +63,6 @@ class PromotionController extends Controller
         
         $prom->history = $arrayData;
         $prom->save();
-        $sp = $req->sp;
-        $pro = Product::whereIn('id',$sp);
-        $pro->update(['idPromotion'=>$prom->id, 'isPromotion'=>1]);
         return redirect('admin/promotion/add')->with('thongbao','Thêm thành công!');
     }
 

@@ -563,7 +563,7 @@ h4.cart-title span {
 .sale-cart-currentSaleTitle{
     font-weight: 400;
     margin: 0;
-    width: 65%;
+    width: 60%;
     float: left;
     padding-right: 8px;
     color: #4e595d;
@@ -578,7 +578,7 @@ h4.cart-title span {
 .sale-card-endTimeWrap{
     display: block;
     margin-top: 0;
-    width: 35%;
+    width: 40%;
     padding-left: 8px;
     color: rgba(78,89,93,.7);
     font-size: 1rem;
@@ -1725,7 +1725,7 @@ i.fa {
 /*****************END SEARCH BOX****************************/
 
 
-/*chỉnh Css hình ảnh sản phẩm ở trang giỏ hàng*/
+/*chá»‰nh Css hÃ¬nh áº£nh sáº£n pháº©m á»Ÿ trang giá» hÃ ng*/
 .hinhAnhSanPham{
     width: 50px;
 }

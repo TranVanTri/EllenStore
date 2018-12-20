@@ -77,6 +77,15 @@ $(document).ready(function() {
 		startPosition: 'URLHash'
 	});
 
+	$('.banner.owl-carousel').owlCarousel({
+		items:1,
+		loop:true,
+		autoplayHoverPause:true,
+		autoplay:true,
+		autoplayTimeout:3000,
+		animateOut:'slideOutRight',
+	});
+
 	$('.other-image-product ul.owl-carousel').owlCarousel({
 		items:3,
 		margin:20,

@@ -7,11 +7,18 @@ use DB;
 use App\CategoryGroup;
 use App\CategoryProduct;
 use App\Product;
+use App\Promotion;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
 use Auth;
 class BeforeCartController extends Controller
 {
+
+    public function getTrangChu(){
+
+        $promotion = Promotion::where('enable',1)->get();
+        return view('user.trangchu',compact('promotion'));
+    }
 
     public function getViewProduct($name, $id)
     {	

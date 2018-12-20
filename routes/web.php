@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-}); 
+
 
 Route::group(['namespace' => 'AdminAuth'], function() {
 
@@ -149,6 +147,8 @@ Route::resource('/cart','CartController');
 
 
 Route::group(['namespace' => 'UserController'], function() {
+
+    Route::get('/', 'BeforeCartController@getTrangChu'); 
     // dò tất cả sản phẩm theo category_product
     Route::get('/tat-ca-san-pham/{name}/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
 

@@ -69,7 +69,8 @@
 				</div>
 				<div>Giỏ hàng của bạn trống</div>
 				<div>
-					<button class="cart-shopping">Tiếp tục mua sắm</button>
+					<a class="cart-shopping" href="">Tiếp tục mua sắm</a>
+					
 				</div>
 			</div>
 			@endif
