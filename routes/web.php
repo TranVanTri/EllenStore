@@ -151,6 +151,7 @@ Route::resource('/cart','CartController');
 Route::group(['namespace' => 'UserController'], function() {
     // dò tất cả sản phẩm theo category_product
     Route::get('/tat-ca-san-pham/{name}/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
+    
 
     // dò sản phẩm theo id của sản phẩm
     Route::get('/chi-tiet-san-pham/{name}/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');

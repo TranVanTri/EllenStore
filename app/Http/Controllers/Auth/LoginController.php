@@ -43,7 +43,7 @@ class LoginController extends Controller
         return User::create([
             'name' => $user->name,
             'email' => $user->email,
-            'password' => bcrypt('secret'),
+            'password' => bcrypt('secret123!@#'),
             'provider' => strtoupper($provider),
             'provider_id' => $user->id
         ]);

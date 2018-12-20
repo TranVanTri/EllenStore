@@ -24,13 +24,10 @@ class InCartController extends Controller
 
     public function xemgiohang()
     {      
-      if(Auth::id())
+      if(Auth::id())/* User đã login vào hệ thống*/
       {
          $id = Auth::id();
          $user = User::find($id);
-         // $email = Auth::user()->email;
-         // echo $email; 
-         // echo "<br>";
 
          /*---------------Add new Bill into database ----------------------*/
           $bill = new Bill;
@@ -54,36 +51,37 @@ class InCartController extends Controller
           
           $bill->note = "Chưa note";
           $bill->save();
+          
          foreach(Cart::content() as $row) 
          {
-          echo 'You have ' . $row->qty . ' items of ' . $row->name . ' with description: "' . $row->price . '" in your cart.<br>';
-          
-
-
 
           /*----------------------Add new BillDetail into database----------------------*/
           $billDetail = new BillDetail;
           $billDetail->idBill = $bill->id;
-          $billDetail->idProduct =$row->id;
+          $billDetail->idProduct = $row->id;
           $billDetail->nameProduct = $row->name;
           $billDetail->quantity = $row->qty;
           $billDetail->price = $row->price;
           $billDetail->save();
-          
 
+          
         }
-      }
-      else{
+        /*
+          -lưu thành công giỏ hàng
+          -tạo hóa đơn thành công
+          -tạo chi tiết hóa đơn
+          -xóa bỏ session của giò hàng
+          */
+          //remove the content of a cart
+          Cart::destroy();
+          /*Thêm vào db thành công, redirect về trang chủ*/
+          $redirect_to = 'tatcasanpham';
+          return redirect()->route($redirect_to,['id' => 9,'name' => 'ao-thun']);
+      } // end if Auth::user
+      else{ /*User chưa login vào hệ thống*/
         return redirect()->route('loginUser');
       }
 
     }
-
-    public function xemTatCaGioHang()
-    {
-        
-    }
-
-
 
 }

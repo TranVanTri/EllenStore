@@ -32,20 +32,19 @@ class BeforeCartController extends Controller
 
 
     public function giohang(){
+        
+        $content = Cart::content();
+        $total = Cart::total();
+
         // khi khách hàng đăng nhập rồi
         if(Auth::id()){
             $id = Auth::id();
             $user = User::find($id);
-            $content = Cart::content();
-            $total = Cart::total();
-
             return view('cart.home',compact('content','total','user'));
         }
         // khi khách hàng chưa đăng nhập
-        else{
-            $content = Cart::content();
-            $total = Cart::total();
-
+        else
+        {
             return view('cart.home',compact('content','total'));
         }
         
