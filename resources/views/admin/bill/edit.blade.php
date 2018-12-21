@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <label>Tên khách hàng</label>
-                        <input class="form-control" type="text" name="fullName" disabled required maxlength="100" minlength="3" value="{{$bill->user->fullName}}" />
+                        <input class="form-control" type="text" name="fullName" disabled required maxlength="100" minlength="3" value="{{$bill->user->name}}" />
                     </div>
                     
                     <div class="form-group">
@@ -50,15 +50,15 @@
                     <div class="form-group">
                         <label>Trạng thái</label>
                         <label class="radio-inline">
-                            <input name="billStatus" value="1" type="radio" 
-                            @if($bill->billStatus ==1)
+                            <input name="billStatus" value="0" type="radio" 
+                            @if($bill->billStatus ==0)
                                 checked 
                             @endif
                             >Đã thanh toán
                         </label>
                         <label class="radio-inline">
-                            <input name="billStatus" value="0" type="radio"
-                            @if($bill->billStatus ==0)
+                            <input name="billStatus" value="1" type="radio"
+                            @if($bill->billStatus ==1)
                                 checked 
                             @endif
                             >Chưa thanh toán

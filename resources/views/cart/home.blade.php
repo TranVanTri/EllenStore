@@ -107,7 +107,7 @@
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-6">
 									<label class="cart-quantity">Số lượng:</label>
-									<input type="number" name="" value="{{$cartItem->qty}}" class="form-control">
+									<input type="text" name="" value="{{$cartItem->qty}}" class="form-control" disabled />
 									<label class=""><strong>Size:</strong> {{$cartItem->options->has('size')? $cartItem->options->size : ''}}</label>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 text-right">
@@ -210,7 +210,8 @@
 																$child->options->avatar : ''}}" alt="" ></td>
 															<td>{{$child->price}}</td>
 															<td >
-																<input type="number" style=" text-align: right;" name="qty"  value="{{$child->qty}}" class="form-control qty">
+																<input type="text" style=" text-align: right;" name="qty"  value="{{$child->qty}}" class="form-control qty"
+																disabled />
 																
 															</td>
 

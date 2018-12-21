@@ -50,26 +50,20 @@ class CartController extends Controller
 
     }
 
-    public function create($productId)
-    {
-        
-    }
 
-    public function store(Request $request)
+    public function edit(Request $request,$id)
     {
-        
-        
-    }
+        if ($request->has('numberBuy'))
+        {
+            $amount = $request->numberBuy;
+        } 
+        else 
+        {
+            $amount = 1;
+        }
 
-    public function show($id)
-    {
-       
-       
-    }
-    public function edit($id)
-    {
         $product = DB::table('product')->where('id',$id)->first();
-        Cart::add($id,$product->name,1,$product->price,['size'=>'M','avatar'=>$product->avatar]);
+        Cart::add($id,$product->name,$amount,$product->price,['size'=>'M','avatar'=>$product->avatar]);
 
         if(Auth::id()){
             /*User  login vào hệ thống*/
@@ -95,5 +89,21 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function create($productId)
+    {
+        
+    }
+
+    public function store(Request $request)
+    {
+        
+        
+    }
+
+    public function show($id)
+    {
+       
+       
     }
 }
