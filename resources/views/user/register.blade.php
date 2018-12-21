@@ -28,7 +28,7 @@
 		                @endif
 
 
-						<form role="form" action="register" method="POST">
+						<form role="form" action="register" method="POST" id="formRegister">
 							 {!! csrf_field() !!}
 							<div class="form-group">
 							    <label for="email">Địa chỉ email</label>
@@ -51,7 +51,7 @@
 							    <input type="text" class="form-control" id="address" name="address"> 				
 							 </div>
 							 
-							 <button type="submit" class="signin-form-btn">Đăng nhập</button>
+							 <button type="submit" id="submit" class="signin-form-btn">Đăng ký</button>
 						</form>
 						<div class="register-policy">
 							Bạn đồng ý với

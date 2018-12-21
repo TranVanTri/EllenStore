@@ -211,6 +211,13 @@ $(document).ready(function() {
 	            $('#submit').prop('disabled', 'disabled');
 	        }
     	}
+    	if($("#formRegister").length){
+    		if ($("#formRegister").valid()) {
+            	$('#submit').prop('disabled', false);  
+	        } else {
+	            $('#submit').prop('disabled', 'disabled');
+	        }
+    	}
     });
 
 
@@ -264,6 +271,69 @@ $(document).ready(function() {
 				maxlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
 			},
 			
+		}		
+	});
+
+	//formRegister
+	$('#formRegister').validate({
+		rules: {
+			email:{
+				required:true,
+				email:true,
+			},
+			password:{
+				required:true,
+				minlength:6,
+				maxlength:50,
+				password:true
+			},
+			repassword:{
+				equalTo: '#password',
+				required: true,
+				minlength:6,
+				maxlength:50
+			},
+			address:{
+				required:true,
+				characterAndNumberAndDash:true,
+				minlength:3,
+				maxlength:100
+			},
+			phone:{
+				required:true,
+				maxlength:11,
+				minlength:10,
+				NumberOnly: true
+			}
+
+		},
+		messages: {
+			
+			email:{
+				required: 'Bạn chưa nhập email.',
+				email: 'Bạn chưa nhập đúng định dạng email'
+			},
+			password:{
+				required: 'Bạn chưa nhập mật khẩu.',
+				minlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
+				maxlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
+			},
+			repassword:{
+				required: 'Bạn chưa nhập lại mật khẩu.',
+				minlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
+				maxlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
+				equalTo : 'Mật khẩu chưa trùng khớp.'
+			},
+			address: {
+				required: 'Bạn chưa nhập địa chỉ.',
+				minlength: 'Địa chỉ có dộ dài từ 3-100 kí tự.',
+				maxlength: 'Địa chỉ có dộ dài từ 3-100 kí tự.',
+			},
+			phone:{
+				required: 'Bạn chưa nhập số điện thoại.',
+				maxlength: 'Số điện thoại có độ dài từ 10-11 kí số.',
+				minlength: 'Số điện thoại có độ dài từ 10-11 kí số.'
+			}
 		}		
 	});
 
