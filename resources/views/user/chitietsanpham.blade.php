@@ -77,7 +77,7 @@
 						<div class="row">
 							
 							<!-- Form điều khiển trang giỏ hàng -->
-							<form class="form-select" action="{{route('cart.edit',$child->id)}}">
+							<form class="form-select" action="{{route('cart.edit',$product->id)}}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="form-group">
 									<div class="pro-properties-text">Màu sắc</div>
