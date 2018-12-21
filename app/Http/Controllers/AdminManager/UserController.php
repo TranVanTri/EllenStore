@@ -27,11 +27,13 @@ class UserController extends Controller
     public function postAdd(UserRequest $req)
     {
         $user = new User;
-        $user->fullName = $req->Ten;
+        $user->name = $req->Ten;
         $user->email = $req->Email;
         $user->password = bcrypt($req->Password);
         $user->address = $req->DiaChi;
-        $user->phone = $req->SoDT;    
+        $user->phone = $req->SoDT;  
+        $user->provider = 'Null';
+        $user->provider_id = 'Null';  
         $user->save();
        
         return redirect('admin/user/add')->with('thongbao','Thêm thành công!');
@@ -47,7 +49,7 @@ class UserController extends Controller
     public function postEdit(UserEditRequest $req, $id)
     {
         $user = User::find($id);        
-        $user->fullName = $req->Ten;
+        $user->name = $req->Ten;
         if($req->changepass == "on"){
            $user->password = bcrypt($req->Password);
         }
@@ -108,6 +110,55 @@ class UserController extends Controller
     }
 
     public function userregister(){
-        print_r('expression');
+        return view('user.register');
     }
+
+    public function postUserRegister(Request $req){
+
+        $this->validate($req,
+            [
+                'email'=>'required|unique:users,email|email',
+                'password'=>'required|min:6|max:50|regex: /^[a-zA-Z\d]+$/i',
+                'repassword'=>'required|same:password|regex: /^[a-zA-Z\d]+$/i',
+                'phone'=>'required|numeric|min:9',
+                'address'=>'required'
+            ],
+            [
+                'email.required'=>'Bạn chưa nhập Email.',
+                'email.unique'=>'Email đã tồn tại. Bạn vui lòng đăng nhập nhé.',
+                'email.email'=>'Email không hợp lệ.',
+                'password.min' => 'Mật khẩu có độ dài từ 6-50 ký tự.',
+                'password.max'=> 'Mật khẩu có độ dài từ 6-50 ký tự.',
+                'password.required' => 'Bạn chưa nhập mật khẩu',
+                'password.regex'=> 'Mật khẩu chỉ bao gồm chữ thường, chữ hoa không dấu và số.',
+
+                'repassword.same' => 'Mật khẩu chưa trùng khớp.',
+                'repassword.required' => 'Bạn chưa nhập lại mật khẩu',
+                'repassword.regex'=>'Mật khẩu chỉ bao gồm chữ thường, chữ hoa không dấu và số.',
+                'phone.required' => 'Bạn chưa nhập số điện thoại liên hệ',
+                'phone.numeric' => 'Vui lòng chỉ nhập ký tự số',
+                'phone.min' => 'Số điện thoại không ít hơn 10 số',
+                'address.required'=> 'Vui lòng điền địa chỉ của bạn.'
+
+            ]);
+        $user = new User;
+        $user->name= $req->email;
+        $user->email = $req->email;
+        $user->password = bcrypt($req->password);
+        $user->address = $req->address;
+        $user->phone = $req->phone;    
+
+        $user->provider = 'Null';
+        $user->provider_id = 'Null';
+
+        $user->save();
+        
+        
+        return redirect('/')->with('thongbao','Thêm thành công!');
+
+    }
+
+
+
+
 }

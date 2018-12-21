@@ -31,7 +31,7 @@ class UserEditRequest extends FormRequest
             'Password'=>'nullable|min:6|max:50|regex: /^[a-zA-Z\d]+$/i',
             'PasswordAgain' => 'nullable|same:Password',
             'DiaChi' => 'min:3|max:100|nullable|regex: /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i',
-            'SoDT' => 'max:11|nullable|min:6|regex: /^[\d]+$/i',
+            'SoDT' => 'max:11|nullable|min:10|regex: /^[\d]+$/i',
         ];
     }
 
@@ -53,8 +53,8 @@ class UserEditRequest extends FormRequest
             'DiaChi.min'=> 'Địa chỉ có dộ dài từ 3-100 kí tự.',
             'DiaChi.max'=> 'Địa chỉ có dộ dài từ 3-100 kí tự.',
             'DiaChi.regex'=> 'Tên địa chỉ chỉ bao gồm chữ thường, chữ hoa số và dấu gạch ngang.',
-            'SoDT.min' => 'Số điện thoại có độ dài từ 6-11 kí số.',
-            'SoDT.max' => 'Số điện thoại có độ dài từ 6-11 kí số.',
+            'SoDT.min' => 'Số điện thoại có độ dài từ 10-11 kí số.',
+            'SoDT.max' => 'Số điện thoại có độ dài từ 10-11 kí số.',
             'SoDT.regex' => 'Chỉ nhập kí tự số',
         ];
     }

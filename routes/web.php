@@ -30,6 +30,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
     Route::get('logout','UserController@getUserLogout');
 
     Route::get('register',['as'=>'userregister','uses'=>'UserController@userregister']);
+    Route::post('register',['as'=>'postUserRegister','uses'=>'UserController@postUserRegister']);
 
 });
 

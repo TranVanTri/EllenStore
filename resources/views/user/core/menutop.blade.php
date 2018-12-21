@@ -25,7 +25,7 @@
 					<button class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
 					<ul class="login">
 						<li><a href="{{Route('loginUser')}}">Đăng nhập</a></li>
-						<li><a href="">Tạo tài khoản</a></li>
+						<li><a href="{{route('userregister')}}">Tạo tài khoản</a></li>
 					</ul>
 				</div>
 			</div>					
