@@ -200,7 +200,72 @@ $(document).ready(function() {
 	// *************************************END XU LY Tat CA SAN PHAM****************************************
 	// *************************************XU LY LOGIN****************************************
 
-	
+	//validation
+
+	$('input').on('blur', function() {
+
+    	if($("#formLogin").length){
+    		if ($("#formLogin").valid()) {
+            	$('#submit').prop('disabled', false);  
+	        } else {
+	            $('#submit').prop('disabled', 'disabled');
+	        }
+    	}
+    });
+
+
+
+ 	jQuery.validator.addMethod("characterAndNumberAndDash", function(value, element) {
+	  return this.optional(element) || /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i.test(value);
+	}, "Chỉ nhập kí tự bao gồm chữ thường, chữ hoa, số và dấu gạch ngang."); 
+
+	jQuery.validator.addMethod("password", function(value, element) {
+	  return this.optional(element) || /^[a-zA-Z\d]+$/i.test(value);
+	}, "Mật khẩu chỉ bao gồm chữ thường, chữ hoa không dấu và số.");
+
+	jQuery.validator.addMethod("NumberOnly", function(value, element) {
+	  return this.optional(element) || /^[\d]+$/i.test(value);
+	}, "Chỉ nhập số."); 
+
+	jQuery.validator.addMethod("characterOnly", function(value, element) {
+	  return this.optional(element) || 
+	  /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i.test(value);
+	}, "Chỉ nhập chữ thường và chữ hoa");  
+
+	jQuery.validator.addMethod("customUrl", function(value, element) {
+	  return this.optional(element) || 
+	  /^[a-zA-Z_\.\:\/\-\d]+$/i.test(value);
+	}, "Url không hợp lệ.");  
+
+	//formLogin
+	$('#formLogin').validate({
+		rules: {
+			email:{
+				required:true,
+				email:true,
+			},
+			Password:{
+				required:true,
+				minlength:6,
+				maxlength:50,
+				password:true,
+			},
+
+		},
+		messages: {
+			
+			email:{
+				required: 'Bạn chưa nhập email.',
+				email: 'Bạn chưa nhập đúng định dạng email',
+			},
+			password:{
+				required: 'Bạn chưa nhập mật khẩu.',
+				minlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
+				maxlength: 'Mật khẩu có độ dài từ 6-50 ký tự.',
+			},
+			
+		}		
+	});
 
 	// *************************************END XU LY LOGIN****************************************
 });

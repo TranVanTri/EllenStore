@@ -1729,3 +1729,7 @@ i.fa {
 .hinhAnhSanPham{
     width: 50px;
 }
+
+label.error{
+    color: red;
+}
