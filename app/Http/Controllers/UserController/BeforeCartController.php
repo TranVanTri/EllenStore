@@ -19,9 +19,14 @@ class BeforeCartController extends Controller
         $prohighLight = Product::where([['enable',1], ['highLight',1]])->get();
         $promotion = Promotion::where('enable',1)->get();
         $slide = Slide::where('enable',1)->get();
-
-        
-        return view('user.trangchu',compact('promotion','prohighLight','slide'));
+        $idProBuyMany = DB::select('select bill_detail.idProduct as id from product, bill_detail where product.id = bill_detail.idProduct and ((select count(bill_detail.idProduct) from bill_detail) >= ?) group by bill_detail.idProduct', [4]);
+        $arrayid = array();
+        foreach($idProBuyMany as $key){
+            array_push($arrayid, $key->id);
+        }
+        $productBuyMany = Product::find($arrayid);     
+       
+        return view('user.trangchu',compact('promotion','prohighLight','slide','productBuyMany'));
     }
 
     public function getViewProduct($name, $id)
