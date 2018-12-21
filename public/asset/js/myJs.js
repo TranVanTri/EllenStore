@@ -120,7 +120,20 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	// $(document).on('click', '.san-pham .other-image-product ul li a', function(event) {
+	// 	event.preventDefault();
+		
+	// });
 	$('.image-product a').fancybox({
+		openEffect : 'elastic',
+		openSpeed  : 150,
+
+		closeEffect : 'elastic',
+		closeSpeed  : 150
+	});
+
+	$('.san-pham .other-image-product ul li a').fancybox({
 		openEffect : 'elastic',
 		openSpeed  : 150,
 
