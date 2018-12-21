@@ -10,27 +10,34 @@
 					<div class="card-body">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item"><a href="#">Sản phẩm áo</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Sản phẩm tào lao</li>
+								<li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+								<li class="breadcrumb-item"><a href="{{route('tatcasanpham', ['id' => $product->category_product->id, 'name' => str_slug($product->category_product->name)])}}">Sản phẩm áo</a></li>
+								<li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
 							</ol>
 						</nav>						
 					</div>
 				</div>
 			</div>
 		</div>
-		@foreach($product as $child)
 		<div class="san-pham row">
 			<div class="col-lg-5 col-md-5 col-sm-5">
 				<div class="anh-sp row justify-content-center">					
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="image-product owl-carousel text-center">
-							<a data-hash="1" rel="image-pro" href="asset/images/anh_sp/1.jpg"><img class="img-thumbnail" src="{{$child->avatar}}" alt=""></a>
+							<a data-hash="1" rel="image-pro" href="{{$product->avatar}}"><img class="img-thumbnail" src="{{$product->avatar}}" alt=""></a>
 
 							<!-- Chỗ này làm gì ấy nhỉ ? -->
-							<a data-hash="2" rel="image-pro" href="asset/images/anh_sp/2.jpg">
+							@if(isset($product->otherImg))
+						
+							@foreach(json_decode($product->otherImg)  as $val)
+								<a rel="image-pro" href="{{$val}}">
+									<img class="img-thumbnail" src="{{$val}}" alt=""></a>
+							
+							@endforeach
+							@endif
+							{{-- <a data-hash="2" rel="image-pro" href="asset/images/anh_sp/2.jpg">
 							<img class="img-thumbnail" src="asset/images/anh_sp/2.jpg" alt=""></a>
-							<a data-hash="3" rel="image-pro" href="asset/images/anh_sp/3.jpg"><img class="img-thumbnail" src="asset/images/anh_sp/3.jpg" alt=""></a>
+							<a data-hash="3" rel="image-pro" href="asset/images/anh_sp/3.jpg"><img class="img-thumbnail" src="asset/images/anh_sp/3.jpg" alt=""></a> --}}
 						</div>
 					</div>					
 				</div>
@@ -39,10 +46,17 @@
 				<div class="other-image-product row justify-content-center">
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<ul class="owl-carousel">
-							@if(isset($child->otherImg))
-							<li>
-								<a href="#1"><img class="img-thumbnail" src="{{$child->otherImg}}" alt=""></a>
+							<li>								
+								<a href="{{$product->avatar}}" rel="image-pro"><img class="img-thumbnail" src="{{$product->avatar}}" alt=""></a>							
 							</li>
+							@if(isset($product->otherImg))
+							
+							@foreach(json_decode($product->otherImg)  as $val)
+							<li>								
+								<a href="{{$val}}" rel="image-pro"><img class="img-thumbnail" src="{{$val}}" alt=""></a>								
+							</li>
+							
+							@endforeach
 							@endif
 
 						</ul>	
@@ -54,10 +68,10 @@
 				<div class="pro-content row">					
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						
-						<div class="pro-name row">{{$child->name}}</div>
+						<div class="pro-name row">{{$product->name}}</div>
 						<div class="pro-price row">
 							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span class="gia card-link">{{$child->price}}<span class="don-vi-tien">đ</span></span>
+							<span class="gia card-link">{{$product->price}}<span class="don-vi-tien">đ</span></span>
 						</div>
 						<div class="pro-desc row"></div>
 						<div class="row">
@@ -101,7 +115,7 @@
 									</div>
 								</div>
 
-								<a href="{{route('cart.edit',$child->id)}}" ><button type="button" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
+								<a href="{{route('cart.edit',$product->id)}}" ><button type="button" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
 
 								<button type="button" class="btn mua-ngay">Mua ngay</button>
 							</form>
@@ -121,13 +135,13 @@
 				<div class="row">
 					<div class="mo-ta-content active col-lg-12 col-md-12 col-sm-12">
 						<strong>
-							@if(isset($child->describe))
-								{{ $child->describe }}
+							@if(isset($product->describe))
+								{{ $product->describe }}
 							@endif
 						</strong>
 						<br>
-							@if(isset($child->detail))
-								{!! $child->detail !!}
+							@if(isset($product->detail))
+								{!! $product->detail !!}
 							@endif
 					</div>
 					<div class="binh-luan-fb col-lg-12 col-md-12 col-sm-12">
@@ -136,7 +150,6 @@
 				</div>
 			</div>
 		</div>
-	@endforeach
 		<div class="mot-danhmuc row">
 			<!-- Danh sách các sản phẩm gần đây khách hàng xem -->
 			@include('user.core.spXemGanDay')

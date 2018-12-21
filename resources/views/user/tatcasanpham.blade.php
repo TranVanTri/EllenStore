@@ -10,7 +10,7 @@
 					<div class="card-body">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
 								@if(isset($dirName))
 									@foreach($dirName as $ch)
 									<li class="breadcrumb-item active" aria-current="page">{{$ch->name}}</li>
