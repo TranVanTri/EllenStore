@@ -26,20 +26,20 @@
 		                @if(session('loi'))
 		                <div class="alert alert-danger">{{session('loi')}}</div>
 		                @endif
-						<form role="form" action="login" method="POST">
+						<form  action="login" method="POST" id="formLogin">
 							 {!! csrf_field() !!}
 							<div class="form-group">
 							    <label for="email">Địa chỉ email</label>
-							    <input type="email" class="form-control" id="email" name="email" autofocus> 				
+							    <input type="email" class="form-control" id="email" value="{{old('email')}}" name="email" autofocus> 				
 							 </div>
 							 <div class="form-group">
 							    <label for="password">Mật khẩu</label>
-							    <input type="password" class="form-control" id="password" name="password"> 				
+							    <input type="password" class="form-control" required id="password" name="password"> 				
 							 </div>
 							 <div class="forgot-password">
 							 	<a href="">Bạn quên mật khẩu?</a>
 							 </div>
-							 <button type="submit" class="signin-form-btn">Đăng nhập</button>
+							 <button type="submit" id="submit" class="signin-form-btn">Đăng nhập</button>
 						</form>
 						<div class="signin-create-account">
 							Bạn chưa có tài khoản
