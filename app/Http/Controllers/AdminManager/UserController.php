@@ -106,4 +106,8 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function userregister(){
+        print_r('expression');
+    }
 }
