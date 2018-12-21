@@ -42,7 +42,7 @@ class BeforeCartController extends Controller
     }
 
     public function viewDetailProduct($name, $id){
-    	$product = Product::where('id',$id)->get();
+    	$product = Product::find($id);
     	return view('user/chitietsanpham',compact('product'));
     }
 
