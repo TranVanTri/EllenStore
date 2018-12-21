@@ -46,60 +46,36 @@
 			</div>
 			@endif
 
+			@if(count($productBuyMany))
 			<div class="section-title-wrap display">
-				<h2 class="section-title">Bán chạy nhất trong ngày</h2>
+				<h2 class="section-title">Sản phẩm bán chạy nhất</h2>
 			</div>
 
-			<div class="sp-lien-quan row owl-carousel">					
+			<div class="sp-lien-quan row owl-carousel">	
+				@foreach($productBuyMany as $pro)				
 				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
 					<div class="card">
 						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
+							<a href="{{route('chitietsanpham',['name' => str_slug($pro->name) ,'id' => $pro->id])}}"><img class="card-img-top" src="{{$pro->avatar}}" alt="Card image cap"></a>
 						</div>
 						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
+							<h5 class="card-title">{{$pro->name}}</h5>	
+							@if($pro->promotion->per_decr != 0)
+							<strike class="giam-gia card-link">
+								{{number_format($pro->price, 0)}}								
+								<span class="don-vi-tien">đ</span></strike>							
+							<span href="#" class="gia card-link">{{number_format($pro->price - ceil(($pro->price*$pro->promotion->per_decr)/100), 0)}}<span class="don-vi-tien">đ</span></span>
+							@else
+								<span href="#" class="gia card-link">{{number_format($pro->price , 0)}}<span class="don-vi-tien">đ</span></span>
+							@endif
 						</div>													
 					</div>
 				</div>	
-				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-					<div class="card">
-						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-						</div>													
-					</div>
-				</div>
-				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-					<div class="card">
-						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-						</div>													
-					</div>
-				</div>
-				<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-					<div class="card">
-						<div class="zoom-img">
-							<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-						</div>
-						<div class="card-body">
-							<h5 class="card-title">Áo trắng thanh lịch</h5>	
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-						</div>													
-					</div>
-				</div>		
+				@endforeach		
+				
 			</div>	
+			@endif
+
 			@if(count($prohighLight))
 			<div class="section-title-wrap display">
 				<h2 class="section-title">Sản phẩm nổi bật</h2>
