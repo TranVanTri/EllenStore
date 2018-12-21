@@ -70,8 +70,14 @@
 						
 						<div class="pro-name row">{{$product->name}}</div>
 						<div class="pro-price row">
-							<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-							<span class="gia card-link">{{$product->price}}<span class="don-vi-tien">đ</span></span>
+							@if($product->promotion->per_decr != 0)
+							<strike class="giam-gia card-link">
+								{{number_format($product->price, 0)}}								
+								<span class="don-vi-tien">đ</span></strike>							
+							<span href="#" class="gia card-link">{{number_format($product->price - ceil(($product->price*$product->promotion->per_decr)/100), 0)}}<span class="don-vi-tien">đ</span></span>
+							@else
+								<span href="#" class="gia card-link">{{number_format($product->price , 0)}}<span class="don-vi-tien">đ</span></span>
+							@endif
 						</div>
 						<div class="pro-desc row"></div>
 						<div class="row">
@@ -79,32 +85,29 @@
 							<!-- Form điều khiển trang giỏ hàng -->
 							<form class="form-select" action="{{route('cart.edit',$product->id)}}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<div class="form-group">
-									<div class="pro-properties-text">Màu sắc</div>
-									<div class="pro-properties form-check form-check-inline">
-										<input class="input-check form-check-input" type="radio" id="inlineCheckbox1" value="option1" checked name="mausac">
-										<label class="color-name form-check-label active" for="inlineCheckbox1">đỏ</label>
-										<img class="img-check active" src="asset/images/icons/select-pro.png" alt="">
-									</div>
-									<div class="pro-properties form-check form-check-inline">
-										<input class="input-check form-check-input" type="radio" id="inlineCheckbox2" value="option2" name="mausac">
-										<label class="color-name form-check-label" for="inlineCheckbox2">vàng</label>
-										<img class="img-check" src="asset/images/icons/select-pro.png" alt="">
-									</div>						
-
-								</div>					
+													
 								<div class="form-group">
 									<div class="pro-properties-text">Kích thước</div>
+									<?php $check = true;?>
+									@foreach($product->sizes as $size)
 									<div class="pro-properties form-check form-check-inline">
-										<input class="input-check form-check-input" type="radio" id="inlineCheckbox3" value="option1" checked name="kichthuoc">
-										<label class="size-name form-check-label active" for="inlineCheckbox3">m</label>
-										<img class="img-check active" src="asset/images/icons/select-pro.png" alt="">
+										<input class="input-check form-check-input" 
+										@if($check == true)
+										checked 
+										@endif
+										type="radio" id="inlineCheckbox3" value="{{$size->id}}" name="kichthuoc">
+										<label class="size-name form-check-label 
+										@if($check == true)
+										active 
+										@endif " for="inlineCheckbox3">{{$size->name}}</label>
+										<img class="img-check 
+										@if($check == true)
+										active 
+										@endif" src="asset/images/icons/select-pro.png" alt="">
 									</div>
-									<div class="pro-properties form-check form-check-inline">
-										<input class="input-check form-check-input" type="radio" id="inlineCheckbox4" value="option2" name="kichthuoc">
-										<label class="size-name form-check-label" for="inlineCheckbox4">l</label>
-										<img class="img-check" src="asset/images/icons/select-pro.png" alt="">
-									</div>						
+									<?php $check = false;?>
+									@endforeach
+															
 
 								</div>
 								<div class="pro-properties-number form-group">
