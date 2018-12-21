@@ -9,6 +9,9 @@
 
 	<div class="sp-lien-quan row owl-carousel">					
 		<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
+
+
+			<!-- sử dụng Local Storage để lưu các sản phẩm gần đâysử dụng Local Storage để lưu các sản phẩm gần đâysử dụng Local Storage để lưu các sản phẩm gần đâysử dụng Local Storage để lưu các sản phẩm gần đây -->
 			<div class="card">
 				<div class="zoom-img">
 					<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
@@ -19,42 +22,9 @@
 					<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
 				</div>													
 			</div>
+
 		</div>	
-		<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-			<div class="card">
-				<div class="zoom-img">
-					<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">Áo trắng thanh lịch</h5>	
-					<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-					<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-				</div>													
-			</div>
-		</div>
-		<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-			<div class="card">
-				<div class="zoom-img">
-					<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">Áo trắng thanh lịch</h5>	
-					<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-					<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-				</div>													
-			</div>
-		</div>
-		<div class="motkhoi col-lg-4 col-md-4 col-sm-6">
-			<div class="card">
-				<div class="zoom-img">
-					<a href="#"><img class="card-img-top" src="asset/images/anhsp.jpg" alt="Card image cap"></a>
-				</div>
-				<div class="card-body">
-					<h5 class="card-title">Áo trắng thanh lịch</h5>	
-					<strike class="giam-gia card-link">399.000<span class="don-vi-tien">đ</span></strike>
-					<span href="#" class="gia card-link">299.000<span class="don-vi-tien">đ</span></span>
-				</div>													
-			</div>
-		</div>		
+		
+		
 	</div>			
 </div>

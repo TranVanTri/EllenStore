@@ -73,10 +73,41 @@ class BillController extends Controller
 
     public function getBillDetail($id)
     {
-        $billdetail = BillDetail::select('idProduct','quantity')->where('idBill',$id)->get();
+        $billdetail = BillDetail::where('idBill',$id)->get();
+
+        echo "<table class='table table-hover'>
+            <thead>
+              <tr>
+                <th>Mã Sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+            ";
+            $tongTien = 0;
         foreach ($billdetail as $bd) {
-            echo "<strong style='color: #337ab7;'>Sản phẩm: </strong>".$bd->product->name." -<strong style='color: #337ab7;'>Số lượng: </strong>".$bd->quantity."</br>";
+
+            // echo "<strong style='color: #337ab7;'>Sản phẩm: </strong>".$bd->product->name." -<strong style='color: #337ab7;'>Số lượng: </strong>".$bd->quantity."</br>";
+
+            echo "<tr>
+                    <td>".$bd->idProduct."</td>
+                    <td>".$bd->nameProduct."</td>
+                    <td>".$bd->quantity."</td>
+                    <td>".$bd->price."</td>
+                    <td>".$bd->quantity*$bd->price."</td>
+                    
+                  </tr>
+            ";
+            $tongTien= $tongTien + ($bd->quantity*$bd->price);
         }
+        echo "
+
+             <strong>Tổng tiền:</strong> <h4 style='color:red;'>".number_format($tongTien,0)." VND </h4>            
+            </tbody>
+          </table>";
     }
 
     // public function getDelete($id)

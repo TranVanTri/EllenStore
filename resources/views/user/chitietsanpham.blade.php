@@ -63,7 +63,8 @@
 						<div class="row">
 							
 							<!-- Form điều khiển trang giỏ hàng -->
-							<form class="form-select">
+							<form class="form-select" action="{{route('cart.edit',$child->id)}}">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="form-group">
 									<div class="pro-properties-text">Màu sắc</div>
 									<div class="pro-properties form-check form-check-inline">
@@ -101,7 +102,7 @@
 									</div>
 								</div>
 
-								<a href="{{route('cart.edit',$child->id)}}" ><button type="button" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
+								<a href="{{route('cart.edit',$child->id)}}" ><button type="submit" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
 
 								<button type="button" class="btn mua-ngay">Mua ngay</button>
 							</form>

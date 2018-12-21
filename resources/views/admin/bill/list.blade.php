@@ -36,15 +36,15 @@
                 	@foreach($bills as $bill)
                     <tr class="odd gradeX" align="center">
                         <td>{{$bill->id}}</td>
-                        <td>{{$bill->user->fullName}}</td>
+                        <td>{{$bill->user->name}}</td>
                         <td>{{$bill->email}}</td>
                         <td>{{$bill->phone}}</td>
                         <td>{{$bill->addRess}}</td>
                         <td><button data="{{$bill->id}}" class="viewDetail btn btn-primary" data-toggle="modal" data-target="#myModal">Xem</button></td>  
-                        <td>@if($bill->billStatus == 1)
-                                Đã thanh toán
+                        <td>@if($bill->billStatus == 0)
+                                <span style="color: blue;">Đã thanh toán</span>
                             @else
-                                Chưa thanh toán
+                                <span style="color: red;">Chưa thanh toán</span>
                             @endif
                         </td>                                          
                         <td>{{$bill->note}}</td>
@@ -62,7 +62,7 @@
     <!-- /.container-fluid -->
 </div>
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
