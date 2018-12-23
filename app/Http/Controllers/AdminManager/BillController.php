@@ -96,8 +96,8 @@ class BillController extends Controller
                     <td>".$bd->idProduct."</td>
                     <td>".$bd->nameProduct."</td>
                     <td>".$bd->quantity."</td>
-                    <td>".$bd->price."</td>
-                    <td>".$bd->quantity*$bd->price."</td>
+                    <td>".number_format($bd->price,0)."</td>
+                    <td>".number_format($bd->quantity*$bd->price,0)."</td>
                     
                   </tr>
             ";
