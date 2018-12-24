@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <label>Tên tài khoản</label>
-                        <input class="form-control" type="text" name="Ten" placeholder="Nhập tên tài khoản" required maxlength="50" minlength="2" value="{{$user->fullName}}" />
+                        <input class="form-control" type="text" name="Ten" placeholder="Nhập tên tài khoản" required maxlength="50" minlength="2" value="{{$user->name}}" />
                     </div>
 
                     <div class="form-group">
