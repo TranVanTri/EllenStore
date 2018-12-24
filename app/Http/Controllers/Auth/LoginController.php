@@ -31,8 +31,6 @@ class LoginController extends Controller
         $redirect_to = 'tatcasanpham';
         return redirect()->route($redirect_to,['id' => 9,'name' => 'ao-thun']);
         //return redirect($this->redirectTo);
-        // $token = $user->token;
-        // return $token;
     }
 
     public function findOrCreateUser($user,$provider)
