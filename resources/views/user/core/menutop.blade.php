@@ -24,8 +24,13 @@
 					</ul>
 					<button class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
 					<ul class="login">
-						<li><a href="{{Route('loginUser')}}">Đăng nhập</a></li>
-						<li><a href="{{route('userregister')}}">Tạo tài khoản</a></li>
+						
+						@if(Auth::id())
+							<li><a href="{{route('UserLogout')}}">Đăng xuất</a></li>
+						@else
+							<li><a href="{{Route('loginUser')}}">Đăng nhập</a></li>
+							<li><a href="{{route('userregister')}}">Tạo tài khoản</a></li>
+						@endif
 					</ul>
 				</div>
 			</div>					
@@ -35,9 +40,9 @@
 				<div class="content-navbar">
 					<ul class="menu-group-category text-center">
 						@foreach($cateProduct as $child)
-						@if(count($child->product))
-						<li><a href="{{route('tatcasanpham',['name' => str_slug($child->name) ,'id' => $child->id])}}">{{$child->name}}</a></li>
-						@endif
+							@if(count($child->product))
+							<li><a href="{{route('tatcasanpham',['name' => str_slug($child->name) ,'id' => $child->id])}}">{{$child->name}}</a></li>
+							@endif
 						@endforeach
 					</ul>	 					
 				</div>	
