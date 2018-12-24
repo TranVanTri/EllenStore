@@ -114,7 +114,7 @@
 			<div class="row">
 				@foreach($cateProduct as $child)
 				@if(count($child->product))
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
+				<a href="{{route('tatcasanpham', ['id' => $child->id, 'name' => str_slug($child->name)])}}" class="col-lg-6 col-md-6 col-sm-6">
 					<div class="sale-cart-currentSale">
 						<div class="sale-cart-img-wrap">
 							<img src="{{$child->image}}" alt="" class="sale-cart-img">
