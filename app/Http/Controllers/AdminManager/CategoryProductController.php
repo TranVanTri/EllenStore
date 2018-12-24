@@ -107,7 +107,7 @@ class CategoryProductController extends Controller
         $catePro = CategoryProduct::find($id);
         $catePro->name = $req->Ten;
         $catePro->idCategoryGroup = $req->NhomDanhMuc;
-
+        $catePro->image = $req->image;
         $catePro->enable = $req->enable;        
 
 
