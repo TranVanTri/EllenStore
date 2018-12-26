@@ -619,8 +619,8 @@ $(document).ready(function() {
 		
 	}); 
 
-	//#formCategoryGroup, #formCategoryProduct
-	$('#formCategoryGroup, #formCategoryProduct').validate({
+	//#formCategoryGroup
+	$('#formCategoryGroup').validate({
 		rules: {
 			Ten: {
 				characterAndNumberAndDash:true,
@@ -634,6 +634,35 @@ $(document).ready(function() {
 				required: 'Vui lòng nhập tên danh mục.',
 				maxlength: 'Tên danh mục có độ dài 2-100 kí tự.',
 				minlength: 'Tên danh mục có độ dài 2-100 kí tự.'				
+			},
+			
+		},		
+	});
+
+	// #formCategoryProduct
+	$('#formCategoryProduct').validate({
+		rules: {
+			Ten: {
+				characterAndNumberAndDash:true,
+				required:true,
+				maxlength:100,
+				minlength:2			
+			},	
+			image: {
+				customUrl:true,
+				required:true,
+				maxlength: 190,
+			},				
+		},
+		messages: {
+			Ten: {				
+				required: 'Vui lòng nhập tên danh mục.',
+				maxlength: 'Tên danh mục có độ dài 2-100 kí tự.',
+				minlength: 'Tên danh mục có độ dài 2-100 kí tự.'				
+			},
+			image: {
+				required: "Vui lòng chọn ảnh sản phẩm.",				
+				maxlength: "Url sản phẩm có độ dài 190 kí tự.",				
 			},
 			
 		},		
