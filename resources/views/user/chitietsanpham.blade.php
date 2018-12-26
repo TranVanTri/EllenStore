@@ -120,10 +120,10 @@
 								</div>
 
 
-								<a href="{{route('cart.edit',$product->id)}}" ><button type="button" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
+								<a href="{{route('cart.edit',$product->id)}}" ><button type="submit" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
 
 
-								<button type="button" class="btn mua-ngay">Mua ngay</button>
+								<!-- <button type="button" class="btn mua-ngay">Mua ngay</button> -->
 							</form>
 						</div>
 						

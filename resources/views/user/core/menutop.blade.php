@@ -26,7 +26,7 @@
 					<ul class="login">
 						
 						@if(Auth::id())
-							<li><a href="{{route('UserLogout')}}">Đăng xuất</a></li>
+							<li><a href="{{route('getUserLogout')}}">Đăng xuất</a></li>
 						@else
 							<li><a href="{{Route('loginUser')}}">Đăng nhập</a></li>
 							<li><a href="{{route('userregister')}}">Tạo tài khoản</a></li>

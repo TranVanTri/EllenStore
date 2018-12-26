@@ -245,18 +245,18 @@
 					<!-- <div class="col-lg-12 col-md-12 col-sm-6"> -->
 						<h3 class="order-title">Thông tin người mua/nhận hàng</h3>
 						<div class="contact-form">
-							<!-- <form> -->
-								
+							<form action="{{ route('cart.store') }}">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Tên người nhận"
-										value="{{ ($user->name ?? '') }}" />		
+										value="{{ ($user->name ?? '') }}" required/>		
 									</div>
 									<div class="form-group">		
 										<input type="text" class="form-control" placeholder="Số điện thoại" 
-										value="{{ ($user->phone ?? '') }}" />							
+										value="{{ ($user->phone ?? '') }}" required />							
 									</div>
 									<div class="form-group">		
-										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" value="{{ ($user->address ?? '') }}">
+										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" value="{{ ($user->address ?? '') }}" required />
 									</div>
 									<div class="form-group">		
 										<textarea class="form-control" placeholder="Ghi chú"></textarea>
@@ -266,9 +266,11 @@
 										<span>Thanh toán sau khi nhận hàng.</span>
 									</div>
 
-									<a href="{{ route('cart.store') }}" ><button type="button" class="btn btn-block">Mua ngay</button></a>
+									<!-- <a href="{{ route('cart.store') }}" > -->
+										<button type="submit" class="btn btn-block">Mua ngay</button>
+									<!-- </a> -->
 								
-							<!-- </form> -->
+							</form>
 						</div>
 					</div> <!-- end div thông tin liên hệ -->
 				</div>
