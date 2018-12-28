@@ -16,32 +16,34 @@
 			<div class="section-title-wrap">
 				<h2 class="section-title">Ưu đãi dành cho bạn</h2>
 			</div>
-			<div class="row">
+			<div class="promotion row owl-carousel">
 				@foreach($promotion as $prom)
-				<a href="" class="col-lg-6 col-md-6 col-sm-6">
-					<div class="sale-cart-currentSale">
-						<div class="sale-cart-img-wrap">
-							<img src="{{$prom->image}}" alt="" class="sale-cart-img">
-						</div>
-						<div class="sale-cart-currentSaleInfo">
-							<div class="sale-cart-currentSaleTitle">{{$prom->name}} - Giảm Đến {{$prom->per_decr}}%</div>
-							<div class="sale-card-endTimeWrap">
-								<span class="sale-card-endTimeContent">
-									<i style="margin-right:unset;" class="fa fa-clock-o" aria-hidden="true"></i>
-									<span class="end-time-text">Còn</span>
-									<?php
-									$date1 = date("Y-m-d H:i:s",strtotime($prom->end_date_sale));
-									$date2 = date("Y-m-d H:i:s");
-									$ngay = tru2Ngay($date1,$date2, 'd');
-									$gio = tru2Ngay($date1,$date2, 'H');
-									$phut = tru2Ngay($date1,$date2, 'i');
-									?>
-									<span class="end-time-timer">{{$ngay}} ngày {{$gio}} giờ {{$phut}} phút</span>
-								</span>
+				<div class="col-lg-6 col-md-6 col-sm-6 mot-khuyen-mai">
+					<a href="" >
+						<div class="sale-cart-currentSale">
+							<div class="sale-cart-img-wrap">
+								<img src="{{$prom->image}}" alt="" class="sale-cart-img">
+							</div>
+							<div class="sale-cart-currentSaleInfo">
+								<div class="sale-cart-currentSaleTitle">{{$prom->name}} - Giảm Đến {{$prom->per_decr}}%</div>
+								<div class="sale-card-endTimeWrap">
+									<span class="sale-card-endTimeContent">
+										<i style="margin-right:unset;" class="fa fa-clock-o" aria-hidden="true"></i>
+										<span class="end-time-text">Còn</span>
+										<?php
+										$date1 = date("Y-m-d H:i:s",strtotime($prom->end_date_sale));
+										$date2 = date("Y-m-d H:i:s");
+										$ngay = tru2Ngay($date1,$date2, 'd');
+										$gio = tru2Ngay($date1,$date2, 'H');
+										$phut = tru2Ngay($date1,$date2, 'i');
+										?>
+										<span class="end-time-timer">{{$ngay}} ngày {{$gio}}h:{{$phut}}m</span>
+									</span>
+								</div>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
 				@endforeach				
 			</div>
 			@endif

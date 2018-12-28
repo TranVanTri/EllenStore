@@ -121,6 +121,29 @@ $(document).ready(function() {
 		}
 	});
 
+	$('.promotion.row.owl-carousel').owlCarousel({
+		loop:true,
+		autoplayHoverPause:true,
+		autoplay:true,
+		autoplayTimeout:5000,
+		responsiveClass:true,
+		responsive:{
+			0:{
+				items:1,
+				loop:true,
+				
+			},
+			600:{
+				items:1,
+				loop:true
+			},
+			1000:{
+				items:2,
+				loop:true,
+			}
+		}
+	});
+
 	// $(document).on('click', '.san-pham .other-image-product ul li a', function(event) {
 	// 	event.preventDefault();
 		

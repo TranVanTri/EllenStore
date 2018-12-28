@@ -105,6 +105,9 @@
 	.box ul li ul li a{
 		font-size: 12px;
 	}
+	.sale-card-endTimeWrap, .sale-cart-currentSaleTitle{
+		font-size: 12px;
+	}
 }
 
 @media (max-width: 766px){
@@ -171,8 +174,8 @@
 	.content .top-shadow, .content .section-title-wrap{
 		display: none;
 	}
-	.banner{
-		display: none;
+	.banner.owl-carousel{
+		display: none !important;
 	}
 
 }
@@ -197,6 +200,9 @@
 	    overflow-x: scroll;
 	    -webkit-overflow-scrolling: touch;
 	    display: table;
+	}
+	.zoom-img{
+		height: 235px;
 	}
 }
 
