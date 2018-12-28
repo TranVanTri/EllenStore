@@ -67,24 +67,7 @@
                     <button type="submit" id="submit" disabled="disabled" class="btn btn-warning">Sửa hóa đơn</button>
                                    
                 </div>
-                <div class="col-lg-5" style="padding-bottom:120px">
-                    <?php $dem = 1;?>
-                    @foreach($billdetail as $bd)
-                    <div class="form-group">
-                        @if($dem == 1)
-                        <label>Các sản phẩm</label>
-                        @endif
-                        <div class="input-group">
-                            <input type="text" class="form-control" disabled required maxlength="90" 
-                            value="{{$bd->product->name}}">
-                            <div class="input-group-btn">
-                              <button class="btn btn-default" type="button">{{$bd->quantity}}</button>
-                            </div>
-                        </div>
-                    </div>
-                    <?php $dem++;?>
-                    @endforeach                 
-                </div>
+               
             <form>
         </div>
         <!-- /.row -->
