@@ -29,7 +29,7 @@ $(document).ready(function() {
 		}else {
 			$('.back-to-top').removeClass('active');
 		}
-		if(vt_body>=500){
+		if(vt_body>=50){
 			$('.icon-search-toggle').addClass('show');
 		}else {
 			$('.icon-search-toggle').removeClass('show');
