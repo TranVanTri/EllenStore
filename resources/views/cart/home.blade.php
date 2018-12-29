@@ -267,7 +267,8 @@
 									</div>
 
 									<!-- <a href="{{ route('cart.store') }}" > -->
-										<button type="submit" class="btn btn-block">Mua ngay</button>
+										<button type="submit" class="btn btn-block" 
+										{{ Cart::count()>0 ? '' : 'disabled="disabled"' }}>Mua ngay</button>
 									<!-- </a> -->
 								
 							</form>
