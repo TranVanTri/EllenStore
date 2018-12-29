@@ -539,6 +539,14 @@ h4.cart-title span {
     text-align: center;
 }
 
+.promotion{
+    margin-left: 0;
+}
+
+.owl-item .mot-khuyen-mai{
+    display: table-cell;
+}
+
 .sale-cart-currentSale{    
     display: block;    
     float: none;    
@@ -550,11 +558,12 @@ h4.cart-title span {
     background-color: #f2f6fa;
     background-position: 50%;
     background-repeat: no-repeat;
-    height: auto;
+    height: 240px;
 }
 .sale-cart-img{
     width: 100%;
     display: block;
+    height: 100%;
 }
 .sale-cart-currentSaleInfo{
     position: relative;
@@ -1075,6 +1084,9 @@ input::-webkit-inner-spin-button {
     color: #ff99cc;
 }
 
+.sp-lien-quan{
+    margin-left: 0;
+}
 .sp-lien-quan .owl-nav button.owl-prev{
     width: 30px;
     height: 60px;
@@ -1408,17 +1420,20 @@ strike.giam-gia {
 .zoom-img {
     position: relative;
     overflow: hidden;
+    height: 330px;
 }
 
 .motkhoi .zoom-img img {
-    height: auto;
     width: 100%;
+    height: 100%;
     transition: 0.5s;
 }
 
 /* .motkhoi:hover .zoom-img img {
     transform: scale(1.2);
 } */
+
+
 
 .motkhoi .card {
     transition: 0.3s cubic-bezier(0.25, 0.1, 0.04, 1.04);
@@ -1725,7 +1740,7 @@ i.fa {
 /*****************END SEARCH BOX****************************/
 
 
-/*chá»‰nh Css hÃ¬nh áº£nh sáº£n pháº©m á»Ÿ trang giá» hÃ ng*/
+/*chÃƒÂ¡Ã‚Â»Ã¢â‚¬Â°nh Css hÃƒÆ’Ã‚Â¬nh ÃƒÂ¡Ã‚ÂºÃ‚Â£nh sÃƒÂ¡Ã‚ÂºÃ‚Â£n phÃƒÂ¡Ã‚ÂºÃ‚Â©m ÃƒÂ¡Ã‚Â»Ã…Â¸ trang giÃƒÂ¡Ã‚Â»Ã‚Â hÃƒÆ’Ã‚Â ng*/
 .hinhAnhSanPham{
     width: 50px;
 }

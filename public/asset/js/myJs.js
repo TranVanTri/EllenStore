@@ -29,7 +29,7 @@ $(document).ready(function() {
 		}else {
 			$('.back-to-top').removeClass('active');
 		}
-		if(vt_body>=500){
+		if(vt_body>=50){
 			$('.icon-search-toggle').addClass('show');
 		}else {
 			$('.icon-search-toggle').removeClass('show');
@@ -117,6 +117,29 @@ $(document).ready(function() {
 				nav:true,
 				loop:true,
 				navText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>']
+			}
+		}
+	});
+
+	$('.promotion.row.owl-carousel').owlCarousel({
+		loop:true,
+		autoplayHoverPause:true,
+		autoplay:true,
+		autoplayTimeout:5000,
+		responsiveClass:true,
+		responsive:{
+			0:{
+				items:1,
+				loop:true,
+				
+			},
+			600:{
+				items:1,
+				loop:true
+			},
+			1000:{
+				items:2,
+				loop:true,
 			}
 		}
 	});
