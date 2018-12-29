@@ -46,11 +46,10 @@ class InCartController extends Controller
 
         $billDetail->idBill = $getBill->id;
         $billDetail->idProduct = $row->id;
-
         $billDetail->nameProduct = $row->name;
+        $billDetail->size =   $row->options->has('size') ? $row->options->size : 'None';
         $billDetail->quantity = $row->qty;
         $billDetail->price = $row->price;
-
 
         $billDetail->save();              
       }

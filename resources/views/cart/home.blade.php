@@ -3,145 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ellen</title>
-	<base href="{{asset('')}}">
-	<link rel="stylesheet" href="asset/css/reset.css">
-	<link rel="stylesheet" href="asset/css/bootstrap.min.css">
-	<link rel="stylesheet" href="asset/fonts/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="asset/css/animate.css">
-	<link rel="stylesheet" href="asset/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="asset/fancybox-2.1.7/source/jquery.fancybox.css">
-	<link rel="stylesheet" href="asset/css/myCss.css">
-	<link rel="stylesheet" href="asset/css/media.css">
+	<title>Giỏ hàng của bạn</title>
+	@include('user.libraries.cssCode')
 
 </head>
 <body>
 	
 	<!-- Menutop -->
-	<div class="menu-top">		
-		<nav class="navbar-top">
-			<div class="container">
-				<button class="user-icon"><i class="fa fa-user" aria-hidden="true"></i></button>
-				<a href="" class="logo"><img src="asset/images/logo.png" alt=""></a>
-				<div class="content-navbar">
-					<ul class="menu-group-category">
-						<li>
-							<a href="">Áo</a>
-							<ul class="sub-menu">
-								<li><a href="">Áo thun</a></li>
-								<li><a href="">Áo khoác</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Quần</a>
-							<ul class="sub-menu">
-								<li><a href="">Quần short</a></li>
-								<li><a href="">Quần què</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="">Váy</a>
-							<ul class="sub-menu">
-								<li><a href="">Váy Xòe</a></li>
-								<li><a href="">Váy suông</a></li>
-							</ul>
-						</li>
-						<li><a href="">Phụ kiện</a></li>
-					</ul>
-					<button class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i>{{Cart::count()}}</button>
-					<ul class="login">
-						<li><a href="">Đăng nhập</a></li>
-						<li><a href="">Tạo tài khoản</a></li>
-					</ul>
-				</div>
-			</div>					
-		</nav>
-		<nav class="navbar-top-mobile">	
-			<div class="container">				
-				<div class="content-navbar">
-					<ul class="menu-group-category text-center">
-						<li><a href="">Áo thun</a></li>
-						<li><a href="">Áo khoác</a></li>
-						<li><a href="">Áo sơ mi</a></li>
-						<li><a href="">Quần short</a></li>
-						<li><a href="">Quần què</a></li>
-						<li><a href="">Quần jean</a></li>
-						<li><a href="">Váy Xòe</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Váy suông</a></li>
-						<li><a href="">Phụ kiện</a></li>
-					</ul>	 					
-				</div>	
-			</div>				
-		</nav>			
-	</div>
+	@include('user.core.menutop')
 	<div class="nen-xam"></div>
-	<div class="toggle-login">
-		<ul>
-			<li class="active"><a href="" class="logo"><img src="asset/images/logo.png" alt=""></a></li>
-			<li><a href="" class="btn btn-primary btn-login">Đăng nhập</a></li>
-			<li><a href="" class="btn btn-info btn-register">Tạo tài khoản</a></li>
-		</ul>	
-	</div>
-	<div class="cart">
-		<div class="cart-heading">
-			<div class="cart-close"><i class="fa fa-times" aria-hidden="true"></i></div>
-			<h4 class="cart-title">Giỏ hàng<span>(0 sản phẩm)</span></h4>
-		</div>
-		<div class="cart-body">
-			<div>
-				@if(isset($content))
-					@foreach($content as $cartItem)				
-					<div class="cart-product">
-						<div class="cart-product-img">
-							<a href=""><img src="{{$cartItem->options->has('avatar')?$cartItem->options->avatar:''}}" alt=""></a>
-						</div>
-						<div class="cart-info">
-							<div class="row">
-								<div class="cart-name col-lg-12 col-md-12 col-sm-12">
-									<a href="">{{$cartItem->name}}</a>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-6 col-md-6 col-sm-6">
-									<label class="cart-quantity">Số lượng:</label>
-									<input type="text" name="" value="{{$cartItem->qty}}" class="form-control" disabled />
-									<label class=""><strong>Size:</strong> {{$cartItem->options->has('size')? $cartItem->options->size : ''}}</label>
-								</div>
-								<div class="col-lg-6 col-md-6 col-sm-6 text-right">
-									<div class="cart-price">
-										<span class="cart-retail-price">422.000₫</span>
-										<span class="cart-sale-price">{{$cartItem->price}}</span>
-									</div>
-									<a href="" class="remove-product">Bỏ sản phẩm</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					@endforeach
-				@endif
-				
-			</div>
-			<hr>
-			<div>
-				<div class="row cart-sub-total">
-					<div class="my-col-6">Thành tiền: {{Cart::total()}}</div>
-					<div class="my-col-6 text-right"></div>
-				</div>
-				<div class="row">
-					<div class="my-col-6">Bạn đã được giảm:</div>
-					<div class="my-col-6 text-right"> Giá trị giảm ₫</div>
-				</div>
-			</div>
-			<button class="cart-btn">Tiến hành đặt hàng</button>
 
-			
-		</div>		
-	</div>
+
+	<!-- 2 nút sign in và sign up -->
+	@include('user.core.loginUser')
+
+	<!-- model hiển thị danh sách các sản phẩm trong giỏ hàng -->
+	@include('user.core.modelCart')
 	<!-- endMenutop -->
 	<div class="clearfix"></div>
+	
 
 	<section class="content">
 		<div class="container">
@@ -216,7 +96,7 @@
 															</td>
 
 
-															<td>{{$child->options->has('size')? $child->options->size : ''}}</td>
+															<td>{{$child->options->has('size')? $child->options->size : 'U'}}</td>
 															<th>{{$child->price * $child->qty}}</th>
 															<th>
 																<a href="{!! url('xoa-san-pham',['id'=>$child->rowId]) !!}">Xóa</a>
@@ -283,18 +163,12 @@
 </div>
 
 </section><!-- END CONTENT -->
-<div class="clearfix"></div>
+	<div class="clearfix"></div>
 	@include('user.core.footer')
-<div class="back-to-top">
-	<i class="fa fa-angle-double-up" aria-hidden="true"></i>
-</div>
-<div class="search">
-	<div class="icon-search-toggle icon-search-animate"><i class="fa fa-search" aria-hidden="true"></i></div>	
-	<div class="search-box">
-		<input type="text" placeholder="Nhập tên sản phẩm">
-	</div>
-	<div class="icon-search"><i class="fa fa-search" aria-hidden="true"></i></div>
-</div>
+	
+	@include('user.core.backToTop')
+
+	@include('user.core.inputSearch')
 
 	@include('user.libraries.jsCode')
 

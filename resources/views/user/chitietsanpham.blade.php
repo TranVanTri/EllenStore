@@ -79,6 +79,10 @@
 								<span href="#" class="gia card-link">{{number_format($product->price , 0)}}<span class="don-vi-tien">đ</span></span>
 							@endif
 						</div>
+
+
+
+						
 						<div class="pro-desc row"></div>
 						<div class="row">
 							
@@ -91,11 +95,15 @@
 									<?php $check = true;?>
 									@foreach($product->sizes as $size)
 									<div class="pro-properties form-check form-check-inline">
-										<input class="input-check form-check-input" 
-										@if($check == true)
-										checked 
-										@endif
-										type="radio" id="inlineCheckbox3" value="{{$size->id}}" name="kichthuoc">
+
+										<input type="radio" name="kichthuoc" value="{{$size->name}}"
+										style="height: 25px;
+											  	width: 25px;" 	required	
+										 /><strong>{{$size->name}}</strong>	
+  										
+										<!-- <input class="input-check form-check-input"
+										type="radio" value="{{$size->name}}" 
+										name="kichthuoc" />
 										<label class="size-name form-check-label 
 										@if($check == true)
 										active 
@@ -103,13 +111,15 @@
 										<img class="img-check 
 										@if($check == true)
 										active 
-										@endif" src="asset/images/icons/select-pro.png" alt="">
+										@endif" src="asset/images/icons/select-pro.png" alt="Error" /> -->
 									</div>
-									<?php $check = false;?>
+									<!-- <?php $check = false;?> -->
 									@endforeach
 															
 
 								</div>
+
+
 								<div class="pro-properties-number form-group">
 									<div class="pro-properties-text">Số lượng</div>
 									<div class="group-input-number">

@@ -81,6 +81,7 @@ class BillController extends Controller
                 <th>Mã Sản phẩm</th>
                 <th>Tên sản phẩm</th>
                 <th>Số lượng</th>
+                <th>Size</th>
                 <th>Đơn giá</th>
                 <th>Thành tiền</th>
               </tr>
@@ -96,6 +97,7 @@ class BillController extends Controller
                     <td>".$bd->idProduct."</td>
                     <td>".$bd->nameProduct."</td>
                     <td>".$bd->quantity."</td>
+                    <td>".$bd->size."</td>
                     <td>".number_format($bd->price,0)."</td>
                     <td>".number_format($bd->quantity*$bd->price,0)."</td>
                     

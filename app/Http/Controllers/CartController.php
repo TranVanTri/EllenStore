@@ -121,8 +121,17 @@ class CartController extends Controller
             $amount = 1;
         }
 
+        if ($request->has('kichthuoc'))
+        {
+            $size = $request->kichthuoc;
+        } 
+        else 
+        {
+            $size = "None";
+        }
         $product = DB::table('product')->where('id',$id)->first();
-        Cart::add($id,$product->name,$amount,$product->price,['size'=>'M','avatar'=>$product->avatar]);
+
+        Cart::add($id,$product->name,$amount,$product->price,['size'=>$size,'avatar'=>$product->avatar]);
 
         if(Auth::id()){
             /*User  login vào hệ thống*/
