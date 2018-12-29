@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Gloudemans\Shoppingcart\Facades\Cart;   
 use Illuminate\Http\Request;
@@ -7,13 +6,19 @@ use App\Product;
 use App\Quotation;
 use Auth;
 use DB;
+
 use Illuminate\Support\Facades\Redirect;
 
 use App\User; 
+use App\Bill;
+use App\BillDetail;
+use App\CategoryGroup;
+use App\CategoryProduct;
+
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 /*
             $id.time().uniqid(mt_rand(),true)
@@ -33,18 +38,72 @@ class CartController extends Controller
             instance(Auth::user()->email)
             *** lấy email của user đã login, sau đó lưu vào shoppingcart với giá trị email đó
 */
-        if(Auth::id()){/*User  login vào hệ thống*/
+        if(Auth::id())
+        {
+            /*User  login vào hệ thống*/
             $id = Auth::id();
-
+            $user = User::find($id);
             /*store your cart instance into the database*/
 
             Cart::instance(Auth::user()->email)->store($id.time().uniqid(mt_rand(),true));
+
+            
+
         }
         else /*User chưa login vào hệ thống*/
         {
             return redirect()->route('loginUser');
         }
           
+        if(Cart::content()){
+            $bill = new Bill;
+            $bill->idUser = $user->id;
+            $bill->name = $user->name;
+            $bill->email = $user->email;
+
+            if(isset($request->phone))
+            {
+                $bill->phone = $request->phone;
+            }
+            elseif($user->phone != null)
+            {
+                $bill->phone = $user->phone;
+            }
+            else{
+                $bill->phone = '00';
+            }
+
+            if(isset($request->address))
+            {
+                $bill->addRess = $request->address;
+            }
+            elseif($user->address != null)
+            {
+                $bill->addRess = $user->address;
+            }
+            else{
+                $bill->address = '00';
+            }
+
+
+            if(isset($request->note))
+            {
+                $bill->note = $request->note;
+            }
+            else{
+                $bill->note = "Không note";
+            }
+            
+            $bill->save();
+
+
+            
+        }
+        else{
+            print_r("None content");
+        }
+
+
         return Redirect::action('UserController\InCartController@xemgiohang');
          
 

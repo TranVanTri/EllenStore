@@ -248,18 +248,18 @@
 							<form action="{{ route('cart.store') }}">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Tên người nhận"
+										<input type="text" name="name" class="form-control" placeholder="Tên người nhận"
 										value="{{ ($user->name ?? '') }}" required/>		
 									</div>
 									<div class="form-group">		
-										<input type="text" class="form-control" placeholder="Số điện thoại" 
+										<input type="text" class="form-control" placeholder="Số điện thoại"  name="phone" 
 										value="{{ ($user->phone ?? '') }}" required />							
 									</div>
 									<div class="form-group">		
-										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" value="{{ ($user->address ?? '') }}" required />
+										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" name="address" value="{{ ($user->address ?? '') }}" required />
 									</div>
 									<div class="form-group">		
-										<textarea class="form-control" placeholder="Ghi chú"></textarea>
+										<textarea class="form-control" placeholder="Ghi chú" name="note"></textarea>
 									</div>
 									<div class="hinh-thuc-thanh-toan">		
 										<label><span>(*)</span>Hình thức thanh toán:&nbsp;</label>

@@ -22,50 +22,39 @@ class InCartController extends Controller
         return redirect()->route('giohang');
     }
 
-    public function xemgiohang()
+    public function xemgiohang(Request $request)
     {      
       if(Auth::id())/* User đã login vào hệ thống*/
       {
-         $id = Auth::id();
-         $user = User::find($id);
+       $id = Auth::id();
+       $user = User::find($id);
 
-         /*---------------Add new Bill into database ----------------------*/
-          $bill = new Bill;
-          $bill->idUser = $user->id;
-          $bill->name = $user->name;
-          $bill->email = $user->email;
+       /*---------------Add new Bill into database ----------------------*/
 
-          if($user->phone != null){
-            $bill->phone = $user->phone;
-          }
-          else{
-            $bill->phone = '0000000000';
-          }
-          
-          if($user->address != null){
-            $bill->addRess = $user->address;
-          }
-          else{
-            $bill->address = '0000000000';
-          }
-          
-          $bill->note = "Chưa note";
-          $bill->save();
-          
-         foreach(Cart::content() as $row) 
-         {
+       foreach(Cart::content() as $row) 
+       {
+        /*----------------------Add new BillDetail into database----------------------*/
+        $billDetail = new BillDetail;
 
-          /*----------------------Add new BillDetail into database----------------------*/
-          $billDetail = new BillDetail;
-          $billDetail->idBill = $bill->id;
-          $billDetail->idProduct = $row->id;
-          $billDetail->nameProduct = $row->name;
-          $billDetail->quantity = $row->qty;
-          $billDetail->price = $row->price;
-          $billDetail->save();
+        /*Vì 1 lý do nào đó mà không thể để đoạn code này trong file CartController. không thể lấy dươc
+        id của Bill vừa dc tạo nên đành để ở đây!
+        Câu query lấy id của Bill của khách hàng, sắp xếp giảm dần dể lấy cái id cuối cùng
+        */
+        $getBill = Bill::where('idUser','=',$id)->orderBy('id', 'desc')
+               ->take(1)
+               ->first();
 
-          
-        }
+        $billDetail->idBill = $getBill->id;
+        $billDetail->idProduct = $row->id;
+
+        $billDetail->nameProduct = $row->name;
+        $billDetail->quantity = $row->qty;
+        $billDetail->price = $row->price;
+
+
+        $billDetail->save();              
+      }
+        
         /*
           -lưu thành công giỏ hàng
           -tạo hóa đơn thành công
