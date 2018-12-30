@@ -95,7 +95,7 @@ class BillController extends Controller
 
             echo "<tr>
                     <td>".$bd->idProduct."</td>
-                    <td>".$bd->nameProduct."</td>
+                    <td><strong>".$bd->nameProduct."</strong></td>
                     <td>".$bd->quantity."</td>
                     <td>".$bd->size."</td>
                     <td>".number_format($bd->price,0)."</td>

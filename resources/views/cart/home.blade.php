@@ -88,7 +88,7 @@
 															<th scope="row">{{$child->name}}</th>
 															<td><img class="hinhAnhSanPham" src="{{$child->options->has('avatar')? 
 																$child->options->avatar : ''}}" alt="" ></td>
-															<td>{{$child->price}}</td>
+															<td>{{ number_format($child->price, 0) }}</td>
 															<td >
 																<input type="text" style=" text-align: right;" name="qty"  value="{{$child->qty}}" class="form-control qty"
 																disabled />
@@ -109,7 +109,7 @@
 													<td>Tổng số lượng:</td>
 													<td>{{Cart::count()}}</td>
 													<td>Tổng tiền:</td>
-													<td>{!! Cart::total() !!}VND</td>	
+													<td>{{ Cart::total() }}VND</td>	
 												</tr>
 
 												

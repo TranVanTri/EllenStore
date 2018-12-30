@@ -8,13 +8,15 @@ use Auth;
 use DB;
 
 use Illuminate\Support\Facades\Redirect;
-
+use App\Promotion;
 use App\User; 
 use App\Bill;
 use App\BillDetail;
 use App\CategoryGroup;
 use App\CategoryProduct;
-
+use App\Slide;
+use Illuminate\Database\QueryException;
+use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
@@ -129,9 +131,20 @@ class CartController extends Controller
         {
             $size = "None";
         }
-        $product = DB::table('product')->where('id',$id)->first();
 
-        Cart::add($id,$product->name,$amount,$product->price,['size'=>$size,'avatar'=>$product->avatar]);
+
+        //$product = DB::table('product')->where('id',$id)->first();
+        $product = Product::find($id);
+
+        if($product->promotion->per_decr != 0)
+        {
+            $money = ($product->price - ($product->price*$product->promotion->per_decr)/100);
+        }
+        else{
+            $money = $product->price;
+        }
+
+        Cart::add($id,$product->name,$amount,$money,['size'=>$size,'avatar'=>$product->avatar]);
 
         if(Auth::id()){
             /*User  login vào hệ thống*/

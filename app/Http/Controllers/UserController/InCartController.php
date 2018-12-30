@@ -46,7 +46,25 @@ class InCartController extends Controller
 
         $billDetail->idBill = $getBill->id;
         $billDetail->idProduct = $row->id;
-        $billDetail->nameProduct = $row->name;
+        /* xử lý sp khuyến mãi.
+          Nếu là sp km thì ghi thêm %km của sp đó
+        */
+        $product = Product::find($row->id);
+        if($product->promotion->per_decr != 0)
+        {
+            $sale_percent = ($product->promotion->per_decr);
+        }
+        else{
+            $sale_percent = 0;
+        }
+
+        if($sale_percent != 0){
+          $billDetail->nameProduct = $row->name."<br>Khuyến mãi <mark>".$sale_percent."%</mark>";
+        }
+        else{
+          $billDetail->nameProduct = $row->name;
+        }
+        
         $billDetail->size =   $row->options->has('size') ? $row->options->size : 'None';
         $billDetail->quantity = $row->qty;
         $billDetail->price = $row->price;
