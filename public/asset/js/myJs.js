@@ -170,14 +170,17 @@ $(document).ready(function() {
 		$('.pro-properties .color-name').next().removeClass('active');
 		$(this).addClass('active');
 		$(this).next().addClass('active');
+
 	});
 
 	//CHECK  SIZE SAN PHAM
 	$('.pro-properties .size-name').click(function(event) {
 		$('.pro-properties .size-name').removeClass('active');
 		$('.pro-properties .size-name').next().removeClass('active');
+		$('.input-check').removeAttr('checked');
 		$(this).addClass('active');
 		$(this).next().addClass('active');
+		$(this).prev().attr('checked','true');
 	});
 
 	//CHON SO LUONG SAN PHAM

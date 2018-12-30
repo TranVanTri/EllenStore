@@ -96,14 +96,17 @@
 									@foreach($product->sizes as $size)
 									<div class="pro-properties form-check form-check-inline">
 
-										<input type="radio" name="kichthuoc" value="{{$size->name}}"
+										{{-- <input type="radio" name="kichthuoc" value="{{$size->name}}"
 										style="height: 25px;
 											  	width: 25px;" 	required	
-										 /><strong>{{$size->name}}</strong>	
+										 /><strong>{{$size->name}}</strong> --}}	
   										
-										<!-- <input class="input-check form-check-input"
+										<input class="input-check form-check-input"
 										type="radio" value="{{$size->name}}" 
-										name="kichthuoc" />
+										name="kichthuoc" @if($check == true)
+										checked 
+										@endif />
+
 										<label class="size-name form-check-label 
 										@if($check == true)
 										active 
@@ -111,9 +114,9 @@
 										<img class="img-check 
 										@if($check == true)
 										active 
-										@endif" src="asset/images/icons/select-pro.png" alt="Error" /> -->
+										@endif" src="asset/images/icons/select-pro.png" alt="Error" />
 									</div>
-									<!-- <?php $check = false;?> -->
+									<?php $check = false;?>
 									@endforeach
 															
 
