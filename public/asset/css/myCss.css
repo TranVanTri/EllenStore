@@ -1026,7 +1026,14 @@ h4.title-2 i.fa.active{
     color: #f37db8;
 }
 
+/*display none for input number*/
 
+/*for firefox*/
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+/*forchrome*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
