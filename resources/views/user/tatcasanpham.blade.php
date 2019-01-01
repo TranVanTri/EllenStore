@@ -38,7 +38,7 @@
 									<div class="mot-danhmuc row">
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<div class= row">
-												<div class="tieu-de-danhmuc col-lg-12 col-md-12 col-sm-12">
+												<div class="tieu-de-danhmuc">
 													<h1 class="text-left">
 														<a class="text-uppercase title-3">
 															@if(isset($dirName) && is_object($dirName))
@@ -54,6 +54,7 @@
 
 
 											<div class="row">
+												@if($products->count())
 												@foreach($products as $child)
 												<div class="motkhoi my-col-6-product col-lg-4 col-md-6 col-sm-6">
 													<div class="card">
@@ -76,7 +77,14 @@
 													</div>
 												</div>
 												@endforeach
+												@else
+												<div class="col-lg-6 col-md-6 col-sm-6">
+													<span style="font-size: 18px; color: red;">Không có sản phẩm nào!</span>
+												</div>
+												
+												@endif
 											</div>
+
 
 											<div class="row justify-content-center text-center">
 												<div class="btn-xem-them col-lg-2 col-md-2 col-sm-2">
