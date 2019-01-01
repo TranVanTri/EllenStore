@@ -14,7 +14,7 @@ return [
     ],
 
     'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
+        'secret' => '748dfc5e7b66229fb750569f7da8850b7bce7a15',
     ],
 
     'stripe' => [
@@ -26,6 +26,11 @@ return [
         'client_id' => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
         'redirect' => env('GOOGLE_URL'),
+    ],
+
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
     ],
    
 ];
