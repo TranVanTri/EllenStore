@@ -11,12 +11,12 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-								@if(isset($dirName))
+								@if(isset($dirName) && is_object($dirName))
 									@foreach($dirName as $ch)
 									<li class="breadcrumb-item active" aria-current="page">{{$ch->name}}</li>
 									@endforeach
 								@else
-									<li class="breadcrumb-item active" aria-current="page">Error</li>
+									<li class="breadcrumb-item active" aria-current="page">{{$dirName}}</li>
 								@endif
 							</ol>
 						</nav>						
@@ -40,9 +40,14 @@
 											<div class= row">
 												<div class="tieu-de-danhmuc col-lg-12 col-md-12 col-sm-12">
 													<h1 class="text-left">
-														<a class="text-uppercase title-3">@foreach($dirName as $ch)
+														<a class="text-uppercase title-3">
+															@if(isset($dirName) && is_object($dirName))
+															@foreach($dirName as $ch)
 															{{$ch->name}}
-														@endforeach</a>
+															@endforeach</a>
+															@else
+															{{$dirName}}
+															@endif
 													</h1>
 												</div>	
 											</div>
@@ -58,8 +63,14 @@
 														</div>
 														<div class="card-body">
 															<h5 class="card-title">{{$child->name}}</h5>	
-															<strike class="giam-gia card-link">{{$child->price}}<span class="don-vi-tien">đ</span></strike>
-															<span href="#" class="gia card-link">{{$child->price}}<span class="don-vi-tien">đ</span></span>
+															@if($child->promotion->per_decr != 0)
+															<strike class="giam-gia card-link">
+																{{number_format($child->price, 0)}}					
+																<span class="don-vi-tien">đ</span></strike>							
+															<span href="#" class="gia card-link">{{number_format($child->price - ceil(($child->price*$child->promotion->per_decr)/100), 0)}}<span class="don-vi-tien">đ</span></span>
+															@else
+																<span href="#" class="gia card-link">{{number_format($child->price , 0)}}<span class="don-vi-tien">đ</span></span>
+															@endif
 														</div>
 
 													</div>

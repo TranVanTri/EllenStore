@@ -53,6 +53,55 @@ class BeforeCartController extends Controller
         return view('user/tatcasanpham',compact('products', 'dirName'));
     }
 
+    public function getAllPromotion()//lấy tất cả san phẩm khuyến mãi
+    {   
+        
+        $products = Product::join('promotion', 'promotion.id', '=', 'product.idPromotion')->where([['promotion.enable','=', 1],['product.enable','=', 1]])->paginate(9);
+
+        // get the Name of the Category_Product
+        $dirName = 'Sản phẩm khuyến mãi';
+
+        return view('user/tatcasanpham',compact('products', 'dirName'));
+    }
+
+    public function getAllProduct()
+    {   
+        // need to change the id of the idCategoryProduct
+        
+        $products = Product::where('enable','=', 1)->paginate(9);
+
+        // get the Name of the Category_Product
+        $dirName = 'Tất cả sản phẩm';
+
+        return view('user/tatcasanpham',compact('products', 'dirName'));
+    }
+
+    public function getPriceSort($name)
+    {   
+        $dirName = 'Tất cả sản phẩm';
+        switch($name){
+            case 'smaller':
+                $products = Product::where([['price','<',200000],['enable','=', 1]])->paginate(9);
+                return view('user/tatcasanpham',compact('products', 'dirName'));
+            case 'both':
+                $products = Product::where([['price','>=',200000], ['price','<=',300000], ['enable','=', 1]])->paginate(9);
+                return view('user/tatcasanpham',compact('products', 'dirName'));
+            case 'bigger':
+                $products = Product::where([['price','>',300000],['enable','=', 1]])->paginate(9);
+                return view('user/tatcasanpham',compact('products', 'dirName'));
+            default:
+                return redirect()->back();
+        }
+        
+
+        // get the Name of the Category_Product
+        
+
+        return view('user/tatcasanpham',compact('products', 'dirName'));
+    }
+
+
+
 
     public function viewDetailProduct($name, $id){
     	$product = Product::find($id);

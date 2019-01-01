@@ -155,9 +155,18 @@ Route::group(['namespace' => 'UserController'], function() {
 
     // dò tất cả sản phẩm theo category_product
     Route::get('/tat-ca-san-pham/{name}/{id}','BeforeCartController@getViewProduct')->name('tatcasanpham');
+
+    Route::get('/tat-ca-san-pham','BeforeCartController@getAllProduct')->name('allproduct');
+
     //Khuyen mai
     Route::get('/khuyen-mai/{name}/{id}','BeforeCartController@getViewProductPromotion')->name('khuyenmai');
 
+    Route::get('/khuyen-mai','BeforeCartController@getAllPromotion')->name('allkhuyenmai');
+
+    //Sap xếp theo giá 
+    Route::get('/sap-xep/{name}','BeforeCartController@getPriceSort')->name('pricesort');
+
+    
     // dò sản phẩm theo id của sản phẩm
     Route::get('/chi-tiet-san-pham/{name}/{id}','BeforeCartController@viewDetailProduct')->name('chitietsanpham');
 
