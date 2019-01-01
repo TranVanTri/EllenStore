@@ -16,7 +16,7 @@
 									<li class="breadcrumb-item active" aria-current="page">{{$ch->name}}</li>
 									@endforeach
 								@else
-									<li class="breadcrumb-item active" aria-current="page">Error File name</li>
+									<li class="breadcrumb-item active" aria-current="page">Error</li>
 								@endif
 							</ol>
 						</nav>						
@@ -40,7 +40,7 @@
 											<div class= row">
 												<div class="tieu-de-danhmuc col-lg-12 col-md-12 col-sm-12">
 													<h1 class="text-left">
-														<a href="" class="text-uppercase title-3">@foreach($dirName as $ch)
+														<a class="text-uppercase title-3">@foreach($dirName as $ch)
 															{{$ch->name}}
 														@endforeach</a>
 													</h1>
@@ -69,7 +69,8 @@
 
 											<div class="row justify-content-center text-center">
 												<div class="btn-xem-them col-lg-2 col-md-2 col-sm-2">
-													<a href="#" class="btn btn-primary">Xem thêm</a>	
+													{{ $products->links('vendor.pagination.bootstrap-4') }}
+													{{-- <a href="#" class="btn btn-primary">Xem thêm</a>	 --}}
 												</div>
 											</div>
 

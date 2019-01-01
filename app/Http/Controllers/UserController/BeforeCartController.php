@@ -33,13 +33,26 @@ class BeforeCartController extends Controller
     {	
     	// need to change the id of the idCategoryProduct
     	
-    	$products = Product::where([['idCategoryProduct','=',$id],['enable','=', 1]])->get();
+    	$products = Product::where([['idCategoryProduct','=',$id],['enable','=', 1]])->paginate(9);
 
         // get the Name of the Category_Product
     	$dirName = CategoryProduct::where('id',$id)->get();
 
     	return view('user/tatcasanpham',compact('products', 'dirName'));
     }
+
+    public function getViewProductPromotion($name, $id)
+    {   
+        // need to change the id of the idCategoryProduct
+        
+        $products = Product::where([['idPromotion','=',$id],['enable','=', 1]])->paginate(9);
+
+        // get the Name of the Category_Product
+        $dirName = Promotion::where('id',$id)->get();
+
+        return view('user/tatcasanpham',compact('products', 'dirName'));
+    }
+
 
     public function viewDetailProduct($name, $id){
     	$product = Product::find($id);

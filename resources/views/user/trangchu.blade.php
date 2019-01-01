@@ -19,7 +19,7 @@
 			<div class="promotion row owl-carousel">
 				@foreach($promotion as $prom)
 				<div class="col-lg-6 col-md-6 col-sm-6 mot-khuyen-mai">
-					<a href="" >
+					<a href="{{route('khuyenmai', ['id' => $prom->id, 'name' => str_slug($prom->name)])}}" >
 						<div class="sale-cart-currentSale">
 							<div class="sale-cart-img-wrap">
 								<img src="{{$prom->image}}" alt="" class="sale-cart-img">
