@@ -4,7 +4,7 @@
 				<div class="content-footer row">
 					<div class="thong-tin-footer col-lg-5 col-md-5 col-sm-5">
 						<div class="row">
-							<div class="logo-footer"><img src="asset/images/logo.png" alt=""></div>
+							<div class="logo-footer"><img src="asset/images/finalLogo.jpg" alt=""></div>
 						</div>
 						<div class="row">
 							<ul>
