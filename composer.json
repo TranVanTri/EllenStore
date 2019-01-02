@@ -27,6 +27,7 @@
         },
         "files": [
             "app/functions/tru2Ngay.php"
+
         ]
     },
     "autoload-dev": {

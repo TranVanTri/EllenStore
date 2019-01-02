@@ -307,6 +307,10 @@ $(document).ready(function() {
 				required:true,
 				email:true,
 			},
+			name:{
+				required:true,
+				characterOnly:true,
+			},
 			password:{
 				required:true,
 				minlength:6,
@@ -363,6 +367,57 @@ $(document).ready(function() {
 		}		
 	});
 
+	$('#formOrder').validate({
+		rules: {
+			email:{
+				required:true,
+				email:true,
+			},
+			name:{
+				required:true,
+				characterOnly:true,
+			},
+			
+			address:{
+				required:true,
+				characterAndNumberAndDash:true,
+				minlength:3,
+				maxlength:100
+			},
+			phone:{
+				required:true,
+				maxlength:11,
+				minlength:10,
+				NumberOnly: true
+			}
+
+		},
+		messages: {
+			
+			email:{
+				required: 'Bạn chưa nhập email.',
+				email: 'Bạn chưa nhập đúng định dạng email'
+			},
+
+			name:{
+				required: 'Bạn chưa nhập tên.',
+				
+			},
+			
+			address: {
+				required: 'Bạn chưa nhập địa chỉ.',
+				minlength: 'Địa chỉ có dộ dài từ 3-100 kí tự.',
+				maxlength: 'Địa chỉ có dộ dài từ 3-100 kí tự.',
+			},
+			phone:{
+				required: 'Bạn chưa nhập số điện thoại.',
+				maxlength: 'Số điện thoại có độ dài từ 10-11 kí số.',
+				minlength: 'Số điện thoại có độ dài từ 10-11 kí số.'
+			}
+		}		
+	});
+
 	// *************************************END XU LY LOGIN****************************************
+	
 });
 

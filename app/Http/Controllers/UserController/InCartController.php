@@ -14,12 +14,36 @@ use App\Http\Controllers\Controller;
 use App\Quotation;
 use App\Bill;
 use App\BillDetail;
+use Mail;
 
 class InCartController extends Controller
 {
     public function xoasanpham($id){
-        Cart::remove($id);
-        return redirect()->route('giohang');
+      Cart::remove($id);
+      return redirect()->route('giohang');
+    }
+
+    public function sendMail(Bill $bill, $billDetailByIdBill){
+
+      $data = array(
+        'bill'=> $bill,
+        'billDetail' => $billDetailByIdBill,
+      );
+      Mail::send('user.ordermail', $data, function ($message) use ($data) {    
+     
+        $message->to($data['bill']->email);
+     
+        $message->bcc('tvtri1997document1@gmail.com', 'Quản trị');
+        // $message->cc('john@johndoe.com', 'John Doe');
+     
+        // $message->replyTo('john@johndoe.com', 'John Doe');
+     
+        $message->subject('HÓA ĐƠN ĐẶT HÀNG');
+     
+        // $message->priority(3);
+     
+        // $message->attach('pathToFile');
+      });
     }
 
     public function xemgiohang(Request $request)
@@ -28,6 +52,9 @@ class InCartController extends Controller
       {
        $id = Auth::id();
        $user = User::find($id);
+       $getBill = Bill::where('idUser','=',$id)->orderBy('id', 'desc')
+               ->take(1)
+               ->first();
 
        /*---------------Add new Bill into database ----------------------*/
 
@@ -40,9 +67,7 @@ class InCartController extends Controller
         id của Bill vừa dc tạo nên đành để ở đây!
         Câu query lấy id của Bill của khách hàng, sắp xếp giảm dần dể lấy cái id cuối cùng
         */
-        $getBill = Bill::where('idUser','=',$id)->orderBy('id', 'desc')
-               ->take(1)
-               ->first();
+        
 
         $billDetail->idBill = $getBill->id;
         $billDetail->idProduct = $row->id;
@@ -71,7 +96,8 @@ class InCartController extends Controller
 
         $billDetail->save();              
       }
-        
+        $billDetailByIdBill = BillDetail::where('idBill','=',$getBill->id)->get();
+        $this->sendMail($getBill, $billDetailByIdBill);
         /*
           -lưu thành công giỏ hàng
           -tạo hóa đơn thành công
@@ -82,12 +108,14 @@ class InCartController extends Controller
           Cart::destroy();
           /*Thêm vào db thành công, redirect về trang chủ*/
           $redirect_to = 'tatcasanpham';
-          return redirect()->route($redirect_to,['id' => 9,'name' => 'ao-thun']);
+          return redirect()->back()->with('thongbao','Đặt hàng thành công. Vui lòng kiểm tra email của bạn');
       } // end if Auth::user
       else{ /*User chưa login vào hệ thống*/
         return redirect()->route('loginUser');
       }
 
     }
+
+    
 
 }

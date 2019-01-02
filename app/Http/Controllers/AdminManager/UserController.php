@@ -117,6 +117,7 @@ class UserController extends Controller
 
         $this->validate($req,
             [
+                'name'=>'required|max:50',
                 'email'=>'required|unique:users,email|email',
                 'password'=>'required|min:6|max:50|regex: /^[a-zA-Z\d]+$/i',
                 'repassword'=>'required|same:password|regex: /^[a-zA-Z\d]+$/i',
@@ -124,6 +125,8 @@ class UserController extends Controller
                 'address'=>'required'
             ],
             [
+                'name.required'=>'Bạn chưa nhập Tên.',
+                'name.max'=> 'Tên có độ dài không quá 50 ký tự.',
                 'email.required'=>'Bạn chưa nhập Email.',
                 'email.unique'=>'Email đã tồn tại. Bạn vui lòng đăng nhập nhé.',
                 'email.email'=>'Email không hợp lệ.',
@@ -142,7 +145,7 @@ class UserController extends Controller
 
             ]);
         $user = new User;
-        $user->name= $req->email;
+        $user->name= $req->name;
         $user->email = $req->email;
         $user->password = bcrypt($req->password);
         $user->address = $req->address;
@@ -154,7 +157,7 @@ class UserController extends Controller
         $user->save();
         
         
-        return redirect('/')->with('thongbao','Thêm thành công!');
+        return redirect('/login')->with('thongbao','Thêm thành công!');
 
     }
 
