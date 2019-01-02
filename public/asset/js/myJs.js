@@ -228,23 +228,23 @@ $(document).ready(function() {
 
 	//validation
 
-	$('input').on('blur', function() {
+	// $('input').on('blur', function() {
 
-    	if($("#formLogin").length){
-    		if ($("#formLogin").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
-    	if($("#formRegister").length){
-    		if ($("#formRegister").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
-    });
+ //    	if($("#formLogin").length){
+ //    		if ($("#formLogin").valid()) {
+ //            	$('#submit').prop('disabled', false);  
+	//         } else {
+	//             $('#submit').prop('disabled', 'disabled');
+	//         }
+ //    	}
+ //    	if($("#formRegister").length){
+ //    		if ($("#formRegister").valid()) {
+ //            	$('#submit').prop('disabled', false);  
+	//         } else {
+	//             $('#submit').prop('disabled', 'disabled');
+	//         }
+ //    	}
+ //    });
 
 
 
@@ -277,7 +277,7 @@ $(document).ready(function() {
 				required:true,
 				email:true,
 			},
-			Password:{
+			password:{
 				required:true,
 				minlength:6,
 				maxlength:50,

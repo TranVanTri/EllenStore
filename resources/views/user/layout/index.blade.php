@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ellen</title>
+	@yield('title')
 
 	@include('user.libraries.cssCode')
 </head>

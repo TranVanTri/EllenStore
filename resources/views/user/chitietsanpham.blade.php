@@ -1,4 +1,7 @@
 @extends('user.layout.index')
+@section('title')
+<title>Chi tiết sản phẩm</title>
+@endsection
 @section('content')
 
 <section class="content">

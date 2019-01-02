@@ -1,4 +1,7 @@
 @extends('user.layout.index')
+@section('title')
+<title>Trang chủ</title>
+@endsection
 @section('content')
 
 	<div class="banner owl-carousel">

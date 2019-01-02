@@ -1,4 +1,7 @@
 @extends('user.layout.index')
+@section('title')
+<title>Đăng ký</title>
+@endsection
 @section('content')
 <section class="content">
 	<div class="container">
