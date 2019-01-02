@@ -101,12 +101,10 @@ class BeforeCartController extends Controller
 
     public function viewDetailProduct($name, $id){
     	$product = Product::find($id);
-        if(Auth::id()){
-            $watchList = WatchList::where("idUser",Auth::id())->get();
-            
-            return view('user/chitietsanpham',compact('product','watchList'));
-        }
-    	return view('user/chitietsanpham',compact('product'));
+
+        $randomProducts=Product::all()->random(5);
+
+    	return view('user/chitietsanpham',compact('product','randomProducts'));
     }
 
 

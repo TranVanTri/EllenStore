@@ -23,4 +23,5 @@ class RecentProduct extends Controller
     }
 
     
+    
 }

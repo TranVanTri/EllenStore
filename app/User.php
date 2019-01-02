@@ -33,8 +33,5 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Bill","idUser",'id');
     }
-    public function watchlist()
-    {
-        return $this->belongsToMany("\App\WatchList","watchlist","idUser",'idProduct');
-    }
+   
 }
