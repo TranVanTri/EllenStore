@@ -68,7 +68,6 @@ class BeforeCartController extends Controller
     public function getAllProduct()
     {   
         
-        
         $products = Product::where('enable','=', 1)->paginate(9);
 
       

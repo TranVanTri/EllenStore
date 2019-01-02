@@ -268,4 +268,7 @@ class ProductController extends Controller
             $flag = false; 
         }      
     }
+
+   
+
 }

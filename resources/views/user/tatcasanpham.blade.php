@@ -57,7 +57,7 @@
 
 
 											<div class="row">
-												@if($products->count())
+												@if(isset($products))
 												@foreach($products as $child)
 												<div class="motkhoi my-col-6-product col-lg-4 col-md-6 col-sm-6">
 													<div class="card">
