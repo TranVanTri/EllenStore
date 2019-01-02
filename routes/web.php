@@ -178,6 +178,7 @@ Route::group(['namespace' => 'UserController'], function() {
 
     Route::get('xem-gio-hang',['as'=>'xemgiohang','uses'=>'InCartController@xemgiohang']);
 
+
 });
 
 

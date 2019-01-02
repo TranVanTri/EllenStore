@@ -15,7 +15,7 @@ use App\Quotation;
 use App\Bill;
 use App\BillDetail;
 
-class InCartController extends Controller
+class RecentProduct extends Controller
 {
     public function xoasanpham($id){
         Cart::remove($id);

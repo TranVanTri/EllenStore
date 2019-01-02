@@ -61,6 +61,8 @@
 													<!-- <input name="_token" type="hidden" 
 													value="{!! csrf_token() !!}" > -->
 													@if(isset($content))
+														{{-- <data id="orderlist" orderlist="{{Cart::content()}}"></data> --}}
+														
 														@foreach($content as $child)
 														<tr>
 															<th scope="row">{{$child->name}}</th>
@@ -85,7 +87,7 @@
 												
 												<tr>
 													<td>Tổng số lượng:</td>
-													<td>{{Cart::count()}}</td>
+													<td >{{Cart::count()}}</td>
 													<td>Tổng tiền:</td>
 													<td>{{ Cart::total() }}VND</td>	
 												</tr>
@@ -102,22 +104,38 @@
 					<div class="col-lg-6 col-md-6 col-sm-6">
 					<!-- <div class="col-lg-12 col-md-12 col-sm-6"> -->
 						<h3 class="order-title">Thông tin người mua/nhận hàng</h3>
+						<div class="col-lg-12">
+			                @if(count($errors) > 0)
+			                <div class="alert alert-danger">
+			                    @foreach($errors->all() as $err)
+			                        {{$err}}<br>
+			                    @endforeach
+			                </div>
+			                @endif
+			                @if(session('thongbao'))
+			                <div class="alert alert-success">{{session('thongbao')}}</div>
+			                @endif
+			            </div>
 						<div class="contact-form">
-							<form action="{{ route('cart.store') }}">
+							<form action="{{ route('cart.store') }}" id="formOrder">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<div class="form-group">
-										<input type="text" name="name" class="form-control" placeholder="Tên người nhận"
+										<input type="text" name="name" id="name" class="form-control" placeholder="Tên người nhận"
 										value="{{ ($user->name ?? '') }}" required/>		
 									</div>
+									<div class="form-group">
+										<input type="text" name="email" id="email" class="form-control" placeholder="email"
+										value="{{ ($user->email ?? '') }}" required/>		
+									</div>
 									<div class="form-group">		
-										<input type="text" class="form-control" placeholder="Số điện thoại"  name="phone" 
+										<input type="text" class="form-control" placeholder="Số điện thoại"  id="phone" name="phone" 
 										value="{{ ($user->phone ?? '') }}" required />							
 									</div>
 									<div class="form-group">		
-										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" name="address" value="{{ ($user->address ?? '') }}" required />
+										<input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" id="address" name="address" value="{{ ($user->address ?? '') }}" required />
 									</div>
 									<div class="form-group">		
-										<textarea class="form-control" placeholder="Ghi chú" name="note"></textarea>
+										<textarea class="form-control" id="note" placeholder="Ghi chú" name="note"></textarea>
 									</div>
 									<div class="hinh-thuc-thanh-toan">		
 										<label><span>(*)</span>Hình thức thanh toán:&nbsp;</label>
@@ -126,7 +144,7 @@
 
 									<!-- <a href="{{ route('cart.store') }}" > -->
 										<button type="submit" class="btn btn-block" 
-										{{ Cart::count()>0 ? '' : 'disabled="disabled"' }}>Mua ngay</button>
+										{{ Cart::count()>0 ? '' : 'disabled' }}>Mua ngay</button>
 									<!-- </a> -->
 								
 							</form>

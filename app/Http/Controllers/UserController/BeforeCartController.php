@@ -44,11 +44,11 @@ class BeforeCartController extends Controller
 
     public function getViewProductPromotion($name, $id)
     {   
-        // need to change the id of the idCategoryProduct
+        
         
         $products = Product::where([['idPromotion','=',$id],['enable','=', 1]])->paginate(9);
 
-        // get the Name of the Category_Product
+        
         $dirName = Promotion::where('id',$id)->get();
 
         return view('user/tatcasanpham',compact('products', 'dirName'));
@@ -59,7 +59,7 @@ class BeforeCartController extends Controller
         
         $products = Product::join('promotion', 'promotion.id', '=', 'product.idPromotion')->where([['promotion.enable','=', 1],['product.enable','=', 1]])->paginate(9);
 
-        // get the Name of the Category_Product
+       
         $dirName = 'Sản phẩm khuyến mãi';
 
         return view('user/tatcasanpham',compact('products', 'dirName'));
@@ -67,11 +67,11 @@ class BeforeCartController extends Controller
 
     public function getAllProduct()
     {   
-        // need to change the id of the idCategoryProduct
+        
         
         $products = Product::where('enable','=', 1)->paginate(9);
 
-        // get the Name of the Category_Product
+      
         $dirName = 'Tất cả sản phẩm';
         
         return view('user/tatcasanpham',compact('products', 'dirName'));
@@ -92,11 +92,7 @@ class BeforeCartController extends Controller
                 return view('user/tatcasanpham',compact('products', 'dirName'));
             default:
                 return redirect()->back();
-        }
-        
-
-        // get the Name of the Category_Product
-        
+        }        
 
         return view('user/tatcasanpham',compact('products', 'dirName'));
     }
