@@ -86,8 +86,8 @@
 														@foreach($content as $child)
 														<tr>
 															<th scope="row">{{$child->name}}</th>
-															<td><img class="hinhAnhSanPham" src="{{$child->options->has('avatar')? 
-																$child->options->avatar : ''}}" alt="" ></td>
+															<td><img class="hinhAnhSanPham hinhanhxXx" src="{{$child->options->has('avatar')? 
+																$child->options->avatar : ''}}" alt="Hình ảnh sản phẩm"  ></td>
 															<td>{{ number_format($child->price, 0) }}</td>
 															<td >
 																<input type="text" style=" text-align: right;" name="qty"  value="{{$child->qty}}" class="form-control qty"
@@ -172,5 +172,6 @@
 
 	@include('user.libraries.jsCode')
 
+	
 </body>
 </html>

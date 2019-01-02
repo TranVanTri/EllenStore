@@ -9,6 +9,7 @@ use App\CategoryProduct;
 use App\Product;
 use App\Promotion;
 use App\Slide;
+use App\WatchList;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -72,7 +73,7 @@ class BeforeCartController extends Controller
 
         // get the Name of the Category_Product
         $dirName = 'Tất cả sản phẩm';
-
+        
         return view('user/tatcasanpham',compact('products', 'dirName'));
     }
 
@@ -105,6 +106,11 @@ class BeforeCartController extends Controller
 
     public function viewDetailProduct($name, $id){
     	$product = Product::find($id);
+        if(Auth::id()){
+            $watchList = WatchList::where("idUser",Auth::id())->get();
+            
+            return view('user/chitietsanpham',compact('product','watchList'));
+        }
     	return view('user/chitietsanpham',compact('product'));
     }
 

@@ -24,7 +24,7 @@
 				<div class="anh-sp row justify-content-center">					
 					<div class="col-lg-8 col-md-8 col-sm-8">
 						<div class="image-product owl-carousel text-center">
-							<a data-hash="1" rel="image-pro" href="{{$product->avatar}}"><img class="img-thumbnail" src="{{$product->avatar}}" alt=""></a>
+							<a data-hash="1" rel="image-pro" href="{{$product->avatar}}"><img id="demoAvt" class="img-thumbnail" src="{{$product->avatar}}" alt=""></a>
 
 							<!-- Chỗ này làm gì ấy nhỉ ? -->
 							@if(isset($product->otherImg))
@@ -133,7 +133,7 @@
 								</div>
 
 
-								<a href="{{route('cart.edit',$product->id)}}" ><button type="submit" class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
+								<a href="{{route('cart.edit',$product->id)}}" ><button type="submit"  class="btn add-gio-hang ">Thêm vào giỏ hàng</button></a>
 
 
 								<!-- <button type="button" class="btn mua-ngay">Mua ngay</button> -->
