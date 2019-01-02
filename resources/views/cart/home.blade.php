@@ -157,15 +157,7 @@
 					</div> 
 				</div>
 			</div>
+		</div>
+	</section><!-- END CONTENT -->
 
-		</section><!-- END CONTENT -->
-
-		@include('user.core.footer')
-		
-		@include('user.core.backToTop')
-
-		@include('user.core.inputSearch')
-
-		@include('user.libraries.jsCode')
-
-@endsection
+	@endsection

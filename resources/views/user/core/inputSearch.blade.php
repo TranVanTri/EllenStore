@@ -7,10 +7,10 @@
 		</div>
 
 		<div class="icon-search">
-			<button type="submit">
+			
 				<i class="fa fa-search"  aria-hidden="true">
 				</i>
-			</button>
+			
 		</div>
 	</form>
 </div>

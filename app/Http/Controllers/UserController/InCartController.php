@@ -18,50 +18,50 @@ use Mail;
 
 class InCartController extends Controller
 {
-    public function xoasanpham($id){
-      Cart::remove($id);
-      return redirect()->route('giohang');
-    }
+  public function xoasanpham($id){
+    Cart::remove($id);
+    return redirect()->route('giohang');
+  }
 
-    public function sendMail(Bill $bill, $billDetailByIdBill){
+  public function sendMail(Bill $bill, $billDetailByIdBill){
 
-      $data = array(
-        'bill'=> $bill,
-        'billDetail' => $billDetailByIdBill,
-      );
-      Mail::send('user.ordermail', $data, function ($message) use ($data) {    
+    $data = array(
+      'bill'=> $bill,
+      'billDetail' => $billDetailByIdBill,
+    );
+    Mail::send('user.ordermail', $data, function ($message) use ($data) {    
      
-        $message->to($data['bill']->email);
-     
-        $message->bcc('tvtri1997document1@gmail.com', 'Quản trị');
+      $message->to($data['bill']->email);
+      
+      $message->bcc('tvtri1997document1@gmail.com', 'Quản trị');
         // $message->cc('john@johndoe.com', 'John Doe');
-     
+      
         // $message->replyTo('john@johndoe.com', 'John Doe');
-     
-        $message->subject('HÓA ĐƠN ĐẶT HÀNG');
-     
+      
+      $message->subject('HÓA ĐƠN ĐẶT HÀNG');
+      
         // $message->priority(3);
-     
+      
         // $message->attach('pathToFile');
-      });
-    }
+    });
+  }
 
-    public function xemgiohang()
-    {      
-      if(Auth::id())/* User đã login vào hệ thống*/
-      {
-       $id = Auth::id();
-       $user = User::find($id);
-       $getBill = Bill::where('idUser','=',$id)->orderBy('id', 'desc')
-               ->take(1)
-               ->first();
+  public function xemgiohang()
+  {      
+    if(Auth::id())/* User đã login vào hệ thống*/
+    {
+     $id = Auth::id();
+     $user = User::find($id);
+     $getBill = Bill::where('idUser','=',$id)->orderBy('id', 'desc')
+     ->take(1)
+     ->first();
 
-       /*---------------Add new Bill into database ----------------------*/
+     /*---------------Add new Bill into database ----------------------*/
 
-       foreach(Cart::content() as $row) 
-       {
-        /*----------------------Add new BillDetail into database----------------------*/
-        $billDetail = new BillDetail;
+     foreach(Cart::content() as $row) 
+     {
+      /*----------------------Add new BillDetail into database----------------------*/
+      $billDetail = new BillDetail;
 
         /*Vì 1 lý do nào đó mà không thể để đoạn code này trong file CartController. không thể lấy dươc
         id của Bill vừa dc tạo nên đành để ở đây!
@@ -74,28 +74,28 @@ class InCartController extends Controller
         /* xử lý sp khuyến mãi.
           Nếu là sp km thì ghi thêm %km của sp đó
         */
-        $product = Product::find($row->id);
-        if($product->promotion->per_decr != 0)
-        {
+          $product = Product::find($row->id);
+          if($product->promotion->per_decr != 0)
+          {
             $sale_percent = ($product->promotion->per_decr);
-        }
-        else{
+          }
+          else{
             $sale_percent = 0;
-        }
+          }
 
-        if($sale_percent != 0){
-          $billDetail->nameProduct = $row->name."<br>Khuyến mãi <mark>".$sale_percent."%</mark>";
-        }
-        else{
-          $billDetail->nameProduct = $row->name;
-        }
-        
-        $billDetail->size =   $row->options->has('size') ? $row->options->size : 'None';
-        $billDetail->quantity = $row->qty;
-        $billDetail->price = $row->price;
+          if($sale_percent != 0){
+            $billDetail->nameProduct = $row->name."<br>Khuyến mãi <mark>".$sale_percent."%</mark>";
+          }
+          else{
+            $billDetail->nameProduct = $row->name;
+          }
+          
+          $billDetail->size =   $row->options->has('size') ? $row->options->size : 'None';
+          $billDetail->quantity = $row->qty;
+          $billDetail->price = $row->price;
 
-        $billDetail->save();              
-      }
+          $billDetail->save();              
+        }
         $billDetailByIdBill = BillDetail::where('idBill','=',$getBill->id)->get();
         $this->sendMail($getBill, $billDetailByIdBill);
         /*
@@ -118,4 +118,4 @@ class InCartController extends Controller
 
     
 
-}
+  }
