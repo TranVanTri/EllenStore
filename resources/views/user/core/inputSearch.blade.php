@@ -7,9 +7,9 @@
 		</div>
 
 		<div class="icon-search">
-			<button type="submit">
-				<i class="fa fa-search"  aria-hidden="true">
-				</i>
+			<button type="submit" style="background: #f37db8;
+    border: none;
+    color: #fff;"><i class="fa fa-search"  aria-hidden="true"></i>
 			</button>
 		</div>
 	</form>
