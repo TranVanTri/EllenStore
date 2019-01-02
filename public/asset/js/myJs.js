@@ -307,6 +307,10 @@ $(document).ready(function() {
 				required:true,
 				email:true,
 			},
+			name:{
+				required:true,
+				characterOnly:true,
+			},
 			password:{
 				required:true,
 				minlength:6,
@@ -364,5 +368,6 @@ $(document).ready(function() {
 	});
 
 	// *************************************END XU LY LOGIN****************************************
+	
 });
 

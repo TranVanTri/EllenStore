@@ -34,6 +34,11 @@
 						<form role="form" action="register" method="POST" id="formRegister">
 							 {!! csrf_field() !!}
 							<div class="form-group">
+							    <label for="name">Họ và tên</label>
+							    <input type="text" class="form-control" id="name" name="name" autofocus> 				
+							 </div>
+
+							<div class="form-group">
 							    <label for="email">Địa chỉ email</label>
 							    <input type="email" class="form-control" id="email" name="email" autofocus> 				
 							 </div>

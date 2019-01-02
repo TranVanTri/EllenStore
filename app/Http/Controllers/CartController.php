@@ -60,8 +60,25 @@ class CartController extends Controller
         if(Cart::content()){
             $bill = new Bill;
             $bill->idUser = $user->id;
-            $bill->name = $user->name;
-            $bill->email = $user->email;
+            
+            
+            if(isset($request->name))
+            {
+                $bill->name = $request->name;
+            }
+            else
+            {
+                $bill->name = $user->name;
+            }
+
+            if(isset($request->email))
+            {
+                $bill->email = $request->email;
+            }
+            else
+            {
+                $bill->email = $user->email;
+            }
 
             if(isset($request->phone))
             {
