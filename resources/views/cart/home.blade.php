@@ -160,7 +160,6 @@
 
 		</section><!-- END CONTENT -->
 
-		<div class="clearfix"></div>
 		@include('user.core.footer')
 		
 		@include('user.core.backToTop')
@@ -169,7 +168,4 @@
 
 		@include('user.libraries.jsCode')
 
-		
-	</body>
-	</html>
-
+@endsection
