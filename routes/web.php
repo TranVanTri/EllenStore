@@ -59,6 +59,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('edit/{id}', 'ProductController@postEdit');
             Route::get('delete/{id}', 'ProductController@getDelete');
             Route::get('view-history-pro/{id}', 'ProductController@getHistory');
+           // Route::get('tim-san-pham/{name}',["as"=>"timsanpham","uses"=>'ProductController@timSanPham']);
         });
 
         /* Bill*/
@@ -94,6 +95,8 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('edit/{id}', 'CategoryProductController@postEdit');
             Route::get('delete/{id}', 'CategoryProductController@getDelete');
             Route::get('view-history-cate-product/{id}', 'CategoryProductController@getHistory');
+
+
         });
 
         /* Slide*/

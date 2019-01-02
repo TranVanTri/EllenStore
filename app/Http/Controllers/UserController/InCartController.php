@@ -46,7 +46,7 @@ class InCartController extends Controller
       });
     }
 
-    public function xemgiohang(Request $request)
+    public function xemgiohang()
     {      
       if(Auth::id())/* User đã login vào hệ thống*/
       {

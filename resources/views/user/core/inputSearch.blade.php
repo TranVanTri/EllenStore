@@ -1,16 +1,16 @@
 <div class="search">
 	<div class="icon-search-toggle icon-search-animate"><i class="fa fa-search" aria-hidden="true"></i></div>	
 
-	<form>
+	<form action="">
 		<div class="search-box">
 			<input type="text" name="timsanpham" placeholder="Nhập tên sản phẩm">
 		</div>
 
 		<div class="icon-search">
-			<i class="fa fa-search"  aria-hidden="true">
-				<button ></button>
-			</i>
-			
+			<button type="submit">
+				<i class="fa fa-search"  aria-hidden="true">
+				</i>
+			</button>
 		</div>
 	</form>
 </div>
