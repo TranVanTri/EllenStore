@@ -30,7 +30,7 @@
 							 {!! csrf_field() !!}
 							<div class="form-group">
 							    <label for="email">Địa chỉ email</label>
-							    <input type="email" class="form-control" id="email" value="{{old('email')}}" name="email" autofocus> 				
+							    <input type="email" class="form-control" required id="email" value="{{old('email')}}" name="email" autofocus> 				
 							 </div>
 							 <div class="form-group">
 							    <label for="password">Mật khẩu</label>
