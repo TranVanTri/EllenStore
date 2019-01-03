@@ -61,7 +61,7 @@
                     </div>
                           
 
-                    <button type="submit" id="submit" disabled class="btn btn-warning">Sửa</button>
+                    <button type="submit" id="submit"  class="btn btn-warning">Sửa</button>
                     
                 </div>
             </form>

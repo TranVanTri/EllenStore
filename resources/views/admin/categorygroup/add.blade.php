@@ -45,7 +45,7 @@
                             <input name="enable" value="0" type="radio">Khóa
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-warning" disabled id="submit">Thêm</button>
+                    <button type="submit" class="btn btn-warning"  id="submit">Thêm</button>
                                     
                 </div>
                 

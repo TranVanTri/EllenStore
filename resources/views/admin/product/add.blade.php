@@ -93,7 +93,7 @@
                         <label>Mô tả chi tiết</label>
                         <textarea class="form-control" rows="3" required name="detail" id="detail">{{ old('detail') }}</textarea>
                     </div>
-                    <button type="submit" class="btn btn-warning" disabled="disabled" id="submit">Thêm sản phẩm</button>
+                    <button type="submit" class="btn btn-warning"  id="submit">Thêm sản phẩm</button>
                                 
                 </div>
                 <div class="col-lg-5" style="padding-bottom:120px">

@@ -52,7 +52,7 @@
                         <input class="form-control" type="text" name="SoDT" placeholder="Nhập số điện thoại người dùng"  maxlength="11" minlength="6" value="{{ old('SoDT') }}" />
                     </div>                    
 
-                    <button type="submit" id="submit" disabled class="btn btn-warning">Thêm</button>
+                    <button type="submit" id="submit"  class="btn btn-warning">Thêm</button>
                     
                 </div>
             </form>

@@ -64,7 +64,7 @@
                             >Chưa thanh toán
                         </label>
                     </div>
-                    <button type="submit" id="submit" disabled="disabled" class="btn btn-warning">Sửa hóa đơn</button>
+                    <button type="submit" id="submit"  class="btn btn-warning">Sửa hóa đơn</button>
                                    
                 </div>
                

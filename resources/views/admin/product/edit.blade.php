@@ -142,7 +142,7 @@
                         <textarea class="form-control" rows="3" required
                          name="detail" id="detail">{{$product->detail}}</textarea>
                     </div>
-                    <button type="submit" id="submit" disabled="disabled" class="btn btn-warning">Sửa sản phẩm</button>
+                    <button type="submit" id="submit"  class="btn btn-warning">Sửa sản phẩm</button>
                                   
                 </div>
                 <div class="col-lg-5" style="padding-bottom:120px">

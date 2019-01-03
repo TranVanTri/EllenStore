@@ -45,7 +45,7 @@
                             type="radio">Khóa
                         </label>
                     </div>                
-                    <button type="submit" disabled id="submit" class="btn btn-warning">Sửa</button>
+                    <button type="submit"  id="submit" class="btn btn-warning">Sửa</button>
                                    
                 </div>
                 

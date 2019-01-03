@@ -36,7 +36,7 @@
                         <input class="form-control" type="text" name="Ten" placeholder="Nhập tên size"  value="{{ old('Ten') }}" />
                     </div>
                     
-                    <button type="submit" class="btn btn-warning" disabled id="submit">Thêm</button>
+                    <button type="submit" class="btn btn-warning"  id="submit">Thêm</button>
                                    
                 </div>
                 

@@ -29,7 +29,7 @@
                         <input class="form-control" type="text" name="Ten" placeholder="Nhập tên size mới" required maxlength="3" minlength="1" value="{{$size->name}}" />
                     </div>  
                                    
-                    <button type="submit" disabled id="submit" class="btn btn-warning">Sửa</button>
+                    <button type="submit"  id="submit" class="btn btn-warning">Sửa</button>
                                    
                 </div>
                 
