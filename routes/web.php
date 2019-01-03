@@ -24,8 +24,11 @@ Route::group(['namespace' => 'AdminAuth'], function() {
 });
 
 Route::group(['namespace' => 'AdminManager'], function() {
-    Route::get('login',['as'=>'loginUser','uses'=>'UserController@getDangNhap']);
-    Route::post('login','UserController@postDangNhap');
+    Route::group(['middleware'=>'userCheckLogin'], function() {
+        Route::get('login',['as'=>'loginUser','uses'=>'UserController@getDangNhap']);
+        Route::post('login','UserController@postDangNhap');
+    });
+    
 
     Route::get('logout',['as'=>'getUserLogout','uses'=>'UserController@getUserLogout']);
 
@@ -59,7 +62,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('edit/{id}', 'ProductController@postEdit');
             Route::get('delete/{id}', 'ProductController@getDelete');
             Route::get('view-history-pro/{id}', 'ProductController@getHistory');
-           // Route::get('tim-san-pham/{name}',["as"=>"timsanpham","uses"=>'ProductController@timSanPham']);
+           
         });
 
         /* Bill*/
@@ -181,9 +184,9 @@ Route::group(['namespace' => 'UserController'], function() {
 
     Route::get('xem-gio-hang',['as'=>'xemgiohang','uses'=>'InCartController@xemgiohang']);
 
+    Route::get('tim-san-pham',["as"=>"timsanpham","uses"=>'findProductController@timSanPham']);
 
 });
-
 
 
 ///

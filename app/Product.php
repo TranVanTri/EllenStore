@@ -28,9 +28,6 @@ class Product extends Model
     {
         return $this->belongsTo("App\Promotion","idPromotion",'id');
     }
-    public function watchlist()
-    {
-        return $this->belongsTo("App\WatchList","idProdcut",'id');
-    }
+    
     
 }

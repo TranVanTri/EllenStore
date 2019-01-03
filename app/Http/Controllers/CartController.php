@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Promotion;
 use App\User; 
 use App\Bill;
-use App\WatchList;
+
 use App\BillDetail;
 use App\CategoryGroup;
 use App\CategoryProduct;
@@ -116,7 +116,7 @@ class CartController extends Controller
             
             $bill->save();
 
-
+            
             
         }
         else{
@@ -167,13 +167,7 @@ class CartController extends Controller
         if(Auth::id()){
             /*User  login vào hệ thống*/
             
-            /*              Add product to WatchList*/
-            $watchlist = new WatchList;
-            $watchlist->idUSer = Auth::id();
-            $watchlist->idProduct = $id;
-            $watchlist->save();
-
-            /* end add to watch list*/
+            
             /* redirect đến tran giỏ hàng co khách xem sp đã chọn*/
             return Redirect::action('UserController\BeforeCartController@giohang');
         }
