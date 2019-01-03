@@ -24,8 +24,11 @@ Route::group(['namespace' => 'AdminAuth'], function() {
 });
 
 Route::group(['namespace' => 'AdminManager'], function() {
-    Route::get('login',['as'=>'loginUser','uses'=>'UserController@getDangNhap']);
-    Route::post('login','UserController@postDangNhap');
+    Route::group(['middleware'=>'userCheckLogin'], function() {
+        Route::get('login',['as'=>'loginUser','uses'=>'UserController@getDangNhap']);
+        Route::post('login','UserController@postDangNhap');
+    });
+    
 
     Route::get('logout',['as'=>'getUserLogout','uses'=>'UserController@getUserLogout']);
 

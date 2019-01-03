@@ -29,7 +29,7 @@ class LoginController extends Controller
         $authUser = $this->findOrCreateUser($user,$provider);
         Auth::login($authUser,true);
         // $redirect_to = 'tatcasanpham';
-        return redirect()->route('/');
+        return redirect('/');
         //return redirect($this->redirectTo);
     }
 
