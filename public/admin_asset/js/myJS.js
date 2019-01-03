@@ -393,79 +393,79 @@ $(document).ready(function() {
     //VALIDATION
 
     
-    $('input').on('blur', function() {
+    // $('input').on('blur', function() {
 
-    	if($("#formCategoryGroup").length){
-    		if ($("#formCategoryGroup").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formCategoryGroup").length){
+    // 		if ($("#formCategoryGroup").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formCategoryProduct").length){
-    		if ($("#formCategoryProduct").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formCategoryProduct").length){
+    // 		if ($("#formCategoryProduct").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formProduct").length){
-    		if ($("#formProduct").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formProduct").length){
+    // 		if ($("#formProduct").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formBill").length){
-    		if ($("#formBill").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formBill").length){
+    // 		if ($("#formBill").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formSlide").length){
-    		if ($("#formSlide").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formSlide").length){
+    // 		if ($("#formSlide").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formUser").length){
-    		if ($("#formUser").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}if($("#formAdmin").length){
-    		if ($("#formAdmin").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formUser").length){
+    // 		if ($("#formUser").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}if($("#formAdmin").length){
+    // 		if ($("#formAdmin").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formSize").length){
-    		if ($("#formSize").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formSize").length){
+    // 		if ($("#formSize").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
 
-    	if($("#formPromosition").length){
-    		if ($("#formPromosition").valid()) {
-            	$('#submit').prop('disabled', false);  
-	        } else {
-	            $('#submit').prop('disabled', 'disabled');
-	        }
-    	}
+    // 	if($("#formPromosition").length){
+    // 		if ($("#formPromosition").valid()) {
+    //         	$('#submit').prop('disabled', false);  
+	   //      } else {
+	   //          $('#submit').prop('disabled', 'disabled');
+	   //      }
+    // 	}
         
-    });
+    // });
 
     jQuery.validator.addMethod("characterAndNumberAndDash", function(value, element) {
 	  return this.optional(element) || /^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i.test(value);
