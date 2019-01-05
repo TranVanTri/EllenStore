@@ -52,7 +52,7 @@
                     
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <input class="form-control" type="text" name="describe" placeholder="Nhập mô tả cho sản phẩm" required maxlength="100" minlength="80" value="{{ old('describe') }}"/>
+                        <input class="form-control" type="text" name="describe" placeholder="Nhập mô tả cho sản phẩm" required maxlength="100" value="{{ old('describe') }}"/>
                     </div>
                     
                     <div class="form-group">
@@ -122,7 +122,7 @@
                     <button type="button" id="them-anh" class="btn btn-primary"><i class="fa fa-plus"></i> Thêm ảnh</button>
                     <button type="button" id="xoa-anh" class="btn btn-warning"><i class="fa fa-minus"></i> Xóa ảnh</button>
                 </div>
-            <form>
+            </form>
         </div>
         <!-- /.row -->
     </div>

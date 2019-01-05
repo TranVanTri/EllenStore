@@ -31,7 +31,7 @@ class ProductRequest extends FormRequest
             // 'sale'=>'required|regex:/^\d{1,10}$/i',
             // 'size'=>'max:2|required|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i',
             // 'color'=>'max:5|required|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i',
-            'describe'=>'required|max:100|min:80|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i', 
+            'describe'=>'required|max:100|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i', 
             'detail' =>'required',
             'avatar'=>'max:190|required|regex: /^[a-zA-Z_\.\:\/\-\d]+$/i',
             'otherimg.*'=>'required',
@@ -48,21 +48,9 @@ class ProductRequest extends FormRequest
 
             'price.regex'=>'Giá sản phẩm không âm và có 4-10 kí số ',
             'price.required'=>'Vui lòng nhập giá sản phẩm.',
-
-            // 'sale.regex'=>'Giá giảm giá của sản phẩm không âm và có 1-10 kí số trở lên',
-            // 'sale.required'=>'Vui lòng nhập giá sản phẩm.',
-
-            // 'color.required'=>'Vui lòng nhập màu cho sản phẩm.',
-            // 'color.regex'=>'Chỉ nhập chữ thường và chữ hoa.',
-            // 'color.max'=>'Màu sản phẩm có độ dài 1-5 kí tự.',
-
-            // 'size.required'=>'Vui lòng nhập màu cho sản phẩm.',
-            // 'size.regex'=>'Chỉ nhập chữ thường và chữ hoa.',
-            // 'size.max'=>'Màu sản phẩm có độ dài 1-2 kí tự.',
-
             'describe.required'=>'Vui lòng nhập mô tả sản phẩm.',                
-            'describe.min'=>'Mô tả sản phẩm có độ dài 80-100 kí tự.',                
-            'describe.max'=>'Mô tả sản phẩm có độ dài 80-100 kí tự.',                
+            'describe.max'=>
+            'Mô tả sản phẩm có độ dài ít hơn 100 kí tự.',                
             'describe.regex'=>'Mô tả sản phẩm chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',
 
             'avatar.required'=>'Vui lòng chọn ảnh sản phẩm.',                

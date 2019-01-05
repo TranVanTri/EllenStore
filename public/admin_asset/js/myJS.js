@@ -521,7 +521,7 @@ $(document).ready(function() {
 			describe: {
 				required:true,
 				maxlength: 100,
-				minlength:80,
+				
 				characterAndNumberAndDash:true
 			},
 			avatar: {
@@ -564,7 +564,7 @@ $(document).ready(function() {
 			// },
 			describe: {
 				required: "Vui lòng nhập mô tả sản phẩm.",
-				minlength: "Mô tả sản phẩm có độ dài 80-100 kí tự.",
+				
 				maxlength: "Mô tả sản phẩm có độ dài 80-100 kí tự.",				
 			},
 			avatar: {
