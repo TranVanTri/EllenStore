@@ -74,10 +74,14 @@
                         <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image">
                         <div><img id="img-cate-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                          <button id="ckfinder-popup-cate-pro" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>                        
-                    </div>
-                    
+                            <button id="ckfinder-popup-cate-pro" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>   
+
+                        {{-- <div id="upload-catePro" class="dropzone" name="dropzoneFrom">
+                            <input name="file" type="file" />
+                        </div> --}}
+                        @include('admin.modalupload')
+                    </div>                    
                     <button type="submit" class="btn btn-warning"  id="submit">Thêm</button>
                                     
                 </div>
