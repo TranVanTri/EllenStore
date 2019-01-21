@@ -166,8 +166,7 @@ class CartController extends Controller
 
         if(Auth::id()){
             /*User  login vào hệ thống*/
-            
-            
+
             /* redirect đến tran giỏ hàng co khách xem sp đã chọn*/
             return Redirect::action('UserController\BeforeCartController@giohang');
         }
