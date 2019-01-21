@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.zoho.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'ellen@ellen.com.vn '),
         'name' => env('MAIL_FROM_NAME', 'Ellen Store'),
     ],
 
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('ellen@ellen.com.vn '),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('TpM@qSKWw_8}'),
 
     /*
     |--------------------------------------------------------------------------

@@ -28,8 +28,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->everyMinute();
 
-        $schedule->command('check:datepromotion')
-                 ->dailyAt('23:59:59');
+        $schedule->command('check:datepromotion')->everyMinute();
+                 // ->dailyAt('23:59:59');
         
     }
 

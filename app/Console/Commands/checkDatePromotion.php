@@ -39,7 +39,7 @@ class checkDatePromotion extends Command
      */
     public function handle()
     {
-        Promotion::where('end_date_sale','>',date("Y-m-d H:i:s"))->update(['enable'=>0]);
+        Promotion::where('end_date_sale','<',date("Y-m-d H:i:s"))->update(['enable'=>0]);
         // \Log::info("da check");
     }
 }

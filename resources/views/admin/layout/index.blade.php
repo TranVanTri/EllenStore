@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
+    <meta name="description" content="Website bán hàng thời trang">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Trang quản trị</title>
     <!-- thiết lập url tương đối -->
     <base href="{{asset('')}}">
@@ -17,6 +18,8 @@
     <link href="admin_asset/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="dropzone/dist/basic.css" />
+    <link rel="stylesheet" href="dropzone/dist/dropzone.css"/>
     <link href="admin_asset/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="admin_asset/dist/css/fSelect.css" rel="stylesheet">
     <link href="admin_asset/dist/css/my-admin.css" rel="stylesheet">
@@ -29,8 +32,6 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="admin_asset/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-
-
     <link href="admin_asset/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
 </head>
@@ -68,18 +69,27 @@
     <!-- DataTables JavaScript -->
     <script src="admin_asset/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
     <script src="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+    {{-- ****************************************************** --}}
+     
+    {{-- *************************************************************** --}}
     
 
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
     <script src="ckfinder/ckfinder.js"></script>  
-    <script src="admin_asset/js/myJS.js"></script>
     <script src="admin_asset/js/fSelect.js"></script>
+    <script src="dropzone/dist/dropzone.js"></script>  
+    <script src="admin_asset/js/myJS.js"></script>
+     
+
+
+
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 
     <script>    
-         
+         Dropzone.autoDiscover = false;
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true
@@ -90,6 +100,8 @@
         });
         
     </script>
+
+
     
 </body>
 

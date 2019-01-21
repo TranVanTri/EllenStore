@@ -145,6 +145,9 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('edit/{id}', 'UserController@postEdit');
             Route::get('delete/{id}', 'UserController@getDelete');
         });
+        Route::post('/imageupload', 'ImageUpLoadController@upLoadFiles');
+        Route::get('/imageview/{category}', 'ImageUpLoadController@viewImage');
+        Route::post('/imageremove', 'ImageUpLoadController@removeImage');
     });
 
 
