@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
 	if($('#datetimepicker1').length){
@@ -97,15 +98,216 @@ $(document).ready(function() {
 
 	}
 
-	if($('#ckfinder-popup-cate-pro').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );
-	  
-	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-cate-pro' ,'img-cate-pro' );
+	// $.ajaxSetup({
+	//     headers: {
+	//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	//     }
+	// });
 
-	    };
+	$(document).on('click', '#ckfinder-popup-cate-pro', function(event) {
+		event.preventDefault();
+		list_image('sanpham');
+	});
+
+	$(document).on('click', '#sanpham2', function(event) {
+		event.preventDefault();
+		var data = $(this).attr('data')
+		$('#cartegory-upload').attr('cartegory', data);
+		list_image(data);
+	});
+	$(document).on('click', '#danhmuc2', function(event) {
+		event.preventDefault();
+		var data = $(this).attr('data')
+		$('#cartegory-upload').attr('cartegory', data);
+		list_image(data);
+	});
+	$(document).on('click', '#khuyenmai2', function(event) {
+		event.preventDefault();
+		var data = $(this).attr('data')
+		$('#cartegory-upload').attr('cartegory', data);
+		list_image(data);
+	});
+	$(document).on('click', '#slide2', function(event) {
+		event.preventDefault();
+		var data = $(this).attr('data')
+		$('#cartegory-upload').attr('cartegory', data);
+		list_image(data);
+	});
+
+	function tatthongbao(){
+		if ($('#success').length) {
+			$('#success').hide();
+		}
+		if ($('#fail').length) {
+			$('#fail').hide();
+		}
+		if ($('#delete-success').length) {
+			$('#delete-success').hide();
+		}
+		if ($('#no-choise').length) {
+			$('#no-choise').hide();
+		}
 
 	}
+	tatthongbao();
+
+	function list_image(category)
+	 {
+		$.ajax({
+		   url:"admin/imageview/"+category,
+		   success:function(data){
+		    $('#'+category).html(data);
+		   }
+		});
+	 }
+	if ($('#my-dropzone').length) {
+		var category1 = '';
+
+		
+		var myDropzone = new Dropzone("#my-dropzone", {
+			url: "admin/imageupload",
+			paramName: "files",
+			// params: {category:category1},
+			uploadMultiple:true,
+			addRemoveLinks: true,
+			headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+			dictRemoveFile: "Remove",
+			maxFilesize: 3,
+			maxFiles: 10,
+			autoProcessQueue: false,
+		    acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
+		    dictFileTooBig:"Ảnh lớn hơn 3MB",
+
+		  	init: function(){
+			   	var submitButton = document.querySelector('#submit-all');
+			   	myDropzone1 = this;
+			   	submitButton.addEventListener("click", function(){
+			    	
+			    	// if($('#cartegory-upload').length){
+						category1 = $('#cartegory-upload').attr('cartegory');
+						myDropzone1.on("sending", function(file, xhr, formData){
+							// console.log(category1);
+		                    formData.append("category", category1);
+
+		        	});
+						 // myDropzone1.options.params= {category:category1};
+						
+					myDropzone1.processQueue();	
+					// }
+					
+
+			   	});
+			   	
+			   	this.on("complete", function(data){
+			   		if ($('#success').length) {
+						$('#success').show();
+					}
+				    if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
+				    {
+				     	var _this = this;
+				     	_this.removeAllFiles();
+				    }
+				    	list_image(category1);
+				    	// console.log(data);
+			   	});			   	
+		  	},
+		  	
+            error: function (file, response) {
+		        tatthongbao();
+		        if ($('#fail').length) {
+					$('#fail').show();
+				}
+		    },
+		    success: function(file, response){
+                // console.log('WE NEVER REACH THIS POINT.');
+                // alert(response);
+            }
+		});
+	}
+
+
+	$(document).on('click', '.remove_image', function(){
+		tatthongbao();
+	  	var imageName = $(this).attr('id');
+	  	var category = $(this).attr('data');
+	  	// console.log(imageName);
+	  	$.ajax({
+		   url:"admin/imageremove",
+		   method:"POST",
+		   data:{
+		   	name:imageName,
+		   	category:category,
+		   },
+		   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+		   success:function(data){
+		   	if ($('#delete-success').length) {
+				$('#delete-success').show();
+			}
+		     list_image(category);
+		   }
+		});
+	});
+
+	$(document).on('blur', '#myModal', function(event) {	
+		tatthongbao();
+	});
+
+	//Chon hinh
+
+	$(document).on('click', '.card', function(event) {
+		$('.card').removeClass('active-box-shadow');
+		$(this).addClass('active-box-shadow');
+	});
+
+	//set anh cho input
+
+	function setImage(inputID,imgID,data){
+		var input = document.getElementById(inputID);
+		input.value = data;
+		var image = document.getElementById(imgID);
+		image.setAttribute('src', data);
+	}
+	//set anh cho danh muc san pham
+
+	if($('#ckfinder-input-cate-pro').length){
+        $(document).on('click', '#choise', function(event) {
+		    event.preventDefault();
+		    if($('.card.active-box-shadow img').length){
+		    	var data =  $('.card.active-box-shadow img').attr('src');
+
+			    setImage('ckfinder-input-cate-pro', 'img-cate-pro',data);
+			    $('#myModal').modal('toggle');
+		    }else {
+		    	tatthongbao();
+		    	if ($('#no-choise').length) {
+					$('#no-choise').show();
+				}
+		    }
+		    $('.card').removeClass('active-box-shadow');
+		    
+	    });
+	}
+
+
+
+	
+
+
+
+
+
+	
+	
+
+	// if($('#ckfinder-popup-cate-pro').length){
+	//  	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );
+	  
+	//     button1.onclick = function() {
+	//         selectFileWithCKFinder( 'ckfinder-input-cate-pro' ,'img-cate-pro' );
+
+	//     };
+
+	// }
 
 	if($('#ckfinder-popup-promotion').length){
 	 	var button1 = document.getElementById( 'ckfinder-popup-promotion' );
