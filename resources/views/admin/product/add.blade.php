@@ -97,24 +97,24 @@
                                 
                 </div>
                 <div class="col-lg-5" style="padding-bottom:120px">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Ảnh sản phẩm</label>
                         <div class="input-group">
                             <input id="ckfinder-input-avatar-pro" type="hidden" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="avatar">
                             <div><img id="img-avatar-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
                             
-                            <button id="ckfinder-popup-avatar-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                            <button id="ckfinder-popup-avatar-pro" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>
                             
                         </div>
-                    </div>
+                    </div> --}}
                     <div id="group-img">
                         <div class="form-group">
-                            <label>Các ảnh khác</label>
+                            <label>Ảnh sản phẩm</label>
                             <div class="input-group">
                                 <input id="ckfinder-input-1" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="190"  name="otherimg[]">
                                 <div><img id="img-pro-1" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
                                 
-                                <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>
+                                <button class="btn btn-info ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>
                                 
                             </div>
                         </div>
@@ -123,6 +123,7 @@
                     <button type="button" id="xoa-anh" class="btn btn-warning"><i class="fa fa-minus"></i> Xóa ảnh</button>
                 </div>
             </form>
+            @include('admin.modalupload')
         </div>
         <!-- /.row -->
     </div>

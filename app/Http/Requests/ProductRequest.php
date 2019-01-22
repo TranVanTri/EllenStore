@@ -33,7 +33,7 @@ class ProductRequest extends FormRequest
             // 'color'=>'max:5|required|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$/i',
             'describe'=>'required|max:100|regex:/^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếẾỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\-\d\s\/]+$/i', 
             'detail' =>'required',
-            'avatar'=>'max:190|required|regex: /^[a-zA-Z_\.\:\/\-\d]+$/i',
+            // 'avatar'=>'max:190|required|regex: /^[a-zA-Z_\.\:\/\-\d]+$/i',
             'otherimg.*'=>'required',
         ];
     }
@@ -53,9 +53,9 @@ class ProductRequest extends FormRequest
             'Mô tả sản phẩm có độ dài ít hơn 100 kí tự.',                
             'describe.regex'=>'Mô tả sản phẩm chỉ bao gồm chữ thường, chữ hoa, số và dấu gạch ngang.',
 
-            'avatar.required'=>'Vui lòng chọn ảnh sản phẩm.',                
-            'avatar.max'=>'Url ảnh sản phẩm có độ dài 190 kí tự.',
-            'avatar.regex'=>'Url ảnh sản phẩm không hợp lệ. Xin kiểm tra lại',
+            // 'avatar.required'=>'Vui lòng chọn ảnh sản phẩm.',                
+            // 'avatar.max'=>'Url ảnh sản phẩm có độ dài 190 kí tự.',
+            // 'avatar.regex'=>'Url ảnh sản phẩm không hợp lệ. Xin kiểm tra lại',
 
             'otherimg.*.required'=>'Vui lòng chọn ảnh sản phẩm mục ảnh sản phẩm khác.'
             // 'otherimg*.regex'=>'Url "Các ảnh khác" không hợp lệ. Vui lòng kiểm trả lại.',

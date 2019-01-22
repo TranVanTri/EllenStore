@@ -75,7 +75,7 @@ class ProductController extends Controller
         //$product->sale=$req->sale;  
         $product->idPromotion = $req->idPromotion;
         $product->quantity=$req->quantity;
-        $product->avatar=$req->avatar;
+        
         $product->describe=$req->describe;
         $product->detail=$req->detail;
         $product->highLight=$req->highLight;
@@ -86,6 +86,7 @@ class ProductController extends Controller
         foreach ($otherimg as $value) {
              array_push($dulieuOtherimg, $value);
         }
+        $product->avatar=$dulieuOtherimg[0];
        // var_dump( $dulieujson);
         $dulieuOtherimg = json_encode($dulieuOtherimg);
 
@@ -162,7 +163,7 @@ class ProductController extends Controller
         // $product->sale=$req->sale;        
         $product->idPromotion = $req->idPromotion;
         $product->quantity=$req->quantity;
-        $product->avatar=$req->avatar;
+        
         $product->describe=$req->describe;
         $product->detail=$req->detail;
         $product->highLight=$req->highLight;
@@ -175,7 +176,7 @@ class ProductController extends Controller
         foreach ($otherimg as $value) {
              array_push($dulieujson, $value);
         }
-       // var_dump( $dulieujson);
+        $product->avatar=$dulieujson[0];
         $dulieujson = json_encode($dulieujson);
         $product->otherImg = $dulieujson;
 

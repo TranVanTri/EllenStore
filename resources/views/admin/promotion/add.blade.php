@@ -78,8 +78,9 @@
                         <input id="ckfinder-input-promotion" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image">
                         <div><img id="img-promotion" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                          <button id="ckfinder-popup-promotion" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>                        
+                            <button id="ckfinder-popup-promotion" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>                            
+                        </div> 
+                        @include('admin.modalupload')                       
                     </div>
                     
 

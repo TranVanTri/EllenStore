@@ -31,12 +31,12 @@
 
 							<!-- Chỗ này làm gì ấy nhỉ ? -->
 							@if(isset($product->otherImg))
-						
-							@foreach(json_decode($product->otherImg)  as $val)
-								<a rel="image-pro" href="{{$val}}">
-									<img class="img-thumbnail" src="{{$val}}" alt=""></a>
+							<?php $otherImgArr = json_decode($product->otherImg);?>
+							@for($i = 1 ; $i < sizeof($otherImgArr); $i++)
+								<a rel="image-pro" href="{{$otherImgArr[$i]}}">
+									<img class="img-thumbnail" src="{{$otherImgArr[$i]}}" alt=""></a>
 							
-							@endforeach
+							@endfor
 							@endif
 							{{-- <a data-hash="2" rel="image-pro" href="asset/images/anh_sp/2.jpg">
 							<img class="img-thumbnail" src="asset/images/anh_sp/2.jpg" alt=""></a>
@@ -53,13 +53,13 @@
 								<a href="{{$product->avatar}}" rel="image-pro"><img class="img-thumbnail" src="{{$product->avatar}}" alt=""></a>							
 							</li>
 							@if(isset($product->otherImg))
-							
-							@foreach(json_decode($product->otherImg)  as $val)
+							<?php $otherImgArr = json_decode($product->otherImg);?>
+							@for($i = 1 ; $i < sizeof($otherImgArr); $i++)
 							<li>								
-								<a href="{{$val}}" rel="image-pro"><img class="img-thumbnail" src="{{$val}}" alt=""></a>								
+								<a href="{{$otherImgArr[$i]}}" rel="image-pro"><img class="img-thumbnail" src="{{$otherImgArr[$i]}}" alt=""></a>								
 							</li>
 							
-							@endforeach
+							@endfor
 							@endif
 
 						</ul>	

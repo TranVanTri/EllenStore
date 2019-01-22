@@ -156,10 +156,10 @@ label.error{
 }
 
 .tab-content button {
-    margin: 3px 0;
     height: 24px;
     font-size: 12px;
     line-height: 12px;
+    border-radius: unset;
 }
 
 .tab-content a {

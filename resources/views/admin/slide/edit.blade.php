@@ -56,10 +56,10 @@
                         <input id="ckfinder-input-slide" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="img" value="{{ $slide->image }}">
                         <div><img id="img-slide" src="{{ $slide->image }}" alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                          <button id="ckfinder-popup-slide" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>                        
-                    </div>
-                          
+                          <button id="ckfinder-popup-slide" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>   
+                        @include('admin.modalupload')                     
+                    </div>                         
 
                     <button type="submit" id="submit"  class="btn btn-warning">Sửa</button>
                     

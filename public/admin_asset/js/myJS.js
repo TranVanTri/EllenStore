@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
 	if($('#datetimepicker1').length){
@@ -43,7 +42,7 @@ $(document).ready(function() {
 		 		'<div class="input-group">'+
 		 		'<input id="ckfinder-input-'+dem+'" type="hidden" class="form-control" required placeholder="Chọn hình ảnh" maxlength="90" name="otherimg[]">'+
 		 		'<div><img id="img-pro-'+dem+'" src="upload\\images\\image-icon.png"  alt="" class="img-edit img-fluid"></div>'+
-		 		' <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>'+		 				 		
+		 		' <button class="btn btn-info ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>'+		 				 		
 		 		'</div>'+
 		 		'</div>'
 		 	);
@@ -68,70 +67,36 @@ $(document).ready(function() {
 	 	}
 	 });
 
-	if($('#ckfinder-popup-avatar-pro').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-avatar-pro' );
-	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
-	  //   if($('#img-avatar-pro').attr('src') != ''){
-	 	// 	$('#img-avatar-pro').show();
-	 	// }else{
-	 	// 	$('#img-avatar-pro').hide();
-	 	// }
 
-	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-avatar-pro', 'img-avatar-pro' );
-	    };
-	}
-
-	if($('#ckfinder-popup-slide').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-slide' );
-	    // var button2 = document.getElementById( 'ckfinder-popup-2' );
-	  //   if($('#img-slide').attr('src') != ''){
-	 	// 	$('#img-slide').show();
-	 	// }else{
-	 	// 	$('#img-slide').hide();
-	 	// }
-
-	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-slide' ,'img-slide' );
-
-	    };
-
-	}
-
-	// $.ajaxSetup({
-	//     headers: {
-	//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	//     }
-	// });
-
-	$(document).on('click', '#ckfinder-popup-cate-pro', function(event) {
-		event.preventDefault();
+	function initUpload(){
 		list_image('sanpham');
-	});
+		list_image('danhmuc');
+		list_image('khuyenmai');
+		list_image('slide');
+
+	}
+
+	
 
 	$(document).on('click', '#sanpham2', function(event) {
 		event.preventDefault();
 		var data = $(this).attr('data')
 		$('#cartegory-upload').attr('cartegory', data);
-		list_image(data);
 	});
 	$(document).on('click', '#danhmuc2', function(event) {
 		event.preventDefault();
 		var data = $(this).attr('data')
 		$('#cartegory-upload').attr('cartegory', data);
-		list_image(data);
 	});
 	$(document).on('click', '#khuyenmai2', function(event) {
 		event.preventDefault();
 		var data = $(this).attr('data')
 		$('#cartegory-upload').attr('cartegory', data);
-		list_image(data);
 	});
 	$(document).on('click', '#slide2', function(event) {
 		event.preventDefault();
 		var data = $(this).attr('data')
 		$('#cartegory-upload').attr('cartegory', data);
-		list_image(data);
 	});
 
 	function tatthongbao(){
@@ -181,20 +146,16 @@ $(document).ready(function() {
 		  	init: function(){
 			   	var submitButton = document.querySelector('#submit-all');
 			   	myDropzone1 = this;
-			   	submitButton.addEventListener("click", function(){
-			    	
-			    	// if($('#cartegory-upload').length){
+			   	submitButton.addEventListener("click", function(){			    	
 						category1 = $('#cartegory-upload').attr('cartegory');
-						myDropzone1.on("sending", function(file, xhr, formData){
-							// console.log(category1);
-		                    formData.append("category", category1);
 
-		        	});
-						 // myDropzone1.options.params= {category:category1};
+						myDropzone1.on("sending", function(file, xhr, formData){							
+		                formData.append("category", category1);
+
+		        	});					 
 						
 					myDropzone1.processQueue();	
-					// }
-					
+								
 
 			   	});
 			   	
@@ -267,15 +228,11 @@ $(document).ready(function() {
 		var image = document.getElementById(imgID);
 		image.setAttribute('src', data);
 	}
-	//set anh cho danh muc san pham
 
-	if($('#ckfinder-input-cate-pro').length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    if($('.card.active-box-shadow img').length){
+	function selectFileWithMyUpload(inputID,imgID){
+		if($('.card.active-box-shadow img').length){
 		    	var data =  $('.card.active-box-shadow img').attr('src');
-
-			    setImage('ckfinder-input-cate-pro', 'img-cate-pro',data);
+			    setImage(inputID, imgID, data);
 			    $('#myModal').modal('toggle');
 		    }else {
 		    	tatthongbao();
@@ -284,77 +241,81 @@ $(document).ready(function() {
 				}
 		    }
 		    $('.card').removeClass('active-box-shadow');
-		    
+	}
+	//set anh cho danh muc san pham
+
+	$(document).on('click', '#ckfinder-popup-cate-pro', function(event) {
+		event.preventDefault();
+		initUpload();
+	});
+	if($('#ckfinder-input-cate-pro').length){
+        $(document).on('click', '#choise', function(event) {
+		    event.preventDefault();
+		    selectFileWithMyUpload('ckfinder-input-cate-pro', 'img-cate-pro');
 	    });
 	}
 
+	//set anh cho slide
 
+	$(document).on('click', '#ckfinder-popup-slide', function(event) {
+		event.preventDefault();
+		initUpload();
+	});
+	if($('#ckfinder-input-slide').length){
+        $(document).on('click', '#choise', function(event) {
+		    event.preventDefault();
+		    selectFileWithMyUpload('ckfinder-input-slide', 'img-slide');		    
+	    });
+	}
 
-	
+	//set anh cho promotion
 
+	$(document).on('click', '#ckfinder-popup-promotion', function(event) {
+		event.preventDefault();
+		initUpload();
+	});
+	if($('#ckfinder-input-promotion').length){
+        $(document).on('click', '#choise', function(event) {
+		    event.preventDefault();
+		    selectFileWithMyUpload('ckfinder-input-promotion', 'img-promotion');		    
+	    });
+	}
 
+	//set anh cho sanpham
 
+	// $(document).on('click', '#ckfinder-popup-avatar-pro', function(event) {
+	// 	event.preventDefault();
+	// 	initUpload();
 
-
-	
-	
-
-	// if($('#ckfinder-popup-cate-pro').length){
-	//  	var button1 = document.getElementById( 'ckfinder-popup-cate-pro' );
-	  
-	//     button1.onclick = function() {
-	//         selectFileWithCKFinder( 'ckfinder-input-cate-pro' ,'img-cate-pro' );
-
-	//     };
-
+	// });
+	// if($('#ckfinder-input-avatar-pro').length){
+	// 	// var button_avatar_pro = do
+ //        $(document).on('click', '#choise', function(event) {
+	// 	    event.preventDefault();
+	// 	    selectFileWithMyUpload('ckfinder-input-avatar-pro', 'img-avatar-pro');		    
+	//     });
 	// }
 
-	if($('#ckfinder-popup-promotion').length){
-	 	var button1 = document.getElementById( 'ckfinder-popup-promotion' );
-	  
-	    button1.onclick = function() {
-	        selectFileWithCKFinder( 'ckfinder-input-promotion' ,'img-promotion' );
-
-	    };
-
-	}
     
-
+	//set anh cho other image san pham
+	var inputOtherID='ckfinder-input-1';
+	var imgOtherID= 'img-pro-1';
     $(document).on('click', "button.ckfinder-popup", function() {
-	    var inputName = $(this).siblings('input.form-control').attr('id');
-	    var imgName = $(this).prev().children('img.img-edit').attr('id');
-    	//console.log(imgName);
-    	selectFileWithCKFinder( inputName,imgName );      
+    	event.preventDefault();
+    	initUpload();
+	    inputOtherID = $(this).siblings('input.form-control').attr('id');
+	    imgOtherID = $(this).prev().children('img.img-edit').attr('id');
+	    // console.log(inputOtherID);      
 	});
-	
 
-    function selectFileWithCKFinder( inputId, imgId ) {
-        CKFinder.modal( {
-            chooseFiles: true,
-            width: 800,
-            height: 600,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    var output = document.getElementById( inputId );
-                    var imgoutput = document.getElementById( imgId );
-                    output.value = file.getUrl();
-                    imgoutput.src = output.value;
-                    
-                    
-                } );
-
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    var output = document.getElementById( inputId );
-                    var imgoutput = document.getElementById( imgId );
-                    output.value = evt.data.resizedUrl;
-                    imgoutput.src = output.value;
-                    
-                } );
-            }
-        } );
-        $('#'+imgId).show();
-    }
+	if($('#'+inputOtherID).length && $('#'+imgOtherID).length){
+        $(document).on('click', '#choise', function(event) {
+		    event.preventDefault();
+		    console.log(inputOtherID);
+		    console.log(imgOtherID);
+		    selectFileWithMyUpload(inputOtherID, imgOtherID);		    
+	    });
+	}
 
 
     //ajax lấy bill detail

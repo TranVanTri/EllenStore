@@ -146,41 +146,31 @@
                                   
                 </div>
                 <div class="col-lg-5" style="padding-bottom:120px">
-                    <div class="form-group">
-                        <label>Ảnh sản phẩm</label>
-                        <div class="input-group">
-                            
-                            <input id="ckfinder-input-avatar-pro" type="hidden" class="form-control" placeholder="Chọn hình ảnh" required maxlength="190" name="avatar" value="{{$product->avatar}}">
-                            <div><img id="img-avatar-pro" src="{{$product->avatar}}"  alt="" class="img-edit img-fluid"></div>
-                            
-                            <button id="ckfinder-popup-avatar-pro" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>
-                    </div>
                     <div id="group-img">
                         @if(!empty($otherimg))
                         <?php $dem = 1;?>
                         @foreach($otherimg as $img)
                         <div class="form-group">
                             @if($dem== 1)
-                            <label>Các ảnh khác</label>  
+                            <label>Ảnh sản phẩm</label>  
                             @endif                          
                             <div class="input-group">
                                 <input id="ckfinder-input-{{$dem}}" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="180" required name="otherimg[]" 
                                 value="{{$img}}">
                                 <div><img id="img-pro-{{$dem}}" src="{{$img}}"  alt="" class="img-edit img-fluid"></div>
                                 
-                                <button class="btn btn-info ckfinder-popup" type="button">Chọn ảnh</button>
+                                <button class="btn btn-info ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>
                             </div>                            
                         </div>
                         <?php $dem++;?>
                         @endforeach
                         @else
                         <div class="form-group">
-                            <label>Các ảnh khác</label>
+                            <label>Ảnh sản phẩm</label>
                             <div class="input-group">
                                 <input id="ckfinder-input-1" type="text" class="form-control" placeholder="Chọn hình ảnh"  maxlength="180" required name="otherimg[]">
                                 <div class="input-group-btn">
-                                  <button class="btn btn-primary ckfinder-popup" type="button">Browse Server</button>
+                                  <button class="btn btn-primary ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Browse Server</button>
                                 </div>
                             </div>
                         </div>
@@ -190,6 +180,7 @@
                     <button type="button" id="xoa-anh" class="btn btn-warning"><i class="fa fa-minus"></i> Xóa ảnh</button>
                 </div>
             <form>
+            @include('admin.modalupload')
         </div>
         <!-- /.row -->
     </div>
