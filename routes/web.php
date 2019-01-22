@@ -201,6 +201,3 @@ Route::get('auth/{provider}/callback',
 /* Send Email*/
 
 // Route::get('/send_email', array('uses' => 'EmailController@sendEmailReminder'));
-
-
-

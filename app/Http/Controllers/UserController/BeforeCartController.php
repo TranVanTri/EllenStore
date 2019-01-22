@@ -126,5 +126,19 @@ class BeforeCartController extends Controller
         }
         
     }
+
+    public function chuyendengiohang(){
+        if(Auth::id()){
+            /*User  login vào hệ thống*/
+
+            /* redirect đến tran giỏ hàng co khách xem sp đã chọn*/
+            return Redirect::action('UserController\BeforeCartController@giohang');
+        }
+        else
+        {
+            /*User chưa login vào hệ thống*/
+            return redirect()->route('loginUser');
+        }
+    }
     
 }
