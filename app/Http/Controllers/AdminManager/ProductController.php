@@ -28,7 +28,7 @@ class ProductController extends Controller
         $actor = array(
             'id' => Auth('admin')->user()->id,
             'name' => Auth('admin')->user()->name,
-            //'phone' => Auth('admin')->user()->phone,
+            'phone' => Auth('admin')->user()->phone,
             'date' => date("d-m-Y H:i:s"),
         );
 
