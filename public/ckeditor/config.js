@@ -8,7 +8,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	//config.filebrowserImageBrowseUrl = 'ckfinder/ckfinder.html';
 
-    config.filebrowserImageBrowseUrl = 'http://localhost:6969/EllenStore/public/admin/ckfinder/view';
+    // config.filebrowserImageBrowseUrl = 'http://localhost:6969/EllenStore/public/admin/ckfinder/view';
     // config.filebrowserBrowseUrl = 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=files';
 
     // config.filebrowserFlashBrowseUrl = 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=flash';

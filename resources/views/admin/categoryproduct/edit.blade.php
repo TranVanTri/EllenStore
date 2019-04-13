@@ -61,12 +61,11 @@
                     
                     <div class="form-group">
                         <label>Ảnh</label>                        
-                        <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image" value="{{$catePro->image}}">
-                        <div><img id="img-cate-pro" src="{{$catePro->image}}"  alt="" class="img-edit img-fluid"></div>
+                        <input id="ckfinder-input-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image" value="{{$catePro->image}}">
+                        <div><img id="img-pro" src="{{$catePro->image}}"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                          <button id="ckfinder-popup-cate-pro" class="btn btn-info" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>
-                        </div>
-                        @include('admin.modalupload')                        
+                          <button id="ckfinder-popup-pro" data-input="ckfinder-input-pro" data-preview="img-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>         
                     </div>
 
                     <button type="submit" id="submit"  class="btn btn-warning">Sửa</button>

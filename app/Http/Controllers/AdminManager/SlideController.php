@@ -48,7 +48,7 @@ class SlideController extends Controller
         $slide = new Slide;
         $slide->title = $req->tieude;
         $slide->link = $req->link;
-        $slide->image = $req->img;
+        $slide->image = $req->image;
         $slide->enable = $req->enable;
 
         $arrayData = $this->createArrayData($slide);        
@@ -95,7 +95,7 @@ class SlideController extends Controller
         $slide = Slide::find($id);
         $slide->title = $req->tieude;
         $slide->link = $req->link;
-        $slide->image = $req->img;
+        $slide->image = $req->image;
         $slide->enable = $req->enable;
 
         $oldData = json_decode($slide->history, true);

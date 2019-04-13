@@ -75,7 +75,7 @@
                     
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <input class="form-control" type="text" name="describe" placeholder="Nhập mô tả cho sản phẩm" required maxlength="100" minlength="80" value="{{$product->describe}}" />
+                        <input class="form-control" type="text" name="describe" placeholder="Nhập mô tả cho sản phẩm" required maxlength="100"  value="{{$product->describe}}" />
                     </div>
                     
                     <div class="form-group">
@@ -155,11 +155,9 @@
                             <label>Ảnh sản phẩm</label>  
                             @endif                          
                             <div class="input-group">
-                                <input id="ckfinder-input-{{$dem}}" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="180" required name="otherimg[]" 
-                                value="{{$img}}">
-                                <div><img id="img-pro-{{$dem}}" src="{{$img}}"  alt="" class="img-edit img-fluid"></div>
-                                
-                                <button class="btn btn-info ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>
+                                <input id="ckfinder-input-{{$dem}}" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="190"  name="otherimg[]" value="{{$img}}">
+                                <div><img id="img-pro-{{$dem}}" src="{{$img ?? 'upload\images\image-icon.png'}}"  alt="" class="img-edit img-fluid"></div>                                
+                                <button id="ckfinder-popup-pro-{{$dem}}" class="btn btn-info ckfinder-popup" data-input="ckfinder-input-{{$dem}}" data-preview="img-pro-{{$dem}}" type="button">Chọn ảnh</button>
                             </div>                            
                         </div>
                         <?php $dem++;?>
@@ -168,11 +166,10 @@
                         <div class="form-group">
                             <label>Ảnh sản phẩm</label>
                             <div class="input-group">
-                                <input id="ckfinder-input-1" type="text" class="form-control" placeholder="Chọn hình ảnh"  maxlength="180" required name="otherimg[]">
-                                <div class="input-group-btn">
-                                  <button class="btn btn-primary ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Browse Server</button>
-                                </div>
-                            </div>
+                                <input id="ckfinder-input-1" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="190"  name="otherimg[]">
+                                <div><img id="img-pro-1" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>                                
+                                <button id="ckfinder-popup-pro-1" class="btn btn-info ckfinder-popup" data-input="ckfinder-input-1" data-preview="img-pro-1" type="button">Chọn ảnh</button>                              
+                            </div>  
                         </div>
                         @endif
                     </div>
@@ -180,7 +177,6 @@
                     <button type="button" id="xoa-anh" class="btn btn-warning"><i class="fa fa-minus"></i> Xóa ảnh</button>
                 </div>
             <form>
-            @include('admin.modalupload')
         </div>
         <!-- /.row -->
     </div>

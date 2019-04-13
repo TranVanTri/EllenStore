@@ -112,18 +112,16 @@
                             <label>Ảnh sản phẩm</label>
                             <div class="input-group">
                                 <input id="ckfinder-input-1" type="hidden" class="form-control" placeholder="Chọn hình ảnh"  maxlength="190"  name="otherimg[]">
-                                <div><img id="img-pro-1" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
-                                
-                                <button class="btn btn-info ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>
-                                
-                            </div>
+                                <div><img id="img-pro-1" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>                                
+                                <button id="ckfinder-popup-pro-1" class="btn btn-info ckfinder-popup" data-input="ckfinder-input-1" data-preview="img-pro-1" type="button">Chọn ảnh</button>                                
+                            </div>   
+                                                  
                         </div>
                     </div>
                     <button type="button" id="them-anh" class="btn btn-primary"><i class="fa fa-plus"></i> Thêm ảnh</button>
                     <button type="button" id="xoa-anh" class="btn btn-warning"><i class="fa fa-minus"></i> Xóa ảnh</button>
                 </div>
             </form>
-            @include('admin.modalupload')
         </div>
         <!-- /.row -->
     </div>

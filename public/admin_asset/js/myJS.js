@@ -12,10 +12,6 @@ $(document).ready(function() {
 	 	});
 	}
 
-
-	if($('#detail').length){
-	 	CKEDITOR.replace('detail');
-	}
 	//multiselect
 	if($('.demo').length){
 	 	$('.demo').fSelect();
@@ -42,7 +38,7 @@ $(document).ready(function() {
 		 		'<div class="input-group">'+
 		 		'<input id="ckfinder-input-'+dem+'" type="hidden" class="form-control" required placeholder="Chọn hình ảnh" maxlength="90" name="otherimg[]">'+
 		 		'<div><img id="img-pro-'+dem+'" src="upload\\images\\image-icon.png"  alt="" class="img-edit img-fluid"></div>'+
-		 		' <button class="btn btn-info ckfinder-popup" data-toggle="modal" data-target="#myModal" type="button">Chọn ảnh</button>'+		 				 		
+		 		' <button id="ckfinder-popup-pro-'+dem+'" class="btn btn-info ckfinder-popup" data-input="ckfinder-input-'+dem+'" data-preview="img-pro-'+dem+'" type="button">Chọn ảnh</button>'+		 				 		
 		 		'</div>'+
 		 		'</div>'
 		 	);
@@ -52,7 +48,7 @@ $(document).ready(function() {
 	 	}	 	
 	 });
 
-	 $('#xoa-anh').click(function(event) {
+	$('#xoa-anh').click(function(event) {
 	 	if(dem == 1){
 	 		$(this).attr('disabled', 'disabled');
 	 	}
@@ -65,257 +61,287 @@ $(document).ready(function() {
 	 		$(this).attr('disabled', 'disabled');
 	 	}
 	 	}
-	 });
-
-
-	function initUpload(){
-		list_image('sanpham');
-		list_image('danhmuc');
-		list_image('khuyenmai');
-		list_image('slide');
-
+	});
+	if(jQuery('#ckfinder-popup-pro').length){
+	 	jQuery('#ckfinder-popup-pro').filemanager('image');
 	}
+	if(jQuery('#ckfinder-popup-pro-1').length){
+	 	jQuery('#ckfinder-popup-pro-1').filemanager('image');
+	}
+	$(document).on('focus', '#ckfinder-popup-pro-2', function(event) {
+		$(this).filemanager('image');
+	});
+	$(document).on('focus', '#ckfinder-popup-pro-3', function(event) {
+		$(this).filemanager('image');
+	});
+	$(document).on('focus', '#ckfinder-popup-pro-4', function(event) {
+		$(this).filemanager('image');
+	});
+	$(document).on('focus', '#ckfinder-popup-pro-5', function(event) {
+		$(this).filemanager('image');
+	});
+	 	
+
+	 //chon anh cho ckeditor
+	var options = {
+	    filebrowserImageBrowseUrl: 'laravel-filemanager?type=Images',
+	    filebrowserImageUploadUrl: 'laravel-filemanager/upload?type=Images&_token=',
+	    filebrowserBrowseUrl: 'laravel-filemanager?type=Files',
+	    filebrowserUploadUrl: 'laravel-filemanager/upload?type=Files&_token='
+	};
+	if($('#detail').length){
+	 	CKEDITOR.replace('detail', options);
+	} 
+
+
+	// function initUpload(){
+	// 	list_image('sanpham');
+	// 	list_image('danhmuc');
+	// 	list_image('khuyenmai');
+	// 	list_image('slide');
+
+	// }
 
 	
 
-	$(document).on('click', '#sanpham2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
-	$(document).on('click', '#danhmuc2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
-	$(document).on('click', '#khuyenmai2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
-	$(document).on('click', '#slide2', function(event) {
-		event.preventDefault();
-		var data = $(this).attr('data')
-		$('#cartegory-upload').attr('cartegory', data);
-	});
+	// $(document).on('click', '#sanpham2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
+	// $(document).on('click', '#danhmuc2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
+	// $(document).on('click', '#khuyenmai2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
+	// $(document).on('click', '#slide2', function(event) {
+	// 	event.preventDefault();
+	// 	var data = $(this).attr('data')
+	// 	$('#cartegory-upload').attr('cartegory', data);
+	// });
 
-	function tatthongbao(){
-		if ($('#success').length) {
-			$('#success').hide();
-		}
-		if ($('#fail').length) {
-			$('#fail').hide();
-		}
-		if ($('#delete-success').length) {
-			$('#delete-success').hide();
-		}
-		if ($('#no-choise').length) {
-			$('#no-choise').hide();
-		}
+	// function tatthongbao(){
+	// 	if ($('#success').length) {
+	// 		$('#success').hide();
+	// 	}
+	// 	if ($('#fail').length) {
+	// 		$('#fail').hide();
+	// 	}
+	// 	if ($('#delete-success').length) {
+	// 		$('#delete-success').hide();
+	// 	}
+	// 	if ($('#no-choise').length) {
+	// 		$('#no-choise').hide();
+	// 	}
 
-	}
-	tatthongbao();
+	// }
+	// tatthongbao();
 
-	function list_image(category)
-	 {
-		$.ajax({
-		   url:"admin/imageview/"+category,
-		   success:function(data){
-		    $('#'+category).html(data);
-		   }
-		});
-	 }
-	if ($('#my-dropzone').length) {
-		var category1 = '';
+	// function list_image(category)
+	//  {
+	// 	$.ajax({
+	// 	   url:"admin/imageview/"+category,
+	// 	   success:function(data){
+	// 	    $('#'+category).html(data);
+	// 	   }
+	// 	});
+	//  }
+	// if ($('#my-dropzone').length) {
+	// 	var category1 = '';
 
 		
-		var myDropzone = new Dropzone("#my-dropzone", {
-			url: "admin/imageupload",
-			paramName: "files",
-			// params: {category:category1},
-			uploadMultiple:true,
-			addRemoveLinks: true,
-			headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-			dictRemoveFile: "Remove",
-			maxFilesize: 3,
-			maxFiles: 10,
-			autoProcessQueue: false,
-		    acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
-		    dictFileTooBig:"Ảnh lớn hơn 3MB",
+	// 	var myDropzone = new Dropzone("#my-dropzone", {
+	// 		url: "admin/imageupload",
+	// 		paramName: "files",
+	// 		// params: {category:category1},
+	// 		uploadMultiple:true,
+	// 		addRemoveLinks: true,
+	// 		headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+	// 		dictRemoveFile: "Remove",
+	// 		maxFilesize: 3,
+	// 		maxFiles: 10,
+	// 		autoProcessQueue: false,
+	// 	    acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
+	// 	    dictFileTooBig:"Ảnh lớn hơn 3MB",
 
-		  	init: function(){
-			   	var submitButton = document.querySelector('#submit-all');
-			   	myDropzone1 = this;
-			   	submitButton.addEventListener("click", function(){			    	
-						category1 = $('#cartegory-upload').attr('cartegory');
+	// 	  	init: function(){
+	// 		   	var submitButton = document.querySelector('#submit-all');
+	// 		   	myDropzone1 = this;
+	// 		   	submitButton.addEventListener("click", function(){			    	
+	// 					category1 = $('#cartegory-upload').attr('cartegory');
 
-						myDropzone1.on("sending", function(file, xhr, formData){							
-		                formData.append("category", category1);
+	// 					myDropzone1.on("sending", function(file, xhr, formData){							
+	// 	                formData.append("category", category1);
 
-		        	});					 
+	// 	        	});					 
 						
-					myDropzone1.processQueue();	
+	// 				myDropzone1.processQueue();	
 								
 
-			   	});
+	// 		   	});
 			   	
-			   	this.on("complete", function(data){
-			   		if ($('#success').length) {
-						$('#success').show();
-					}
-				    if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
-				    {
-				     	var _this = this;
-				     	_this.removeAllFiles();
-				    }
-				    	list_image(category1);
-				    	// console.log(data);
-			   	});			   	
-		  	},
+	// 		   	this.on("complete", function(data){
+	// 		   		if ($('#success').length) {
+	// 					$('#success').show();
+	// 				}
+	// 			    if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
+	// 			    {
+	// 			     	var _this = this;
+	// 			     	_this.removeAllFiles();
+	// 			    }
+	// 			    	list_image(category1);
+	// 			    	// console.log(data);
+	// 		   	});			   	
+	// 	  	},
 		  	
-            error: function (file, response) {
-		        tatthongbao();
-		        if ($('#fail').length) {
-					$('#fail').show();
-				}
-		    },
-		    success: function(file, response){
-                // console.log('WE NEVER REACH THIS POINT.');
-                // alert(response);
-            }
-		});
-	}
+ //            error: function (file, response) {
+	// 	        tatthongbao();
+	// 	        if ($('#fail').length) {
+	// 				$('#fail').show();
+	// 			}
+	// 	    },
+	// 	    success: function(file, response){
+ //                // console.log('WE NEVER REACH THIS POINT.');
+ //                // alert(response);
+ //            }
+	// 	});
+	// }
 
 
-	$(document).on('click', '.remove_image', function(){
-		tatthongbao();
-	  	var imageName = $(this).attr('id');
-	  	var category = $(this).attr('data');
-	  	// console.log(imageName);
-	  	$.ajax({
-		   url:"admin/imageremove",
-		   method:"POST",
-		   data:{
-		   	name:imageName,
-		   	category:category,
-		   },
-		   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-		   success:function(data){
-		   	if ($('#delete-success').length) {
-				$('#delete-success').show();
-			}
-		     list_image(category);
-		   }
-		});
-	});
+	// $(document).on('click', '.remove_image', function(){
+	// 	tatthongbao();
+	//   	var imageName = $(this).attr('id');
+	//   	var category = $(this).attr('data');
+	//   	// console.log(imageName);
+	//   	$.ajax({
+	// 	   url:"admin/imageremove",
+	// 	   method:"POST",
+	// 	   data:{
+	// 	   	name:imageName,
+	// 	   	category:category,
+	// 	   },
+	// 	   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+	// 	   success:function(data){
+	// 	   	if ($('#delete-success').length) {
+	// 			$('#delete-success').show();
+	// 		}
+	// 	     list_image(category);
+	// 	   }
+	// 	});
+	// });
 
-	$(document).on('blur', '#myModal', function(event) {	
-		tatthongbao();
-	});
+	// $(document).on('blur', '#myModal', function(event) {	
+	// 	tatthongbao();
+	// });
 
-	//Chon hinh
+	// //Chon hinh
 
-	$(document).on('click', '.card', function(event) {
-		$('.card').removeClass('active-box-shadow');
-		$(this).addClass('active-box-shadow');
-	});
+	// $(document).on('click', '.card', function(event) {
+	// 	$('.card').removeClass('active-box-shadow');
+	// 	$(this).addClass('active-box-shadow');
+	// });
 
-	//set anh cho input
+	// //set anh cho input
 
-	function setImage(inputID,imgID,data){
-		var input = document.getElementById(inputID);
-		input.value = data;
-		var image = document.getElementById(imgID);
-		image.setAttribute('src', data);
-	}
+	// function setImage(inputID,imgID,data){
+	// 	var input = document.getElementById(inputID);
+	// 	input.value = data;
+	// 	var image = document.getElementById(imgID);
+	// 	image.setAttribute('src', data);
+	// }
 
-	function selectFileWithMyUpload(inputID,imgID){
-		if($('.card.active-box-shadow img').length){
-		    	var data =  $('.card.active-box-shadow img').attr('src');
-			    setImage(inputID, imgID, data);
-			    $('#myModal').modal('toggle');
-		    }else {
-		    	tatthongbao();
-		    	if ($('#no-choise').length) {
-					$('#no-choise').show();
-				}
-		    }
-		    $('.card').removeClass('active-box-shadow');
-	}
-	//set anh cho danh muc san pham
+	// function selectFileWithMyUpload(inputID,imgID){
+	// 	if($('.card.active-box-shadow img').length){
+	// 	    	var data =  $('.card.active-box-shadow img').attr('src');
+	// 		    setImage(inputID, imgID, data);
+	// 		    $('#myModal').modal('toggle');
+	// 	    }else {
+	// 	    	tatthongbao();
+	// 	    	if ($('#no-choise').length) {
+	// 				$('#no-choise').show();
+	// 			}
+	// 	    }
+	// 	    $('.card').removeClass('active-box-shadow');
+	// }
+	// //set anh cho danh muc san pham
 
-	$(document).on('click', '#ckfinder-popup-cate-pro', function(event) {
-		event.preventDefault();
-		initUpload();
-	});
-	if($('#ckfinder-input-cate-pro').length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    selectFileWithMyUpload('ckfinder-input-cate-pro', 'img-cate-pro');
-	    });
-	}
-
-	//set anh cho slide
-
-	$(document).on('click', '#ckfinder-popup-slide', function(event) {
-		event.preventDefault();
-		initUpload();
-	});
-	if($('#ckfinder-input-slide').length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    selectFileWithMyUpload('ckfinder-input-slide', 'img-slide');		    
-	    });
-	}
-
-	//set anh cho promotion
-
-	$(document).on('click', '#ckfinder-popup-promotion', function(event) {
-		event.preventDefault();
-		initUpload();
-	});
-	if($('#ckfinder-input-promotion').length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    selectFileWithMyUpload('ckfinder-input-promotion', 'img-promotion');		    
-	    });
-	}
-
-	//set anh cho sanpham
-
-	// $(document).on('click', '#ckfinder-popup-avatar-pro', function(event) {
+	// $(document).on('click', '#ckfinder-popup-cate-pro', function(event) {
 	// 	event.preventDefault();
 	// 	initUpload();
-
 	// });
-	// if($('#ckfinder-input-avatar-pro').length){
-	// 	// var button_avatar_pro = do
+	// if($('#ckfinder-input-cate-pro').length){
  //        $(document).on('click', '#choise', function(event) {
 	// 	    event.preventDefault();
-	// 	    selectFileWithMyUpload('ckfinder-input-avatar-pro', 'img-avatar-pro');		    
+	// 	    selectFileWithMyUpload('ckfinder-input-cate-pro', 'img-cate-pro');
 	//     });
 	// }
 
-    
-	//set anh cho other image san pham
-	var inputOtherID='ckfinder-input-1';
-	var imgOtherID= 'img-pro-1';
-    $(document).on('click', "button.ckfinder-popup", function() {
-    	event.preventDefault();
-    	initUpload();
-	    inputOtherID = $(this).siblings('input.form-control').attr('id');
-	    imgOtherID = $(this).prev().children('img.img-edit').attr('id');
-	    // console.log(inputOtherID);      
-	});
+	// //set anh cho slide
 
-	if($('#'+inputOtherID).length && $('#'+imgOtherID).length){
-        $(document).on('click', '#choise', function(event) {
-		    event.preventDefault();
-		    console.log(inputOtherID);
-		    console.log(imgOtherID);
-		    selectFileWithMyUpload(inputOtherID, imgOtherID);		    
-	    });
-	}
+	// $(document).on('click', '#ckfinder-popup-slide', function(event) {
+	// 	event.preventDefault();
+	// 	initUpload();
+	// });
+	// if($('#ckfinder-input-slide').length){
+ //        $(document).on('click', '#choise', function(event) {
+	// 	    event.preventDefault();
+	// 	    selectFileWithMyUpload('ckfinder-input-slide', 'img-slide');		    
+	//     });
+	// }
+
+	// //set anh cho promotion
+
+	// $(document).on('click', '#ckfinder-popup-promotion', function(event) {
+	// 	event.preventDefault();
+	// 	initUpload();
+	// });
+	// if($('#ckfinder-input-promotion').length){
+ //        $(document).on('click', '#choise', function(event) {
+	// 	    event.preventDefault();
+	// 	    selectFileWithMyUpload('ckfinder-input-promotion', 'img-promotion');		    
+	//     });
+	// }
+
+	// //set anh cho sanpham
+
+	// // $(document).on('click', '#ckfinder-popup-avatar-pro', function(event) {
+	// // 	event.preventDefault();
+	// // 	initUpload();
+
+	// // });
+	// // if($('#ckfinder-input-avatar-pro').length){
+	// // 	// var button_avatar_pro = do
+ // //        $(document).on('click', '#choise', function(event) {
+	// // 	    event.preventDefault();
+	// // 	    selectFileWithMyUpload('ckfinder-input-avatar-pro', 'img-avatar-pro');		    
+	// //     });
+	// // }
+
+    
+	// //set anh cho other image san pham
+	// var inputOtherID='ckfinder-input-1';
+	// var imgOtherID= 'img-pro-1';
+ //    $(document).on('click', "button.ckfinder-popup", function() {
+ //    	event.preventDefault();
+ //    	initUpload();
+	//     inputOtherID = $(this).siblings('input.form-control').attr('id');
+	//     imgOtherID = $(this).prev().children('img.img-edit').attr('id');
+	//     // console.log(inputOtherID);      
+	// });
+
+	// if($('#'+inputOtherID).length && $('#'+imgOtherID).length){
+ //        $(document).on('click', '#choise', function(event) {
+	// 	    event.preventDefault();
+	// 	    console.log(inputOtherID);
+	// 	    console.log(imgOtherID);
+	// 	    selectFileWithMyUpload(inputOtherID, imgOtherID);		    
+	//     });
+	// }
 
 
     //ajax lấy bill detail

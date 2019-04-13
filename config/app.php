@@ -56,6 +56,8 @@ return [
 
         /*For Socialite Login*/
         Laravel\Socialite\SocialiteServiceProvider::class,
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
 
     ],
@@ -98,8 +100,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Form' => 'Collective\Html\FormFacade',
-              'Html' => 'Collective\Html\HtmlFacade',
-              'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Html' => 'Collective\Html\HtmlFacade',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

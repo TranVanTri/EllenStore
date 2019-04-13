@@ -78,6 +78,7 @@
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
     <script src="ckfinder/ckfinder.js"></script>  
+    <script src="vendor/laravel-filemanager/js/lfm.js"></script>
     <script src="admin_asset/js/fSelect.js"></script>
     <script src="dropzone/dist/dropzone.js"></script>  
     <script src="admin_asset/js/myJS.js"></script>

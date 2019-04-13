@@ -63,31 +63,15 @@
                         </label>
                     </div>
 
-                    {{-- <div class="form-group">
-                        <label>Chọn sản phẩm khuyến mãi</label>
-                        <input type="hidden" >
-                        <div id="tag" style="margin-bottom: 5px;">
-                            @foreach($prom->product as $pro)
-                                <div class="sp-{{$pro->id}}" style="margin-right: 5px;margin-bottom: 5px; float:left;">
-                                <input type="hidden" name="sp[]"
-                                value="{{$pro->id}}"><span class="btn btn-primary">{{$pro->name}} <i class="fa fa-times" ></i></span></input>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="clearfix"></div>
-                        <div>
-                            <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal">Chọn</button>
-                        </div>
-                    </div> --}}
+                    
 
                     <div class="form-group">
                         <label>Ảnh</label>                        
-                        <input id="ckfinder-input-promotion" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image" value="{{$prom->image}}">
-                        <div><img id="img-promotion" src="{{$prom->image}}"  alt="" class="img-edit img-fluid"></div>
+                        <input id="ckfinder-input-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image" value="{{$prom->image}}">
+                        <div><img id="img-pro" src="{{$prom->image}}"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                            <button id="ckfinder-popup-promotion" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>                            
-                        </div>   
-                        @include('admin.modalupload')
+                          <button id="ckfinder-popup-pro" data-input="ckfinder-input-pro" data-preview="img-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>      
                     </div>
                        
                     

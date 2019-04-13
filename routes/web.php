@@ -48,10 +48,10 @@ Route::group(['namespace' => 'AdminManager'], function() {
         Route::get('edit/{id}', 'AdminController@getEdit');
         Route::post('edit/{id}', 'AdminController@postEdit');
 
-        Route::group(['prefix' => 'ckfinder'], function() {
-            Route::get('view', 'CkfinderController@getCkfinder');
-            Route::any('connector', 'CkfinderController@getConnector');
-        });
+        // Route::group(['prefix' => 'ckfinder'], function() {
+        //     Route::get('view', 'CkfinderController@getCkfinder');
+        //     Route::any('connector', 'CkfinderController@getConnector');
+        // });
         
         /* Product*/
         Route::group(['prefix' => 'product'], function() {
@@ -145,9 +145,7 @@ Route::group(['namespace' => 'AdminManager'], function() {
             Route::post('edit/{id}', 'UserController@postEdit');
             Route::get('delete/{id}', 'UserController@getDelete');
         });
-        Route::post('/imageupload', 'ImageUpLoadController@upLoadFiles');
-        Route::get('/imageview/{category}', 'ImageUpLoadController@viewImage');
-        Route::post('/imageremove', 'ImageUpLoadController@removeImage');
+        
     });
 
 

@@ -54,29 +54,14 @@
                             <input name="enable" value="0" type="radio">Khóa
                         </label>
                     </div>
-                    {{-- <div class="form-group">
-                        <label>Phần trăm giảm giá cho danh mục(%)</label>
-                        <input class="form-control" type="number" maxlength="2" minlength="0" name="sale" value="{{ old('sale', 0) }}"/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Ngày bắt đầu khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker1' name="start_date_sale" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Ngày kết thúc khuyến mãi</label>
-                        <input type='text' class="form-control" id='datetimepicker2' name="end_date_sale" />
-                    </div> --}}
 
                     <div class="form-group">
                         <label>Ảnh</label>                        
-                        <input id="ckfinder-input-cate-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image">
-                        <div><img id="img-cate-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
+                        <input id="ckfinder-input-pro" type="hidden" placeholder="Chọn hình ảnh" required maxlength="190" name="image">
+                        <div><img id="img-pro" src="upload\images\image-icon.png"  alt="" class="img-edit img-fluid"></div>
                         <div class="input-group-btn">
-                            <button id="ckfinder-popup-cate-pro" data-toggle="modal" data-target="#myModal" class="btn btn-info" type="button">Chọn ảnh</button>
-                        </div>   
-                        @include('admin.modalupload')
+                          <button id="ckfinder-popup-pro" data-input="ckfinder-input-pro" data-preview="img-pro" class="btn btn-info" type="button">Chọn ảnh</button>
+                        </div>     
                     </div>                    
                     <button type="submit" class="btn btn-warning"  id="submit">Thêm</button>
                                     
