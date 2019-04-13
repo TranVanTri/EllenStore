@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('.icon-search-toggle').click(function(event) {
 		$('.search').toggleClass('active');
 		$(this).toggleClass('active icon-search-animate');
-		$(".icon-search-toggle > .fa-search, .icon-search-toggle > .fa-times").toggleClass("fa-search fa-times")
+		$(".icon-search-toggle > .fa-search, .icon-search-toggle > .fa-times").toggleClass("fa-search fa-times");
 	});;
 	// *************************************END XU LY NUT SEARCH****************************************
 
