@@ -1760,14 +1760,14 @@ label.error{
 /**********************CHATBOX***********************/
 .chatbox{
     position: fixed;
-    bottom: 30%;
-    right: 104px;
+    bottom: 20%;
+    right: 85px;
     z-index: 149;
     height: 21rem;
     width: 18rem;
 }
-.chatbox .icon-chatbox{
-    position: absolute;
+.icon-chatbox{
+    position: fixed;
     width: 40px;
     height: 40px;
     line-height: 40px;
@@ -1777,16 +1777,15 @@ label.error{
     cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
-    top: calc(95% - 20px);
-    right: calc(-252px/2);
+    bottom: 18%;
+    right: -21px;
     border: 1px solid #29292963;
-    transition: 0.4s ;
+    transition: 0.4s;
     transform: translateX(-55px);
     transform-origin: -90%;
-/*          opacity: 0;
-    visibility: hidden;*/
+    z-index: 150;
 }
-.chatbox .icon-chatbox i.fa{
+.icon-chatbox i.fa{
     margin-right: 0;
 }
 .icon-chatbox-animate {
@@ -1902,3 +1901,4 @@ label.error{
     display: none;
     visibility: hidden;
 }
+

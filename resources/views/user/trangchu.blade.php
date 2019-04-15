@@ -140,10 +140,11 @@
 
 		
 	</style>
-	<div class="chatbox">
-		<div class="icon-chatbox icon-chatbox-animate">
+	<div class="icon-chatbox icon-chatbox-animate">
 			<i class="fa fa-comments-o" aria-hidden="true"></i>
-		</div>
+	</div>
+	<div class="chatbox">
+		
 		<div class="khung-chatbox">
 			<div class="header-chatbox">
 				<div class="ten-shop"><h6>Ellen Store</h6></div>

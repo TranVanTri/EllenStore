@@ -49,7 +49,7 @@ $(document).ready(function() {
 		$(this).removeClass('active');
 		$('.toggle-login').removeClass('active');
 		$('.cart').removeClass('active');
-	});;
+	});
 
 	$('.cart-icon').click(function(event) {
 		$('.cart').addClass('active');
@@ -67,8 +67,8 @@ $(document).ready(function() {
 
 	// **********************XU LY CHATBOX***********************
 
-	$('.chatbox .icon-chatbox, .close-chatbox').click(function(event) {
-		$('.khung-chatbox').toggleClass('chatbox-hide');
+	$('.icon-chatbox, .close-chatbox').click(function(event) {
+		$('.chatbox').toggleClass('chatbox-hide');
 		
 	});
 	// **********************END XU LY CHATBOX***********************
