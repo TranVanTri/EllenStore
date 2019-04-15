@@ -1755,3 +1755,150 @@ i.fa {
 label.error{
     color: red;
 }
+
+
+/**********************CHATBOX***********************/
+.chatbox{
+            position: fixed;
+            bottom: 30%;
+            right: 104px;
+            z-index: 149;
+            height: 21rem;
+            width: 18rem;
+        }
+        .chatbox .icon-chatbox{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #00b7f3;
+            text-align: center;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 50%;
+            overflow: hidden;
+            top: calc(95% - 20px);
+            right: calc(-252px/2);
+            border: 1px solid #29292963;
+            transition: 0.4s ;
+            transform: translateX(-55px);
+            transform-origin: -90%;
+/*          opacity: 0;
+            visibility: hidden;*/
+        }
+        .chatbox .icon-chatbox i.fa{
+            margin-right: 0;
+        }
+        .icon-chatbox-animate {
+            animation: iconchatanimate 1s infinite;
+        }
+
+        @-webkit-keyframes iconchatanimate{
+            0%{
+                transform: scale(1) translateX(-55px); 
+            }
+            100%{
+                transform: scale(1.4) translateX(-55px);  
+            } 
+            
+        }
+        .khung-chatbox{
+            position: relative;
+            height: 100%;
+            border: 1px solid #f37db8;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            background: #ffffff;
+            overflow: hidden;
+            transition: .4s;
+        }
+        .khung-chatbox .header-chatbox {
+            height: 10%;
+            background: #f37db8;
+            border: 1px solid #f37db8;
+            padding: 6px;
+        }
+
+        .khung-chatbox .header-chatbox .ten-shop{
+            float: left;
+            color: white;
+        }
+
+        .khung-chatbox .header-chatbox .close-chatbox{
+            float: right;
+            color: white;
+            cursor: pointer;
+        }
+
+        
+        .box-chat-chatbox{
+            height: 80%;
+            width: 100%;
+        }
+
+        .scroll {
+           overflow-y: scroll;
+        }
+        .scroll::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .scroll::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+        }
+
+        .scroll::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+        }
+
+        .input-send{
+            position: absolute;
+            height: 10%;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .input-send input{
+            height: 100%;
+            width: 100%;
+            padding-left: 6px;
+            font-size: 15px;
+            color: #000000e3;
+        }
+
+        .input-send input::placeholder{
+            padding-left: 6px;
+            font-size: 15px;
+            color: #000000e3;
+        }
+        .box-chat-chatbox .text-left-tr{
+            float: left;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            background: #cbcbcb9c;
+            margin-left: 8px;
+            border-radius: 9px;
+            color: black;
+            max-width: 56%;
+            font-size: 14px;
+        }
+
+        .box-chat-chatbox .text-right-tr{
+            float: right;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            background: #0f8cb4;
+            margin-right: 8px;
+            border-radius: 9px;
+            color: white;
+            max-width: 56%;
+            font-size: 14px;
+        }
+        .chatbox-hide{
+            display: none;
+            visibility: hidden;
+        }

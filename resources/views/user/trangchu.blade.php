@@ -135,5 +135,40 @@
 			@endif
 		</div>
 	</section><!-- END CONTENT -->
+	<style type="text/css">
+		
 
+		
+	</style>
+	<div class="chatbox">
+		<div class="icon-chatbox icon-chatbox-animate">
+			<i class="fa fa-comments-o" aria-hidden="true"></i>
+		</div>
+		<div class="khung-chatbox">
+			<div class="header-chatbox">
+				<div class="ten-shop"><h6>Ellen Store</h6></div>
+				<div class="close-chatbox">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="box-chat-chatbox scroll">
+				<div class="text-left-tr">Nhà tao có chó</div>
+				<div class="text-right-tr">Nhà m nuôi mèo mà?</div>
+				<div class="text-left-tr">Nhà tao có chó</div>
+				<div class="text-right-tr">Nhà m nuôi mèo mà?</div>
+				<div class="text-left-tr">Nhà tao có chó</div>
+				<div class="text-left-tr">Nhà tao có chó? làm đéo j có</div>
+				<div class="text-right-tr">Nhà m nuôi mèo mà? Nhà m nuôi mèo mà?
+				Nhà m nuôi mèo mà?Nhà m nuôi mèo mà?Nhà m nuôi mèo mà?</div>
+				<div class="text-left-tr">Nhà tao có chó</div>
+				<div class="text-right-tr">Nhà m nuôi mèo mà?</div>
+				<div class="text-left-tr">Nhà tao có chó</div>
+				<div class="text-right-tr">Nhà m nuôi mèo mà?</div>
+			</div>
+			<div class="input-send">
+				<input type="text" placeholder="Nhập tin nhắn" name="" class="input-text">			
+			</div>
+		</div>
+	</div>
+	
 @endsection

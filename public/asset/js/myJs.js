@@ -65,6 +65,14 @@ $(document).ready(function() {
 
 	// *************************************END XU LY MENU****************************************
 
+	// **********************XU LY CHATBOX***********************
+
+	$('.chatbox .icon-chatbox, .close-chatbox').click(function(event) {
+		$('.khung-chatbox').toggleClass('chatbox-hide');
+		
+	});
+	// **********************END XU LY CHATBOX***********************
+
 	// ************************************* XU LY CHI TIET SAN PHAM****************************************
 
 	$('.image-product.owl-carousel').owlCarousel({
@@ -420,4 +428,3 @@ $(document).ready(function() {
 	// *************************************END XU LY LOGIN****************************************
 	
 });
-
