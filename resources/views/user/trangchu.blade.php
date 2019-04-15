@@ -157,7 +157,7 @@
 				<div class="text-left-tr">Nhà tao có chó</div>
 				<div class="text-right-tr">Nhà m nuôi mèo mà?</div>
 				<div class="text-left-tr">Nhà tao có chó</div>
-				<div class="text-left-tr">Nhà tao có chó? làm đéo j có</div>
+				<div class="text-left-tr">Nhà tao có chó? làm đéo j có mèo</div>
 				<div class="text-right-tr">Nhà m nuôi mèo mà? Nhà m nuôi mèo mà?
 				Nhà m nuôi mèo mà?Nhà m nuôi mèo mà?Nhà m nuôi mèo mà?</div>
 				<div class="text-left-tr">Nhà tao có chó</div>
