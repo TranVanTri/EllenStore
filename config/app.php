@@ -58,6 +58,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        App\Providers\BotMan\DriverServiceProvider::class,
+
 
 
     ],

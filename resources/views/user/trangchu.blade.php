@@ -135,7 +135,7 @@
 			@endif
 		</div>
 	</section><!-- END CONTENT -->
-	<style type="text/css">
+	{{-- <style type="text/css">
 		
 
 		
@@ -170,6 +170,8 @@
 				<input type="text" placeholder="Nhập tin nhắn" name="" class="input-text">			
 			</div>
 		</div>
-	</div>
+	</div> --}}
+
+	<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 	
 @endsection

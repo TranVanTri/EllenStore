@@ -199,3 +199,16 @@ Route::get('auth/{provider}/callback',
 /* Send Email*/
 
 // Route::get('/send_email', array('uses' => 'EmailController@sendEmailReminder'));
+
+
+Route::get('/a', function () {
+    return view('test');
+});
+
+
+Route::get('/aa', function () {
+    return view('welcome');
+});
+
+Route::match(['get', 'post'], '/botman', 'BotManController@handle');
+Route::get('/botman/tinker', 'BotManController@tinker');
